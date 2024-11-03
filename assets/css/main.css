@@ -8246,6 +8246,28 @@ body.is-preload .items.onload-fade-in > * > .inner {
   border-top-color: rgba(0, 0, 0, 0.2);
 }
 
+/* tags */
+.tags {
+  margin-top: 15px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.9em;
+  margin-right: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.tag:hover {
+  background-color: #333;
+  color: #fff;
+}
+
 /* Wrapper */
 
 #wrapper {
