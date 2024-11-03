@@ -8637,8 +8637,8 @@ body.is-preload .items.onload-fade-in > * > .inner {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #333; /* 背景色 */
-  color: white;
+  background-color: #000000; /* 背景色 */
+  color: #ffffff;
   padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
   z-index: 1000; /* 确保页眉在最上层 */
@@ -8646,7 +8646,7 @@ body.is-preload .items.onload-fade-in > * > .inner {
 
 /* 页眉内的导航样式 */
 .header nav a {
-  color: white;
+  color: #000000;
   margin: 0 10px;
   text-decoration: none;
 }
