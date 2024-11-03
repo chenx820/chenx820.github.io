@@ -8632,76 +8632,30 @@ body.is-preload .items.onload-fade-in > * > .inner {
 }
 
 /* navigation bar */
-#wrapper > nav.invert {
+.header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  z-index: 1000;
-  background-color: #000000;
-  transition: top 0.3s ease-in-out;
-  padding: 5px; /* 内边距 */
+  background-color: #333; /* 背景色 */
+  color: white;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+  z-index: 1000; /* 确保页眉在最上层 */
 }
 
-/* 列表样式：水平排列 */
-nav ul {
-  list-style-type: none; /* 去掉默认的列表样式 */
-  margin: 0;
-  padding: 0;
-  display: flex; /* 使列表项水平排列 */
-  justify-content: center; /* 居中对齐 */
-}
-
-/* 列表项样式 */
-nav ul li {
-  margin: 0 8px; /* 列表项的左右间距 */
-}
-
-nav ul li a {
-  color: #ffffff;
+/* 页眉内的导航样式 */
+.header nav a {
+  color: white;
+  margin: 0 10px;
   text-decoration: none;
 }
 
-nav ul li a:hover {
-  color: #47d3e5;
+.header nav a:hover {
+  text-decoration: underline;
 }
 
-.button.navbar {
-  font-size: 1.4em;
-  font-weight: bold;
-  height: 1.5em;
-  line-height: 1.4em;
-  border-radius: 0;
-  letter-spacing: 0;
-  box-shadow: none;
-  padding: 0;
-}
-
-.button .icon {
-  height: 1.3em;
-  width: auto;
-  vertical-align: middle;
-  pointer-events: none;
-}
-
-.button {
-  text-transform: none;
-  max-width: 40rem;
-}
-
-#wrapper > .invert .button.navbar {
-  box-shadow: none;
-}
-
-.button.navbar:hover {
-  box-shadow: none;
-}
-
-.label-nav {
-  margin-left: 8px;
-}
-
-@media (max-width: 840px) {
-  .label-nav {
-    display: none;
-  }
+/* 页面内容样式，避免被页眉遮挡 */
+.content {
+  margin-top: 80px; /* 页眉高度，以免内容被遮挡 */
 }
