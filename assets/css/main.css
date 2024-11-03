@@ -8637,7 +8637,7 @@ body.is-preload .items.onload-fade-in > * > .inner {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #000000; /* 背景色 */
+  background-color: #ffffff; /* 背景色 */
   color: #ffffff;
   padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
