@@ -8633,12 +8633,12 @@ body.is-preload .items.onload-fade-in > * > .inner {
 
 /* navigation bar */
 #wrapper > nav.invert {
-  display: block;
+  display: none;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  background-color: #000000;
+  background-color: #ffffff;
   transition: top 0.3s ease-in-out;
   padding: 5px; /* 内边距 */
 }
