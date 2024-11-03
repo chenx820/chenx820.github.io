@@ -8631,75 +8631,74 @@ body.is-preload .items.onload-fade-in > * > .inner {
   box-shadow: none !important;
 }
 
-
 /* navigation bar */
 #wrapper > nav.invert {
-    display: none;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #000000;
-    transition: top 0.3s ease-in-out;
-    padding: 5px; /* 内边距 */
+  display: block;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #000000;
+  transition: top 0.3s ease-in-out;
+  padding: 5px; /* 内边距 */
 }
 
 /* 列表样式：水平排列 */
 nav ul {
-    list-style-type: none; /* 去掉默认的列表样式 */
-    margin: 0;
-    padding: 0;
-    display: flex; /* 使列表项水平排列 */
-    justify-content: center; /* 居中对齐 */
+  list-style-type: none; /* 去掉默认的列表样式 */
+  margin: 0;
+  padding: 0;
+  display: flex; /* 使列表项水平排列 */
+  justify-content: center; /* 居中对齐 */
 }
 
 /* 列表项样式 */
 nav ul li {
-    margin: 0 8px; /* 列表项的左右间距 */
+  margin: 0 8px; /* 列表项的左右间距 */
 }
 
 /* 当导航栏显示时，固定在顶部 */
 nav.show {
-    display: block;
+  display: block;
 }
 
-.button.navbar{
-    font-size: 1.4em;
-    font-weight: bold;
-    height: 1.5em;
-    line-height: 1.4em;
-    border-radius: 0;
-    letter-spacing: 0;
-    box-shadow: none;
-    padding: 0;
+.button.navbar {
+  font-size: 1.4em;
+  font-weight: bold;
+  height: 1.5em;
+  line-height: 1.4em;
+  border-radius: 0;
+  letter-spacing: 0;
+  box-shadow: none;
+  padding: 0;
 }
 
 .button .icon {
-    height: 1.3em;
-    width: auto;
-    vertical-align: middle;
-    pointer-events: none;
+  height: 1.3em;
+  width: auto;
+  vertical-align: middle;
+  pointer-events: none;
 }
 
-.button{
-    text-transform: none;
-    max-width: 40rem;
+.button {
+  text-transform: none;
+  max-width: 40rem;
 }
 
-#wrapper > .invert .button.navbar{
-    box-shadow: none;
+#wrapper > .invert .button.navbar {
+  box-shadow: none;
 }
 
-.button.navbar:hover{
-    box-shadow: none;
+.button.navbar:hover {
+  box-shadow: none;
 }
 
 .label-nav {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 
 @media (max-width: 840px) {
-    .label-nav {
-        display: none;
-    }
+  .label-nav {
+    display: none;
+  }
 }
