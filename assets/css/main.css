@@ -8646,7 +8646,7 @@ body.is-preload .items.onload-fade-in > * > .inner {
 
 /* 页眉内的导航样式 */
 .header nav a {
-  color: #000000;
+  color: #ffffff;
   margin: 0 10px;
   text-decoration: none;
 }
