@@ -8652,7 +8652,7 @@ body.is-preload .items.onload-fade-in > * > .inner {
 }
 
 .header nav a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* 页面内容样式，避免被页眉遮挡 */
