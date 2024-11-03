@@ -8633,7 +8633,6 @@ body.is-preload .items.onload-fade-in > * > .inner {
 
 /* navigation bar */
 #wrapper > nav.invert {
-  display: none;
   position: fixed;
   top: 0;
   width: 100%;
@@ -8655,11 +8654,6 @@ nav ul {
 /* 列表项样式 */
 nav ul li {
   margin: 0 8px; /* 列表项的左右间距 */
-}
-
-/* 当导航栏显示时，固定在顶部 */
-nav.show {
-  display: block;
 }
 
 .button.navbar {
