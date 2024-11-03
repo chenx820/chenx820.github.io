@@ -246,7 +246,7 @@ select,
 textarea {
   font-family: "LXGW WenKai GB Screen", "Source Sans Pro", Helvetica, sans-serif;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: normal;
   line-height: 1.65;
 }
 
