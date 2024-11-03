@@ -8656,6 +8656,15 @@ nav ul li {
   margin: 0 8px; /* 列表项的左右间距 */
 }
 
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #47d3e5;
+}
+
 .button.navbar {
   font-size: 1.4em;
   font-weight: bold;
