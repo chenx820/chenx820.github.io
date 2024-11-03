@@ -8639,7 +8639,7 @@ body.is-preload .items.onload-fade-in > * > .inner {
   width: 100%;
   background-color: #000000; /* 背景色 */
   color: #ffffff;
-  padding: 0;
+  padding: 10px;
   z-index: 1000; /* 确保页眉在最上层 */
 }
 
