@@ -8639,15 +8639,14 @@ body.is-preload .items.onload-fade-in > * > .inner {
   width: 100%;
   background-color: #000000; /* 背景色 */
   color: #ffffff;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+  padding: 15px; 
   z-index: 1000; /* 确保页眉在最上层 */
 }
 
 /* 页眉内的导航样式 */
 .header nav a {
   color: #000000;
-  margin: 0 10px;
+  margin: 0 0;
   text-decoration: none;
 }
 
