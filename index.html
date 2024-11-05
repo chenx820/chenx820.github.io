@@ -207,14 +207,13 @@
         class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in invert color1"
         id="notes"
       >
-        <header><h2>Notes</h2></header>
         <div class="content">
+          <h2>Notes</h2>
           <button onclick="showContent('content1')">Imperial 2023-2024</button
           >&nbsp;
           <button onclick="showContent('content2')">HUST 2018-2022</button
-          >&nbsp; <button onclick="showContent('content3')">PKU 2020</button
-          ><br />
-          <div id="content"></div>
+          >&nbsp;
+          <button onclick="showContent('content3')">PKU 2020</button>
           <script>
             function showContent(content) {
               const contentDiv = document.getElementById("content");
