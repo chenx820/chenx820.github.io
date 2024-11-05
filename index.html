@@ -214,12 +214,12 @@
           <button onclick="showContent('content2')">HUST 2018-2022</button
           >&nbsp;
           <button onclick="showContent('content3')">PKU 2020</button>
+          <div id="content"></div>
           <script>
             function showContent(content) {
               const contentDiv = document.getElementById("content");
               if (content === "content1") {
                 contentDiv.innerHTML = `
-                <div class="content">
                   <ul class="alt">
                     <li>Quantum Information <a href="docs/notes/notes-on-quantum-information.pdf">Note</a></li>
                     <li>Mathematical Methods for Physicists <a href="docs/notes/notes-on-mathematical-methods-for-physicists.pdf">Note</a></li>
@@ -227,7 +227,6 @@
                     <li>Quantum Optics <a href="docs/notes/notes-on-quantum-optics.pdf">Note</a></li>
                     <li>Quantum Theory of Matter <a href="docs/notes/notes-on-quantum-theory-of-matter.pdf">Note</a></li>
                   </ul>
-                </div>
                 `;
               } else if (content === "content2") {
                 contentDiv.innerHTML = "这是内容 2";
