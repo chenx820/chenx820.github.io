@@ -220,19 +220,12 @@
               const contentDiv = document.getElementById("content");
               if (content === "content1") {
                 contentDiv.innerHTML = `
-                <div class="content">
-                  <h4>Quantum Information</h4>
-                  <ul>
-                    <li><a href="docs/notes/notes-on-quantum-information.pdf">[en] Note on quantum information</a></li>
+                  <ul class="alt">
+                    <li>Quantum Information <a href="docs/notes/notes-on-quantum-information.pdf">🔍</a></li>
+                    <li>Mathematical Methods for Physicists <a href="docs/notes/notes-on-mathematical-methods-for-physicists.pdf">🔍</a></li>
+                    <li>Advanced Classical Mechanics <a href="docs/notes/notes-on-advanced-classical-physics.pdf">🔍</a></li>
+                    <li>Quantum Optics <a href="docs/notes/notes-on-quantum-optics.pdf">🔍</a></li>
                   </ul>
-                  </div>
-                  <h4>Alternate</h4>
-                <ul class="alt">
-                  <li>Quantum Information <a href="docs/notes/notes-on-quantum-information.pdf">🔍</a></li>
-                  <li>Mathematical Methods for Physicists <a href="docs/notes/notes-on-mathematical-methods-for-physicists.pdf">🔍</a></li>
-                  <li>Advanced Classical Mechanics <a href="docs/notes/notes-on-advanced-classical-physics.pdf">🔍</a></li>
-                  <li>Quantum Optics <a href="docs/notes/notes-on-quantum-optics.pdf">🔍</a></li>
-                </ul>
                 `;
               } else if (content === "content2") {
                 contentDiv.innerHTML = "这是内容 2";
