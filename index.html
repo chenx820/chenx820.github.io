@@ -214,13 +214,13 @@
           <button onclick="showContent('content2')">HUST 2018-2022</button
           >&nbsp;
           <button onclick="showContent('content3')">PKU 2020</button>
+          <div style="height: 20px;"></div>
           <div id="content"></div>
           <script>
             function showContent(content) {
               const contentDiv = document.getElementById("content");
               if (content === "content1") {
                 contentDiv.innerHTML = `
-                <div style="height: 20px;"></div>
                   <ul class="alt">
                     <li>Quantum Information <a href="docs/notes/notes-on-quantum-information.pdf">Note</a></li>
                     <li>Mathematical Methods for Physicists <a href="docs/notes/notes-on-mathematical-methods-for-physicists.pdf">Note</a></li>
