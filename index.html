@@ -214,7 +214,7 @@
           <button onclick="showContent('content2')">HUST 2018-2022</button
           >&nbsp;
           <button onclick="showContent('content3')">PKU 2020</button>
-          <div style="height: 20px;"></div>
+          <div style="height: 20px"></div>
           <div id="content"></div>
           <script>
             function showContent(content) {
@@ -223,14 +223,25 @@
                 contentDiv.innerHTML = `
                   <ul class="alt">
                     <li>Quantum Information <a href="docs/notes/notes-on-quantum-information.pdf">Note</a></li>
-                    <li>Mathematical Methods for Physicists <a href="docs/notes/notes-on-mathematical-methods-for-physicists.pdf">Note</a></li>
+                    <li>Mathematical Methods for Physicists <a href="docs/notes/notes-on-mathematical-methods-for-physicists.pdf">Note</a> <a href="docs/notes/revision-for-2024-mmp-exam.pdf">Review</a></li>
                     <li>Advanced Classical Mechanics <a href="docs/notes/notes-on-advanced-classical-physics.pdf">Note</a></li>
                     <li>Quantum Optics <a href="docs/notes/notes-on-quantum-optics.pdf">Note</a></li>
                     <li>Quantum Theory of Matter <a href="docs/notes/notes-on-quantum-theory-of-matter.pdf">Note</a></li>
                   </ul>
                 `;
               } else if (content === "content2") {
-                contentDiv.innerHTML = "这是内容 2";
+                contentDiv.innerHTML = `
+                  <ul class="alt">
+                    <li>[en] 理论力学学习笔记<a href="docs/notes/note-on-classical-mechanics.pdf">Note</a></li>
+                    <li>[zh] 数学物理方程课堂笔记 <a href="docs/notes/[数学物理方程]课堂笔记.pdf">Note</a></li>
+                    <li>[zh] 量子力学学习笔记 <a href="docs/notes/[量子力学]学习笔记.pdf">Note</a></li>
+                    <li>[zh] 量子力学期末复习笔记 <a href="docs/notes/[量子力学]期末偷分宝典.pdf">Note</a></li>
+                    <li>[zh] 高等量子力学学习笔记 <a href="docs/notes/[高等量子力学]课堂笔记.pdf">Note</a></li>
+                    <li>[zh] 量子光学学习笔记 <a href="docs/notes/[量子光学]学习笔记.pdf">Note</a></li>
+                    <li>[zh] 量子光学期末复习笔记 <a href="docs/notes/[量子光学]复习笔记.pdf">Note</a></li>
+                    <li>[zh] 固体物理期末复习笔记 <a href="docs/notes/[固体物理]期末复习笔记.pdf">Note</a></li>
+                  </ul>
+                `;
               } else if (content === "content3") {
                 contentDiv.innerHTML = "这是内容 3";
               }
@@ -245,87 +256,6 @@
         </div>
         <div class="image">
           <img src="images/spotlight02.jpg" alt="" />
-        </div>
-      </section>
-
-      <section class="wrapper style1 align-center invert color1">
-        <div class="inner">
-          <h2>Notes</h2>
-          <p>😊</p>
-          <div class="items style3 medium onscroll-fade-in">
-            <section>
-              <span class="icon style2 major fa-gem"></span>
-              <h3>Quantum Information</h3>
-              <p>
-                <a href="docs/notes/notes-on-quantum-information.pdf"
-                  >[en] Note on quantum information</a
-                >
-              </p>
-            </section>
-            <section>
-              <span class="icon style2 major fa-gem"></span>
-              <h3>Mathemetical Methods in Physics</h3>
-              <p>
-                <a href="docs/notes/[数学物理方程]课堂笔记.pdf"
-                  >[zh] 数学物理方程学习笔记</a
-                ><br /><a
-                  href="docs/notes/notes-on-mathematical-methods-for-physicists.pdf"
-                  >[en] Notes on mathemetical methods for physicists</a
-                ><br /><a href="docs/notes/revision-for-2024-mmp-exam.pdf"
-                  >[en] Revision for 2024 MMP exam</a
-                >
-              </p>
-            </section>
-            <section>
-              <span class="icon style2 major fa-gem"></span>
-              <h3>Quantum Mechanics</h3>
-              <p>
-                <a href="docs/notes/[量子力学]学习笔记.pdf"
-                  >[zh] 量子力学学习笔记</a
-                ><br />
-                <a href="docs/notes/[量子力学]期末偷分宝典.pdf"
-                  >[zh] 量子力学期末复习笔记</a
-                ><br />
-                <a href="docs/notes/[高等量子力学]课堂笔记.pdf"
-                  >[zh] 高等量子力学学习笔记</a
-                >
-              </p>
-            </section>
-            <section>
-              <span class="icon style2 major fa-gem"></span>
-              <h3>Classical Mechanics</h3>
-              <p>
-                <a href="docs/notes/note-on-classical-mechanics.pdf"
-                  >[en] Note on classical mechanics</a
-                ><br /><a
-                  href="docs/notes/notes-on-advanced-classical-physics.pdf"
-                  >[en] Note on advanced classical mechanics</a
-                >
-              </p>
-            </section>
-            <section>
-              <span class="icon style2 major fa-gem"></span>
-              <h3>Quantum Optics</h3>
-              <p>
-                <a href="docs/notes/[量子光学]学习笔记.pdf"
-                  >[zh] 量子光学学习笔记</a
-                ><br /><a href="docs/notes/[量子光学]复习笔记.pdf"
-                  >[zh] 量子光学期末复习笔记</a
-                ><br /><a href="docs/notes/notes-on-quantum-optics.pdf"
-                  >[en] Note on quantum optics</a
-                >
-              </p>
-            </section>
-            <section>
-              <span class="icon style2 major fa-gem"></span>
-              <h3>Solid State Physics</h3>
-              <p>
-                <a href="docs/notes/[固体物理]期末复习笔记.pdf"
-                  >[zh] 固体物理期末复习笔记</a
-                >
-              </p>
-            </section>
-          </div>
         </div>
       </section>
 
