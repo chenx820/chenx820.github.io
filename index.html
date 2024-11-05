@@ -202,7 +202,12 @@
         function showContent(content) {
             const contentDiv = document.getElementById("content");
             if (content === 'content1') {
-                contentDiv.innerHTML = "这是内容 1";
+                contentDiv.innerHTML = `
+                  <h4>Quantum Information</h4>
+                  <ul>
+                    <li><a href="docs/notes/notes-on-quantum-information.pdf">[en] Note on quantum information</a></li>
+                  </ul>
+                `;
             } else if (content === 'content2') {
                 contentDiv.innerHTML = "这是内容 2";
             } else if (content === 'content3') {
