@@ -220,10 +220,12 @@
               const contentDiv = document.getElementById("content");
               if (content === "content1") {
                 contentDiv.innerHTML = `
+                <div class="content">
                   <h4>Quantum Information</h4>
                   <ul>
                     <li><a href="docs/notes/notes-on-quantum-information.pdf">[en] Note on quantum information</a></li>
                   </ul>
+                  </div>
                 `;
               } else if (content === "content2") {
                 contentDiv.innerHTML = "这是内容 2";
