@@ -1,23 +1,19 @@
-Story by HTML5 UP
+Helios by HTML5 UP
 html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 
 
-Say hello to Story, a brand new responsive one-pager for HTML5 UP! Inspired by my work
-on Carrd*, Story is built to be extremely modular and tweakable, and as such is entirely
-built on reusable, insanely customizable elements (like "spotlight" and "gallery") that
-can be endlessly duplicated and tweaked into whatever you need to tell your story --
-without, in many cases, touching *any* CSS. Check out index-demo.html for an interactive
-demo, and index.html for the actual template. Enjoy!
+This is Helios, a brand new site template for HTML5 UP. It's clean, modern, and designed
+to take advantage of larger (well, wider) displays while still being capable of gracefully
+scaling down to fit all manner of smaller ones.
 
-Demo images** courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
+Demo images* courtesy of Michael Domaradzki, an awesome photographer I met over at
+deviantART. Check out his portfolio here:
 
-PS: Delete index-demo.html and assets/js/demo.js when you're done messing with the demo
-as neither are needed in production :)
+http://md.photomerchant.net/
 
-(* = my other side project -- carrd.co)
-(** = not included)
+(* = Not included! Only meant for use with my own on-site demo, so please do NOT download
+and/or use any of Michaels's work without his explicit permission!)
 
 AJ
 aj@lkn.io | @ajlkn
@@ -26,7 +22,7 @@ aj@lkn.io | @ajlkn
 Credits:
 
 	Demo Images:
-		Unsplash (unsplash.com)
+		Michael Domaradzki (md.photomerchant.net)
 
 	Icons:
 		Font Awesome (fontawesome.io)
