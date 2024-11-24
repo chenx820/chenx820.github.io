@@ -1823,20 +1823,21 @@ body.homepage {
 }
 
 /* progress */
-.progress-bar {
+.progress-container {
   width: 100%;
-  background-color: #e0e0e0;
+  background-color: #f3f3f3;
   border-radius: 10px;
   overflow: hidden;
-}
-.progress {
   height: 20px;
-  background-color: #ef8376; /* 蓝色进度条 */
-  width: 80%; /* 技能水平 80% */
-  text-align: right;
-  padding-right: 5px;
-  line-height: 20px;
-  color: white;
-  font-size: 14px;
-  border-radius: 10px 0 0 10px;
+  margin: 10px 0;
+
+  .progress-bar {
+    height: 100%;
+    background-color: #ef8376;
+    width: 0; /* 动态宽度 */
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    transition: width 0.3s ease;
+  }
 }

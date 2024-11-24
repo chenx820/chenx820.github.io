@@ -3272,3 +3272,24 @@ body.homepage.is-preload #header:after {
     margin-bottom: 2em;
   }
 }
+
+/* Progress Bar Container */
+.progress-container {
+  width: 100%;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 20px;
+  margin: 10px 0;
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 100%;
+  background-color: #ef8376; /* 进度条颜色 */
+  width: 0; /* 动态设置宽度 */
+  text-align: center;
+  line-height: 20px;
+  color: white;
+  transition: width 0.3s ease; /* 动画效果 */
+}
