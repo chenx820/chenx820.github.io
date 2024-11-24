@@ -493,6 +493,11 @@ footer {
     width: 100%;
   }
 
+  &.small {
+    display: block;
+    width: 20%;
+  }
+
   &.featured {
     display: block;
     width: 100%;
