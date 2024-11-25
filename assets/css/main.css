@@ -2718,14 +2718,14 @@ body.homepage.is-preload #header:after {
   position: relative;
   left: -1em;
   top: 0;
-  width: auto;
+  height: 20em;
   margin-right: -2em;
   margin-bottom: 3em;
 }
 
 .carousel article {
   display: inline-block;
-  height: 40em;
+  height: 20em;
   width: auto;
   background: #fff;
   text-align: center;
