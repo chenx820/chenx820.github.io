@@ -2714,6 +2714,13 @@ body.homepage.is-preload #header:after {
   padding: 0 2em 0 2em;
 }
 
+.carousel .reel img {
+  height: 200px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 .carousel article {
   display: inline-block;
   width: 18em;
