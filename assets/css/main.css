@@ -1903,11 +1903,6 @@ footer {
   width: 100%;
 }
 
-.image.small {
-  display: block;
-  width: 20%;
-}
-
 .image.featured {
   display: block;
   width: 100%;
