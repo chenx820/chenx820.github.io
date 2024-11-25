@@ -2715,10 +2715,12 @@ body.homepage.is-preload #header:after {
 }
 
 .carousel .reel img {
-  height: 200px;
+  position: relative;
+  left: -1em;
+  top: 0;
   width: auto;
-  display: block;
-  margin: 0 auto;
+  margin-right: -2em;
+  margin-bottom: 3em;
 }
 
 .carousel article {
