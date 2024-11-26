@@ -2186,6 +2186,29 @@ button,
     border-bottom-color 0.35s ease-in-out;
 }
 
+.button review {
+  position: relative;
+  display: inline-block;
+  background: #63ebe9;
+  color: #fff;
+  text-align: center;
+  border-radius: 0.5em;
+  text-decoration: none;
+  padding: 0.65em 3em 0.65em 3em;
+  border: 0;
+  cursor: pointer;
+  outline: 0;
+  font-weight: 300;
+  -moz-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    border-bottom-color 0.35s ease-in-out;
+  -webkit-transition: background-color 0.35s ease-in-out,
+    color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
+  -ms-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    border-bottom-color 0.35s ease-in-out;
+  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
+    border-bottom-color 0.35s ease-in-out;
+}
+
 input[type="button"]:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,
