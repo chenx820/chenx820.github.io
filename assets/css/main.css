@@ -2550,6 +2550,13 @@ body.homepage.is-preload #header:after {
 
 /* Sidebar */
 
+#sidebar {
+  position: sticky; /* Ensures the sidebar remains fixed */
+  top: 0; /* Keeps it at the top of the viewport */
+  height: 100vh; /* Makes the sidebar span the full viewport height */
+  overflow-y: auto; /* Enables scrolling if the content exceeds the height */
+}
+
 #sidebar > hr {
   top: 3em;
   margin-bottom: 6em;
