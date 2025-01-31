@@ -1,0 +1,73 @@
+<nav id="nav">
+  <div class="nav-container">
+    <div class="nav-brand">
+      <a href="/index.html">Chen's Physics World</a>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="/index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="/research/index.html"
+          >Research <i class="fas fa-chevron-down"></i
+        ></a>
+        <ul class="dropdown-menu">
+          <!-- 保持原有下拉内容 -->
+        </ul>
+      </li>
+      <!-- 其他菜单项保持相同结构 -->
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+
+    .nav-menu {
+      display: none;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background: #1c1c1c;
+      z-index: 1000;
+    }
+
+    .nav-menu.active {
+      display: block;
+    }
+
+    .dropdown-menu {
+      position: static;
+      background: #2a2a2a;
+    }
+  }
+</style>
+
+<script>
+  document.querySelector(".hamburger").addEventListener("click", function () {
+    this.classList.toggle("active");
+    document.querySelector(".nav-menu").classList.toggle("active");
+  });
+</script>
