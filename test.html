@@ -71,3 +71,48 @@
     document.querySelector(".nav-menu").classList.toggle("active");
   });
 </script>
+
+<section class="skills-section">
+  <div class="skill-item">
+    <div class="circular-progress" data-percent="90">
+      <span class="progress-value">0%</span>
+    </div>
+    <h4>Python</h4>
+  </div>
+  <!-- 重复其他技能项 -->
+</section>
+
+<style>
+  .skills-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+  }
+
+  .circular-progress {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(
+      #4caf50 0% var(--progress),
+      #eee var(--progress) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .progress-value {
+    font-weight: 600;
+    color: #333;
+  }
+</style>
+
+<script>
+  document.querySelectorAll(".circular-progress").forEach((progress) => {
+    let percent = progress.dataset.percent;
+    progress.style.setProperty("--progress", `${percent}%`);
+    progress.querySelector(".progress-value").textContent = `${percent}%`;
+  });
+</script>
