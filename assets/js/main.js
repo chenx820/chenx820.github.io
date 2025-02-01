@@ -223,7 +223,7 @@ function handleSearch() {
     .value.trim()
     .toLowerCase();
   const searchStatus = document.getElementById("searchStatus");
-  const cards = document.querySelectorAll(".course-card");
+  const cards = document.querySelectorAll(".white-card");
 
   // 更新搜索结果状态
   if (searchTerm) {
