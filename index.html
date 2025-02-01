@@ -621,3 +621,99 @@
     <script src="/assets/js/main.js"></script>
   </body>
 </html>
+
+<style>
+  /* Profile Header */
+  .profile-header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 1rem auto;
+    max-width: 600px;
+  }
+
+  .name-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    position: relative;
+    display: inline-block;
+  }
+
+  .pronunciation-wrap {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .pronunciation-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    background-color: rgba(41, 128, 185, 0.1);
+    color: #2980b9;
+  }
+
+  .pronunciation-btn:hover {
+    background-color: rgba(41, 128, 185, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .pronunciation-btn:active {
+    transform: translateY(0);
+  }
+
+  .speaker-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  .pronunciation-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .loading-indicator {
+    display: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 3px solid #ddd;
+    border-top-color: #2980b9;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    right: -1.5rem;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 480px) {
+    .name-title {
+      font-size: 2rem;
+    }
+
+    .pronunciation-btn {
+      padding: 0.4rem 0.8rem;
+    }
+
+    .pronunciation-text {
+      font-size: 0.8rem;
+    }
+  }
+</style>
