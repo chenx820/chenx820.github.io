@@ -589,5 +589,67 @@
     <script src="/assets/js/breakpoints.min.js"></script>
     <script src="/assets/js/util.js"></script>
     <script src="/assets/js/main.js"></script>
+    <script>
+      // 交互功能实现
+      document.addEventListener("DOMContentLoaded", () => {
+        // 音频播放控制
+        const audio = document.getElementById("name-audio");
+        const audioBtn = document.getElementById("pronunciationBtn");
+
+        audioBtn.addEventListener("click", () => {
+          if (audio.paused) {
+            audio.play();
+            audioBtn.classList.add("playing");
+          } else {
+            audio.pause();
+            audioBtn.classList.remove("playing");
+          }
+        });
+
+        // 可折叠部分功能
+        function toggleCollapse(header) {
+          const content = header.nextElementSibling;
+          const icon = header.querySelector(".collapsible-icon");
+
+          if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+            icon.style.transform = "rotate(0deg)";
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            icon.style.transform = "rotate(180deg)";
+          }
+        }
+
+        // 卡片悬停效果
+        document.querySelectorAll(".card").forEach((card) => {
+          card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty("--x", `${x}px`);
+            card.style.setProperty("--y", `${y}px`);
+          });
+        });
+      });
+
+      // 动态加载内容（示例）
+      function loadPublications() {
+        fetch("/api/publications")
+          .then((response) => response.json())
+          .then((data) => {
+            const container = document.getElementById("publications-container");
+            data.forEach((pub) => {
+              const div = document.createElement("div");
+              div.className = "card publication-card";
+              div.innerHTML = `
+              <h4>${pub.title}</h4>
+              <p>${pub.authors}</p>
+              <p class="text-secondary">${pub.journal}</p>
+            `;
+              container.appendChild(div);
+            });
+          });
+      }
+    </script>
   </body>
 </html>
