@@ -104,34 +104,7 @@
         box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
       }
 
-      /* 可折叠部分 */
-      .collapsible {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      }
-
-      .collapsible-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        cursor: pointer;
-        transition: background 0.3s ease;
-      }
-
-      .collapsible-header:hover {
-        background: var(--light);
-      }
-
-      .collapsible-icon {
-        transition: transform 0.3s ease;
-      }
-
-      .collapsible-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-      }
-
+      /* pronunciation */
       .pronunciation-wrap {
         display: inline-flex;
         align-items: center;
@@ -148,12 +121,12 @@
         padding: 0.5rem 1rem;
         border-radius: 25px;
         transition: all 0.3s ease;
-        background-color: rgba(41, 128, 185, 0.1);
+        background-color: var(--primary-light);
         color: var(--primary);
       }
 
       .pronunciation-btn:hover {
-        background-color: rgba(41, 128, 185, 0.2);
+        background-color: var(--primary);
         transform: translateY(-1px);
       }
 
