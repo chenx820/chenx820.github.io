@@ -2891,7 +2891,7 @@ body.homepage.is-preload #header:after {
   width: 80%; /* 设置宽度，适配不同设备 */
   max-width: 800px; /* 限制最大宽度，防止过大 */
   margin: 0 auto; /* 居中对齐 */
-  padding-bottom: 45%; /* 保持16:9比例 */
+  padding-bottom: 56.25%; /* 保持16:9比例 */
   height: 0;
   overflow: hidden;
 }
