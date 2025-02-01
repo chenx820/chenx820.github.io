@@ -1,428 +1,252 @@
-<nav id="nav">
-  <div class="nav-container">
-    <div class="nav-brand">
-      <a href="/index.html">Chen's Physics World</a>
-      <button class="hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-    <ul class="nav-menu">
-      <li><a href="/index.html">Home</a></li>
-      <li class="dropdown">
-        <a href="/research/index.html"
-          >Research <i class="fas fa-chevron-down"></i
-        ></a>
-        <ul class="dropdown-menu">
-          <!-- 保持原有下拉内容 -->
-        </ul>
-      </li>
-      <!-- 其他菜单项保持相同结构 -->
-    </ul>
-  </div>
-</nav>
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- 原有head内容保持不变 -->
+    <style>
+      /* 新增CSS改进 */
+      :root {
+        --primary: #2c3e50;
+        --secondary: #3498db;
+        --accent: #e74c3c;
+        --light: #f8f9fa;
+        --radius-md: 12px;
+        --radius-xl: 25px;
+        --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      }
 
-<style>
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-  }
+      /* 时间线布局 */
+      .timeline-container {
+        position: relative;
+        padding: 2rem 0;
+      }
 
-  .hamburger {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-  }
+      .timeline-line {
+        position: absolute;
+        left: 24px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--secondary);
+        z-index: 0;
+      }
 
-  @media (max-width: 768px) {
-    .hamburger {
-      display: block;
-    }
+      .timeline-item {
+        position: relative;
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: white;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease;
+        z-index: 1;
+      }
 
-    .nav-menu {
-      display: none;
-      width: 100%;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      background: #1c1c1c;
-      z-index: 1000;
-    }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -28px;
+        top: 24px;
+        width: 16px;
+        height: 16px;
+        background: var(--secondary);
+        border: 3px solid white;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px var(--secondary);
+      }
 
-    .nav-menu.active {
-      display: block;
-    }
+      /* 卡片式布局 */
+      .card {
+        background: white;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow);
+        padding: 1.5rem;
+        margin: 1rem 0;
+        transition: all 0.3s ease;
+      }
 
-    .dropdown-menu {
-      position: static;
-      background: #2a2a2a;
-    }
-  }
-</style>
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
 
-<script>
-  document.querySelector(".hamburger").addEventListener("click", function () {
-    this.classList.toggle("active");
-    document.querySelector(".nav-menu").classList.toggle("active");
-  });
-</script>
+      /* 可折叠部分 */
+      .collapsible {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
 
-<section class="skills-section">
-  <div class="skill-item">
-    <div class="circular-progress" data-percent="90">
-      <span class="progress-value">0%</span>
-    </div>
-    <h4>Python</h4>
-  </div>
-  <!-- 重复其他技能项 -->
-</section>
+      .collapsible-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
 
-<style>
-  .skills-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 2rem;
-  }
+      .collapsible-header:hover {
+        background: var(--light);
+      }
 
-  .circular-progress {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: conic-gradient(
-      #4caf50 0% var(--progress),
-      #eee var(--progress) 100%
-    );
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+      .collapsible-icon {
+        transition: transform 0.3s ease;
+      }
 
-  .progress-value {
-    font-weight: 600;
-    color: #333;
-  }
-</style>
+      .collapsible-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
 
-<script>
-  document.querySelectorAll(".circular-progress").forEach((progress) => {
-    let percent = progress.dataset.percent;
-    progress.style.setProperty("--progress", `${percent}%`);
-    progress.querySelector(".progress-value").textContent = `${percent}%`;
-  });
-</script>
+      /* 响应式设计 */
+      @media (max-width: 768px) {
+        .timeline-line {
+          left: 16px;
+        }
 
-<section class="timeline">
-  <div class="timeline-item">
-    <div class="timeline-point"></div>
-    <div class="timeline-content">
-      <h3>Imperial College London</h3>
-      <div class="timeline-date">2023-2025</div>
-      <p>M.Sc. in Physics with extended research...</p>
-    </div>
-    <div class="timeline-point"></div>
-    <div class="timeline-content">
-      <h3>Huazhong University of Science and Technology</h3>
-      <div class="timeline-date">2023-2025</div>
-      <p>M.Sc. in Physics with extended research...</p>
-    </div>
-  </div>
-
-  <style>
-    .timeline {
-      position: relative;
-      padding: 2rem 0;
-    }
-
-    .timeline-item {
-      display: flex;
-      margin-bottom: 2rem;
-    }
-
-    .timeline-point {
-      width: 20px;
-      height: 20px;
-      background: #4caf50;
-      border-radius: 50%;
-      position: relative;
-      flex-shrink: 0;
-      margin-right: 1rem;
-    }
-
-    .timeline-content {
-      flex: 1;
-      padding: 1rem;
-      background: #f5f5f5;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .timeline-date {
-      color: #666;
-      font-size: 0.9em;
-      margin-bottom: 0.5rem;
-    }
-  </style>
-
-  <!-- 为PDF链接添加明显标识 -->
-  <a href="/docs/notes/notes-on-quantum-information.pdf" class="pdf-link">
-    Quantum Information <i class="fas fa-file-pdf"></i> (2.4MB)
-  </a>
-
-  <!-- 改为卡片式布局 -->
-  <div class="course-card">
-    <div class="course-header">
-      <h4>Quantum Information (Fall 2023)</h4>
-      <div class="course-meta">
-        <span class="pill">Graduate</span>
-        <span class="pill">Core</span>
-      </div>
-    </div>
-    <div class="course-body">
-      <p>Taught by Prof. Myungshik Kim...</p>
-      <div class="resource-links">
-        <a href="..." class="button small"
-          ><i class="fas fa-book"></i> Study Notes</a
-        >
-        <a href="..." class="button small"
-          ><i class="fas fa-star"></i> Review Notes</a
-        >
-      </div>
-    </div>
-  </div>
-
-  <style>
-    /* 卡片式布局样式 */
-    .course-card {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      margin-bottom: 1.5rem;
-      padding: 1.5rem;
-    }
-    .course-header {
-      border-bottom: 1px solid #eee;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    .pill {
-      background: #f0f0f0;
-      border-radius: 15px;
-      padding: 2px 8px;
-      font-size: 0.8em;
-      margin-left: 8px;
-    }
-  </style>
-</section>
-
-<header class="profile-header">
-  <h3 class="name-title">Chen Huang</h3>
-  <div class="pronunciation-wrap">
-    <button
-      class="pronunciation-btn"
-      onclick="document.getElementById('name-audio').play();"
-    >
-      <svg class="speaker-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path
-          d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
+        .timeline-item::before {
+          left: -24px;
+          width: 12px;
+          height: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 更新后的Profile部分 -->
+    <section class="profile-header">
+      <div class="profile-image-container">
+        <img
+          src="/images/profile.jpg"
+          alt="Chen Huang"
+          class="profile-image hover-grow"
+          style="width: 120px; border-radius: 50%"
         />
-      </svg>
-      <span class="pronunciation-text">Name Pronunciation</span>
-    </button>
-    <span class="loading-indicator" aria-hidden="true"></span>
-  </div>
-</header>
-
-<style>
-  .profile-header {
-    text-align: center;
-    padding: 2rem 1rem;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 1rem auto;
-    max-width: 600px;
-  }
-
-  .name-title {
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    letter-spacing: -0.05em;
-    position: relative;
-    display: inline-block;
-  }
-
-  .pronunciation-wrap {
-    display: inline-flex;
-    align-items: center;
-    position: relative;
-  }
-
-  .pronunciation-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    background-color: rgba(41, 128, 185, 0.1);
-    color: #2980b9;
-  }
-
-  .pronunciation-btn:hover {
-    background-color: rgba(41, 128, 185, 0.2);
-    transform: translateY(-1px);
-  }
-
-  .pronunciation-btn:active {
-    transform: translateY(0);
-  }
-
-  .speaker-icon {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-  }
-
-  .pronunciation-text {
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-
-  .loading-indicator {
-    display: none;
-    width: 1.2rem;
-    height: 1.2rem;
-    border: 3px solid #ddd;
-    border-top-color: #2980b9;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    position: absolute;
-    right: -1.5rem;
-  }
-
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  /* 响应式设计 */
-  @media (max-width: 480px) {
-    .name-title {
-      font-size: 2rem;
-    }
-
-    .pronunciation-btn {
-      padding: 0.4rem 0.8rem;
-    }
-
-    .pronunciation-text {
-      font-size: 0.8rem;
-    }
-  }
-</style>
-
-<div class="col-4 col-12-mobile">
-  <section>
-    <header>
-      <h3><a>Technical skills</a></h3>
-    </header>
-    <div class="row gtr-50">
-      <div class="col-4">
-        <strong>Python</strong>
       </div>
-      <div class="col-8">
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-bar" style="width: 100%"></div>
+      <h1 class="name-title">
+        <span class="pronunciation-wrap">
+          Chen Huang
+          <button class="pronunciation-btn" id="pronunciationBtn">
+            <svg class="speaker-icon" viewBox="0 0 24 24">
+              <path
+                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
+              />
+            </svg>
+            <span class="pronunciation-text">Name Pronunciation</span>
+          </button>
+        </span>
+      </h1>
+      <audio id="name-audio" src="audio/pronunciation_zh_chen.mp3"></audio>
+    </section>
+
+    <!-- 教育经历时间线 -->
+    <section class="timeline-container">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-item card">
+        <h3>Imperial College London</h3>
+        <p class="text-secondary">Sep. 2023 - Jun. 2025 (Expected)</p>
+        <p>M.Sc. in Physics with Extended Research</p>
+      </div>
+
+      <div class="timeline-item card">
+        <h3>Huazhong University of Science and Technology</h3>
+        <p class="text-secondary">Sep. 2018 - Jun. 2022</p>
+        <p>B.S. in Physics</p>
+      </div>
+    </section>
+
+    <!-- 可折叠的研究经历部分 -->
+    <section class="collapsible-section">
+      <div class="collapsible">
+        <div class="collapsible-header" onclick="toggleCollapse(this)">
+          <h3>Research Experience</h3>
+          <svg
+            class="collapsible-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+            />
+          </svg>
+        </div>
+        <div class="collapsible-content">
+          <!-- 研究经历内容 -->
+          <div class="card">
+            <h4>Quantum Optics and Laser Science Group</h4>
+            <p>Imperial College London</p>
+            <ul class="research-details">
+              <li>Charge noise characterization</li>
+              <li>Python automation tools development</li>
+            </ul>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="col-4">
-        <strong>LaTeX</strong>
-      </div>
-      <div class="col-8">
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-bar" style="width: 100%"></div>
-        </div>
-      </div>
+    <script>
+      // 交互功能实现
+      document.addEventListener("DOMContentLoaded", () => {
+        // 音频播放控制
+        const audio = document.getElementById("name-audio");
+        const audioBtn = document.getElementById("pronunciationBtn");
 
-      <div class="col-4">
-        <strong>MATLAB</strong>
-      </div>
-      <div class="col-8">
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-bar" style="width: 90%"></div>
-        </div>
-      </div>
+        audioBtn.addEventListener("click", () => {
+          if (audio.paused) {
+            audio.play();
+            audioBtn.classList.add("playing");
+          } else {
+            audio.pause();
+            audioBtn.classList.remove("playing");
+          }
+        });
 
-      <div class="col-4">
-        <strong>AutoCAD</strong>
-      </div>
-      <div class="col-8">
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-bar" style="width: 75%"></div>
-        </div>
-      </div>
+        // 可折叠部分功能
+        function toggleCollapse(header) {
+          const content = header.nextElementSibling;
+          const icon = header.querySelector(".collapsible-icon");
 
-      <div class="col-4">
-        <strong>Mathematica</strong>
-      </div>
-      <div class="col-8">
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-bar" style="width: 75%"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <hr />
-  <section>
-    <header>
-      <h3><a>Languages</a></h3>
-    </header>
-    <div class="row gtr-50">
-      <div class="col-4">
-        <strong>Mandarin</strong>
-      </div>
-      <div class="col-8">
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-bar" style="width: 100%"></div>
-        </div>
-      </div>
-      <div class="col-4">
-        <strong>Hokkien</strong>
-      </div>
-      <div class="col-8">
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-bar" style="width: 95%"></div>
-        </div>
-      </div>
-      <div class="col-4">
-        <strong>English</strong>
-      </div>
-      <div class="col-8">
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-bar" style="width: 85%"></div>
-        </div>
-      </div>
-      <div class="col-4">
-        <strong>German</strong>
-      </div>
-      <div class="col-8">
-        <div class="progress-container">
-          <div class="progress-bar" id="progress-bar" style="width: 20%"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
+          if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+            icon.style.transform = "rotate(0deg)";
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            icon.style.transform = "rotate(180deg)";
+          }
+        }
+
+        // 卡片悬停效果
+        document.querySelectorAll(".card").forEach((card) => {
+          card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty("--x", `${x}px`);
+            card.style.setProperty("--y", `${y}px`);
+          });
+        });
+      });
+
+      // 动态加载内容（示例）
+      function loadPublications() {
+        fetch("/api/publications")
+          .then((response) => response.json())
+          .then((data) => {
+            const container = document.getElementById("publications-container");
+            data.forEach((pub) => {
+              const div = document.createElement("div");
+              div.className = "card publication-card";
+              div.innerHTML = `
+              <h4>${pub.title}</h4>
+              <p>${pub.authors}</p>
+              <p class="text-secondary">${pub.journal}</p>
+            `;
+              container.appendChild(div);
+            });
+          });
+      }
+    </script>
+  </body>
+</html>
