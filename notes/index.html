@@ -100,24 +100,81 @@
               <br /><br />
             </div>
             <div class="col-8 col-12-mobile imp-mobile" id="content">
-              <!-- 在页面顶部添加搜索框 -->
               <div class="search-container">
-                <input
-                  type="text"
-                  id="noteSearch"
-                  placeholder="Search notes..."
-                />
-                <button type="button" id="searchButton">
-                  <i class="fas fa-search"></i>
-                </button>
+                <div class="search-status" id="searchStatus"></div>
+                <div class="search-input-group">
+                  <input
+                    type="text"
+                    id="noteSearch"
+                    placeholder="Search notes..."
+                  />
+                  <button type="button" id="searchButton">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
               </div>
+
+              <style>
+                .search-container {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 1rem;
+                  padding: 8px;
+                  background: #f8f9fa;
+                  border-radius: 4px;
+                }
+
+                .search-status {
+                  font-size: 0.9em;
+                  color: #6c757d;
+                  padding: 0 10px;
+                }
+
+                .search-input-group {
+                  display: flex;
+                  gap: 8px;
+                }
+
+                #noteSearch {
+                  padding: 6px 12px;
+                  border: 1px solid #ced4da;
+                  border-radius: 4px;
+                  width: 200px;
+                }
+
+                #searchButton {
+                  padding: 6px 12px;
+                  background-color: #ef8376;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                }
+
+                #searchButton:hover {
+                  background-color: #e97164;
+                }
+              </style>
+
               <script>
-                // 提取搜索处理函数
                 function handleSearch() {
                   const searchTerm = document
                     .getElementById("noteSearch")
-                    .value.toLowerCase();
-                  document.querySelectorAll(".course-card").forEach((card) => {
+                    .value.trim()
+                    .toLowerCase();
+                  const searchStatus = document.getElementById("searchStatus");
+                  const cards = document.querySelectorAll(".course-card");
+
+                  // 更新搜索结果状态
+                  if (searchTerm) {
+                    searchStatus.textContent = `Showing results for "${searchTerm}"`;
+                  } else {
+                    searchStatus.textContent = "Showing all notes";
+                  }
+
+                  // 过滤卡片内容
+                  cards.forEach((card) => {
                     const text = card.textContent.toLowerCase();
                     card.style.display = text.includes(searchTerm)
                       ? "block"
@@ -125,42 +182,17 @@
                   });
                 }
 
-                // 为输入框和按钮绑定事件
+                // 绑定事件监听
                 document
                   .getElementById("noteSearch")
                   .addEventListener("input", handleSearch);
                 document
                   .getElementById("searchButton")
                   .addEventListener("click", handleSearch);
+
+                // 初始化显示
+                handleSearch();
               </script>
-              <style>
-                .search-container {
-                  display: flex;
-                  justify-content: flex-end; /* 右对齐 */
-                  align-items: center;
-                  gap: 8px; /* 控制输入框和按钮的间距 */
-                  margin-bottom: 10px; /* 添加下边距，避免与内容贴太近 */
-                }
-
-                .search-container input {
-                  padding: 6px;
-                  border: 1px solid #ccc;
-                  border-radius: 4px;
-                }
-
-                .search-container button {
-                  padding: 6px 10px;
-                  border: none;
-                  background-color: #ef8376;
-                  color: white;
-                  cursor: pointer;
-                  border-radius: 4px;
-                }
-
-                .search-container button:hover {
-                  background-color: #ef8376;
-                }
-              </style>
               <article id="main">
                 <p>
                   Sorted by &nbsp;
