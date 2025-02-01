@@ -3390,8 +3390,8 @@ body.homepage.is-preload #header:after {
 
 /* 添加PDF链接样式 */
 .pdf-link {
-  color: #e74c3c;
-  border-left: 3px solid #e74c3c;
+  color: #ef8376;
+  border-left: 3px solid #ef8376;
   padding-left: 8px;
   transition: all 0.3s ease;
 }
