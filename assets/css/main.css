@@ -3399,3 +3399,24 @@ body.homepage.is-preload #header:after {
   background: #f9f9f9;
   transform: translateX(5px);
 }
+
+/* 卡片式布局样式 */
+.course-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+}
+.course-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.pill {
+  background: #f0f0f0;
+  border-radius: 15px;
+  padding: 2px 8px;
+  font-size: 0.8em;
+  margin-left: 8px;
+}
