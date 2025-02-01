@@ -3319,3 +3319,44 @@ body.homepage.is-preload #header:after {
   color: white;
   transition: width 0.3s ease; /* 动画效果 */
 }
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  .col-4.col-12-mobile {
+    display: none; /* 隐藏侧边栏 */
+  }
+
+  .course-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .resource-links .button {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* 添加层级关系 */
+h3 {
+  position: sticky;
+  top: 100px;
+  background: white;
+  padding: 1rem;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 添加章节分隔线 */
+section {
+  position: relative;
+  padding: 2rem 0;
+}
+section::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #eee;
+  margin: 2rem 0;
+}

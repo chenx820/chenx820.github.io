@@ -4,214 +4,215 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-(function($) {
+(function ($) {
+  var $window = $(window),
+    $body = $("body"),
+    settings = {
+      // Carousels
+      carousels: {
+        speed: 4,
+        fadeIn: true,
+        fadeDelay: 250,
+      },
+    };
 
-	var	$window = $(window),
-		$body = $('body'),
-		settings = {
+  // Breakpoints.
+  breakpoints({
+    wide: ["1281px", "1680px"],
+    normal: ["961px", "1280px"],
+    narrow: ["841px", "960px"],
+    narrower: ["737px", "840px"],
+    mobile: [null, "736px"],
+  });
 
-			// Carousels
-				carousels: {
-					speed: 4,
-					fadeIn: true,
-					fadeDelay: 250
-				},
+  // Play initial animations on page load.
+  $window.on("load", function () {
+    window.setTimeout(function () {
+      $body.removeClass("is-preload");
+    }, 100);
+  });
 
-		};
+  // Dropdowns.
+  $("#nav > ul").dropotron({
+    mode: "fade",
+    speed: 350,
+    noOpenerFade: true,
+    alignment: "center",
+  });
 
-	// Breakpoints.
-		breakpoints({
-			wide:      [ '1281px',  '1680px' ],
-			normal:    [ '961px',   '1280px' ],
-			narrow:    [ '841px',   '960px'  ],
-			narrower:  [ '737px',   '840px'  ],
-			mobile:    [ null,      '736px'  ]
-		});
+  // Scrolly.
+  $(".scrolly").scrolly();
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+  // Nav.
 
-	// Dropdowns.
-		$('#nav > ul').dropotron({
-			mode: 'fade',
-			speed: 350,
-			noOpenerFade: true,
-			alignment: 'center'
-		});
+  // Button.
+  $(
+    '<div id="navButton">' +
+      '<a href="#navPanel" class="toggle"></a>' +
+      "</div>"
+  ).appendTo($body);
 
-	// Scrolly.
-		$('.scrolly').scrolly();
+  // Panel.
+  $('<div id="navPanel">' + "<nav>" + $("#nav").navList() + "</nav>" + "</div>")
+    .appendTo($body)
+    .panel({
+      delay: 500,
+      hideOnClick: true,
+      hideOnSwipe: true,
+      resetScroll: true,
+      resetForms: true,
+      target: $body,
+      visibleClass: "navPanel-visible",
+    });
 
-	// Nav.
+  // Carousels.
+  $(".carousel").each(function () {
+    var $t = $(this),
+      $forward = $('<span class="forward"></span>'),
+      $backward = $('<span class="backward"></span>'),
+      $reel = $t.children(".reel"),
+      $items = $reel.children("article");
 
-		// Button.
-			$(
-				'<div id="navButton">' +
-					'<a href="#navPanel" class="toggle"></a>' +
-				'</div>'
-			)
-				.appendTo($body);
+    var pos = 0,
+      leftLimit,
+      rightLimit,
+      itemWidth,
+      reelWidth,
+      timerId;
 
-		// Panel.
-			$(
-				'<div id="navPanel">' +
-					'<nav>' +
-						$('#nav').navList() +
-					'</nav>' +
-				'</div>'
-			)
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					target: $body,
-					visibleClass: 'navPanel-visible'
-				});
+    // Items.
+    if (settings.carousels.fadeIn) {
+      $items.addClass("loading");
 
-	// Carousels.
-		$('.carousel').each(function() {
+      $t.scrollex({
+        mode: "middle",
+        top: "-20vh",
+        bottom: "-20vh",
+        enter: function () {
+          var timerId,
+            limit = $items.length - Math.ceil($window.width() / itemWidth);
 
-			var	$t = $(this),
-				$forward = $('<span class="forward"></span>'),
-				$backward = $('<span class="backward"></span>'),
-				$reel = $t.children('.reel'),
-				$items = $reel.children('article');
+          timerId = window.setInterval(function () {
+            var x = $items.filter(".loading"),
+              xf = x.first();
 
-			var	pos = 0,
-				leftLimit,
-				rightLimit,
-				itemWidth,
-				reelWidth,
-				timerId;
+            if (x.length <= limit) {
+              window.clearInterval(timerId);
+              $items.removeClass("loading");
+              return;
+            }
 
-			// Items.
-				if (settings.carousels.fadeIn) {
+            xf.removeClass("loading");
+          }, settings.carousels.fadeDelay);
+        },
+      });
+    }
 
-					$items.addClass('loading');
+    // Main.
+    $t._update = function () {
+      pos = 0;
+      rightLimit = -1 * reelWidth + $window.width();
+      leftLimit = 0;
+      $t._updatePos();
+    };
 
-					$t.scrollex({
-						mode: 'middle',
-						top: '-20vh',
-						bottom: '-20vh',
-						enter: function() {
+    $t._updatePos = function () {
+      $reel.css("transform", "translate(" + pos + "px, 0)");
+    };
 
-							var	timerId,
-								limit = $items.length - Math.ceil($window.width() / itemWidth);
+    // Forward.
+    $forward
+      .appendTo($t)
+      .hide()
+      .mouseenter(function (e) {
+        timerId = window.setInterval(function () {
+          pos -= settings.carousels.speed;
 
-							timerId = window.setInterval(function() {
-								var x = $items.filter('.loading'), xf = x.first();
+          if (pos <= rightLimit) {
+            window.clearInterval(timerId);
+            pos = rightLimit;
+          }
 
-								if (x.length <= limit) {
+          $t._updatePos();
+        }, 10);
+      })
+      .mouseleave(function (e) {
+        window.clearInterval(timerId);
+      });
 
-									window.clearInterval(timerId);
-									$items.removeClass('loading');
-									return;
+    // Backward.
+    $backward
+      .appendTo($t)
+      .hide()
+      .mouseenter(function (e) {
+        timerId = window.setInterval(function () {
+          pos += settings.carousels.speed;
 
-								}
+          if (pos >= leftLimit) {
+            window.clearInterval(timerId);
+            pos = leftLimit;
+          }
 
-								xf.removeClass('loading');
+          $t._updatePos();
+        }, 10);
+      })
+      .mouseleave(function (e) {
+        window.clearInterval(timerId);
+      });
 
-							}, settings.carousels.fadeDelay);
+    // Init.
+    $window.on("load", function () {
+      reelWidth = $reel[0].scrollWidth;
 
-						}
-					});
+      if (browser.mobile) {
+        $reel
+          .css("overflow-y", "hidden")
+          .css("overflow-x", "scroll")
+          .scrollLeft(0);
+        $forward.hide();
+        $backward.hide();
+      } else {
+        $reel.css("overflow", "visible").scrollLeft(0);
+        $forward.show();
+        $backward.show();
+      }
 
-				}
+      $t._update();
 
-			// Main.
-				$t._update = function() {
-					pos = 0;
-					rightLimit = (-1 * reelWidth) + $window.width();
-					leftLimit = 0;
-					$t._updatePos();
-				};
-
-				$t._updatePos = function() { $reel.css('transform', 'translate(' + pos + 'px, 0)'); };
-
-			// Forward.
-				$forward
-					.appendTo($t)
-					.hide()
-					.mouseenter(function(e) {
-						timerId = window.setInterval(function() {
-							pos -= settings.carousels.speed;
-
-							if (pos <= rightLimit)
-							{
-								window.clearInterval(timerId);
-								pos = rightLimit;
-							}
-
-							$t._updatePos();
-						}, 10);
-					})
-					.mouseleave(function(e) {
-						window.clearInterval(timerId);
-					});
-
-			// Backward.
-				$backward
-					.appendTo($t)
-					.hide()
-					.mouseenter(function(e) {
-						timerId = window.setInterval(function() {
-							pos += settings.carousels.speed;
-
-							if (pos >= leftLimit) {
-
-								window.clearInterval(timerId);
-								pos = leftLimit;
-
-							}
-
-							$t._updatePos();
-						}, 10);
-					})
-					.mouseleave(function(e) {
-						window.clearInterval(timerId);
-					});
-
-			// Init.
-				$window.on('load', function() {
-
-					reelWidth = $reel[0].scrollWidth;
-
-					if (browser.mobile) {
-
-						$reel
-							.css('overflow-y', 'hidden')
-							.css('overflow-x', 'scroll')
-							.scrollLeft(0);
-						$forward.hide();
-						$backward.hide();
-
-					}
-					else {
-
-						$reel
-							.css('overflow', 'visible')
-							.scrollLeft(0);
-						$forward.show();
-						$backward.show();
-
-					}
-
-					$t._update();
-
-					$window.on('resize', function() {
-						reelWidth = $reel[0].scrollWidth;
-						$t._update();
-					}).trigger('resize');
-
-				});
-
-		});
-
+      $window
+        .on("resize", function () {
+          reelWidth = $reel[0].scrollWidth;
+          $t._update();
+        })
+        .trigger("resize");
+    });
+  });
 })(jQuery);
+
+// 添加平滑滚动
+document.querySelectorAll(".scrolly").forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    target.scrollIntoView({ behavior: "smooth" });
+  });
+});
+
+// 添加章节导航高亮
+window.addEventListener("scroll", () => {
+  const sections = document.querySelectorAll("section[id]");
+  const scrollPos = window.scrollY;
+
+  sections.forEach((section) => {
+    const offset = section.offsetTop - 100;
+    if (scrollPos >= offset) {
+      document
+        .querySelector(`a[href="#${section.id}"]`)
+        .classList.add("active");
+    } else {
+      document
+        .querySelector(`a[href="#${section.id}"]`)
+        .classList.remove("active");
+    }
+  });
+});

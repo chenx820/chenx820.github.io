@@ -172,3 +172,89 @@
       margin-bottom: 0.5rem;
     }
   </style>
+
+
+
+
+<!-- 在侧边栏导航添加视觉反馈 -->
+<section>
+    <h4><a href="#imperial" class="scrolly active"><i class="fas fa-chevron-right"></i> Imperial</a></h4>
+    <h4><a href="#hust" class="scrolly"><i class="fas fa-chevron-right"></i> HUST</a></h4>
+    <!-- 增加跳转指示图标 -->
+  </section>
+  
+  <!-- 为PDF链接添加明显标识 -->
+  <a href="/docs/notes/notes-on-quantum-information.pdf" class="pdf-link">
+    Quantum Information <i class="fas fa-file-pdf"></i> (2.4MB)
+  </a>
+  
+  <style>
+  /* 添加PDF链接样式 */
+  .pdf-link {
+    color: #e74c3c;
+    border-left: 3px solid #e74c3c;
+    padding-left: 8px;
+    transition: all 0.3s ease;
+  }
+  .pdf-link:hover {
+    background: #f9f9f9;
+    transform: translateX(5px);
+  }
+  </style>
+  <!-- 改为卡片式布局 -->
+<div class="course-card">
+    <div class="course-header">
+      <h4>Quantum Information (Fall 2023)</h4>
+      <div class="course-meta">
+        <span class="pill">Graduate</span>
+        <span class="pill">Core</span>
+      </div>
+    </div>
+    <div class="course-body">
+      <p>Taught by Prof. Myungshik Kim...</p>
+      <div class="resource-links">
+        <a href="..." class="button small"><i class="fas fa-book"></i> Study Notes</a>
+        <a href="..." class="button small"><i class="fas fa-star"></i> Review Notes</a>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+  /* 卡片式布局样式 */
+  .course-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+  }
+  .course-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .pill {
+    background: #f0f0f0;
+    border-radius: 15px;
+    padding: 2px 8px;
+    font-size: 0.8em;
+    margin-left: 8px;
+  }
+  </style>
+  
+  <!-- 在页面顶部添加搜索框 -->
+<div class="search-container">
+    <input type="text" id="noteSearch" placeholder="Search notes...">
+    <button type="button"><i class="fas fa-search"></i></button>
+  </div>
+  
+  <script>
+  // 简单搜索实现
+  document.getElementById('noteSearch').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    document.querySelectorAll('.course-card').forEach(card => {
+      const text = card.textContent.toLowerCase();
+      card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+    });
+  });
+  </script>
