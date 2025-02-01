@@ -2211,6 +2211,14 @@ button.alt:hover,
   background: #3b353c;
 }
 
+/* 小号按钮变体 */
+.button.small {
+  padding: 0.5em 1em; /* 减小内边距 */
+  font-size: 0.8em; /* 缩小字号 */
+  letter-spacing: 0.05em; /* 调整字间距 */
+  border-width: 1px; /* 细边框 */
+}
+
 /* Post */
 
 .post.stub {
