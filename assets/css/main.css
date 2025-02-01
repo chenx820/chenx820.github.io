@@ -3422,3 +3422,40 @@ body.homepage.is-preload #header:after {
   font-size: 0.8em;
   margin-left: 8px;
 }
+
+
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline-item {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.timeline-point {
+  width: 20px;
+  height: 20px;
+  background: #4caf50;
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+  margin-right: 1rem;
+}
+
+.timeline-content {
+  flex: 1;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-date {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 0.5rem;
+}
