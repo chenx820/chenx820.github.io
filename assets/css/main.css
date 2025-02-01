@@ -3346,6 +3346,7 @@ body.homepage.is-preload #header:after {
   }
 }
 
+/* Search Bar */
 .search-container {
   display: flex;
   justify-content: space-between;
@@ -3385,4 +3386,16 @@ body.homepage.is-preload #header:after {
 
 #searchButton:hover {
   background-color: #e97164;
+}
+
+/* 添加PDF链接样式 */
+.pdf-link {
+  color: #e74c3c;
+  border-left: 3px solid #e74c3c;
+  padding-left: 8px;
+  transition: all 0.3s ease;
+}
+.pdf-link:hover {
+  background: #f9f9f9;
+  transform: translateX(5px);
 }
