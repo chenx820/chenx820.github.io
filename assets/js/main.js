@@ -216,3 +216,32 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+
+function handleSearch() {
+  const searchTerm = document
+    .getElementById("noteSearch")
+    .value.trim()
+    .toLowerCase();
+  const searchStatus = document.getElementById("searchStatus");
+  const cards = document.querySelectorAll(".course-card");
+
+  // 更新搜索结果状态
+  if (searchTerm) {
+    searchStatus.textContent = `Showing results for "${searchTerm}"`;
+  } else {
+    searchStatus.textContent = "Showing all notes";
+  }
+
+  // 过滤卡片内容
+  cards.forEach((card) => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = text.includes(searchTerm) ? "block" : "none";
+  });
+}
+
+// 绑定事件监听
+document.getElementById("noteSearch").addEventListener("input", handleSearch);
+document.getElementById("searchButton").addEventListener("click", handleSearch);
+
+// 初始化显示
+handleSearch();

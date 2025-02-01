@@ -3345,3 +3345,44 @@ body.homepage.is-preload #header:after {
     margin-bottom: 0.5rem;
   }
 }
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.search-status {
+  font-size: 0.9em;
+  color: #6c757d;
+  padding: 0 10px;
+}
+
+.search-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+#noteSearch {
+  padding: 6px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  width: 200px;
+}
+
+#searchButton {
+  padding: 6px 12px;
+  background-color: #ef8376;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#searchButton:hover {
+  background-color: #e97164;
+}
