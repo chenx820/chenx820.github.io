@@ -107,23 +107,31 @@
                   id="noteSearch"
                   placeholder="Search notes..."
                 />
-                <button type="button"><i class="fas fa-search"></i></button>
+                <button type="button" id="searchButton">
+                  <i class="fas fa-search"></i>
+                </button>
               </div>
               <script>
-                // 简单搜索实现
+                // 提取搜索处理函数
+                function handleSearch() {
+                  const searchTerm = document
+                    .getElementById("noteSearch")
+                    .value.toLowerCase();
+                  document.querySelectorAll(".course-card").forEach((card) => {
+                    const text = card.textContent.toLowerCase();
+                    card.style.display = text.includes(searchTerm)
+                      ? "block"
+                      : "none";
+                  });
+                }
+
+                // 为输入框和按钮绑定事件
                 document
                   .getElementById("noteSearch")
-                  .addEventListener("input", function (e) {
-                    const searchTerm = e.target.value.toLowerCase();
-                    document
-                      .querySelectorAll(".course-card")
-                      .forEach((card) => {
-                        const text = card.textContent.toLowerCase();
-                        card.style.display = text.includes(searchTerm)
-                          ? "block"
-                          : "none";
-                      });
-                  });
+                  .addEventListener("input", handleSearch);
+                document
+                  .getElementById("searchButton")
+                  .addEventListener("click", handleSearch);
               </script>
               <style>
                 .search-container {
