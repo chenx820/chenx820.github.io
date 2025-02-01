@@ -242,19 +242,3 @@
   }
   </style>
   
-  <!-- 在页面顶部添加搜索框 -->
-<div class="search-container">
-    <input type="text" id="noteSearch" placeholder="Search notes...">
-    <button type="button"><i class="fas fa-search"></i></button>
-  </div>
-  
-  <script>
-  // 简单搜索实现
-  document.getElementById('noteSearch').addEventListener('input', function(e) {
-    const searchTerm = e.target.value.toLowerCase();
-    document.querySelectorAll('.course-card').forEach(card => {
-      const text = card.textContent.toLowerCase();
-      card.style.display = text.includes(searchTerm) ? 'block' : 'none';
-    });
-  });
-  </script>
