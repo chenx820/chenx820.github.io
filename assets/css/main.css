@@ -3432,10 +3432,4 @@ body.homepage.is-preload #header:after {
   margin-left: 8px;
 }
 
-.custom-title {
-  font-family: "EB Garamond", "Source Sans Pro", "Ma Shan Zheng", sans-serif;
-  font-size: 32px; /* 让它更醒目 */
-  font-style: italic;
-  font-weight: 700;
-  z-index: 1;
-}
+
