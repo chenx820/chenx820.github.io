@@ -315,63 +315,6 @@
               </section>
             </div>
             <div class="col-8 col-12-mobile imp-mobile" id="content">
-              <header class="profile-header">
-                <h3 class="name-title">Chen Huang</h3>
-                <div class="pronunciation-wrap">
-                  <button
-                    class="pronunciation-btn"
-                    onclick="document.getElementById('name-audio').play();"
-                  >
-                    <svg
-                      class="speaker-icon"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
-                      />
-                    </svg>
-                    <span class="pronunciation-text">Name Pronunciation</span>
-                  </button>
-                  <span class="loading-indicator" aria-hidden="true"></span>
-                </div>
-              </header>
-              <p>
-                My given name is <strong>Chen</strong>, which means "dawn" or
-                "early morning" in Chinese. This meaning suits me well, as I
-                am a morning person who enjoys the calm and peacefulness of
-                the early hours. Interestingly, "Chen" sounds similar to
-                "Cheng", the Chinese word for "orange". Because of this
-                playful resemblance, my friends affectionately call me
-                "Cheng-Zi", which translates to "orange".
-              </p>
-              <p>
-                My surname is <strong>Huang</strong>, which means "yellow" in
-                Chinese. This name has deep historical and cultural roots. It
-                is often associated with the
-                <a href="https://en.wikipedia.org/wiki/Yellow_Emperor"
-                  >Yellow Emperor</a
-                >, a legendary figure considered one of the founding ancestors
-                of Chinese civilization.
-              </p>
-              <p>
-                I am always on the lookout for opportunities to expand my
-                knowledge and skills. I'm eager to connect with like-minded
-                individuals and organizations whether through collaborative
-                projects, internships, or further academic research. If you're
-                interested in my research or potential collaboration, please
-                feel free to reach out!
-              </p>
-              <audio id="name-audio">
-                <source
-                  src="/audio/pronunciation_zh_chen.mp3"
-                  type="audio/mpeg"
-                />
-              </audio>
-              <footer>
-                <a href="/docs/CV_ChenHuang.pdf" class="button">My CV</a>
-              </footer>
-            </section>
               <section id="education">
                 <header>
                   <h3>Education</h3>
@@ -674,3 +617,99 @@
     <script src="/assets/js/main.js"></script>
   </body>
 </html>
+
+<style>
+  /* Profile Header */
+  .profile-header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 1rem auto;
+    max-width: 600px;
+  }
+
+  .name-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    position: relative;
+    display: inline-block;
+  }
+
+  .pronunciation-wrap {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .pronunciation-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    background-color: rgba(41, 128, 185, 0.1);
+    color: #2980b9;
+  }
+
+  .pronunciation-btn:hover {
+    background-color: rgba(41, 128, 185, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .pronunciation-btn:active {
+    transform: translateY(0);
+  }
+
+  .speaker-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  .pronunciation-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .loading-indicator {
+    display: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 3px solid #ddd;
+    border-top-color: #2980b9;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    right: -1.5rem;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 480px) {
+    .name-title {
+      font-size: 2rem;
+    }
+
+    .pronunciation-btn {
+      padding: 0.4rem 0.8rem;
+    }
+
+    .pronunciation-text {
+      font-size: 0.8rem;
+    }
+  }
+</style>
