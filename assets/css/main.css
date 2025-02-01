@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600");
 @import url("https://fonts.googleapis.com/css2?family=Playfair Display:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 @import url("fontawesome-all.min.css");
 
 /*
@@ -179,8 +179,7 @@ body {
   color: #5b5b5b;
   font-size: 15pt;
   line-height: 1.85em;
-  font-family: "Playfair Display", "Source Sans Pro", "Ma Shan Zheng",
-    sans-serif;
+  font-family: "Montserrat", "Source Sans Pro", "Ma Shan Zheng", sans-serif;
   font-weight: 300;
 }
 
@@ -202,8 +201,7 @@ textarea,
 select {
   font-size: 15pt;
   line-height: 1.85em;
-  font-family: "Playfair Display", "Source Sans Pro", "Ma Shan Zheng",
-    sans-serif;
+  font-family: "Montserrat", "Source Sans Pro", "Ma Shan Zheng", sans-serif;
   font-weight: 300;
 }
 
