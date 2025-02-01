@@ -2892,6 +2892,7 @@ body.homepage.is-preload #header:after {
   max-width: 800px; /* 限制最大宽度，防止过大 */
   margin: 0 auto; /* 居中对齐 */
   height: 0;
+  padding-top: 56.25%; /* 16:9 比例 */
   overflow: hidden;
 }
 
