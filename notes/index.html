@@ -109,7 +109,6 @@
                 />
                 <button type="button"><i class="fas fa-search"></i></button>
               </div>
-
               <script>
                 // 简单搜索实现
                 document
@@ -126,6 +125,34 @@
                       });
                   });
               </script>
+              <style>
+                .search-container {
+                  display: flex;
+                  justify-content: flex-end; /* 右对齐 */
+                  align-items: center;
+                  gap: 8px; /* 控制输入框和按钮的间距 */
+                  margin-bottom: 10px; /* 添加下边距，避免与内容贴太近 */
+                }
+
+                .search-container input {
+                  padding: 6px;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                }
+
+                .search-container button {
+                  padding: 6px 10px;
+                  border: none;
+                  background-color: #007bff;
+                  color: white;
+                  cursor: pointer;
+                  border-radius: 4px;
+                }
+
+                .search-container button:hover {
+                  background-color: #0056b3;
+                }
+              </style>
               <article id="main">
                 <p>
                   Sorted by &nbsp;
