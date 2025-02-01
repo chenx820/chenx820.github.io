@@ -2966,6 +2966,10 @@ body.homepage.is-preload #header:after {
     margin: 0 1em 1em 0;
   }
 
+  .image.right {
+    margin: 0 1em 1em 0;
+  }
+
   .image.centered {
     margin: 0 0 1em 0;
   }

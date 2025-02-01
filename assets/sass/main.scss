@@ -506,7 +506,7 @@ footer {
     margin: 0 2em 2em 0;
   }
 
-  &.left {
+  &.right {
     float: right;
     margin: 0 2em 2em 0;
   }
@@ -1509,6 +1509,10 @@ body.homepage {
     }
 
     &.left {
+      margin: 0 1em 1em 0;
+    }
+
+    &.right {
       margin: 0 1em 1em 0;
     }
 
