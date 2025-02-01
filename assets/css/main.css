@@ -177,7 +177,7 @@ body {
   color: #5b5b5b;
   font-size: 15pt;
   line-height: 1.85em;
-  font-family: "Aptos", "Source Sans Pro", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-weight: 300;
 }
 
@@ -199,7 +199,7 @@ textarea,
 select {
   font-size: 15pt;
   line-height: 1.85em;
-  font-family: "Aptos", "Source Sans Pro", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-weight: 300;
 }
 
@@ -3420,4 +3420,3 @@ body.homepage.is-preload #header:after {
   font-size: 0.8em;
   margin-left: 8px;
 }
-
