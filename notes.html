@@ -942,31 +942,41 @@
   .pill[data-type="Graduate"] {
     background: #ef8376; /* 研究生红 */
     color: white;
-    border: 1px solid #d6675a;
   }
 
   .pill[data-type="Undergraduate"] {
     background: #6c5ce7; /* 本科紫 */
     color: white;
-    border: 1px solid #5545d1;
   }
 
   .pill[data-type="Core"] {
     background: #00b894; /* 核心课程绿 */
     color: white;
-    border: 1px solid #00a582;
   }
 
   .pill[data-type="Elective"] {
     background: #fdcb6e; /* 选修课黄 */
     color: #2d3436;
-    border: 1px solid #f7b84d;
   }
 
-  .pill[data-type="Self-Study"] {
-    background: #0984e3; /* 自学蓝 */
+  .pill[data-type="Physics"] {
+    background: #0984e3; /* 物理蓝 */
     color: white;
-    border: 1px solid #0873c4;
+  }
+
+  .pill[data-type="Math"] {
+    background: #f44a88; /* 数学粉 */
+    color: white;
+  }
+
+  .pill[data-type="Engineering"] {
+    background: #3b861a; /* 工程绿 */
+    color: white;
+  }
+
+  .pill[data-type="GRE"] {
+    background: #835204; /* GRE棕 */
+    color: white;
   }
 </style>
 
@@ -1073,7 +1083,10 @@
         Undergraduate: "Undergraduate",
         Core: "Core",
         Elective: "Elective",
-        "Self-Study": "Self-Study",
+        GRE: "GRE",
+        Physics: "Physics",
+        Math: "Math",
+        Engineering: "Engineering",
       };
 
       pill.dataset.type = typeMap[text] || "Other";
