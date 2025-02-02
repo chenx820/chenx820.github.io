@@ -141,7 +141,7 @@
                     <div class="course-header">
                       <h4>Quantum Information (Fall 2023)</h4>
                       <div class="course-meta">
-                        <span class="pill">Graduate</span>
+                        <span class="pill" data-type="Graduate">Graduate</span>
                         <span class="pill">Core</span>
                       </div>
                     </div>
@@ -164,7 +164,7 @@
                     <div class="course-header">
                       <h4>Quantum Optics (Fall 2023)</h4>
                       <div class="course-meta">
-                        <span class="pill">Graduate</span>
+                        <span class="pill" data-type="Graduate">Graduate</span>
                         <span class="pill">Core</span>
                       </div>
                     </div>
@@ -184,7 +184,7 @@
                     <div class="course-header">
                       <h4>Mathematical Methods for Physicists (Fall 2023)</h4>
                       <div class="course-meta">
-                        <span class="pill">Graduate</span>
+                        <span class="pill" data-type="Graduate">Graduate</span>
                         <span class="pill">Core</span>
                       </div>
                     </div>
@@ -210,7 +210,7 @@
                     <div class="course-header">
                       <h4>Advanced Classical Mechanics (Fall 2023)</h4>
                       <div class="course-meta">
-                        <span class="pill">Graduate</span>
+                        <span class="pill" data-type="Graduate">Graduate</span>
                         <span class="pill">Core</span>
                       </div>
                     </div>
@@ -231,7 +231,7 @@
                     <div class="course-header">
                       <h4>Quantum Theory of Matter (Spring 2024)</h4>
                       <div class="course-meta">
-                        <span class="pill">Graduate</span>
+                        <span class="pill" data-type="Graduate">Graduate</span>
                         <span class="pill">Core</span>
                       </div>
                     </div>
@@ -252,7 +252,7 @@
                     <div class="course-header">
                       <h4>Laser Technology (Spring 2024)</h4>
                       <div class="course-meta">
-                        <span class="pill">Graduate</span>
+                        <span class="pill" data-type="Graduate">Graduate</span>
                         <span class="pill">Core</span>
                       </div>
                     </div>
@@ -535,7 +535,7 @@
                     <div class="course-header">
                       <h4>Advanced Quantum Mechanics (Fall 2020)</h4>
                       <div class="course-meta">
-                        <span class="pill">Graduate</span>
+                        <span class="pill" data-type="Graduate">Graduate</span>
                         <span class="pill">Elective</span>
                       </div>
                     </div>
@@ -654,7 +654,7 @@
                     <div class="course-header">
                       <h4>Quantum Optics (Fall 2021)</h4>
                       <div class="course-meta">
-                        <span class="pill">Graduate</span>
+                        <span class="pill" data-type="Graduate">Graduate</span>
                         <span class="pill">Elective</span>
                       </div>
                     </div>
@@ -709,7 +709,7 @@
                     <div class="course-header">
                       <h4>Quantum Mechanics II (Summer 2020)</h4>
                       <div class="course-meta">
-                        <span class="pill">Graduate</span>
+                        <span class="pill" data-type="Graduate">Graduate</span>
                       </div>
                     </div>
                     <div class="course-body">
@@ -1009,6 +1009,22 @@
 
       // 为当前点击的学校添加active状态
       this.classList.add("active");
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 为每个标签添加类型属性
+    document.querySelectorAll(".pill").forEach((pill) => {
+      const text = pill.textContent.trim();
+      const typeMap = {
+        Graduate: "Graduate",
+        Undergraduate: "Undergraduate",
+        Core: "Core",
+        Elective: "Elective",
+        "Self-Study": "Self-Study",
+      };
+
+      pill.dataset.type = typeMap[text] || "Other";
     });
   });
 </script>
