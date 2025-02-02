@@ -2888,11 +2888,11 @@ body.homepage.is-preload #header:after {
 /* Video */
 .video-container {
   position: relative;
-  width: 80%; /* 设置宽度，适配不同设备 */
+  width: 86%; /* 设置宽度，适配不同设备 */
   max-width: 800px; /* 限制最大宽度，防止过大 */
   margin: 0 auto; /* 居中对齐 */
   height: 0;
-  padding-top: 40%; /* 16:9 比例 */
+  padding-top: 42%; /* 16:9 比例 */
   overflow: hidden;
 }
 
