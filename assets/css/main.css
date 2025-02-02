@@ -3431,3 +3431,29 @@ body.homepage.is-preload #header:after {
   font-size: 0.8em;
   margin-left: 8px;
 }
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.profile-image {
+  animation: float 3s ease-in-out infinite;
+  border: 3px solid white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hover-grow {
+  transition: transform 0.3s ease;
+}
+
+.hover-grow:hover {
+  transform: scale(1.02);
+}
