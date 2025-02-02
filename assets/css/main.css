@@ -3425,16 +3425,6 @@ body.homepage.is-preload #header:after {
   margin-bottom: 1rem;
 }
 
-.pill {
-  background: #f0f0f0;
-  border-radius: 15px;
-  padding: 2px 8px;
-  font-size: 0.8em;
-  margin-left: 8px;
-}
-
-
-
 @keyframes float {
   0% {
     transform: translateY(0px);
