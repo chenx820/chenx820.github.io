@@ -3444,6 +3444,14 @@ body.homepage.is-preload #header:after {
   }
 }
 
+.profile-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1rem 0;
+}
+
 .profile-image {
   animation: float 3s ease-in-out infinite;
   border: 3px solid white;
