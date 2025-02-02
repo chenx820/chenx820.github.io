@@ -85,7 +85,7 @@
           <div class="row gtr-200">
             <div class="col-4 col-12-mobile" id="sidebar">
               <hr class="first" />
-              <section>
+              <section class="school-nav">
                 <h4>
                   <a href="#imperial" class="scrolly active"
                     >Imperial College London</a
@@ -105,6 +105,13 @@
                 <h4>
                   <a href="#others" class="scrolly">Self-Study</a>
                 </h4>
+              </section>
+              <hr />
+              <section class="tag-cloud">
+                <h4>Filter by Tags</h4>
+                <div class="tag-container" id="tagContainer">
+                  <!-- 动态生成的标签将出现在这里 -->
+                </div>
               </section>
             </div>
             <div class="col-8 col-12-mobile imp-mobile" id="content">
@@ -869,3 +876,136 @@
     <script src="/assets/js/main.js"></script>
   </body>
 </html>
+
+<style>
+  /* 标签云样式 */
+  .tag-cloud {
+    margin-top: 2rem;
+  }
+
+  .tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1rem;
+  }
+
+  .tag-pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    background: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9em;
+    border: 1px solid #ddd;
+  }
+
+  .tag-pill.active {
+    background: #ef8376;
+    color: white;
+    border-color: #ef8376;
+  }
+
+  /* 调整课程卡片中的标签样式 */
+  .course-meta .pill {
+    background: #ef8376;
+    color: white;
+    border: 1px solid #ddd;
+  }
+</style>
+
+<script>
+  // 标签收集与筛选功能
+  document.addEventListener("DOMContentLoaded", () => {
+    // 收集所有标签
+    const allTags = new Set();
+    document.querySelectorAll(".pill").forEach((pill) => {
+      allTags.add(pill.textContent.trim());
+    });
+
+    // 生成标签云
+    const tagContainer = document.getElementById("tagContainer");
+    allTags.forEach((tag) => {
+      const pill = document.createElement("div");
+      pill.className = "tag-pill";
+      pill.textContent = tag;
+      pill.addEventListener("click", () => toggleTagFilter(tag));
+      tagContainer.appendChild(pill);
+    });
+
+    // 标签筛选功能
+    let activeTags = new Set();
+
+    function toggleTagFilter(tag) {
+      const pill = event.target;
+      pill.classList.toggle("active");
+
+      if (activeTags.has(tag)) {
+        activeTags.delete(tag);
+      } else {
+        activeTags.add(tag);
+      }
+
+      filterCourses();
+    }
+
+    function filterCourses() {
+      const courses = document.querySelectorAll(".course-card");
+
+      courses.forEach((course) => {
+        const courseTags = new Set(
+          Array.from(course.querySelectorAll(".pill")).map((p) =>
+            p.textContent.trim()
+          )
+        );
+
+        const shouldShow = Array.from(activeTags).every((tag) =>
+          courseTags.has(tag)
+        );
+        course.style.display = shouldShow ? "block" : "none";
+      });
+
+      // 同步更新搜索状态显示
+      updateSearchStatus();
+    }
+
+    // 与现有搜索功能的整合
+    const originalSearch = document.getElementById("noteSearch");
+
+    function updateSearchStatus() {
+      const status = document.getElementById("searchStatus");
+      const activeFilters = [
+        ...Array.from(activeTags),
+        originalSearch.value.trim(),
+      ].filter(Boolean);
+
+      status.textContent = activeFilters.length
+        ? `Showing results for: ${activeFilters.join(", ")}`
+        : "";
+    }
+
+    // 监听原有搜索输入
+    originalSearch.addEventListener("input", () => {
+      filterCourses();
+      updateSearchStatus();
+    });
+  });
+
+  // 调整原有滚动功能
+  document.querySelectorAll(".scrolly").forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      target.scrollIntoView({ behavior: "smooth" });
+
+      // 移除所有学校导航的active状态
+      document.querySelectorAll(".school-nav h4 a").forEach((link) => {
+        link.classList.remove("active");
+      });
+
+      // 为当前点击的学校添加active状态
+      this.classList.add("active");
+    });
+  });
+</script>
