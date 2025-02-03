@@ -3432,6 +3432,30 @@ body.homepage.is-preload #header:after {
   font-size: 0.8em;
   margin-left: 8px;
 }
+.note-meta .pill[data-type="Graduate"] {
+  background: rgba(229, 139, 123);
+}
+.note-meta .pill[data-type="Undergraduate"] {
+  background: #9b9bcf;
+}
+.note-meta .pill[data-type="Physics"] {
+  background: rgb(115, 174, 225);
+}
+.note-meta .pill[data-type="Math"] {
+  background: rgba(215, 144, 193, 1);
+}
+.note-meta .pill[data-type="Engineering"] {
+  background: rgba(151, 179, 25, 1);
+}
+.note-meta .pill[data-type="GRE"] {
+  background: #c4b19d;
+}
+.note-meta .pill[data-type="EN"] {
+  background: rgb(101, 205, 206);
+}
+.note-meta .pill[data-type="中文"] {
+  background: rgba(232, 197, 107);
+}
 
 @keyframes float {
   0% {
