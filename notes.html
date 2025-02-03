@@ -1091,6 +1091,46 @@
         container.appendChild(pill);
       });
     });
+
+    // 生成年份标签（倒序排列）
+    const years = new Set();
+    document.querySelectorAll("[data-year]").forEach((card) => {
+      if (card.dataset.year) years.add(card.dataset.year);
+    });
+
+    // 转换为数组并排序
+    const sortedYears = Array.from(years)
+      .filter((y) => y.match(/^20\d{2}$/)) // 过滤有效年份
+      .map((y) => parseInt(y)) // 转为数字
+      .sort((a, b) => b - a) // 降序排列
+      .map((y) => y.toString()); // 转回字符串
+
+    populateFilterTags("year", sortedYears);
+  }
+
+  function populateFilterTags(filterType, values) {
+    const container = document.querySelector(`[data-filter="${filterType}"]`);
+    container.innerHTML = "";
+
+    // 处理数组和Set的统一输入
+    const valueList = Array.isArray(values) ? values : Array.from(values);
+
+    valueList.forEach((value) => {
+      if (!value) return;
+      const pill = document.createElement("div");
+      pill.className = "tag-pill";
+      pill.textContent = value;
+      pill.dataset.filterType = filterType;
+      pill.dataset.value = value;
+
+      // 为年份标签添加特殊样式
+      if (filterType === "year") {
+        pill.style.backgroundColor = "#8aa9c2"; // 保持原有颜色
+        pill.dataset.year = value; // 添加年份数据属性
+      }
+
+      container.appendChild(pill);
+    });
   }
 
   function toggleDimensionFilter(event) {
