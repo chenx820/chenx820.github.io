@@ -1164,13 +1164,13 @@
   });
 
   function updateSearchStatus() {
-    const status = document.getElementById("searchStatus");
+    const searchStatus = document.getElementById("searchStatus");
     const activeFilters = [
       ...Array.from(activeTags),
       originalSearch.value.trim(),
     ].filter(Boolean);
 
-    status.textContent = activeFilters.length
+    searchStatus.textContent = activeFilters.length
       ? `Showing results for: ${activeFilters.join(", ")}`
       : "";
   }
