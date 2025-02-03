@@ -1120,7 +1120,7 @@
       const pill = document.createElement("div");
       pill.className = "tag-pill";
       pill.textContent = value;
-      pill.dataset.filterType = filterType;
+      pill.dataset.filter = filterType;
       pill.dataset.value = value;
       pill.addEventListener("click", toggleDimensionFilter);
       container.appendChild(pill);
