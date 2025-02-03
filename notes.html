@@ -973,10 +973,10 @@
     } else {
       activeTags.add(tag);
     }
-    filterCourses();
+    filterNotes();
   }
 
-  function filterCourses() {
+  function filterNotes() {
     const courses = document.querySelectorAll(".course-card");
 
     courses.forEach((course) => {
@@ -995,15 +995,6 @@
     // 同步更新搜索状态显示
     updateSearchStatus();
   }
-
-  // 与现有搜索功能的整合
-  const originalSearch = document.getElementById("noteSearch");
-
-  // 监听原有搜索输入
-  originalSearch.addEventListener("input", () => {
-    filterCourses();
-    updateSearchStatus();
-  });
 
   // 调整原有滚动功能
   document.querySelectorAll(".scrolly").forEach((anchor) => {
@@ -1142,7 +1133,7 @@
       activeFilters.removeFilter(filter, value);
     }
 
-    filterCourses();
+    filterNotes();
   }
 
   class ActiveFilters {
@@ -1181,7 +1172,7 @@
 
   const activeFilters = new ActiveFilters();
 
-  function filterCourses() {
+  function filterNotes() {
     document.querySelectorAll(".course-card").forEach((card) => {
       card.style.display = activeFilters.checkCourse(card) ? "block" : "none";
     });
@@ -1201,18 +1192,17 @@
           activeFilters.removeFilter("legacy", tag);
         }
 
-        filterCourses();
+        filterNotes();
       });
     });
   }
 
-  // 保持原有搜索功能
-  document.getElementById("noteSearch").addEventListener("input", function () {
-    const query = this.value.toLowerCase();
-    document.querySelectorAll(".course-card").forEach((card) => {
-      const match = card.textContent.toLowerCase().includes(query);
-      card.style.display = match ? "block" : "none";
-    });
+  // 与现有搜索功能的整合
+  const originalSearch = document.getElementById("noteSearch");
+
+  // 监听原有搜索输入
+  originalSearch.addEventListener("input", () => {
+    filterNotes();
     updateSearchStatus();
   });
 
