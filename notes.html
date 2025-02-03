@@ -85,27 +85,34 @@
           <div class="row gtr-200">
             <div class="col-4 col-12-mobile" id="sidebar">
               <hr class="first" />
-              <section class="school-nav">
-                <h4>
-                  <a href="#imperial" class="scrolly active"
-                    >Imperial College London</a
-                  >
-                </h4>
-                <p></p>
-                <h4>
-                  <a href="#hust" class="scrolly"
-                    >Huazhong University of Science and Technology</a
-                  >
-                </h4>
-                <p></p>
-                <h4>
-                  <a href="#pku" class="scrolly">Peking University</a>
-                </h4>
-                <p></p>
-                <h4>
-                  <a href="#others" class="scrolly">Self-Study</a>
-                </h4>
+              <section class="tag-group">
+                <h4>University</h4>
+                <div class="tag-container" data-filter="university">
+                  <!-- 动态生成大学标签 -->
+                </div>
               </section>
+
+              <section class="tag-group">
+                <h4>Year</h4>
+                <div class="tag-container" data-filter="year">
+                  <!-- 动态生成年份标签 -->
+                </div>
+              </section>
+
+              <section class="tag-group">
+                <h4>Level</h4>
+                <div class="tag-container" data-filter="level">
+                  <!-- 动态生成级别标签 -->
+                </div>
+              </section>
+
+              <section class="tag-group">
+                <h4>Subject</h4>
+                <div class="tag-container" data-filter="subject">
+                  <!-- 动态生成学科标签 -->
+                </div>
+              </section>
+
               <hr />
               <section class="tag-cloud">
                 <h4>Filter by Tags</h4>
@@ -969,6 +976,36 @@
   .pill[data-type="GRE"] {
     background: #c4b19d; /* 浅卡其色 */
   }
+
+  /* 新增标签组样式 */
+  .tag-group {
+    margin-bottom: 1.5rem;
+  }
+  .tag-group h4 {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  /* 调整标签颜色 */
+  .tag-pill[data-filter="university"] {
+    background: #d6958a;
+  }
+  .tag-pill[data-filter="year"] {
+    background: #8aa9c2;
+  }
+  .tag-pill[data-filter="level"] {
+    background: #72aa9a;
+  }
+  .tag-pill[data-filter="subject"] {
+    background: #d29fb0;
+  }
+
+  .tag-pill.active {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+  }
 </style>
 
 <script>
@@ -1083,4 +1120,168 @@
       this.classList.add("active");
     });
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 初始化课程卡片元数据
+    initCourseMetadata();
+
+    // 生成筛选标签
+    generateFilterTags();
+
+    // 初始化原有标签系统
+    initLegacyTagSystem();
+  });
+
+  function initCourseMetadata() {
+    // 设置大学信息
+    document.querySelectorAll(".course-card").forEach((card) => {
+      const section = card.closest("section");
+      if (section) {
+        const universityMap = {
+          imperial: "Imperial",
+          hust: "HUST",
+          pku: "PKU",
+          others: "Others",
+        };
+        card.dataset.university = universityMap[section.id] || "Others";
+      }
+    });
+
+    // 设置年份信息（示例，需根据实际内容调整）
+    document.querySelectorAll(".course-card h4").forEach((title) => {
+      const yearMatch = title.textContent.match(/(20\d{2})/);
+      if (yearMatch) {
+        title.closest(".course-card").dataset.year = yearMatch[1];
+      }
+    });
+
+    // 设置级别和学科
+    document.querySelectorAll(".course-card").forEach((card) => {
+      const pills = card.querySelectorAll(".pill");
+      pills.forEach((pill) => {
+        const type = pill.dataset.type;
+        if (["Graduate", "Undergraduate"].includes(type)) {
+          card.dataset.level = type;
+        } else if (["Physics", "Math", "Engineering", "GRE"].includes(type)) {
+          card.dataset.subject = type;
+        }
+      });
+    });
+  }
+
+  function generateFilterTags() {
+    // 生成各维度标签
+    const dimensions = ["university", "year", "level", "subject"];
+    dimensions.forEach((dim) => {
+      const container = document.querySelector(`[data-filter="${dim}"]`);
+      const values = new Set();
+
+      document.querySelectorAll(`.course-card`).forEach((card) => {
+        if (card.dataset[dim]) values.add(card.dataset[dim]);
+      });
+
+      values.forEach((value) => {
+        const pill = document.createElement("div");
+        pill.className = "tag-pill";
+        pill.textContent = value;
+        pill.dataset.filter = dim;
+        pill.dataset.value = value;
+        pill.addEventListener("click", toggleDimensionFilter);
+        container.appendChild(pill);
+      });
+    });
+  }
+
+  function toggleDimensionFilter(event) {
+    const pill = event.target;
+    const filter = pill.dataset.filter;
+    const value = pill.dataset.value;
+
+    pill.classList.toggle("active");
+    const isActive = pill.classList.contains("active");
+
+    // 更新筛选器状态
+    if (isActive) {
+      activeFilters.addFilter(filter, value);
+    } else {
+      activeFilters.removeFilter(filter, value);
+    }
+
+    filterCourses();
+  }
+
+  class ActiveFilters {
+    constructor() {
+      this.filters = {
+        university: new Set(),
+        year: new Set(),
+        level: new Set(),
+        subject: new Set(),
+        legacy: new Set(),
+      };
+    }
+
+    addFilter(dim, value) {
+      this.filters[dim].add(value);
+    }
+
+    removeFilter(dim, value) {
+      this.filters[dim].delete(value);
+    }
+
+    checkCourse(card) {
+      return Object.entries(this.filters).every(([dim, values]) => {
+        if (values.size === 0) return true;
+        if (dim === "legacy") {
+          return [...values].every((tag) =>
+            [...card.querySelectorAll(".pill")].some(
+              (p) => p.textContent.trim() === tag
+            )
+          );
+        }
+        return values.has(card.dataset[dim]);
+      });
+    }
+  }
+
+  const activeFilters = new ActiveFilters();
+
+  function filterCourses() {
+    document.querySelectorAll(".course-card").forEach((card) => {
+      card.style.display = activeFilters.checkCourse(card) ? "block" : "none";
+    });
+    updateSearchStatus();
+  }
+
+  function initLegacyTagSystem() {
+    // 原有标签系统整合
+    document.querySelectorAll("#tagContainer .tag-pill").forEach((pill) => {
+      pill.addEventListener("click", function () {
+        const tag = this.textContent;
+        this.classList.toggle("active");
+
+        if (this.classList.contains("active")) {
+          activeFilters.addFilter("legacy", tag);
+        } else {
+          activeFilters.removeFilter("legacy", tag);
+        }
+
+        filterCourses();
+      });
+    });
+  }
+
+  // 保持原有搜索功能
+  document.getElementById("noteSearch").addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+    document.querySelectorAll(".course-card").forEach((card) => {
+      const match = card.textContent.toLowerCase().includes(query);
+      card.style.display = match ? "block" : "none";
+    });
+    updateSearchStatus();
+  });
+
+  function updateSearchStatus() {
+    // 保持原有状态更新逻辑
+  }
 </script>
