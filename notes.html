@@ -1123,12 +1123,6 @@
       pill.dataset.filterType = filterType;
       pill.dataset.value = value;
 
-      // 为年份标签添加特殊样式
-      if (filterType === "year") {
-        pill.style.backgroundColor = "#8aa9c2"; // 保持原有颜色
-        pill.dataset.year = value; // 添加年份数据属性
-      }
-
       container.appendChild(pill);
     });
   }
