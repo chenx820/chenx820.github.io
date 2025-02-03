@@ -3411,9 +3411,9 @@ body.homepage.is-preload #header:after {
   transform: translateX(5px);
 }
 
-/* 卡片式布局样式 */
+/* note card */
 .note-card {
-  background: white;
+  background: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.5rem;
@@ -3423,6 +3423,14 @@ body.homepage.is-preload #header:after {
   border-bottom: 1px solid #eee;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
+}
+.note-meta .pill {
+  background: rgb(243, 169, 80);
+  color: white;
+  border-radius: 15px;
+  padding: 4px 8px;
+  font-size: 0.8em;
+  margin-left: 8px;
 }
 
 @keyframes float {
@@ -3457,4 +3465,46 @@ body.homepage.is-preload #header:after {
 
 .hover-grow:hover {
   transform: scale(1.02);
+}
+
+/* tag-cloud style */
+.tag-cloud {
+  margin-top: 2rem;
+}
+
+.tag-cloud h4 {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* 控制图标与文字的间距 */
+}
+
+.tag-cloud h4 i {
+  width: 24px; /* 固定图标容器宽度 */
+  text-align: center; /* 图标水平居中 */
+  font-size: 1.1em; /* 统一图标大小（可选） */
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.tag-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9em;
+  border: 1px solid #ddd;
+}
+
+.tag-pill.active {
+  color: black;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
 }
