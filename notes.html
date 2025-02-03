@@ -962,6 +962,25 @@
 
       pill.dataset.type = typeMap[text] || "Other";
     });
+
+    // 初始化课程卡片元数据
+    initCourseMetadata();
+
+    // 生成筛选标签
+    generateFilterTags();
+
+    // 初始化原有标签系统
+    initLegacyTagSystem();
+
+    // 添加调试日志
+    console.log(
+      "Initialized courses:",
+      document.querySelectorAll(".course-card").length
+    );
+    console.log(
+      "Generated filters:",
+      document.querySelectorAll(".tag-pill").length
+    );
   });
 
   function toggleTagFilter(tag) {
@@ -1013,20 +1032,10 @@
     });
   });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    // 初始化课程卡片元数据
-    initCourseMetadata();
-
-    // 生成筛选标签
-    generateFilterTags();
-
-    // 初始化原有标签系统
-    initLegacyTagSystem();
-  });
-
   function initCourseMetadata() {
-    // 设置大学信息
+    // 更可靠的数据属性设置
     document.querySelectorAll(".course-card").forEach((card) => {
+      // 大学信息
       const section = card.closest("section");
       if (section) {
         const universityMap = {
@@ -1037,18 +1046,16 @@
         };
         card.dataset.university = universityMap[section.id] || "Others";
       }
-    });
 
-    // 设置年份信息（示例，需根据实际内容调整）
-    document.querySelectorAll(".course-card h4").forEach((title) => {
-      const yearMatch = title.textContent.match(/(20\d{2})/);
+      // 年份信息
+      const yearMatch = card
+        .querySelector("h4")
+        ?.textContent.match(/(Fall|Spring) (\d{4})/);
       if (yearMatch) {
-        title.closest(".course-card").dataset.year = yearMatch[1];
+        card.dataset.year = yearMatch[2]; // 提取4位年份
       }
-    });
 
-    // 设置级别和学科
-    document.querySelectorAll(".course-card").forEach((card) => {
+      // 级别和学科
       const pills = card.querySelectorAll(".pill");
       pills.forEach((pill) => {
         const type = pill.dataset.type;
@@ -1123,6 +1130,7 @@
     const filter = pill.dataset.filter;
     const value = pill.dataset.value;
 
+    // 切换激活状态
     pill.classList.toggle("active");
     const isActive = pill.classList.contains("active");
 
@@ -1133,6 +1141,7 @@
       activeFilters.removeFilter(filter, value);
     }
 
+    // 执行筛选
     filterNotes();
   }
 
@@ -1158,14 +1167,16 @@
     checkCourse(card) {
       return Object.entries(this.filters).every(([dim, values]) => {
         if (values.size === 0) return true;
-        if (dim === "legacy") {
-          return [...values].every((tag) =>
-            [...card.querySelectorAll(".pill")].some(
-              (p) => p.textContent.trim() === tag
-            )
-          );
+
+        const cardValue = card.dataset[dim];
+
+        // 特殊处理年份筛选
+        if (dim === "year") {
+          return Array.from(values).some((y) => card.dataset.year === y);
         }
-        return values.has(card.dataset[dim]);
+
+        // 常规维度筛选
+        return values.has(cardValue);
       });
     }
   }
