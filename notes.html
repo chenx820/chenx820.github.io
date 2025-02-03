@@ -124,7 +124,7 @@
                 </div>
               </div>
               <article id="main">
-                <section id="imperial">
+                <section id="imperial" data-university="Imperial">
                   <header>
                     <h3 class="custom-title">
                       <a href="#imperial" class="scrolly"
@@ -282,7 +282,7 @@
                     </div>
                   </div>
                 </section>
-                <section id="hust">
+                <section id="hust" data-university="HUST">
                   <header>
                     <h3 class="custom-title">
                       <a href="#hust" class="scrolly">
@@ -694,7 +694,7 @@
                     </div>
                   </div>
                 </section>
-                <section id="pku">
+                <section id="pku" data-university="PKU">
                   <header>
                     <h3 class="custom-title">
                       <a href="#pku" class="scrolly">Peking University</a>
@@ -765,7 +765,7 @@
                     </div>
                   </div>
                 </section>
-                <section id="others">
+                <section id="others" data-university="Others">
                   <header>
                     <h3 class="custom-title">
                       <a href="#others" class="scrolly">Self-Study</a>
@@ -996,19 +996,29 @@
   }
 
   function filterNotes() {
-    const courses = document.querySelectorAll(".course-card");
+    // 1. 筛选课程卡片
+    document.querySelectorAll(".course-card").forEach((card) => {
+      card.style.display = activeFilters.checkCourse(card) ? "block" : "none";
+    });
 
-    courses.forEach((course) => {
-      const courseTags = new Set(
-        Array.from(course.querySelectorAll(".pill")).map((p) =>
-          p.textContent.trim()
-        )
-      );
+    // 2. 处理大学标题的显示
+    document.querySelectorAll("section[id]").forEach((section) => {
+      const university = section.dataset.university;
+      const hasVisibleCards = Array.from(
+        section.querySelectorAll(".course-card")
+      ).some((card) => card.style.display !== "none");
 
-      const shouldShow = Array.from(activeTags).every((tag) =>
-        courseTags.has(tag)
-      );
-      course.style.display = shouldShow ? "block" : "none";
+      // 3. 根据可见性切换标题显示
+      const title = section.querySelector("h3.custom-title");
+      if (title) {
+        if (hasVisibleCards) {
+          title.closest("header").style.display = "block";
+          section.style.display = "block";
+        } else {
+          title.closest("header").style.display = "none";
+          section.style.display = "none";
+        }
+      }
     });
 
     // 同步更新搜索状态显示
@@ -1182,13 +1192,6 @@
   }
 
   const activeFilters = new ActiveFilters();
-
-  function filterNotes() {
-    document.querySelectorAll(".course-card").forEach((card) => {
-      card.style.display = activeFilters.checkCourse(card) ? "block" : "none";
-    });
-    updateSearchStatus();
-  }
 
   function initLegacyTagSystem() {
     // 原有标签系统整合
