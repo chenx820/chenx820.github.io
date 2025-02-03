@@ -971,20 +971,6 @@
 
 <script>
   class NotesFilter {
-
-    get typeColorMap() {
-    return {
-      Graduate: 'graduate',
-      Undergraduate: 'undergraduate',
-      Physics: 'physics',
-      Math: 'math',
-      Engineering: 'engineering',
-      GRE: 'gre',
-      EN: 'en',
-      中文: 'chinese'
-    };
-  }
-
     constructor() {
       this.activeFilters = {
         university: new Set(),
@@ -1052,18 +1038,31 @@
       if (yearMatch) card.dataset.year = yearMatch[2];
     }
 
-    extractMetadataFromPills(card) {
-      card.querySelectorAll('.pill').forEach(pill => {
-      const text = pill.textContent.trim();
-      const type = this.typeMap[text];
+    // 增加类型颜色映射
+    get typeColorMap() {
+      return {
+        Graduate: "graduate",
+        Undergraduate: "undergraduate",
+        Physics: "physics",
+        Math: "math",
+        Engineering: "engineering",
+        GRE: "gre",
+        EN: "en",
+        中文: "chinese",
+      };
+    }
 
-      // 保留原data-type属性和添加颜色类
-      if (type) {
-        pill.dataset.type = text; // 保留原data-type属性
-        pill.classList.add(this.typeColorMap[text]); // 添加颜色类
-        card.dataset[type] = text;
-      }
-    }}
+    extractMetadataFromPills(card) {
+      card.querySelectorAll(".pill").forEach((pill) => {
+        const text = pill.textContent.trim();
+        const type = this.typeMap[text];
+        if (type) {
+          pill.dataset.type = text; // 保留原data-type属性
+          pill.classList.add(this.typeColorMap[text]); // 添加颜色类
+          card.dataset[type] = text;
+        }
+      });
+    }
 
     /* 生成筛选标签 */
     generateFilterTags() {
