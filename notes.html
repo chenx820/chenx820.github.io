@@ -954,25 +954,6 @@
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // 为每个标签添加类型属性
-    document.querySelectorAll(".pill").forEach((pill) => {
-      const text = pill.textContent.trim();
-      const typeMap = {
-        Graduate: "Graduate",
-        Undergraduate: "Undergraduate",
-        Core: "Core",
-        Elective: "Elective",
-        GRE: "GRE",
-        Physics: "Physics",
-        Math: "Math",
-        Engineering: "Engineering",
-      };
-
-      pill.dataset.type = typeMap[text] || "Other";
-    });
-  });
-
   // 标签筛选功能
   let activeTags = new Set();
 
