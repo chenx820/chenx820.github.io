@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- 原有head部分保持不变 -->
+    <!-- 新增灯箱样式 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"
+    />
+  </head>
+  <body class="no-sidebar is-preload">
+    <div id="page-wrapper">
+      <!-- 改进的标题区域 -->
+      <div
+        id="header"
+        style="
+          background-image: url('/images/photograph/full/london1.JPG');
+          min-height: 80vh;
+        "
+      >
+        <div class="inner" style="padding-top: 20vh">
+          <header>
+            <h1
+              style="
+                font-size: 4em;
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+              "
+            >
+              Visual Journey
+            </h1>
+            <p style="font-size: 1.5em">Through My Lens</p>
+          </header>
+        </div>
+      </div>
+
+      <!-- 新增分类过滤 -->
+      <div class="filter-buttons" style="padding: 2rem; text-align: center">
+        <button class="button active" data-filter="all">All</button>
+        <button class="button" data-filter="city">Cityscapes</button>
+        <button class="button" data-filter="nature">Nature</button>
+        <button class="button" data-filter="portrait">Portraits</button>
+      </div>
+
+      <!-- 网格布局 -->
+      <div class="photo-grid">
+        <!-- 示例条目 - 需要复制修改每个作品 -->
+        <div class="grid-item city" data-category="city">
+          <a
+            href="/images/photograph/full/london2.JPG"
+            data-lightbox="gallery"
+            data-title="London, UK"
+          >
+            <img
+              src="/images/photograph/small/london2.jpeg"
+              alt="London View"
+            />
+            <div class="photo-info">
+              <h3>London Lights</h3>
+              <p>December 2024</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- 其他图片条目结构相同，添加对应data-category -->
+      </div>
+
+      <!-- 页脚保持原有 -->
+
+      <!-- 新增脚本 -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+      <script>
+        // 过滤功能
+        document
+          .querySelectorAll(".filter-buttons .button")
+          .forEach((button) => {
+            button.addEventListener("click", () => {
+              const filter = button.dataset.filter;
+              document.querySelectorAll(".grid-item").forEach((item) => {
+                item.style.display =
+                  filter === "all" || item.dataset.category === filter
+                    ? "block"
+                    : "none";
+              });
+            });
+          });
+
+        // 灯箱配置
+        lightbox.option({
+          resizeDuration: 200,
+          wrapAround: true,
+          alwaysShowNavOnTouchDevices: true,
+        });
+      </script>
+
+      <style>
+        /* 新增网格布局样式 */
+        .photo-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 1rem;
+          padding: 2rem;
+        }
+
+        .grid-item {
+          position: relative;
+          overflow: hidden;
+          border-radius: 8px;
+          transition: transform 0.3s ease;
+        }
+
+        .grid-item:hover {
+          transform: scale(1.03);
+        }
+
+        .grid-item img {
+          width: 100%;
+          height: 300px;
+          object-fit: cover;
+          vertical-align: middle;
+        }
+
+        .photo-info {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: rgba(0, 0, 0, 0.7);
+          color: white;
+          padding: 1rem;
+          transform: translateY(100%);
+          transition: transform 0.3s ease;
+        }
+
+        .grid-item:hover .photo-info {
+          transform: translateY(0);
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+          .photo-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+    </div>
+  </body>
+</html>
