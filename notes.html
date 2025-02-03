@@ -973,68 +973,48 @@
     });
   });
 
-  // 标签收集与筛选功能
-  document.addEventListener("DOMContentLoaded", () => {
-    // 收集所有标签
-    const allTags = new Set();
-    document.querySelectorAll(".pill").forEach((pill) => {
-      allTags.add(pill.textContent.trim());
-    });
+  // 标签筛选功能
+  let activeTags = new Set();
 
-    // 生成标签云
-    const tagContainer = document.getElementById("tagContainer");
-    allTags.forEach((tag) => {
-      const pill = document.createElement("div");
-      pill.className = "tag-pill";
-      pill.textContent = tag;
-      pill.addEventListener("click", () => toggleTagFilter(tag));
-      tagContainer.appendChild(pill);
-    });
+  function toggleTagFilter(tag) {
+    const pill = event.target;
+    pill.classList.toggle("active");
 
-    // 标签筛选功能
-    let activeTags = new Set();
-
-    function toggleTagFilter(tag) {
-      const pill = event.target;
-      pill.classList.toggle("active");
-
-      if (activeTags.has(tag)) {
-        activeTags.delete(tag);
-      } else {
-        activeTags.add(tag);
-      }
-
-      filterCourses();
+    if (activeTags.has(tag)) {
+      activeTags.delete(tag);
+    } else {
+      activeTags.add(tag);
     }
+    filterCourses();
+  }
 
-    function filterCourses() {
-      const courses = document.querySelectorAll(".course-card");
+  function filterCourses() {
+    const courses = document.querySelectorAll(".course-card");
 
-      courses.forEach((course) => {
-        const courseTags = new Set(
-          Array.from(course.querySelectorAll(".pill")).map((p) =>
-            p.textContent.trim()
-          )
-        );
+    courses.forEach((course) => {
+      const courseTags = new Set(
+        Array.from(course.querySelectorAll(".pill")).map((p) =>
+          p.textContent.trim()
+        )
+      );
 
-        const shouldShow = Array.from(activeTags).every((tag) =>
-          courseTags.has(tag)
-        );
-        course.style.display = shouldShow ? "block" : "none";
-      });
-
-      // 同步更新搜索状态显示
-      updateSearchStatus();
-    }
-
-    // 与现有搜索功能的整合
-    const originalSearch = document.getElementById("noteSearch");
-
-    // 监听原有搜索输入
-    originalSearch.addEventListener("input", () => {
-      filterCourses();
-      updateSearchStatus();
+      const shouldShow = Array.from(activeTags).every((tag) =>
+        courseTags.has(tag)
+      );
+      course.style.display = shouldShow ? "block" : "none";
     });
+
+    // 同步更新搜索状态显示
+    updateSearchStatus();
+  }
+
+  // 与现有搜索功能的整合
+  const originalSearch = document.getElementById("noteSearch");
+
+  // 监听原有搜索输入
+  originalSearch.addEventListener("input", () => {
+    filterCourses();
+    updateSearchStatus();
   });
 
   // 调整原有滚动功能
