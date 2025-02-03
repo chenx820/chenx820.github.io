@@ -923,58 +923,34 @@
   }
 
   .tag-pill.active {
-    background: #ef8376;
     color: white;
-    border-color: #ef8376;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
   }
-
   /* 按类型定义激活状态颜色 */
   .tag-pill.active[data-type="Graduate"] {
     background: #d6958a !important; /* 加深珊瑚红 */
-    border-color: #c48377 !important;
-    color: white !important;
   }
-
   .tag-pill.active[data-type="Undergraduate"] {
     background: #8585ba !important; /* 加深薰衣草紫 */
-    border-color: #7474a6 !important;
-    color: white !important;
   }
-
   .tag-pill.active[data-type="Core"] {
     background: #72aa9a !important; /* 加深薄荷绿 */
-    border-color: #629184 !important;
-    color: white !important;
   }
-
   .tag-pill.active[data-type="Elective"] {
     background: #fdd795 !important; /* 加深米白 */
-    border-color: #cca970 !important;
-    color: white !important;
   }
-
   .tag-pill.active[data-type="Physics"] {
     background: #8aa9c2 !important; /* 加深天蓝 */
-    border-color: #7998b1 !important;
-    color: white !important;
   }
-
   .tag-pill.active[data-type="Math"] {
     background: #d29fb0 !important; /* 加深玫瑰粉 */
-    border-color: #c18e9f !important;
-    color: white !important;
   }
-
   .tag-pill.active[data-type="Engineering"] {
     background: #92ac89 !important; /* 加深橄榄绿 */
-    border-color: #829b79 !important;
-    color: white !important;
   }
-
   .tag-pill.active[data-type="GRE"] {
     background: #b09f8d !important; /* 加深卡其色 */
-    border-color: #a08e7d !important;
-    color: white !important;
   }
 
   /* 调整课程卡片中的标签样式 */
@@ -1015,12 +991,25 @@
 </style>
 
 <script>
-  // 标签收集与筛选功能
   document.addEventListener("DOMContentLoaded", () => {
+    // 类型映射表
+    const typeMap = {
+      Graduate: "Graduate",
+      Undergraduate: "Undergraduate",
+      Core: "Core",
+      Elective: "Elective",
+      GRE: "GRE",
+      Physics: "Physics",
+      Math: "Math",
+      Engineering: "Engineering",
+    };
+
     // 收集所有标签
     const allTags = new Set();
     document.querySelectorAll(".pill").forEach((pill) => {
-      allTags.add(pill.textContent.trim());
+      const text = pill.textContent.trim();
+      pill.dataset.type = typeMap[text] || "Other";
+      allTags.add(text);
     });
 
     // 生成标签云
@@ -1029,101 +1018,89 @@
       const pill = document.createElement("div");
       pill.className = "tag-pill";
       pill.textContent = tag;
-      pill.addEventListener("click", () => toggleTagFilter(tag));
+      pill.dataset.type = typeMap[tag] || "Other";
+
+      // 初始化样式
+      const bgColor = getComputedStyle(pill).backgroundColor;
+      const luminance = (rgb) =>
+        (0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]) / 255;
+
+      const rgb = bgColor.match(/\d+/g).map(Number);
+      pill.style.color = luminance(rgb) > 0.6 ? "#333" : "#fff";
+      pill.style.borderColor =
+        luminance(rgb) > 0.6 ? "rgba(0,0,0,0.1)" : "rgba(255,255,255,0.2)";
+
+      pill.addEventListener("click", toggleTagFilter);
       tagContainer.appendChild(pill);
     });
 
     // 标签筛选功能
     let activeTags = new Set();
 
-    function toggleTagFilter(tag) {
+    function toggleTagFilter(event) {
       const pill = event.target;
-      pill.classList.toggle("active");
+      const tag = pill.textContent.trim();
 
-      if (activeTags.has(tag)) {
-        activeTags.delete(tag);
+      pill.classList.toggle("active");
+      activeTags[pill.classList.contains("active") ? "add" : "delete"](tag);
+
+      // 更新样式
+      if (pill.classList.contains("active")) {
+        pill.style.borderColor = pill.style.backgroundColor;
+        pill.style.color = "white";
       } else {
-        activeTags.add(tag);
+        const bgColor = getComputedStyle(pill).backgroundColor;
+        const rgb = bgColor.match(/\d+/g).map(Number);
+        const luminance =
+          (0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]) / 255;
+        pill.style.color = luminance > 0.6 ? "#333" : "#fff";
+        pill.style.borderColor =
+          luminance > 0.6 ? "rgba(0,0,0,0.1)" : "rgba(255,255,255,0.2)";
       }
 
       filterCourses();
     }
 
     function filterCourses() {
-      const courses = document.querySelectorAll(".course-card");
-
-      courses.forEach((course) => {
+      document.querySelectorAll(".course-card").forEach((course) => {
         const courseTags = new Set(
-          Array.from(course.querySelectorAll(".pill")).map((p) =>
-            p.textContent.trim()
-          )
+          [...course.querySelectorAll(".pill")].map((p) => p.textContent.trim())
         );
-
-        const shouldShow = Array.from(activeTags).every((tag) =>
-          courseTags.has(tag)
-        );
-        course.style.display = shouldShow ? "block" : "none";
+        course.style.display = [...activeTags].every((t) => courseTags.has(t))
+          ? "block"
+          : "none";
       });
-
-      // 同步更新搜索状态显示
       updateSearchStatus();
     }
 
-    // 与现有搜索功能的整合
-    const originalSearch = document.getElementById("noteSearch");
-
-    function updateSearchStatus() {
-      const status = document.getElementById("searchStatus");
-      const activeFilters = [
-        ...Array.from(activeTags),
-        originalSearch.value.trim(),
-      ].filter(Boolean);
-
-      status.textContent = activeFilters.length
-        ? `Showing results for: ${activeFilters.join(", ")}`
-        : "";
-    }
-
-    // 监听原有搜索输入
-    originalSearch.addEventListener("input", () => {
+    // 搜索功能整合
+    const searchInput = document.getElementById("noteSearch");
+    searchInput.addEventListener("input", () => {
       filterCourses();
       updateSearchStatus();
     });
-  });
 
-  // 调整原有滚动功能
-  document.querySelectorAll(".scrolly").forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      target.scrollIntoView({ behavior: "smooth" });
+    function updateSearchStatus() {
+      const status = document.getElementById("searchStatus");
+      const filters = [...activeTags, searchInput.value.trim()].filter(Boolean);
 
-      // 移除所有学校导航的active状态
-      document.querySelectorAll(".school-nav h4 a").forEach((link) => {
-        link.classList.remove("active");
+      status.textContent = filters.length
+        ? `Showing results for: ${filters.join(", ")}`
+        : "";
+    }
+
+    // 滚动功能
+    document.querySelectorAll(".scrolly").forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        target.scrollIntoView({ behavior: "smooth" });
+
+        document.querySelectorAll(".school-nav h4 a").forEach((link) => {
+          link.classList.remove("active");
+        });
+        this.classList.add("active");
       });
-
-      // 为当前点击的学校添加active状态
-      this.classList.add("active");
-    });
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    // 为每个标签添加类型属性
-    document.querySelectorAll(".pill").forEach((pill) => {
-      const text = pill.textContent.trim();
-      const typeMap = {
-        Graduate: "Graduate",
-        Undergraduate: "Undergraduate",
-        Core: "Core",
-        Elective: "Elective",
-        GRE: "GRE",
-        Physics: "Physics",
-        Math: "Math",
-        Engineering: "Engineering",
-      };
-
-      pill.dataset.type = typeMap[text] || "Other";
     });
   });
 </script>
