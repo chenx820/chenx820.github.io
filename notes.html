@@ -1008,149 +1008,35 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // 为每个标签添加类型属性
-    document.querySelectorAll(".pill").forEach((pill) => {
-      const text = pill.textContent.trim();
-      const typeMap = {
-        Graduate: "Graduate",
-        Undergraduate: "Undergraduate",
-        Core: "Core",
-        Elective: "Elective",
-        GRE: "GRE",
-        Physics: "Physics",
-        Math: "Math",
-        Engineering: "Engineering",
-      };
-
-      pill.dataset.type = typeMap[text] || "Other";
-    });
-  });
-
-  // 标签收集与筛选功能
-  document.addEventListener("DOMContentLoaded", () => {
-    // 收集所有标签
-    const allTags = new Set();
-    document.querySelectorAll(".pill").forEach((pill) => {
-      allTags.add(pill.textContent.trim());
-    });
-
-    // 生成标签云
-    const tagContainer = document.getElementById("tagContainer");
-    allTags.forEach((tag) => {
-      const pill = document.createElement("div");
-      pill.className = "tag-pill";
-      pill.textContent = tag;
-      pill.addEventListener("click", () => toggleTagFilter(tag));
-      tagContainer.appendChild(pill);
-    });
-
-    // 标签筛选功能
-    let activeTags = new Set();
-
-    function toggleTagFilter(tag) {
-      const pill = event.target;
-      pill.classList.toggle("active");
-
-      if (activeTags.has(tag)) {
-        activeTags.delete(tag);
-      } else {
-        activeTags.add(tag);
-      }
-
-      filterCourses();
-    }
-
-    function filterCourses() {
-      const courses = document.querySelectorAll(".course-card");
-
-      courses.forEach((course) => {
-        const courseTags = new Set(
-          Array.from(course.querySelectorAll(".pill")).map((p) =>
-            p.textContent.trim()
-          )
-        );
-
-        const shouldShow = Array.from(activeTags).every((tag) =>
-          courseTags.has(tag)
-        );
-        course.style.display = shouldShow ? "block" : "none";
-      });
-
-      // 同步更新搜索状态显示
-      updateSearchStatus();
-    }
-
-    // 与现有搜索功能的整合
-    const originalSearch = document.getElementById("noteSearch");
-
-    function updateSearchStatus() {
-      const status = document.getElementById("searchStatus");
-      const activeFilters = [
-        ...Array.from(activeTags),
-        originalSearch.value.trim(),
-      ].filter(Boolean);
-
-      status.textContent = activeFilters.length
-        ? `Showing results for: ${activeFilters.join(", ")}`
-        : "";
-    }
-
-    // 监听原有搜索输入
-    originalSearch.addEventListener("input", () => {
-      filterCourses();
-      updateSearchStatus();
-    });
-  });
-
-  // 调整原有滚动功能
-  document.querySelectorAll(".scrolly").forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      target.scrollIntoView({ behavior: "smooth" });
-
-      // 移除所有学校导航的active状态
-      document.querySelectorAll(".school-nav h4 a").forEach((link) => {
-        link.classList.remove("active");
-      });
-
-      // 为当前点击的学校添加active状态
-      this.classList.add("active");
-    });
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    // 初始化课程卡片元数据
+    // 初始化课程元数据
     initCourseMetadata();
 
-    // 生成筛选标签
-    generateFilterTags();
+    // 初始化所有筛选系统
+    initFilterSystems();
 
-    // 初始化原有标签系统
-    initLegacyTagSystem();
+    // 初始化搜索功能
+    initSearchFunction();
   });
 
+  /* 元数据初始化 */
   function initCourseMetadata() {
     // 设置大学信息
     document.querySelectorAll(".course-card").forEach((card) => {
       const section = card.closest("section");
-      if (section) {
-        const universityMap = {
-          imperial: "Imperial",
-          hust: "HUST",
-          pku: "PKU",
-          others: "Others",
-        };
+      const universityMap = {
+        imperial: "Imperial College London",
+        hust: "Huazhong University of Science and Technology",
+        pku: "Peking University",
+        others: "Self-Study",
+      };
+      if (section)
         card.dataset.university = universityMap[section.id] || "Others";
-      }
     });
 
-    // 设置年份信息（示例，需根据实际内容调整）
+    // 设置年份信息
     document.querySelectorAll(".course-card h4").forEach((title) => {
       const yearMatch = title.textContent.match(/(20\d{2})/);
-      if (yearMatch) {
-        title.closest(".course-card").dataset.year = yearMatch[1];
-      }
+      if (yearMatch) title.closest(".course-card").dataset.year = yearMatch[1];
     });
 
     // 设置级别和学科
@@ -1160,54 +1046,98 @@
         const type = pill.dataset.type;
         if (["Graduate", "Undergraduate"].includes(type)) {
           card.dataset.level = type;
-        } else if (["Physics", "Math", "Engineering", "GRE"].includes(type)) {
+        }
+        if (["Physics", "Math", "Engineering", "GRE"].includes(type)) {
           card.dataset.subject = type;
         }
       });
     });
   }
 
-  function generateFilterTags() {
+  /* 筛选系统初始化 */
+  function initFilterSystems() {
     // 生成各维度标签
-    const dimensions = ["university", "year", "level", "subject"];
-    dimensions.forEach((dim) => {
-      const container = document.querySelector(`[data-filter="${dim}"]`);
-      const values = new Set();
+    generateFilterTags();
 
-      document.querySelectorAll(`.course-card`).forEach((card) => {
-        if (card.dataset[dim]) values.add(card.dataset[dim]);
-      });
+    // 初始化原有标签系统
+    initLegacyTagSystem();
 
-      values.forEach((value) => {
-        const pill = document.createElement("div");
-        pill.className = "tag-pill";
-        pill.textContent = value;
-        pill.dataset.filter = dim;
-        pill.dataset.value = value;
-        pill.addEventListener("click", toggleDimensionFilter);
-        container.appendChild(pill);
-      });
+    // 绑定筛选事件
+    bindFilterEvents();
+  }
+
+  function generateFilterTags() {
+    // 生成大学标签
+    const universities = new Set();
+    document
+      .querySelectorAll("[data-university]")
+      .forEach((card) => universities.add(card.dataset.university));
+    populateFilterTags("university", universities);
+
+    // 生成年份标签
+    const years = new Set();
+    document
+      .querySelectorAll("[data-year]")
+      .forEach((card) => years.add(card.dataset.year));
+    populateFilterTags("year", years);
+
+    // 生成级别标签
+    populateFilterTags("level", new Set(["Graduate", "Undergraduate"]));
+
+    // 生成学科标签
+    populateFilterTags(
+      "subject",
+      new Set(["Physics", "Math", "Engineering", "GRE"])
+    );
+  }
+
+  function populateFilterTags(filterType, values) {
+    const container = document.querySelector(`[data-filter="${filterType}"]`);
+    container.innerHTML = "";
+    values.forEach((value) => {
+      if (!value) return;
+      const pill = document.createElement("div");
+      pill.className = "tag-pill";
+      pill.textContent = value;
+      pill.dataset.filterType = filterType;
+      pill.dataset.value = value;
+      container.appendChild(pill);
     });
   }
 
-  function toggleDimensionFilter(event) {
+  /* 事件处理 */
+  function bindFilterEvents() {
+    // 新筛选维度点击事件
+    document.querySelectorAll("[data-filter] .tag-pill").forEach((pill) => {
+      pill.addEventListener("click", handleDimensionFilterClick);
+    });
+
+    // 原有标签系统点击事件
+    document.querySelectorAll("#tagContainer .tag-pill").forEach((pill) => {
+      pill.addEventListener("click", handleLegacyTagClick);
+    });
+  }
+
+  function handleDimensionFilterClick(event) {
     const pill = event.target;
-    const filter = pill.dataset.filter;
+    const filterType = pill.dataset.filterType;
     const value = pill.dataset.value;
 
     pill.classList.toggle("active");
-    const isActive = pill.classList.contains("active");
-
-    // 更新筛选器状态
-    if (isActive) {
-      activeFilters.addFilter(filter, value);
-    } else {
-      activeFilters.removeFilter(filter, value);
-    }
-
+    activeFilters.toggle(filterType, value);
     filterCourses();
   }
 
+  function handleLegacyTagClick(event) {
+    const pill = event.target;
+    const tag = pill.textContent.trim();
+
+    pill.classList.toggle("active");
+    activeFilters.toggle("legacy", tag);
+    filterCourses();
+  }
+
+  /* 筛选逻辑 */
   class ActiveFilters {
     constructor() {
       this.filters = {
@@ -1217,28 +1147,41 @@
         subject: new Set(),
         legacy: new Set(),
       };
+      this.searchQuery = "";
     }
 
-    addFilter(dim, value) {
-      this.filters[dim].add(value);
-    }
-
-    removeFilter(dim, value) {
-      this.filters[dim].delete(value);
+    toggle(filterType, value) {
+      if (this.filters[filterType].has(value)) {
+        this.filters[filterType].delete(value);
+      } else {
+        this.filters[filterType].add(value);
+      }
     }
 
     checkCourse(card) {
-      return Object.entries(this.filters).every(([dim, values]) => {
-        if (values.size === 0) return true;
-        if (dim === "legacy") {
-          return [...values].every((tag) =>
-            [...card.querySelectorAll(".pill")].some(
-              (p) => p.textContent.trim() === tag
-            )
-          );
+      // 检查维度筛选
+      const dimensionMatch = Object.entries(this.filters).every(
+        ([type, values]) => {
+          if (values.size === 0) return true;
+          if (type === "legacy") return this.checkLegacyTags(card);
+          return values.has(card.dataset[type]);
         }
-        return values.has(card.dataset[dim]);
-      });
+      );
+
+      // 检查搜索匹配
+      const searchMatch =
+        this.searchQuery === "" ||
+        card.textContent.toLowerCase().includes(this.searchQuery);
+
+      return dimensionMatch && searchMatch;
+    }
+
+    checkLegacyTags(card) {
+      return [...this.filters.legacy].every((tag) =>
+        [...card.querySelectorAll(".pill")].some(
+          (p) => p.textContent.trim() === tag
+        )
+      );
     }
   }
 
@@ -1251,35 +1194,44 @@
     updateSearchStatus();
   }
 
-  function initLegacyTagSystem() {
-    // 原有标签系统整合
-    document.querySelectorAll("#tagContainer .tag-pill").forEach((pill) => {
-      pill.addEventListener("click", function () {
-        const tag = this.textContent;
-        this.classList.toggle("active");
-
-        if (this.classList.contains("active")) {
-          activeFilters.addFilter("legacy", tag);
-        } else {
-          activeFilters.removeFilter("legacy", tag);
-        }
-
-        filterCourses();
-      });
+  /* 搜索功能 */
+  function initSearchFunction() {
+    const searchInput = document.getElementById("noteSearch");
+    searchInput.addEventListener("input", function () {
+      activeFilters.searchQuery = this.value.trim().toLowerCase();
+      filterCourses();
     });
   }
 
-  // 保持原有搜索功能
-  document.getElementById("noteSearch").addEventListener("input", function () {
-    const query = this.value.toLowerCase();
-    document.querySelectorAll(".course-card").forEach((card) => {
-      const match = card.textContent.toLowerCase().includes(query);
-      card.style.display = match ? "block" : "none";
-    });
-    updateSearchStatus();
-  });
-
+  /* 状态显示 */
   function updateSearchStatus() {
-    // 保持原有状态更新逻辑
+    const status = document.getElementById("searchStatus");
+    const activeFiltersList = [];
+
+    // 收集维度筛选
+    ["university", "year", "level", "subject"].forEach((type) => {
+      if (activeFilters.filters[type].size > 0) {
+        activeFiltersList.push(
+          `${type}: ${[...activeFilters.filters[type]].join(", ")}`
+        );
+      }
+    });
+
+    // 收集标签筛选
+    if (activeFilters.filters.legacy.size > 0) {
+      activeFiltersList.push(
+        `tags: ${[...activeFilters.filters.legacy].join(", ")}`
+      );
+    }
+
+    // 收集搜索条件
+    if (activeFilters.searchQuery) {
+      activeFiltersList.push(`search: "${activeFilters.searchQuery}"`);
+    }
+
+    status.textContent =
+      activeFiltersList.length > 0
+        ? `Active filters: ${activeFiltersList.join(" | ")}`
+        : "Showing all courses";
   }
 </script>
