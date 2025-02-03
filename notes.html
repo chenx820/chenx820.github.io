@@ -124,14 +124,20 @@
                 </div>
               </div>
               <article id="main">
-                <section id="imperial" data-university="Imperial">
-                  <header>
-                    <h3 class="custom-title">
-                      <a href="#imperial" class="scrolly"
-                        >Imperial College London</a
-                      >
-                    </h3>
-                  </header>
+                <section
+                  id="imperial"
+                  data-university="Imperial"
+                  class="university-section"
+                >
+                  <div class="title-container">
+                    <header>
+                      <h3 class="custom-title">
+                        <a href="#imperial" class="scrolly"
+                          >Imperial College London</a
+                        >
+                      </h3>
+                    </header>
+                  </div>
                   <div class="course-card">
                     <div class="course-header">
                       <h4>Quantum Information (Fall 2023)</h4>
@@ -282,14 +288,20 @@
                     </div>
                   </div>
                 </section>
-                <section id="hust" data-university="HUST">
-                  <header>
-                    <h3 class="custom-title">
-                      <a href="#hust" class="scrolly">
-                        Huazhong University of Science and Technology</a
-                      >
-                    </h3>
-                  </header>
+                <section
+                  id="hust"
+                  data-university="HUST"
+                  class="university-section"
+                >
+                  <div class="title-container">
+                    <header>
+                      <h3 class="custom-title">
+                        <a href="#hust" class="scrolly">
+                          Huazhong University of Science and Technology</a
+                        >
+                      </h3>
+                    </header>
+                  </div>
                   <div class="course-card">
                     <div class="course-header">
                       <h4>Mathematical Methods in Physics (Fall 2019)</h4>
@@ -694,12 +706,18 @@
                     </div>
                   </div>
                 </section>
-                <section id="pku" data-university="PKU">
-                  <header>
-                    <h3 class="custom-title">
-                      <a href="#pku" class="scrolly">Peking University</a>
-                    </h3>
-                  </header>
+                <section
+                  id="pku"
+                  data-university="PKU"
+                  class="university-section"
+                >
+                  <div class="title-container">
+                    <header>
+                      <h3 class="custom-title">
+                        <a href="#pku" class="scrolly">Peking University</a>
+                      </h3>
+                    </header>
+                  </div>
                   <div class="course-card">
                     <div class="course-header">
                       <h4>Quantum Mechanics II (Summer 2020)</h4>
@@ -765,12 +783,18 @@
                     </div>
                   </div>
                 </section>
-                <section id="others" data-university="Others">
-                  <header>
-                    <h3 class="custom-title">
-                      <a href="#others" class="scrolly">Self-Study</a>
-                    </h3>
-                  </header>
+                <section
+                  id="others"
+                  data-university="Others"
+                  class="university-section"
+                >
+                  <div class="title-container">
+                    <header>
+                      <h3 class="custom-title">
+                        <a href="#others" class="scrolly">Self-Study</a>
+                      </h3>
+                    </header>
+                  </div>
                   <div class="course-card">
                     <div class="course-header">
                       <h4>Physics GRE (Fall 2021)</h4>
@@ -938,6 +962,15 @@
   }
   .pill[data-type="GRE"] {
     background: #c4b19d; /* 浅卡其色 */
+  }
+
+  .university-section {
+    position: relative;
+    min-height: 60px; /* 与原始标题高度一致 */
+  }
+  .title-placeholder {
+    height: 60px; /* 原始标题高度 */
+    visibility: hidden;
   }
 </style>
 
