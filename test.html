@@ -51,6 +51,7 @@
         <button class="button" data-filter="city">Cityscapes</button>
         <button class="button" data-filter="nature">Nature</button>
         <button class="button" data-filter="portrait">Portraits</button>
+        <button class="button" data-filter="video">Videos</button>
       </div>
 
       <!-- 网格布局 -->
@@ -218,6 +219,27 @@
         </div>
 
         <!-- 其他图片条目结构相同，添加对应data-category -->
+        <!-- 视频条目示例 -->
+        <div class="grid-item video" data-category="video">
+          <div class="video-wrapper">
+            <a
+              href="https://youtu.be/PSpghrPLQXI"
+              data-lightbox="video-gallery"
+              data-title="My Travel Memories"
+              class="video-thumbnail"
+            >
+              <img
+                src="//img.youtube.com/vi/PSpghrPLQXI/maxresdefault.jpg"
+                alt="Video thumbnail"
+              />
+              <div class="play-button"></div>
+              <div class="photo-info">
+                <h3>Travel Memories</h3>
+                <p>2024 Highlights</p>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
 
       <!-- 页脚保持原有 -->
@@ -297,7 +319,97 @@
             grid-template-columns: 1fr;
           }
         }
+
+        /* 新增视频相关样式 */
+        .video-wrapper {
+          position: relative;
+          padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        .video-thumbnail {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .video-thumbnail img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .play-button {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 60px;
+          height: 60px;
+          background: rgba(255, 255, 255, 0.9);
+          border-radius: 50%;
+          transition: all 0.3s ease;
+        }
+
+        .play-button::before {
+          content: "";
+          position: absolute;
+          left: 55%;
+          top: 50%;
+          transform: translate(-40%, -50%);
+          border-style: solid;
+          border-width: 10px 0 10px 20px;
+          border-color: transparent transparent transparent #333;
+          transition: all 0.3s ease;
+        }
+
+        .video-thumbnail:hover .play-button {
+          background: rgba(255, 255, 255, 1);
+          transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* 调整网格项中的视频高度 */
+        .grid-item[data-category="video"] {
+          grid-row-end: span 2; /* 占据更多垂直空间 */
+        }
       </style>
     </div>
   </body>
 </html>
+
+<script>
+  // 更新lightbox配置以支持视频
+  lightbox.option({
+    resizeDuration: 200,
+    wrapAround: true,
+    alwaysShowNavOnTouchDevices: true,
+    disableScrolling: true,
+    videoWidth: 1280,
+    videoHeight: 720,
+  });
+
+  // YouTube视频处理
+  document
+    .querySelectorAll('[data-lightbox="video-gallery"]')
+    .forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const videoURL = this.getAttribute("href");
+        const embedURL = videoURL.replace("watch?v=", "embed/") + "?autoplay=1";
+
+        const videoHtml = `
+          <div class="video-container">
+            <iframe width="1280" height="720" 
+              src="${embedURL}" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        `;
+
+        lightbox.open(videoHtml);
+      });
+    });
+</script>
