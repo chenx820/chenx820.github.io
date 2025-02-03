@@ -1072,7 +1072,7 @@
 
   function generateFilterTags() {
     // 生成各维度标签
-    const dimensions = ["university", "year", "level", "subject"];
+    const dimensions = ["university", "level", "subject"];
     dimensions.forEach((dim) => {
       const container = document.querySelector(`[data-filter="${dim}"]`);
       const values = new Set();
@@ -1122,7 +1122,7 @@
       pill.textContent = value;
       pill.dataset.filterType = filterType;
       pill.dataset.value = value;
-
+      pill.addEventListener("click", toggleDimensionFilter);
       container.appendChild(pill);
     });
   }
