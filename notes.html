@@ -1030,18 +1030,6 @@
     // 与现有搜索功能的整合
     const originalSearch = document.getElementById("noteSearch");
 
-    function updateSearchStatus() {
-      const status = document.getElementById("searchStatus");
-      const activeFilters = [
-        ...Array.from(activeTags),
-        originalSearch.value.trim(),
-      ].filter(Boolean);
-
-      status.textContent = activeFilters.length
-        ? `Showing results for: ${activeFilters.join(", ")}`
-        : "";
-    }
-
     // 监听原有搜索输入
     originalSearch.addEventListener("input", () => {
       filterCourses();
@@ -1227,6 +1215,14 @@
   });
 
   function updateSearchStatus() {
-    // 保持原有状态更新逻辑
+    const status = document.getElementById("searchStatus");
+    const activeFilters = [
+      ...Array.from(activeTags),
+      originalSearch.value.trim(),
+    ].filter(Boolean);
+
+    status.textContent = activeFilters.length
+      ? `Showing results for: ${activeFilters.join(", ")}`
+      : "";
   }
 </script>
