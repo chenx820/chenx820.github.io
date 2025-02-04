@@ -3822,6 +3822,15 @@ body.homepage.is-preload #header:after {
   transform: scale(1.03);
 }
 
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 .highlight-content h2 {
   font-size: 2.2em;
   margin-bottom: 1.5rem;
