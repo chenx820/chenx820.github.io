@@ -3433,28 +3433,28 @@ body.homepage.is-preload #header:after {
   margin-left: 8px;
 }
 .note-meta .pill[data-type="Graduate"] {
-  background: rgba(229, 139, 123);
+  background: rgba(229, 139, 123) !important;
 }
 .note-meta .pill[data-type="Undergraduate"] {
-  background: #9b9bcf;
+  background: #9b9bcf !important;
 }
 .note-meta .pill[data-type="Physics"] {
-  background: rgb(115, 174, 225);
+  background: rgb(115, 174, 225) !important;
 }
 .note-meta .pill[data-type="Math"] {
-  background: rgba(215, 144, 193, 1);
+  background: rgba(215, 144, 193) !important;
 }
 .note-meta .pill[data-type="Engineering"] {
-  background: rgba(151, 179, 25, 1);
+  background: rgba(151, 179, 25) !important;
 }
 .note-meta .pill[data-type="GRE"] {
-  background: #c4b19d;
+  background: #c4b19d !important;
 }
 .note-meta .pill[data-type="EN"] {
-  background: rgb(101, 205, 206);
+  background: rgb(101, 205, 206) !important;
 }
 .note-meta .pill[data-type="中文"] {
-  background: rgba(232, 197, 107);
+  background: rgba(232, 197, 107) !important;
 }
 
 @keyframes float {
@@ -3569,6 +3569,11 @@ body.homepage.is-preload #header:after {
   padding: 1rem;
   transform: translateY(100%);
   transition: transform 0.3s ease;
+}
+
+.photo-info h3 {
+  opacity: 1; /* 确保 h3 没有透明度 */
+  transform: translateY(100%);
 }
 
 .grid-item:hover .photo-info {
