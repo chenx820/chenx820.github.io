@@ -3737,7 +3737,7 @@ body.homepage.is-preload #header:after {
   padding: 0.5rem 1rem;
   border-radius: 25px;
   transition: all 0.3s ease;
-  background-color: #f8d8d58e;
+  background-color: var(--primary-light);
   color: var(--primary);
 }
 
