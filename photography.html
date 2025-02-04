@@ -112,6 +112,25 @@
         <button class="button" data-filter="europe">Europe</button>
         <button class="button" data-filter="africa">Africa</button>
       </div>
+      <style>
+        .button {
+          display: inline-block;
+          padding: 4px 12px;
+          border-radius: 16px;
+          background: #fff;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          font-size: 0.9em;
+          border: 1px solid #ddd;
+        }
+
+        .button.active {
+          color: black;
+          background: #fff;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          transform: scale(1.05);
+        }
+      </style>
 
       <div class="photo-grid">
         <div class="grid-item europe" data-category="europe">
