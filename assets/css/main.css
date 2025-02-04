@@ -231,7 +231,7 @@ textarea,
 select {
   font-size: 15pt;
   line-height: 1.85em;
-  font-family: "EB Garamond", "Source Sans Pro", "Ma Shan Zheng", sans-serif;
+  font-family: inherit;
   font-weight: 300;
 }
 
