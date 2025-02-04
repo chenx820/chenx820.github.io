@@ -367,14 +367,41 @@
     <script src="/assets/js/util.js"></script>
     <script src="/assets/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+      // 更新lightbox配置以支持视频
+      lightbox.option({
+        resizeDuration: 200,
+        wrapAround: true,
+        alwaysShowNavOnTouchDevices: true,
+        disableScrolling: true,
+        videoWidth: 1280,
+        videoHeight: 720,
+      });
+
+      // YouTube视频处理
+      document
+        .querySelectorAll('[data-lightbox="video-gallery"]')
+        .forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const videoURL = this.getAttribute("href");
+            const embedURL =
+              videoURL.replace("watch?v=", "embed/") + "?autoplay=1";
+
+            const videoHtml = `
+              <div class="video-container">
+                <iframe width="1280" height="720" 
+                  src="${embedURL}" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+                </iframe>
+              </div>
+            `;
+
+            lightbox.open(videoHtml);
+          });
+        });
+    </script>
   </body>
 </html>
-
-<script>
-  // 灯箱配置
-  lightbox.option({
-    resizeDuration: 200,
-    wrapAround: true,
-    alwaysShowNavOnTouchDevices: true,
-  });
-</script>
