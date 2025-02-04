@@ -308,3 +308,79 @@
       });
     });
 </script>
+
+
+
+<style>
+  /* 覆盖Helios原有导航样式 */
+  #nav {
+    background: rgba(40, 40, 40, 0.95) !important; /* 保持模板半透明风格 */
+    backdrop-filter: blur(5px); /* 添加毛玻璃效果 */
+    padding: 0.8rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  #nav > ul {
+    justify-content: flex-start; /* 保持模板左对齐风格 */
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  #nav li a {
+    font-family: 'Source Sans Pro', Helvetica, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.075em;
+    font-size: 0.9rem;
+    padding: 1rem 1.5rem;
+    transition: all 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  
+  #nav li:hover > a {
+    color: #50c8ff !important; /* 使用模板标志性蓝色 */
+  }
+  
+  /* 适配模板的移动端菜单 */
+  @media screen and (max-width: 980px) {
+    #nav {
+      padding: 0;
+      background: #282828 !important;
+    }
+    
+    #nav > ul {
+      flex-direction: column;
+      padding: 1rem 0;
+    }
+    
+    #nav li {
+      margin: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #nav li a {
+      padding: 1.2rem 2rem;
+    }
+  }
+  
+  /* 保持模板下拉菜单动画 */
+  #nav li ul {
+    animation: fadeInDown 0.3s both;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  </style>
+  
+  <!-- 保持原有HTML结构不变 -->
+  <nav id="nav">
+    <!-- 原有菜单结构 -->
+  </nav>
