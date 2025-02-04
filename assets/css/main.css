@@ -2219,7 +2219,7 @@ button,
   color: #483949;
   font-size: 0.9em;
   text-align: center;
-  border-radius: 16px;
+  border-radius: 50%;
   text-decoration: none;
   padding: 4px 12px;
   border: 1px solid #ddd;
@@ -3432,12 +3432,12 @@ body.homepage.is-preload #header:after {
 }
 
 #searchButton:hover {
-  background-color: #e97164;
+  background-color: var(--primary);
 }
 
 /* 添加PDF链接样式 */
 .pdf-link {
-  color: #ef8376;
+  color: var(--primary);
   border-left: 3px solid #ef8376;
   padding-left: 8px;
   transition: all 0.3s ease;
@@ -3450,7 +3450,7 @@ body.homepage.is-preload #header:after {
 /* note card */
 .note-card {
   background: white;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.5rem;
   padding: 1.5rem;
@@ -3693,7 +3693,7 @@ body.homepage.is-preload #header:after {
   margin: 2rem 0;
   padding: 1.5rem;
   background: white;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease;
   z-index: 1;
@@ -3702,8 +3702,8 @@ body.homepage.is-preload #header:after {
 /* 卡片式布局 */
 .card {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   margin: 1rem 0;
   transition: all 0.3s ease;
@@ -3739,11 +3739,11 @@ body.homepage.is-preload #header:after {
   border-radius: 25px;
   transition: all 0.3s ease;
   background-color: #f8d8d58e;
-  color: #e97164;
+  color: var(--primary);
 }
 
 .pronunciation-btn:hover {
-  background-color: #e97164;
+  background-color: var(--primary);
   transform: translateY(-1px);
 }
 
@@ -3767,7 +3767,7 @@ body.homepage.is-preload #header:after {
   width: 1.2rem;
   height: 1.2rem;
   border: 3px solid #ddd;
-  border-top-color: #e97164;
+  border-top-color: var(--primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   position: absolute;
@@ -3833,7 +3833,7 @@ body.homepage.is-preload #header:after {
 .video-wrapper {
   position: relative;
   padding-top: 56.25%; /* 16:9 Aspect Ratio */
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
