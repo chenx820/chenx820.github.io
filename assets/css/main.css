@@ -2217,6 +2217,7 @@ button,
   display: inline-block;
   background: white;
   color: #483949;
+  font-family: inherit;
   font-size: 0.9em;
   text-align: center;
   border-radius: var(--radius-md);
