@@ -162,6 +162,36 @@ textarea {
   appearance: none;
 }
 
+/* Color */
+:root {
+  /* main */
+  --primary: #e97164; /* 主珊瑚红 */
+  --primary-dark: #d16256; /* 加深10% */
+  --primary-light: #f8d8d58e; /* 浅色背景 */
+
+  /* accent */
+  --accent: #4a7b9d; /* 深蓝色 */
+
+  /* basic */
+  --light: #f9f6f2; /* 米白背景 */
+  --dark: #3a3a3a; /* 主要文字 */
+  --gray: #8c8c8c; /* 次要文字 */
+
+  /* function */
+  --success: #6c9a8f; /* 使用辅助色 */
+  --warning: #e9c46a; /* 浅橙色 */
+  --error: #e76f51; /* 红橙色 */
+
+  /* shadow */
+  --shadow-sm: 0 2px 8px rgba(233, 113, 100, 0.1);
+  --shadow-md: 0 4px 12px rgba(233, 113, 100, 0.15);
+
+  /* round */
+  --radius-md: 12px;
+  --radius-xl: 25px;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
 /* Basic */
 
 html {
@@ -3654,7 +3684,7 @@ body.homepage.is-preload #header:after {
   top: 80px;
   bottom: 0;
   width: 2px;
-  background: var(--primary-dark);
+  background: #d16256;
   z-index: 0;
 }
 
@@ -3708,12 +3738,12 @@ body.homepage.is-preload #header:after {
   padding: 0.5rem 1rem;
   border-radius: 25px;
   transition: all 0.3s ease;
-  background-color: var(--primary-light);
-  color: var(--primary);
+  background-color: #f8d8d58e;
+  color: #e97164;
 }
 
 .pronunciation-btn:hover {
-  background-color: var(--primary);
+  background-color: #e97164;
   transform: translateY(-1px);
 }
 
@@ -3737,7 +3767,7 @@ body.homepage.is-preload #header:after {
   width: 1.2rem;
   height: 1.2rem;
   border: 3px solid #ddd;
-  border-top-color: var(--primary);
+  border-top-color: #e97164;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   position: absolute;
