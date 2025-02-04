@@ -22,15 +22,10 @@
   </head>
   <body class="no-sidebar is-preload">
     <div id="page-wrapper">
-      <!-- 改进的标题区域 -->
-      <div
-        id="header"
-        style="
-          background-image: url('/images/photograph/full/london2.JPG');
-          min-height: 80vh;
-        "
-      >
-        <div class="inner" style="padding-top: 20vh">
+      <!-- Header -->
+      <div id="header">
+        <!-- Inner -->
+        <div class="inner">
           <header>
             <h1
               style="
@@ -43,6 +38,45 @@
             <p style="font-size: 1.5em">Through My Lens</p>
           </header>
         </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li>
+              <a href="/research/index.html">Research</a>
+              <ul>
+                <li>
+                  <a
+                    href="/research/compilation-for-neutral-atom-quantum-computers.html"
+                    >Compilation for neutral atom quantum computers</a
+                  >
+                </li>
+                <li>
+                  <a href="/research/calibration-of-trapped-ion-systems.html"
+                    >Calibration of trapped-ion systems</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/research/charge-noise-in-semiconductor-spin-qubits.html"
+                    >Charge noise in semiconductor spin qubits</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li><a href="/publications.html">Publications</a></li>
+
+            <li><a href="/notes.html">Notes</a></li>
+            <li><a href="/outreach/ibpe.html">Outreach</a></li>
+            <li>
+              <a href="#">Life</a>
+              <ul>
+                <li><a href="/photography.html">Photography</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
       </div>
 
       <!-- 新增分类过滤 -->
@@ -309,8 +343,6 @@
     });
 </script>
 
-
-
 <style>
   /* 覆盖Helios原有导航样式 */
   #nav {
@@ -319,15 +351,15 @@
     padding: 0.8rem 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
+
   #nav > ul {
     justify-content: flex-start; /* 保持模板左对齐风格 */
     max-width: 1200px;
     margin: 0 auto;
   }
-  
+
   #nav li a {
-    font-family: 'Source Sans Pro', Helvetica, sans-serif;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.075em;
@@ -335,39 +367,39 @@
     padding: 1rem 1.5rem;
     transition: all 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
-  
+
   #nav li:hover > a {
     color: #50c8ff !important; /* 使用模板标志性蓝色 */
   }
-  
+
   /* 适配模板的移动端菜单 */
   @media screen and (max-width: 980px) {
     #nav {
       padding: 0;
       background: #282828 !important;
     }
-    
+
     #nav > ul {
       flex-direction: column;
       padding: 1rem 0;
     }
-    
+
     #nav li {
       margin: 0;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+
     #nav li a {
       padding: 1.2rem 2rem;
     }
   }
-  
+
   /* 保持模板下拉菜单动画 */
   #nav li ul {
     animation: fadeInDown 0.3s both;
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
+
   @keyframes fadeInDown {
     from {
       opacity: 0;
@@ -378,9 +410,9 @@
       transform: translateY(0);
     }
   }
-  </style>
-  
-  <!-- 保持原有HTML结构不变 -->
-  <nav id="nav">
-    <!-- 原有菜单结构 -->
-  </nav>
+</style>
+
+<!-- 保持原有HTML结构不变 -->
+<nav id="nav">
+  <!-- 原有菜单结构 -->
+</nav>
