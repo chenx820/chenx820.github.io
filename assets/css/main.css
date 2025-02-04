@@ -173,7 +173,7 @@ textarea {
   --accent: #4a7b9d; /* 深蓝色 */
 
   /* basic */
-  --light: #f9f6f2; /* 米白背景 */
+  --background: #fff; /* 米白背景 */
   --dark: #3a3a3a; /* 主要文字 */
   --gray: #8c8c8c; /* 次要文字 */
 
@@ -2131,7 +2131,7 @@ form input[type="email"]:focus,
 form input[type="password"]:focus,
 form select:focus,
 form textarea:focus {
-  background: #fff;
+  background: var(--background);
   border-color: #df7366;
 }
 
@@ -2215,7 +2215,7 @@ button,
 .button {
   position: relative;
   display: inline-block;
-  background: #fff;
+  background: white;
   color: #483949;
   font-size: 0.9em;
   text-align: center;
@@ -2241,7 +2241,7 @@ input[type="submit"]:hover,
 input[type="reset"]:hover,
 button:hover,
 .button:hover {
-  color: #fff;
+  color: var(--background);
   background: #ef8376;
 }
 
@@ -2250,7 +2250,7 @@ input[type="submit"].alt,
 input[type="reset"].alt,
 button.alt,
 .button.alt {
-  color: #fff;
+  color: var(--background);
   background: #2b252c;
 }
 
@@ -2313,7 +2313,7 @@ button.alt:hover,
   position: relative;
   display: inline-block;
   background: #2b252c;
-  color: #fff;
+  color: var(--background);
   border-radius: 100%;
   width: 3em;
   height: 3em;
@@ -2329,7 +2329,7 @@ header .icon.circled {
 /* Wrapper */
 
 .wrapper {
-  background: #fff;
+  background: var(--background);
   margin: 0 0 2em 0;
   padding: 6em 0 6em 0;
 }
@@ -2346,7 +2346,7 @@ header .icon.circled {
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
-  color: #fff;
+  color: var(--background);
   text-align: center;
   padding: 7.5em 0 2em 0;
   cursor: default;
@@ -2377,7 +2377,7 @@ header .icon.circled {
 }
 
 #header h1 {
-  color: #fff;
+  color: var(--background);
   font-size: 3em;
   line-height: 1em;
 }
@@ -2578,7 +2578,7 @@ body.homepage.is-preload #header:after {
 /* Banner */
 
 #banner {
-  background: #fff;
+  background: var(--background);
   text-align: center;
   padding: 4.5em 0 4.5em 0;
   margin-bottom: 0;
@@ -2638,11 +2638,11 @@ body.homepage.is-preload #header:after {
   overflow: hidden;
   padding: 6em 0 6em 0;
   background: #2b252c;
-  color: #fff;
+  color: var(--background);
 }
 
 #footer .icon.circled {
-  background: #fff;
+  background: var(--background);
   color: #2b252c;
 }
 
@@ -2656,7 +2656,7 @@ body.homepage.is-preload #header:after {
 #footer h4,
 #footer h5,
 #footer h6 {
-  color: #fff;
+  color: var(--background);
 }
 
 #footer .contact {
@@ -2775,7 +2775,7 @@ body.homepage.is-preload #header:after {
 .carousel article {
   display: inline-block;
   width: 18em;
-  background: #fff;
+  background: var(--background);
   text-align: center;
   padding: 0 1em 3em 1em;
   margin: 0 2em 0 0;
@@ -3132,7 +3132,7 @@ body.homepage.is-preload #header:after {
     text-decoration: none;
     font-style: normal;
     content: "\f0c9";
-    color: #fff;
+    color: var(--background);
     color: rgba(255, 255, 255, 0.75);
     text-align: center;
     display: block;
@@ -3202,7 +3202,7 @@ body.homepage.is-preload #header:after {
   }
 
   #navPanel .link.depth-0 {
-    color: #fff;
+    color: var(--background);
     font-weight: 600;
   }
 
@@ -3232,7 +3232,7 @@ body.homepage.is-preload #header:after {
   }
 
   #navPanel .depth-0 {
-    color: #fff;
+    color: var(--background);
   }
 
   body.navPanel-visible #page-wrapper {
@@ -3555,7 +3555,7 @@ body.homepage.is-preload #header:after {
   display: inline-block;
   padding: 4px 12px;
   border-radius: 16px;
-  background: #fff;
+  background: var(--background);
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.9em;
@@ -3564,7 +3564,7 @@ body.homepage.is-preload #header:after {
 
 .tag-pill.active {
   color: black;
-  background: #fff;
+  background: var(--background);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   transform: scale(1.05);
 }
