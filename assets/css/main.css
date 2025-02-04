@@ -2219,7 +2219,7 @@ button,
   color: #483949;
   font-size: 0.9em;
   text-align: center;
-  border-radius: 50%;
+  border-radius: var(--radius-md);
   text-decoration: none;
   padding: 4px 12px;
   border: 1px solid #ddd;
