@@ -43,9 +43,7 @@ s,
 samp,
 small,
 strike,
-strong {
-  font-weight: 600;
-}
+strong,
 sub,
 sup,
 tt,
@@ -261,7 +259,9 @@ h4 {
   margin: 0 0 0.25em 0;
 }
 
-strong,
+strong {
+  font-weight: 400;
+}
 b {
   font-weight: 400;
   color: #483949;
