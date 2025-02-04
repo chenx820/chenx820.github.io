@@ -216,6 +216,3 @@ window.addEventListener("scroll", () => {
     }
   });
 });
-
-
-
