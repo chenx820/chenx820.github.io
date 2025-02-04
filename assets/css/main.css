@@ -3571,11 +3571,6 @@ body.homepage.is-preload #header:after {
   transition: transform 0.3s ease;
 }
 
-.photo-info h3 {
-  opacity: 1; /* 确保 h3 没有透明度 */
-  transform: translateY(100%);
-}
-
 .grid-item:hover .photo-info {
   transform: translateY(0);
 }
