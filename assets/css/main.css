@@ -3829,6 +3829,7 @@ body.homepage.is-preload #header:after {
 }
 
 .highlight-container {
+  background-color: white;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
