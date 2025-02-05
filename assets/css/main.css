@@ -183,8 +183,8 @@ textarea {
   --error: #e76f51; /* 红橙色 */
 
   /* shadow */
-  --shadow-sm: 0 2px 8px rgba(233, 113, 100, 0.1);
-  --shadow-md: 0 4px 12px rgba(233, 113, 100, 0.15);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
 
   /* round */
@@ -3446,7 +3446,7 @@ body.homepage.is-preload #header:after {
   transform: translateX(5px);
 }
 
-/* note card */
+/* note */
 .note-header {
   border-bottom: 1px solid #eee;
   padding-bottom: 0.5rem;
