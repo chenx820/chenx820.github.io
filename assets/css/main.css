@@ -3486,7 +3486,7 @@ body.homepage.is-preload #header:after {
 .note-meta .pill[data-type="GRE"] {
   background: #c4b19d;
 }
-.note-meta .pill[data-type="EN"] {
+.note-meta .pill[data-type="English"] {
   background: rgb(101, 205, 206);
 }
 .note-meta .pill[data-type="中文"] {
