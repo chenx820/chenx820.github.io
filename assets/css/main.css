@@ -3405,9 +3405,9 @@ body.homepage.is-preload #header:after {
 }
 
 .resource-links h6 i {
-  width: 24px; /* 固定图标容器宽度 */
+  width: 20px; /* 固定图标容器宽度 */
   text-align: center; /* 图标水平居中 */
-  font-size: 0.9em; /* 统一图标大小（可选） */
+  font-size: 0.8em; /* 统一图标大小（可选） */
 }
 
 /* Search Bar */
