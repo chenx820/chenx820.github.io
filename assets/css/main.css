@@ -3773,12 +3773,12 @@ body.homepage.is-preload #header:after {
 }
 
 .highlights-section {
+  background-color: white;
   padding: 4rem 0;
   margin-bottom: 3rem;
 }
 
 .highlight-container {
-  background-color: white;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
