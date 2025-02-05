@@ -3397,7 +3397,7 @@ body.homepage.is-preload #header:after {
 .resource-links h6 {
   display: flex;
   align-items: center;
-  gap: 15px; /* 控制图标与文字的间距 */
+  gap: 12px; /* 控制图标与文字的间距 */
 }
 
 .resource-links h6 i {
