@@ -185,11 +185,11 @@ textarea {
   /* shadow */
   --shadow-sm: 0 2px 8px rgba(233, 113, 100, 0.1);
   --shadow-md: 0 4px 12px rgba(233, 113, 100, 0.15);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
 
   /* round */
   --radius-md: 12px;
   --radius-xl: 25px;
-  --shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Basic */
@@ -3382,7 +3382,7 @@ body.homepage.is-preload #header:after {
     display: none; /* 隐藏侧边栏 */
   }
 
-  .note-card {
+  .card {
     padding: 1rem;
     margin-bottom: 1rem;
   }
@@ -3465,13 +3465,6 @@ body.homepage.is-preload #header:after {
 }
 
 /* note card */
-.note-card {
-  background: white;
-  border-radius: var(--radius-md);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
-  padding: 1.5rem;
-}
 .note-header {
   border-bottom: 1px solid #eee;
   padding-bottom: 0.5rem;
@@ -3532,7 +3525,7 @@ body.homepage.is-preload #header:after {
 .profile-image {
   animation: float 3s ease-in-out infinite;
   border: 3px solid white;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
 }
 
 .hover-grow {
@@ -3710,7 +3703,7 @@ body.homepage.is-preload #header:after {
   padding: 1.5rem;
   background: white;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
   transition: transform 0.3s ease;
   z-index: 1;
 }
@@ -3719,7 +3712,7 @@ body.homepage.is-preload #header:after {
 .card {
   background: white;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-md);
   padding: 1.5rem;
   margin: 1rem 0;
   transition: all 0.3s ease;
@@ -3852,7 +3845,7 @@ body.homepage.is-preload #header:after {
   padding-top: 56.25%; /* 16:9 Aspect Ratio */
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
 }
 
 .video-wrapper img {
