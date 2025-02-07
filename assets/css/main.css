@@ -3943,7 +3943,7 @@ body.homepage.is-preload #header:after {
 .research-links a {
   display: flex;
   align-items: center;
-  padding: 0.8rem 1rem;
+  /* padding: 0.8rem 1rem; */
   border-radius: 6px;
   white-space: nowrap; /* 新增 */
   overflow: hidden;
