@@ -3933,7 +3933,7 @@ body.homepage.is-preload #header:after {
   padding: 0.8rem 1rem;
   margin: 1.5rem 0 0.5rem;
   background: #f8f9fa;
-  border-left: 4px solid #3498db;
+  border-left: 4px solid var(--primary);
 }
 
 .research-links li {
