@@ -225,22 +225,3 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     });
   });
 });
-
-// 改进版激活状态判断
-document.querySelectorAll("nav a").forEach((link) => {
-  const currentPath = window.location.pathname;
-
-  // 匹配三种情况：
-  // 1. 精确匹配父级路径
-  // 2. 匹配子路径
-  // 3. 匹配index.html变体
-  if (
-    currentPath === link.pathname ||
-    currentPath.startsWith(link.pathname + "/") ||
-    (link.pathname.endsWith("/research") &&
-      currentPath.includes("/research/index"))
-  ) {
-    link.setAttribute("aria-current", "page");
-    link.classList.add("active");
-  }
-});
