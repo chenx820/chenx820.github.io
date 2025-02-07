@@ -3927,6 +3927,11 @@ body.homepage.is-preload #header:after {
   overflow-y: auto; /* 添加滚动支持 */
 }
 
+#sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
 /* 导航标题样式优化 */
 .nav-section-title {
   color: #1e293b;
@@ -3953,7 +3958,8 @@ body.homepage.is-preload #header:after {
 
 /* 导航链接优化 */
 .research-links li {
-  margin: 0.25rem 0;
+  list-style-type: none; /* 双重保障 */
+  margin-left: 0; /* 移除默认缩进 */
 }
 
 .research-links a {
