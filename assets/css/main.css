@@ -3555,6 +3555,7 @@ body.homepage.is-preload #header:after {
   background: var(--primary);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   transform: scale(1.05);
+  border: 1px solid var(--primary);
 }
 
 /* 新增网格布局样式 */
