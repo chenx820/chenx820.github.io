@@ -74,6 +74,17 @@
         <div class="container">
           <div class="row gtr-200">
             <div class="col-4 col-12-mobile" id="sidebar">
+              <section class="subpage-nav">
+                <header>
+                  <h3>Navigation</h3>
+                </header>
+                <ul class="subpage-links">
+                  <li><a href="#introduction">Introduction</a></li>
+                  <li><a href="#challenges">Key Challenges</a></li>
+                  <li><a href="#approach">Our Approach</a></li>
+                  <li><a href="#results">Preliminary Results</a></li>
+                </ul>
+              </section>
               <hr class="first" />
               <section>
                 <h4>
@@ -325,5 +336,15 @@
     <script src="/assets/js/breakpoints.min.js"></script>
     <script src="/assets/js/util.js"></script>
     <script src="/assets/js/main.js"></script>
+    <script>
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
   </body>
 </html>

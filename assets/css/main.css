@@ -3921,3 +3921,24 @@ body.homepage.is-preload #header:after {
     height: 16px; /* 缩小图标尺寸 */
   }
 }
+
+/* Navigation Styling */
+.subpage-nav {
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.subpage-links li {
+  margin: 0.8rem 0;
+}
+
+.subpage-links a {
+  color: #2c3e50;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.subpage-links a:hover {
+  color: #3498db;
+}
