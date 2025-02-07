@@ -3543,7 +3543,7 @@ body.homepage.is-preload #header:after {
   display: inline-block;
   padding: 4px 12px;
   border-radius: 16px;
-  background: var(--background-light);
+  background: white;
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.9em;
