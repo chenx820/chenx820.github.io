@@ -3974,12 +3974,12 @@ body.homepage.is-preload #header:after {
 }
 
 .section-links a:hover {
-  color: #3498db;
+  color: var(--primary);
 }
 
 /* 当前页面高亮 */
 .research-links a[href*="current-page"] {
   background: #3498db20;
-  color: #3498db;
+  color: var(--primary);
   font-weight: 500;
 }
