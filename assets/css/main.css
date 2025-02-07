@@ -3765,12 +3765,6 @@ body.homepage.is-preload #header:after {
   right: -1.5rem;
 }
 
-.custom-title {
-  font-size: 32px;
-  font-style: italic;
-  font-weight: 700;
-  z-index: 1;
-}
 
 .highlights-section {
   background-color: white;
