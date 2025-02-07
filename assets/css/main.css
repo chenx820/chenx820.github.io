@@ -3551,8 +3551,8 @@ body.homepage.is-preload #header:after {
 }
 
 .tag-pill.active {
-  color: black;
-  background: var(--background-light);
+  color: white;
+  background: var(--primary);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   transform: scale(1.05);
 }
