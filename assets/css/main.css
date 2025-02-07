@@ -3961,7 +3961,6 @@ body.homepage.is-preload #header:after {
   align-items: center;
   padding: 0.75rem 1.25rem;
   border-radius: 8px;
-  color: #475569;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: visible;
@@ -3980,7 +3979,7 @@ body.homepage.is-preload #header:after {
 
 /* 当前页面高亮效果 */
 .research-links a[aria-current="page"] {
-  background: #eff6ff;
+  background: var(--primary-light);
   color: var(--primary);
   font-weight: 500;
 }
@@ -4002,7 +4001,6 @@ body.homepage.is-preload #header:after {
   margin-right: 1rem;
   width: 1.1em;
   height: 1.1em;
-  color: #64748b;
   transition: color 0.2s ease;
 }
 
