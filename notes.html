@@ -1159,7 +1159,7 @@
           section.querySelectorAll(".card")
         ).some((card) => card.style.display !== "none");
 
-        const title = section.querySelector("h3.custom-title");
+        const title = section.querySelector("h3");
         if (title) {
           title.closest("header").style.display = hasVisibleCards
             ? "block"
