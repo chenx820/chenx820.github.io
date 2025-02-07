@@ -3942,3 +3942,23 @@ body.homepage.is-preload #header:after {
 .subpage-links a:hover {
   color: #3498db;
 }
+
+/* 隐藏视觉元素但保留屏幕阅读器可访问性 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* 侧边导航栏样式 */
+nav[aria-label] {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
