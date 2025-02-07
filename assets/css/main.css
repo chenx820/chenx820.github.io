@@ -3923,42 +3923,63 @@ body.homepage.is-preload #header:after {
 }
 
 /* Navigation Styling */
-.subpage-nav {
-  padding: 1.5rem;
-  background: #f8f9fa;
-  border-radius: 8px;
+#sidebar {
+  padding-right: 2rem;
 }
 
-.subpage-links li {
-  margin: 0.8rem 0;
-}
-
-.subpage-links a {
+.nav-section-title {
   color: #2c3e50;
-  text-decoration: none;
-  transition: color 0.3s ease;
+  font-size: 1.1rem;
+  padding: 0.8rem 1rem;
+  margin: 1.5rem 0 0.5rem;
+  background: #f8f9fa;
+  border-left: 4px solid #3498db;
 }
 
-.subpage-links a:hover {
+.research-links li {
+  margin: 0.6rem 0;
+}
+
+.research-links a {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.research-links a:hover {
+  background: #f0f3f5;
+  transform: translateX(5px);
+}
+
+.research-links .icon {
+  margin-right: 0.8rem;
+  width: 1.2em;
+}
+
+.section-links {
+  border-left: 2px solid #eee;
+  padding-left: 1rem;
+}
+
+.section-links li {
+  margin: 0.5rem 0;
+}
+
+.section-links a {
+  color: #7f8c8d;
+  padding: 0.4rem 0;
+  display: block;
+}
+
+.section-links a:hover {
   color: #3498db;
 }
 
-/* 隐藏视觉元素但保留屏幕阅读器可访问性 */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-/* 侧边导航栏样式 */
-nav[aria-label] {
-  background: #f8f9fa;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+/* 当前页面高亮 */
+.research-links a[href*="current-page"] {
+  background: #3498db20;
+  color: #3498db;
+  font-weight: 500;
 }
