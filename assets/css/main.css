@@ -3924,7 +3924,11 @@ body.homepage.is-preload #header:after {
 
 /* Navigation Styling */
 #sidebar {
-  padding-right: 2rem;
+  min-width: 250px;
+  padding-right: 1rem;
+  position: sticky;
+  top: 2rem;
+  align-self: start;
 }
 
 .nav-section-title {
@@ -3968,7 +3972,7 @@ body.homepage.is-preload #header:after {
 }
 
 .section-links li {
-  margin: 0.5rem 0;
+  margin: 0.6rem 0;
 }
 
 .section-links a {
