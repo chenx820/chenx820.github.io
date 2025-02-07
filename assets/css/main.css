@@ -3914,7 +3914,7 @@ body.homepage.is-preload #header:after {
 
 /* Navigation Styling */
 #sidebar {
-  min-width: 280px; /* 适当增加宽度 */
+  min-width: 250px; /* 适当增加宽度 */
   padding: 1.5rem;
   border-right: 1px solid #e2e8f0; /* 添加右侧分割线 */
   height: calc(100vh - 80px); /* 固定高度 */
