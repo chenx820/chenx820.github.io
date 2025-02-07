@@ -4000,8 +4000,8 @@ body.homepage.is-preload #header:after {
 /* 图标样式优化 */
 .research-links .icon {
   margin-right: 1rem;
-  width: 1.1em;
-  height: 1.1em;
+  width: 0.8em;
+  height: 0.8em;
   transition: color 0.2s ease;
 }
 
