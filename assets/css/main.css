@@ -3928,29 +3928,6 @@ body.homepage.is-preload #header:after {
   padding-left: 0;
 }
 
-/* 导航标题样式优化 */
-.nav-section-title {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 1rem 1.25rem;
-  margin: 1rem 0;
-  background: transparent;
-  border-left: none;
-  position: relative;
-}
-
-.nav-section-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 1.25rem;
-  right: 1.25rem;
-  height: 1px;
-  background: white;
-}
-
 /* 导航链接优化 */
 .research-links li {
   list-style-type: none; /* 双重保障 */
