@@ -3765,7 +3765,6 @@ body.homepage.is-preload #header:after {
   right: -1.5rem;
 }
 
-
 .highlights-section {
   background-color: white;
   padding: 4rem 0;
@@ -3918,69 +3917,113 @@ body.homepage.is-preload #header:after {
 
 /* Navigation Styling */
 #sidebar {
-  min-width: 250px;
-  padding-right: 1rem;
+  min-width: 280px; /* 适当增加宽度 */
+  padding: 1.5rem;
+  background: #f8fafc; /* 添加浅色背景 */
+  border-right: 1px solid #e2e8f0; /* 添加右侧分割线 */
+  height: calc(100vh - 80px); /* 固定高度 */
   position: sticky;
-  top: 2rem;
-  align-self: start;
+  top: 80px; /* 根据header高度调整 */
+  overflow-y: auto; /* 添加滚动支持 */
 }
 
+/* 导航标题样式优化 */
 .nav-section-title {
-  color: #2c3e50;
-  font-size: 1.1rem;
-  padding: 0.8rem 1rem;
-  margin: 1.5rem 0 0.5rem;
-  background: #f8f9fa;
-  border-left: 4px solid var(--primary);
+  color: #1e293b;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  background: transparent;
+  border-left: none;
+  position: relative;
 }
 
+.nav-section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 1.25rem;
+  right: 1.25rem;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+/* 导航链接优化 */
 .research-links li {
-  margin: 0.6rem 0;
+  margin: 0.25rem 0;
 }
 
 .research-links a {
   display: flex;
   align-items: center;
-  padding: 0.8rem 0;
-  border-radius: 6px;
-  white-space: nowrap; /* 新增 */
-  overflow: hidden;
-  text-overflow: ellipsis; /* 过长文本显示省略号 */
-  transition: all 0.3s ease;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  color: #475569;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: visible;
+  white-space: nowrap;
 }
 
 .research-links a:hover {
-  background: #f0f3f5;
-  transform: translateX(5px);
+  background: #f1f5f9;
+  transform: translateX(4px);
+  color: #1e40af;
 }
 
-.research-links .icon {
-  margin-right: 0.8rem;
-  text-align: center;
-  width: 1.2em;
+.research-links a:hover .icon {
+  color: #1e40af;
 }
 
-.section-links {
-  padding-left: 1rem;
-}
-
-.section-links li {
-  margin: 0.6rem 0;
-}
-
-.section-links a {
-  color: #7f8c8d;
-  padding: 0.4rem 0;
-  display: block;
-}
-
-.section-links a:hover {
-  color: var(--primary);
-}
-
-/* 当前页面高亮 */
-.research-links a[href*="current-page"] {
-  background: #3498db20;
-  color: var(--primary);
+/* 当前页面高亮效果 */
+.research-links a[aria-current="page"] {
+  background: #eff6ff;
+  color: #1e40af;
   font-weight: 500;
+}
+
+.research-links a[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 3px;
+  background: #1e40af;
+  border-radius: 0 4px 4px 0;
+}
+
+/* 图标样式优化 */
+.research-links .icon {
+  margin-right: 1rem;
+  width: 1.1em;
+  height: 1.1em;
+  color: #64748b;
+  transition: color 0.2s ease;
+}
+
+/* 响应式优化 */
+@media (max-width: 1024px) {
+  #sidebar {
+    min-width: 240px;
+    padding: 1rem;
+  }
+
+  .research-links a {
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    position: static;
+    height: auto;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
 }
