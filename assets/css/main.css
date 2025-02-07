@@ -3945,6 +3945,9 @@ body.homepage.is-preload #header:after {
   align-items: center;
   padding: 0.8rem 1rem;
   border-radius: 6px;
+  white-space: nowrap; /* 新增 */
+  overflow: hidden;
+  text-overflow: ellipsis; /* 过长文本显示省略号 */
   transition: all 0.3s ease;
 }
 
@@ -3955,6 +3958,7 @@ body.homepage.is-preload #header:after {
 
 .research-links .icon {
   margin-right: 0.8rem;
+  text-align: center;
   width: 1.2em;
 }
 
