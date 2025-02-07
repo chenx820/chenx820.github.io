@@ -3971,17 +3971,17 @@ body.homepage.is-preload #header:after {
 .research-links a:hover {
   background: #f1f5f9;
   transform: translateX(4px);
-  color: #1e40af;
+  color: var(--primary);
 }
 
 .research-links a:hover .icon {
-  color: #1e40af;
+  color: var(--primary);
 }
 
 /* 当前页面高亮效果 */
 .research-links a[aria-current="page"] {
   background: #eff6ff;
-  color: #1e40af;
+  color: var(--primary);
   font-weight: 500;
 }
 
@@ -3993,7 +3993,7 @@ body.homepage.is-preload #header:after {
   transform: translateY(-50%);
   height: 60%;
   width: 3px;
-  background: #1e40af;
+  background: var(--primary);
   border-radius: 0 4px 4px 0;
 }
 
