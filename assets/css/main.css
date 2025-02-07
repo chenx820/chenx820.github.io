@@ -3931,7 +3931,6 @@ body.homepage.is-preload #header:after {
 
 /* 导航标题样式优化 */
 .nav-section-title {
-  color: #1e293b;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -3950,7 +3949,7 @@ body.homepage.is-preload #header:after {
   left: 1.25rem;
   right: 1.25rem;
   height: 1px;
-  background: #e2e8f0;
+  background: white;
 }
 
 /* 导航链接优化 */
