@@ -4006,9 +4006,24 @@ body.homepage.is-preload #header:after {
   }
 }
 
+.conversion-tools {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
 .output-container {
   position: relative;
   margin: 1.5rem 0;
+}
+
+.format-select {
+  padding: 0.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  min-width: 120px;
 }
 
 .output-box {
