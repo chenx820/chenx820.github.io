@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LaTeX 转换工具</title>
+  </head>
+  <body>
+    <h2>上传 LaTeX 文件</h2>
+    <input type="file" id="latexFile" />
+    <select id="format">
+      <option value="html">HTML</option>
+      <option value="text">Text (未实现)</option>
+      <option value="markdown">Markdown (未实现)</option>
+    </select>
+    <button onclick="convertLatex()">转换</button>
+
+    <h3>转换结果：</h3>
+    <pre id="output"></pre>
+
+    <script src="css/js/convert.js"></script>
+    <!-- 外部 JavaScript 文件 -->
+  </body>
+</html>
