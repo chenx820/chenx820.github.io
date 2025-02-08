@@ -4,7 +4,7 @@ async function convertLatex() {
   const outputBox = document.getElementById("output");
 
   if (!fileInput.files.length) {
-    showFeedback("⚠️ Please upload a LaTeX file first!", 3000);
+    showFeedback("Please upload a LaTeX file first!", 3000);
     return;
   }
 
@@ -81,4 +81,11 @@ function exportToFile() {
     console.error("Export error:", error);
     showFeedback("Export failed!", 3000);
   }
+}
+
+function showFeedback(message, duration = 2000) {
+  const feedback = document.getElementById("feedback");
+  feedback.textContent = message;
+  feedback.classList.add("show-feedback");
+  setTimeout(() => feedback.classList.remove("show-feedback"), duration);
 }
