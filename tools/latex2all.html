@@ -79,21 +79,22 @@
                 <strong>HTML, Markdown, or Text</strong>. Enjoy!
               </p>
             </header>
+            <div class="card">
+              <h3>📝 Upload your LaTeX file</h3>
+              <input type="file" id="latexFile" />
 
-            <h3>📝 Upload your LaTeX file</h3>
-            <input type="file" id="latexFile" />
+              <select id="format">
+                <option value="html">HTML</option>
+                <option value="text">Text (waiting...)</option>
+                <option value="markdown">Markdown (waiting...)</option>
+              </select>
 
-            <select id="format">
-              <option value="html">HTML</option>
-              <option value="text">Text (waiting...)</option>
-              <option value="markdown">Markdown (waiting...)</option>
-            </select>
-
-            <button onclick="convertLatex()">🚀 Convert</button>
-            <h3>Results</h3>
-            <pre id="output" class="output-box">
-Your converted content will appear here...</pre
-            >
+              <button onclick="convertLatex()">🚀 Convert</button>
+              <h3>Conversion result</h3>
+              <pre id="output" class="output-box">
+ Your converted content will appear here...</pre
+              >
+            </div>
           </article>
         </div>
       </div>
