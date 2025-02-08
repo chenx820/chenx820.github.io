@@ -12,12 +12,17 @@ async function convertLatex() {
   formData.append("file", file);
   formData.append("format", format);
 
-  let response = await fetch("https://latex2all.onrender.com", {
-    method: "POST",
-    body: formData,
-  });
+  try {
+    let response = await fetch("https://latex2all.onrender.com/convert", {
+      method: "POST",
+      body: formData,
+    });
 
-  let result = await response.json();
-  document.getElementById("output").innerText =
-    result.result || "Oops! Something went wrong!";
+    let result = await response.json();
+    document.getElementById("output").innerText =
+      result.result || "Oops! Something went wrong!";
+  } catch (error) {
+    console.error("Error:", error);
+    document.getElementById("output").innerText = "Error: " + error.message;
+  }
 }
