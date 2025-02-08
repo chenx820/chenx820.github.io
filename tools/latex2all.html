@@ -71,7 +71,16 @@
       <div class="wrapper style1">
         <div class="container">
           <article id="main" class="special">
-            <h3>Upload your LaTeX file</h3>
+            <header>
+              <h2>✨ Welcome to LaTeX2All ✨</h2>
+              <p>
+                This is a little tool I built to help you
+                <strong>convert LaTeX files</strong> into
+                <strong>HTML, Markdown, or Text</strong>. Enjoy!
+              </p>
+            </header>
+
+            <h3>📝 Upload your LaTeX file</h3>
             <input type="file" id="latexFile" />
 
             <select id="format">
@@ -79,9 +88,12 @@
               <option value="text">Text (waiting...)</option>
               <option value="markdown">Markdown (waiting...)</option>
             </select>
-            <button onclick="convertLatex()">Convert</button>
+
+            <button onclick="convertLatex()">🚀 Convert</button>
             <h3>Results</h3>
-            <pre id="output"></pre>
+            <pre id="output" class="output-box">
+Your converted content will appear here...</pre
+            >
           </article>
         </div>
       </div>
