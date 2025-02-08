@@ -72,25 +72,35 @@
         <div class="container">
           <article id="main" class="special">
             <header>
-              <h2>✨ Welcome to LaTeX2All ✨</h2>
+              <h2>✨ LaTeX2All Converter ✨</h2>
               <p>
-                This is a little tool I built to help you
-                <strong>convert LaTeX files</strong> into
-                <strong>HTML, Markdown, or Text</strong>. Enjoy!
+                Transform your LaTeX documents into web-friendly formats with
+                one click!<br />
+                Supports <strong>HTML</strong>, <strong>Markdown</strong>, and
+                plain text conversions.
               </p>
             </header>
             <div class="card">
               <h3>📝 Upload your LaTeX file</h3>
-              <input type="file" id="latexFile" />
+              <input type="file" id="latexFile" accept=".tex" />
 
-              <select id="format">
+              <select id="format" class="format-select">
                 <option value="html">HTML</option>
-                <option value="text">Text (waiting...)</option>
-                <option value="markdown">Markdown (waiting...)</option>
+                <option value="text">Text (Coming Soon)</option>
+                <option value="markdown">Markdown (Coming Soon)</option>
               </select>
+              <style>
+                .format-select {
+                  padding: 0.8rem;
+                  border: 2px solid #e0e0e0;
+                  border-radius: 8px;
+                  background: white;
+                  min-width: 120px;
+                }
+              </style>
 
-              <button onclick="convertLatex()">🚀 Convert</button>
-              <h3>Conversion result</h3>
+              <button onclick="convertLatex()">Convert</button>
+              <h3 style="margin-bottom: 1rem">Conversion result</h3>
               <pre id="output" class="output-box">
  Your converted content will appear here...</pre
               >
