@@ -101,8 +101,11 @@
 
               <button onclick="convertLatex()">Convert</button>
               <h3 style="margin-bottom: 1rem">Conversion result</h3>
-              <pre id="output" class="output-box">
- Your converted content will appear here...</pre
+              <button onclick="copyToClipboard()">Copy All</button>
+              <button onclick="exportToFile()">Export</button>
+              <textarea id="output" class="output-box" rows="10" readonly>
+                Your converted content will appear here...
+                </textarea
               >
             </div>
           </article>

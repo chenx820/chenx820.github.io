@@ -3,7 +3,7 @@ async function convertLatex() {
   let format = document.getElementById("format").value;
 
   if (!fileInput.files.length) {
-    alert("Please select a LaTeX file to convert!");
+    alert("Please upload a LaTeX file first!");
     return;
   }
 
@@ -18,11 +18,40 @@ async function convertLatex() {
       body: formData,
     });
 
+    if (!response.ok) {
+      throw new Error("Server error! Please try again later.");
+    }
+
     let result = await response.json();
-    document.getElementById("output").innerText =
-      result.result || "Oops! Something went wrong!";
+    let outputBox = document.getElementById("output");
+
+    outputBox.value = result.result || "Conversion failed!";
   } catch (error) {
     console.error("Error:", error);
-    document.getElementById("output").innerText = "Error: " + error.message;
+    document.getElementById("output").value = "Error: " + error.message;
   }
+}
+
+// 📋 复制全部文本
+function copyToClipboard() {
+  let outputBox = document.getElementById("output");
+  outputBox.select();
+  document.execCommand("copy");
+  alert("Copied to clipboard! ");
+}
+
+// 💾 导出文件
+function exportToFile() {
+  let outputBox = document.getElementById("output").value;
+  let format = document.getElementById("format").value;
+  let fileType =
+    format === "html" ? "html" : format === "markdown" ? "md" : "txt";
+
+  let blob = new Blob([outputBox], { type: "text/plain" });
+  let a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `converted.${fileType}`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
