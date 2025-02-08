@@ -3,7 +3,7 @@ async function convertLatex() {
   let format = document.getElementById("format").value;
 
   if (!fileInput.files.length) {
-    alert("请上传 LaTeX 文件！");
+    alert("Please select a LaTeX file to convert!");
     return;
   }
 
@@ -13,11 +13,11 @@ async function convertLatex() {
   formData.append("format", format);
 
   let response = await fetch("https://latex2all.onrender.com", {
-    // 替换为你的 Render API 地址
     method: "POST",
     body: formData,
   });
 
   let result = await response.json();
-  document.getElementById("output").innerText = result.result || "转换失败";
+  document.getElementById("output").innerText =
+    result.result || "Oops! Something went wrong!";
 }
