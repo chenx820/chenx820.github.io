@@ -89,24 +89,31 @@
                 <option value="text">Text (Coming Soon)</option>
                 <option value="markdown">Markdown (Coming Soon)</option>
               </select>
-              <style>
-                .format-select {
-                  padding: 0.8rem;
-                  border: 2px solid #e0e0e0;
-                  border-radius: 8px;
-                  background: white;
-                  min-width: 120px;
-                }
-              </style>
 
               <button onclick="convertLatex()">Convert</button>
-              <h3 style="margin-bottom: 1rem">Conversion result</h3>
-              <button onclick="copyToClipboard()">Copy All</button>
-              <button onclick="exportToFile()">Export</button>
-              <textarea id="output" class="output-box" rows="10" readonly>
-                Your converted content will appear here...
-                </textarea
-              >
+
+              <h3 style="margin: 1.5rem 0">Conversion result</h3>
+
+              <div class="output-container">
+                <div class="feedback" id="feedback"></div>
+                <textarea
+                  id="output"
+                  class="output-box"
+                  placeholder="Your converted content will appear here..."
+                  rows="8"
+                ></textarea>
+
+                <div class="conversion-tools" style="margin-top: 1rem">
+                  <button onclick="copyToClipboard()">
+                    <span class="material-symbols-outlined">content_copy</span>
+                    Copy All
+                  </button>
+                  <button onclick="exportToFile()">
+                    <span class="material-symbols-outlined">download</span>
+                    Download
+                  </button>
+                </div>
+              </div>
             </div>
           </article>
         </div>

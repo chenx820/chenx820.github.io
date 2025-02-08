@@ -4005,3 +4005,66 @@ body.homepage.is-preload #header:after {
     border-bottom: 1px solid #e2e8f0;
   }
 }
+
+.output-container {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.output-box {
+  width: 100%;
+  padding: 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  min-height: 200px;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.output-box:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+}
+
+/* 占位符样式 */
+.output-box::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* 反馈提示样式 */
+.feedback {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.show-feedback {
+  opacity: 1;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  .conversion-tools {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .output-box {
+    min-height: 150px;
+  }
+}
