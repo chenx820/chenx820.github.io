@@ -4074,11 +4074,6 @@ body.homepage.is-preload #header:after {
     flex-direction: column;
   }
 
-  button {
-    width: 100%;
-    padding: 1rem;
-  }
-
   .output-box {
     min-height: 150px;
   }
