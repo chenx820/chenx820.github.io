@@ -2220,9 +2220,10 @@ button,
   font-family: inherit;
   font-size: 0.9em;
   text-align: center;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xl);
   text-decoration: none;
   padding: 4px 12px;
+  gap: 8px;
   border: 1px solid #ddd;
   cursor: pointer;
   outline: 0;
@@ -2236,6 +2237,7 @@ button,
   transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out,
     border-bottom-color 0.35s ease-in-out;
 }
+
 
 input[type="button"]:hover,
 input[type="submit"]:hover,
@@ -3070,7 +3072,8 @@ body.homepage.is-preload #header:after {
     display: block;
     padding: 0;
     line-height: 3em;
-    width: 100%;
+    align-items: center;
+    width: 80%;
   }
 
   /* Nav */
