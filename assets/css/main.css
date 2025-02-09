@@ -2215,8 +2215,8 @@ button,
 .button {
   position: relative;
   display: inline-block;
-  background: white;
-  color: #483949;
+  background: var(--primary);
+  color: white;
   font-family: inherit;
   font-size: 0.9em;
   text-align: center;
@@ -2224,7 +2224,6 @@ button,
   text-decoration: none;
   padding: 4px 12px;
   gap: 8px;
-  border: 1px solid #ddd;
   cursor: pointer;
   outline: 0;
   font-weight: 300;
@@ -2238,14 +2237,13 @@ button,
     border-bottom-color 0.35s ease-in-out;
 }
 
-
 input[type="button"]:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,
 button:hover,
 .button:hover {
   color: var(--background-light);
-  background: #ef8376;
+  background: var(--primary-dark);
 }
 
 input[type="button"].alt,
