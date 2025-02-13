@@ -80,14 +80,14 @@
                     <a href="/research/index.html">Overview</a>
                   </li>
                   <li>
-                    <a href="/research/neutral-atom-compilation.html"
+                    <a
+                      href="/research/neutral-atom-compilation.html"
+                      aria-current="page"
                       >Neutral Atom Calibration</a
                     >
                   </li>
                   <li>
-                    <a
-                      href="/research/trapped-ion-calibration.html"
-                      aria-current="page"
+                    <a href="/research/trapped-ion-calibration.html"
                       >Trapped Ion Calibration</a
                     >
                   </li>
@@ -106,9 +106,9 @@
                   <li>
                     <a href="#introduction" class="scroll-link">Introduction</a>
                   </li>
-                  <li><a href="#hardware" class="scroll-link">Hardware</a></li>
+                  <li><a href="#physical" class="scroll-link">Physical</a></li>
                   <li>
-                    <a href="#compilation" class="scroll-link">Compilation</a>
+                    <a href="#calibration" class="scroll-link">Calibration</a>
                   </li>
                 </ul>
               </nav>
@@ -116,31 +116,50 @@
             <div class="col-8 col-12-mobile imp-mobile" id="content">
               <article id="main">
                 <header>
-                  <h2>Compilation for Neutral Atom Quantum Computers</h2>
+                  <h2>Calibration of Trapped-Ion Systems</h2>
                 </header>
                 <p>
-                  This project was conducted within the
-                  <a href="http://en.baqis.ac.cn/research/groups/?cid=814"
-                    >Quantum Operating System Group</a
-                  >
-                  at the Beijing Academy of Quantum Information Sciences
-                  (BAQIS), where I worked as a remote research intern. In
-                  collaboration with Dr. Jingbo Wang and Dr. Xi Zhao, this work
-                  focused on optimizing compilation strategies for neutral atom
-                  quantum computing systems.
+                  This project was conducted at the Institute for Quantum
+                  Computing, Baidu Inc., in collaboration with Dr. Jingbo Wang.
+                  The work has culminated in the development of three patents:
                 </p>
                 <ul>
                   <li>
-                    <strong>C. Huang</strong>, X. Zhao, H. Xu, W. Zhuang, M.-J.
-                    Hu, D. E. Liu, and J. Wang, "ZAP: Zoned Architecture and
-                    Parallelizable Compiler for Field Programmable Atom Array,"
+                    <strong>C. Huang</strong> and J. Wang, "Ion trap chip
+                    parameter correction method and device, electronic equipment
+                    and medium,"
                     <i
-                      >arXiv preprint
-                      <a href="https://arxiv.org/abs/2411.14037"
-                        >arXiv:2411.14037</a
+                      >Chinese Patent
+                      <a href="https://patents.google.com/patent/CN117454997/en"
+                        >CN117454997</a
                       ></i
-                    >, 2024.
+                    >, Granted 2025.
                   </li>
+                  <li>
+                    J. Wang and
+                    <strong>C. Huang</strong>, "Ion trap chip parameter
+                    determining method and device, electronic equipment and
+                    medium,"
+                    <i
+                      >Chinese Patent
+                      <a href="https://patents.google.com/patent/CN117371547/en"
+                        >CN117371547</a
+                      ></i
+                    >, Granted 2024.
+                  </li>
+                  <li>
+                    J. Wang and
+                    <strong>C. Huang</strong>, "Ion trap chip parameter
+                    calibration method and device, electronic equipment and
+                    medium,"
+                    <i
+                      >Chinese Patent
+                      <a href="https://patents.google.com/patent/CN117494829/en"
+                        >CN117494829</a
+                      ></i
+                    >, Granted 2024.
+                  </li>
+                  
                 </ul>
               </article>
               <hr />
@@ -148,45 +167,78 @@
                 <header>
                   <h3>Introduction</h3>
                 </header>
-                <p></p>
+                <p>
+                  Trapped-ion quantum computing, as one of the earliest
+                  platforms to demonstrate quantum computation, has been under
+                  development for over 30 years. From the initial demonstration
+                  of Schrödinger's cat states to the creation of fully connected
+                  qubit chips, the trapped-ion platform has consistently shown
+                  great potential as a quantum computing hardware solution. The
+                  fundamental principles of trapped-ion quantum computing are as
+                  follows:
+                </p>
+                <ol>
+                  <li>
+                    <strong>Qubit encoding:</strong>
+                    Individual ions are used as qubits by leveraging different
+                    energy levels within the ion. These levels often result from
+                    orbital splitting, forming fine or hyperfine structures. The
+                    ion's internal energy levels are typically rich and
+                    non-equidistant, making them suitable for qubit encoding.
+                  </li>
+                  <li>
+                    <strong>Qubit manipulation:</strong>
+                    By carefully selecting specific laser frequencies and
+                    applying precise laser techniques, the trapped-ion system
+                    enables the preparation of initial quantum states, the
+                    manipulation of qubit states, and the measurement of quantum
+                    states.
+                  </li>
+                  <li>
+                    <strong>Qubit coupling:</strong>
+                    Since ions are charged particles, they interact with one
+                    another through Coulomb forces, which include long-range
+                    interaction terms. This natural property allows ions in a
+                    quantum chip to form a fully connected network. Specially
+                    tailored laser or microwave techniques can be used to
+                    mediate interactions between any pair of qubits, granting
+                    the trapped-ion platform its inherent full-connectivity
+                    feature.
+                  </li>
+                </ol>
               </section>
               <hr />
-              <section id="hardware">
+              <section id="physical">
                 <header>
-                  <h3>Hardware</h3>
+                  <h3>Physical process</h3>
                 </header>
-                <h4>Optical tweezers</h4>
-                <h4>Architecture</h4>
+                <h4>Vibration modes</h4>
+                <h4>Two-level approximation and Raman process</h4>
+                <h4>single-qubit gates</h4>
+                <h4>Two-qubit gates</h4>
               </section>
               <hr />
-              <section id="compilation">
+              <section id="calibration">
                 <header>
-                  <h3>Compilation</h3>
+                  <h3>Calibration</h3>
                 </header>
-                <h4>Scheduling</h4>
-                <h4>Placement</h4>
-                <h4>Routing</h4>
+                <h4>Motivation</h4>
+                <h4>Calibration of phonon frequency</h4>
+                <h4>Calibration of Lamb-Dicke parameters</h4>
               </section>
               <hr />
               <section>
                 <header>
                   <h3>Links</h3>
-                  <ul>
-                    <li>
-                      <a href="http://en.baqis.ac.cn/research/groups/?cid=814"
-                        >Quantum Operating System Group, Beijing Academy of
-                        Quantum Information Sciences (BAQIS)</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="https://info.phys.tsinghua.edu.cn/coldquantum/index.html"
-                        >Ultracold Atoms & Quantum Optics Research Group,
-                        Tsinghua University</a
-                      >
-                    </li>
-                  </ul>
                 </header>
+                <ul>
+                  <li>
+                    <a
+                      href="https://quantumoptics.at/en/links/ion-trapping-worldwide.html"
+                      >Ion trapping groups worldwide</a
+                    >
+                  </li>
+                </ul>
               </section>
             </div>
           </div>
