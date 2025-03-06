@@ -77,17 +77,17 @@
       <div class="wrapper style1">
         <div class="container">
           <div class="row gtr-200">
+            <header>
+              <h2>✨ LaTeX2All Converter ✨</h2>
+              <p>
+                Transform your LaTeX documents into web-friendly formats with
+                one click!<br />
+                Supports <strong>HTML</strong>, <strong>Markdown</strong>, and
+                plain text conversions.
+              </p>
+            </header>
             <div class="col-8 col-12-mobile" id="content">
               <article id="main" class="special">
-                <header>
-                  <h2>✨ LaTeX2All Converter ✨</h2>
-                  <p>
-                    Transform your LaTeX documents into web-friendly formats
-                    with one click!<br />
-                    Supports <strong>HTML</strong>, <strong>Markdown</strong>,
-                    and plain text conversions.
-                  </p>
-                </header>
                 <div class="card">
                   <h3 style="margin: 1.5rem 0">Upload your LaTeX file</h3>
                   <input type="file" id="latexFile" accept=".tex" />
@@ -110,7 +110,6 @@
                       placeholder="Your converted content will appear here..."
                       rows="8"
                     ></textarea>
-
                     <div class="conversion-tools" style="margin-top: 1rem">
                       <button onclick="copyToClipboard()">Copy All</button>
                       <button onclick="exportToFile()">Export</button>
@@ -134,7 +133,6 @@
         </div>
       </div>
 
-      <!-- 在</body>标签前添加收款码模态框 -->
       <div id="donate-modal" class="donate-modal">
         <div class="donate-content">
           <span class="close">&times;</span>
