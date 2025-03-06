@@ -2218,7 +2218,7 @@ button,
   background: var(--primary);
   color: white;
   text-align: center;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   text-decoration: none;
   padding: 4px 12px;
   gap: 8px;
