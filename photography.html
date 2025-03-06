@@ -117,11 +117,25 @@
       </section>
 
       <div class="filter-buttons" style="padding: 3rem; text-align: center">
-        <button class="button active" data-filter="all">All</button>
-        <button class="button" data-filter="china">China</button>
-        <button class="button" data-filter="europe">Europe</button>
-        <button class="button" data-filter="africa">Africa</button>
+        <a class="button active" data-filter="all" href="#">All</a>
+        <a class="button" data-filter="china" href="#">China</a>
+        <a class="button" data-filter="europe" href="#">Europe</a>
+        <a class="button" data-filter="africa" href="#">Africa</a>
       </div>
+      <script>
+        document.querySelectorAll(".filter-buttons .button").forEach((link) => {
+          link.addEventListener("click", (event) => {
+            event.preventDefault(); // 阻止 a 标签默认跳转
+            const filter = link.dataset.filter;
+            document.querySelectorAll(".grid-item").forEach((item) => {
+              item.style.display =
+                filter === "all" || item.dataset.category === filter
+                  ? "block"
+                  : "none";
+            });
+          });
+        });
+      </script>
 
       <div class="photo-grid">
         <div class="grid-item europe" data-category="europe">
@@ -385,18 +399,6 @@
     <script src="/assets/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script>
-      document.querySelectorAll(".filter-buttons .button").forEach((button) => {
-        button.addEventListener("click", () => {
-          const filter = button.dataset.filter;
-          document.querySelectorAll(".grid-item").forEach((item) => {
-            item.style.display =
-              filter === "all" || item.dataset.category === filter
-                ? "block"
-                : "none";
-          });
-        });
-      });
-
       lightbox.option({
         resizeDuration: 200,
         wrapAround: true,
