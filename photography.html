@@ -102,25 +102,8 @@
                 allowfullscreen
               ></iframe>
             </div>
-
-            <!--
-            <div class="video-wrapper">
-              <a
-                href="https://youtu.be/PSpghrPLQXI"
-                data-lightbox="video-gallery"
-                data-title="My Travel Memories"
-                class="video-thumbnail"
-              >
-                <img
-                  src="//img.youtube.com/vi/PSpghrPLQXI/maxresdefault.jpg"
-                  alt="2024 Highlights Video"
-                />
-                <div class="play-button"></div>
-              </a>
-            </div>-->
           </div>
 
-          <!-- 文字介绍部分 -->
           <div class="highlight-content">
             <h2>2024 Journey Highlights</h2>
             <div class="content-scroll">
@@ -402,7 +385,6 @@
     <script src="/assets/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script>
-      // 过滤功能
       document.querySelectorAll(".filter-buttons .button").forEach((button) => {
         button.addEventListener("click", () => {
           const filter = button.dataset.filter;
@@ -415,7 +397,6 @@
         });
       });
 
-      // 更新lightbox配置以支持视频
       lightbox.option({
         resizeDuration: 200,
         wrapAround: true,
@@ -425,7 +406,7 @@
         videoHeight: 720,
       });
 
-      // YouTube视频处理
+      // YouTube video lightbox
       document
         .querySelectorAll('[data-lightbox="video-gallery"]')
         .forEach((link) => {
