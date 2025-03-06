@@ -2220,7 +2220,8 @@ button,
   text-align: center;
   border-radius: var(--radius-md);
   text-decoration: none;
-  padding: 0.65em 2em 0.65em 2em;
+  padding: 0.35em 1em 0.35em 1em;
+  gap: 0.5em;
   cursor: pointer;
   outline: 0;
   font-weight: 300;
