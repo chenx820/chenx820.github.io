@@ -76,7 +76,7 @@
       <!-- Main -->
       <div class="wrapper style1">
         <div class="container">
-          <div class="row gtr-200">
+          <article id="main" class="special">
             <header>
               <h2>✨ LaTeX2All Converter ✨</h2>
               <p>
@@ -86,53 +86,40 @@
                 plain text conversions.
               </p>
             </header>
-            <div class="col-8 col-12-mobile" id="content">
-              <article id="main" class="special">
-                <div class="card">
-                  <h3 style="margin: 1.5rem 0">Upload your LaTeX file</h3>
-                  <input type="file" id="latexFile" accept=".tex" />
+            <div class="card">
+              <h3 style="margin: 1.5rem 0">Upload your LaTeX file</h3>
+              <input type="file" id="latexFile" accept=".tex" />
 
-                  <select id="format" class="format-select">
-                    <option value="html">HTML</option>
-                    <option value="text">Text (Coming Soon)</option>
-                    <option value="markdown">Markdown (Coming Soon)</option>
-                  </select>
+              <select id="format" class="format-select">
+                <option value="html">HTML</option>
+                <option value="text">Text (Coming Soon)</option>
+                <option value="markdown">Markdown (Coming Soon)</option>
+              </select>
 
-                  <button onclick="convertLatex()">Convert</button>
+              <button onclick="convertLatex()">Convert</button>
 
-                  <h3 style="margin: 1.5rem 0">Conversion result</h3>
+              <h3 style="margin: 1.5rem 0">Conversion result</h3>
 
-                  <div class="output-container">
-                    <div class="feedback" id="feedback"></div>
-                    <textarea
-                      id="output"
-                      class="output-box"
-                      placeholder="Your converted content will appear here..."
-                      rows="8"
-                    ></textarea>
-                    <div class="conversion-tools" style="margin-top: 1rem">
-                      <button onclick="copyToClipboard()">Copy All</button>
-                      <button onclick="exportToFile()">Export</button>
-                    </div>
-                  </div>
+              <div class="output-container">
+                <div class="feedback" id="feedback"></div>
+                <textarea
+                  id="output"
+                  class="output-box"
+                  placeholder="Your converted content will appear here..."
+                  rows="8"
+                ></textarea>
+
+                <div class="conversion-tools" style="margin-top: 1rem">
+                  <button onclick="copyToClipboard()">Copy All</button>
+                  <button onclick="exportToFile()">Export</button>
                 </div>
-              </article>
+              </div>
             </div>
-            <div class="col-4 col-12-mobile" id="sidebar">
-              <header>
-                <h3>Version Updates</h3>
-              </header>
-              <h4>v1.1.0 <span class="update-date">2024-05-25</span></h4>
-              <ul>
-                <li>新增Markdown格式支持</li>
-                <li>优化数学公式转换</li>
-                <li>修复表格转换问题</li>
-              </ul>
-            </div>
-          </div>
+          </article>
         </div>
       </div>
 
+      <!-- 在</body>标签前添加收款码模态框 -->
       <div id="donate-modal" class="donate-modal">
         <div class="donate-content">
           <span class="close">&times;</span>
