@@ -119,7 +119,6 @@
         </div>
       </div>
 
-      <!-- 在</body>标签前添加收款码模态框 -->
       <div id="donate-modal" class="donate-modal">
         <div class="donate-content">
           <span class="close">&times;</span>
@@ -133,17 +132,13 @@
           </div>
         </div>
       </div>
-
-      <!-- 在版权信息上方添加赞赏按钮 -->
       <section class="donate-section">
-        <button id="donate-btn" class="donate-button">
+        <a href="javascript:void(0)" id="donate-btn" class="button">
           <i class="fas fa-heart"></i>
           Support My Work
-        </button>
+        </a>
       </section>
-
       <script>
-        // 添加JavaScript控制
         const modal = document.getElementById("donate-modal");
         const btn = document.getElementById("donate-btn");
         const span = document.getElementsByClassName("close")[0];
