@@ -41,7 +41,7 @@ describe("App", () => {
   });
 
   it("should navigate to note", () => {
-    const editGithubUrl = `https://github.com/chenx820/chenx820.github.io/tree/develop/content/note/exciting-new-features-in-javascript/index.md`;
+    const editGithubUrl = `https://github.com/chenx820/chenx820.github.io/tree/main/content/note/exciting-new-features-in-javascript/index.md`;
     cy.findByText(/note/i, { selector: "a" })
       .click()
       .findByText(/Random post/i)
