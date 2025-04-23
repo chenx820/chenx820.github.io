@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600");
 @import url("https://fonts.googleapis.com/css2?family=Playfair Display:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Ma+Shan+Zheng&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
 @import url("fontawesome-all.min.css");
 
 /*
@@ -209,7 +210,7 @@ body {
   color: var(--dark);
   font-size: 15pt;
   line-height: 1.85em;
-  font-family: "EB Garamond", "Source Sans Pro", "Ma Shan Zheng", sans-serif;
+  font-family: "Karla", "Ma Shan Zheng", sans-serif;
   font-weight: 400;
 }
 
@@ -3116,7 +3117,6 @@ body.homepage.is-preload #header:after {
     text-rendering: auto;
     line-height: 1;
     text-transform: none !important;
-    font-family: "Font Awesome 5 Free";
     font-weight: 900;
   }
 
@@ -3359,25 +3359,25 @@ body.homepage.is-preload #header:after {
 /* Progress Bar */
 .progress-bar {
   height: 100%;
-  background-color: #ef8376; /* 进度条颜色 */
-  width: 0; /* 动态设置宽度 */
+  background-color: #ef8376;
+  width: 0;
   text-align: center;
   line-height: 20px;
   color: white;
-  transition: width 0.3s ease; /* 动画效果 */
+  transition: width 0.3s ease;
 }
 
 .resource-links h6 {
   display: flex;
   margin-top: 1px;
   align-items: center;
-  gap: 6px; /* 控制图标与文字的间距 */
+  gap: 6px;
 }
 
 .resource-links h6 i {
-  width: 20px; /* 固定图标容器宽度 */
-  text-align: center; /* 图标水平居中 */
-  font-size: 0.8em; /* 统一图标大小（可选） */
+  width: 20px;
+  text-align: center;
+  font-size: 0.8em;
 }
 
 /* Search Bar */
@@ -3514,13 +3514,13 @@ body.homepage.is-preload #header:after {
 .tag-cloud h4 {
   display: flex;
   align-items: center;
-  gap: 15px; /* 控制图标与文字的间距 */
+  gap: 15px;
 }
 
 .tag-cloud h4 i {
-  width: 24px; /* 固定图标容器宽度 */
-  text-align: center; /* 图标水平居中 */
-  font-size: 1.1em; /* 统一图标大小（可选） */
+  width: 24px;
+  text-align: center;
+  font-size: 1.1em;
 }
 
 .tag-container {
@@ -3891,16 +3891,16 @@ body.homepage.is-preload #header:after {
   }
 
   .pronunciation-btn {
-    transform: scale(0.9); /* 整体缩小到90% */
-    transform-origin: left center; /* 保持左对齐不变形 */
-    font-size: 10px; /* 调整字体大小 */
-    padding: 6px 10px; /* 调整内边距 */
+    transform: scale(0.9);
+    transform-origin: left center;
+    font-size: 10px;
+    padding: 6px 10px;
     gap: 4px;
   }
 
   .speaker-icon {
-    width: 16px; /* 缩小图标尺寸 */
-    height: 16px; /* 缩小图标尺寸 */
+    width: 16px;
+    height: 16px;
   }
 }
 
