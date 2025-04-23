@@ -8,7 +8,7 @@ const useRandomNotePost = () => {
   const noteposts = useStaticQuery(
     graphql`
       query {
-        allMarkdownRemark(filter: { fields: { posttype: { eq: "note" } } }) {
+        allMarkdownRemark(filter: { fields: { posttype: { eq: "notes" } } }) {
           edges {
             node {
               frontmatter {

@@ -1,16 +1,16 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import svgRect from '@src/static/home_rect.svg';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import svgRect from "@src/static/home_rect.svg";
 
-import { HeroCard } from './HeroCard';
-import { HomeWrapper, Intro } from './Home.style';
+import { HeroCard } from "./HeroCard";
+import { HomeWrapper, Intro } from "./Home.style";
 
-import IconLink from '@common/IconLink';
-import PageHeader from '@common/PageHeader';
-import Flex from '@common/Flex';
-import Button from '@common/Button';
+import IconLink from "@common/IconLink";
+import PageHeader from "@common/PageHeader";
+import Flex from "@common/Flex";
+import Button from "@common/Button";
 
-import { Card, CardIcon, CardText, CardTitle } from '@common/Card';
+import { Card, CardIcon, CardText, CardTitle } from "@common/Card";
 
 const ThingsILove = () => (
   <Flex justify="space-between" align="center">
@@ -19,19 +19,15 @@ const ThingsILove = () => (
         <FontAwesomeIcon icon="code" />
       </CardIcon>
       <CardTitle>Physics</CardTitle>
-      <CardText>
-        I am majoring in Physics and all about quantum.
-      </CardText>
+      <CardText>I am majoring in Physics and all about quantum.</CardText>
     </Card>
 
     <Card>
       <CardIcon>
-        <FontAwesomeIcon icon={['fab', 'js']} />
+        <FontAwesomeIcon icon={["fab", "js"]} />
       </CardIcon>
       <CardTitle>Quantum Computing</CardTitle>
-      <CardText>
-        My research focus on quantum computing.
-      </CardText>
+      <CardText>My research focus on quantum computing.</CardText>
     </Card>
 
     <Card>
@@ -39,9 +35,7 @@ const ThingsILove = () => (
         <FontAwesomeIcon icon="paint-brush" />
       </CardIcon>
       <CardTitle>Coding</CardTitle>
-      <CardText>
-        I love coding.
-      </CardText>
+      <CardText>I love coding.</CardText>
     </Card>
   </Flex>
 );
@@ -59,24 +53,24 @@ const Home = () => {
           <p className="adjust">EXPLORING THE QUANTUM WORLD</p>
 
           <div className="home__CTA">
-            <Button className="cta" as="a" href="/CV_chenhuang.pdf">
+            <Button className="cta" as="a" href="/CV_ChenHuang.pdf">
               Download Resume
             </Button>
 
             <div className="home__social">
               <IconLink
                 label="github"
-                icon={['fab', 'github']}
+                icon={["fab", "github"]}
                 href="//github.com/chenx820"
               />
               <IconLink
                 label="email"
-                icon={['fab', 'email']}
+                icon={["fab", "email"]}
                 href="mailto:chen.huang23@imperial.ac.uk"
               />
               <IconLink
                 label="linkedin"
-                icon={['fab', 'linkedin']}
+                icon={["fab", "linkedin"]}
                 href="//linkedin.com/in/chen-huang-820x/"
               />
             </div>

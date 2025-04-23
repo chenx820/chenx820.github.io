@@ -13,8 +13,8 @@ describe('Creative Coding Section', () => {
           .get('img')
           .should('exist');
         cy.get('h4').should('exist');
-        cy.findAllByLabelText(/Live Demo/i).should('have.attr', 'href');
-        cy.findAllByLabelText(/Source Code/i).should('have.attr', 'href');
+        // cy.findAllByLabelText(/Live Demo/i).should('have.attr', 'href');
+        // cy.findAllByLabelText(/Source Code/i).should('have.attr', 'href');
       });
   });
 });

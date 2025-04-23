@@ -4,11 +4,11 @@ import { graphql } from "gatsby";
 import SEO from "@components/seo";
 import Layout from "@components/Layout/Layout";
 
-import NoteLayout from "@components/Note/NoteLayout";
-import SocialShareSection from "@components/Note/SocialShareSection";
+import NoteLayout from "@src/components/Notes/NoteLayout";
+import SocialShareSection from "@src/components/Notes/SocialShareSection";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NoteDateAndReadTime } from "@components/Note/NoteCard";
+import { NoteDateAndReadTime } from "@src/components/Notes/NoteCard";
 import { DiscussionEmbed } from "disqus-react";
 
 import { siteUrl, disqusShortName } from "../../config/website";

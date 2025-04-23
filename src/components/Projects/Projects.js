@@ -21,7 +21,7 @@ const Projects = () => {
     graphql`
       query {
         allMarkdownRemark(
-          filter: { fields: { posttype: { eq: "case-studies" } } }
+          filter: { fields: { posttype: { eq: "projects" } } }
           sort: { fields: fields___fileIndex, order: ASC }
         ) {
           edges {
@@ -56,16 +56,16 @@ const Projects = () => {
           links={
             <ProjectLinks>
               <Button as={Link} to={node.fields.slug}>
-                Case Study
+                Read More
               </Button>
-              <Button target="__blank" as="a" href={node.frontmatter.demo}>
+              {/* <Button target="__blank" as="a" href={node.frontmatter.demo}>
                 Live Demo
               </Button>
               <IconButton
                 label="github"
                 icon={["fab", "github"]}
                 href={node.frontmatter.src}
-              />
+              /> */}
             </ProjectLinks>
           }
           preview={

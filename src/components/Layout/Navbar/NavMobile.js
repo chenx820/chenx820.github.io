@@ -58,7 +58,7 @@ const NavbarMobile = () => {
           <NavLinks NavItem={NavItem} />
 
           <NavItem>
-            <Link to="/note">note</Link>
+            <Link to="/notes">notes</Link>
           </NavItem>
           <NavItem style={{ width: "auto" }}>
             <DarkModeButton />

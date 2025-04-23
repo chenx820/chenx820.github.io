@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const InfoTitle = styled.h4`
-  color: ${p => p.theme.primaryColor};
+  color: ${(p) => p.theme.primaryColor};
   display: flex;
   width: 100%;
   justify-content: center;
@@ -12,14 +12,14 @@ export const InfoTitle = styled.h4`
   margin: 15px 0;
 
   ::after {
-    content: '';
+    content: "";
     border-top: 1px solid;
     margin: 0 20px 0 10px;
     flex: 1 0 20px;
   }
 `;
 
-export const CaseStudyWrapper = styled.section`
+export const ProjectWrapper = styled.section`
   margin-top: 100px;
   margin-bottom: 100px;
 
@@ -44,10 +44,10 @@ export const CaseStudyWrapper = styled.section`
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
 
-    @media ${p => p.theme.media.fablet} {
+    @media ${(p) => p.theme.media.fablet} {
       grid-template-columns: 0.6fr 1fr;
     }
-    @media ${p => p.theme.media.tablet} {
+    @media ${(p) => p.theme.media.tablet} {
       grid-template-columns: 1fr;
     }
   }
@@ -66,6 +66,6 @@ export const CaseStudyWrapper = styled.section`
   h5,
   h6 {
     margin: 20px 0;
-    color: ${p => p.theme.primaryColor};
+    color: ${(p) => p.theme.primaryColor};
   }
 `;

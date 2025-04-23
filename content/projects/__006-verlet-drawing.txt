@@ -7,8 +7,8 @@ demo: //chenx820.github.io/VerletDrawing
 src: //github.com/chenx820/VerletDrawing
 
 info:
-  idea: Verlet Drawing is a physics-based drawing app. made with verlet.js as a showcase of its capabilities.
-  tech: [Javascript, HTML5 Canvas, VerletPhysics]
+  abstract: Verlet Drawing is a physics-based drawing app. made with verlet.js as a showcase of its capabilities.
+  collaborators: [Javascript, HTML5 Canvas, VerletPhysics]
   links:
     - ["Verlet.js [Outdated]", http://github.com/chenx820/verlet.js]
 ---
@@ -24,7 +24,7 @@ well I'm not going to go deep into the codebase and explaining step by step how 
 
 ## How It Works?
 
-If you had read my note post about [Making a Verlet Physics Engine in Javascript](/note/making-a-verlet-physics-engine-in-javascript) then you will know that every verlet physics simulation has two main components - `dots` and `sticks`, so you can basically add points and create sticks with the mouse.client positions and save them in an array and update the simulation accordingly in real-time. 
+If you had read my notes post about [Making a Verlet Physics Engine in Javascript](/notes/making-a-verlet-physics-engine-in-javascript) then you will know that every verlet physics simulation has two main components - `dots` and `sticks`, so you can basically add points and create sticks with the mouse.client positions and save them in an array and update the simulation accordingly in real-time. 
 
 ## What did I learned from this project?
 
@@ -32,7 +32,7 @@ When I started this project, I was not that good in javascript, and I also did n
 
 - Writing clean code is necessary 
 - Modularizing and refactoring is mandatory
-- Learning & applying design patterns is always a good idea 
+- Learning & applying design patterns is always a good abstract 
 - There's no coding knowledge barrier for doing an ambitious project
 
 > fin!

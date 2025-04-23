@@ -40,9 +40,9 @@ describe("App", () => {
     scrollLinks();
   });
 
-  it("should navigate to note", () => {
-    const editGithubUrl = `https://github.com/chenx820/chenx820.github.io/tree/main/content/note/exciting-new-features-in-javascript/index.md`;
-    cy.findByText(/note/i, { selector: "a" })
+  it("should navigate to notes", () => {
+    const editGithubUrl = `https://github.com/chenx820/chenx820.github.io/tree/main/content/notes/exciting-new-features-in-javascript/index.md`;
+    cy.findByText(/notes/i, { selector: "a" })
       .click()
       .findByText(/Random post/i)
       .findByText(/Tags/i);

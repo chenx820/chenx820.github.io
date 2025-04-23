@@ -7,10 +7,10 @@ demo: //bugvilla.herokuapp.com/
 src: //github.com/chenx820/BugVilla
 
 info:
-  idea:
-    The main idea of BugVilla was to make an universal bug tracker where people can interact and discuss with each other
+  abstract:
+    The main abstract of BugVilla was to make an universal bug tracker where people can interact and discuss with each other
     about any bug and effective management of bugs.
-  tech: [Reactjs, Nodejs, Mongodb]
+  collaborators: [Reactjs, Nodejs, Mongodb]
 ---
 
 - Live Demo: https://bugvilla.herokuapp.com/
@@ -28,7 +28,7 @@ info:
 - Notifications
 - Bug labels
 
-## Tech Stack
+## collaborators Stack
 
 - **FrontEnd**
   - Reactjs

@@ -41,7 +41,7 @@ const Tags = () => {
       {tags.allMarkdownRemark.group.map((tag) => (
         <TagBreadcrumb
           key={tag.fieldValue}
-          to={`/note/tags/${slugify(tag.fieldValue)}/`}
+          to={`/notes/tags/${slugify(tag.fieldValue)}/`}
           aria-label={`${tag.totalCount} posts tagged with ${tag.fieldValue}`}
         >
           {tag.fieldValue}, {tag.totalCount}

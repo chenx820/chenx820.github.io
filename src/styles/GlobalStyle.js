@@ -71,7 +71,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   /*             */
-  /* Note STYLES */
+  /* Notes STYLES */
   /*             */
   ${notestyles}
   

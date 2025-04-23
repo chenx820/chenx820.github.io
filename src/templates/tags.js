@@ -3,8 +3,8 @@ import { graphql } from "gatsby";
 
 import SEO from "@components/seo";
 import Layout from "@components/Layout/Layout";
-import NoteCard from "@components/Note/NoteCard";
-import NoteLayout from "@components/Note/NoteLayout";
+import NoteCard from "@src/components/Notes/NoteCard";
+import NoteLayout from "@src/components/Notes/NoteLayout";
 
 const TagsPage = ({ data, pageContext }) => {
   const { tag } = pageContext;

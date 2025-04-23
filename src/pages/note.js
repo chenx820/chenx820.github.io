@@ -4,15 +4,15 @@ import { useStaticQuery, graphql } from "gatsby";
 import Layout from "@components/Layout/Layout";
 import SEO from "@components/seo";
 
-import NoteCard from "@components/Note/NoteCard";
-import NoteLayout from "@components/Note/NoteLayout";
+import NoteCard from "@src/components/Notes/NoteCard";
+import NoteLayout from "@src/components/Notes/NoteLayout";
 
 const NotePage = () => {
   const noteposts = useStaticQuery(
     graphql`
       query {
         allMarkdownRemark(
-          filter: { fields: { posttype: { eq: "note" } } }
+          filter: { fields: { posttype: { eq: "notes" } } }
           sort: { fields: frontmatter___date, order: DESC }
         ) {
           edges {
@@ -36,7 +36,7 @@ const NotePage = () => {
   );
   return (
     <Layout>
-      <SEO title="Note - Chen's Physics World" />
+      <SEO title="Notes - Chen's Physics World" />
 
       <NoteLayout>
         {noteposts.allMarkdownRemark.edges.map(({ node }) => (

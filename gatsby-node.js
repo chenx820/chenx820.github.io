@@ -26,7 +26,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const fileNode = getNode(node.parent);
   const slugFromTitle = slugify(node.frontmatter.title);
 
-  // sourceInstanceName defined if its a note or case-studie
+  // sourceInstanceName defined if its a notes or case-studie
   const sourceInstanceName = fileNode.sourceInstanceName;
 
   // extract the name of the file because we need to sort by it's name
@@ -37,21 +37,21 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   createNodeField({
     node,
     name: "slug",
-    // value will be {note||case-studies}/my-title
+    // value will be {notes||projects}/my-title
     value: "/" + sourceInstanceName + "/" + slugFromTitle,
   });
 
-  // adds a posttype field to extinguish between note and case-study
+  // adds a posttype field to extinguish between notes and projects
   createNodeField({
     node,
     name: "posttype",
-    // value will be {note||case-studies}
+    // value will be {notes||projects}
     value: sourceInstanceName,
   });
 
-  // if sourceInstanceName is case-studies then add the fileIndex field because we need
+  // if sourceInstanceName is projects then add the fileIndex field because we need
   // this to sort the Projects with their respective file name `001-blahblah`
-  if (sourceInstanceName == "case-studies") {
+  if (sourceInstanceName == "projects") {
     createNodeField({
       node,
       name: "fileIndex",
@@ -62,7 +62,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
-  const caseStudyTemplate = path.resolve("src/templates/case-study.js");
+  const projectTemplate = path.resolve("src/templates/project.js");
   const notePostTemplate = path.resolve("src/templates/note-post.js");
   const tagTemplate = path.resolve("src/templates/tags.js");
 
@@ -88,12 +88,12 @@ exports.createPages = ({ actions, graphql }) => {
     const edges = res.data.allMarkdownRemark.edges;
 
     edges.forEach(({ node }) => {
-      // if the posttype is case-studies then createPage with caseStudyTemplate
+      // if the posttype is projects then createPage with projectTemplate
       // we get fileds.posttype because we created this node with onCreateNode
-      if (node.fields.posttype === "case-studies") {
+      if (node.fields.posttype === "projects") {
         createPage({
           path: node.fields.slug,
-          component: caseStudyTemplate,
+          component: projectTemplate,
           context: {
             slug: node.fields.slug,
           },
@@ -104,11 +104,11 @@ exports.createPages = ({ actions, graphql }) => {
         node.frontmatter.tags.forEach((tag) => tagSet.add(tag));
 
         const tagList = Array.from(tagSet);
-        // for each tags create a page with the specific `tag slug` (/note/tags/:name)
+        // for each tags create a page with the specific `tag slug` (/notes/tags/:name)
         // pass the tag through the PageContext
         tagList.forEach((tag) => {
           createPage({
-            path: `/note/tags/${slugify(tag)}/`,
+            path: `/notes/tags/${slugify(tag)}/`,
             component: tagTemplate,
             context: {
               tag,
@@ -116,7 +116,7 @@ exports.createPages = ({ actions, graphql }) => {
           });
         });
 
-        // create each individual note post with `notePostTemplate`
+        // create each individual notes post with `notePostTemplate`
         createPage({
           path: node.fields.slug,
           component: notePostTemplate,

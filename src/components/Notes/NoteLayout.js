@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 
-import Tags from "@components/Note/Tags";
+import Tags from "@src/components/Notes/Tags";
 import SplitLayout from "@common/SplitLayout";
 import useRandomNotePost from "@src/hooks/useRandomNotePost";
 
@@ -16,7 +16,7 @@ const NoteLayout = ({ children, sharerSection }) => {
       aside={
         <>
           <section>
-            <h4>Random note</h4>
+            <h4>Random notes</h4>
             <Link style={{ fontSize: "16px" }} to={randomSlug}>
               {randomTitle}
             </Link>

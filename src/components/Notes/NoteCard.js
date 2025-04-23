@@ -57,7 +57,7 @@ const NoteCard = ({ date, readtime, title, excerpt, slug, tags }) => {
             <TagBreadcrumb
               key={tag}
               aria-label={`${tag} tag`}
-              to={`/note/tags/${slugify(tag)}/`}
+              to={`/notes/tags/${slugify(tag)}/`}
             >
               {tag}
             </TagBreadcrumb>

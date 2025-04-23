@@ -9,12 +9,12 @@ import IFrame from "@common/IFrame";
 import Button, { IconButton } from "@common/Button";
 
 import { ProjectLinks } from "@components/Projects/ProjectTemplate.style";
-import SocialShareSection from "@components/Note/SocialShareSection";
+import SocialShareSection from "@src/components/Notes/SocialShareSection";
 import SplitLayout from "@components/common/SplitLayout";
 
-import { InfoTitle, CaseStudyWrapper } from "./case-study.style";
+import { InfoTitle, ProjectWrapper } from "./project.style";
 
-const CaseStudy = ({ data }) => {
+const Project = ({ data }) => {
   const baseSlugUrl =
     "https://chenx820.github.io" + data.markdownRemark.fields.slug;
   const study = data.markdownRemark.frontmatter;
@@ -35,11 +35,11 @@ const CaseStudy = ({ data }) => {
   return (
     <Layout>
       <SEO slug={data.markdownRemark.fields.slug} title={study.title} />
-      <CaseStudyWrapper>
+      <ProjectWrapper>
         <Flex className="case__title" justify="space-between" align="center">
           <h1>{study.title}</h1>
 
-          <ProjectLinks className="case__links">
+          {/* <ProjectLinks className="case__links">
             <Button target="__blank" as="a" href={study.demo}>
               Live Demo
             </Button>
@@ -48,20 +48,20 @@ const CaseStudy = ({ data }) => {
               icon={["fab", "github"]}
               href={study.src}
             />
-          </ProjectLinks>
+          </ProjectLinks> */}
         </Flex>
 
         <section className="case__info">
           <div>
             <aside>
-              <InfoTitle>Idea</InfoTitle>
-              <p>{study.info.idea}</p>
+              <InfoTitle>Abstract</InfoTitle>
+              <p>{study.info.abstract}</p>
             </aside>
             <aside>
-              <InfoTitle>Core Technologies</InfoTitle>
+              <InfoTitle>Collaborators</InfoTitle>
               <ul>
-                {study.info.tech.map((tech, i) => (
-                  <li key={i}>{tech}</li>
+                {study.info.collaborators.map((collaborators, i) => (
+                  <li key={i}>{collaborators}</li>
                 ))}
               </ul>
             </aside>
@@ -89,13 +89,13 @@ const CaseStudy = ({ data }) => {
             </div>
           }
         />
-      </CaseStudyWrapper>
+      </ProjectWrapper>
     </Layout>
   );
 };
 
 export const query = graphql`
-  query caseStudyBySlug($slug: String!) {
+  query projectBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
@@ -108,13 +108,13 @@ export const query = graphql`
         src
         title
         info {
-          idea
+          abstract
           links
-          tech
+          collaborators
         }
       }
     }
   }
 `;
 
-export default CaseStudy;
+export default Project;

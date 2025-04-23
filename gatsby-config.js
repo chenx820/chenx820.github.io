@@ -60,15 +60,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: "case-studies",
-        path: `${__dirname}/content/case-studies`,
+        name: "projects",
+        path: `${__dirname}/content/projects`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: "note",
-        path: `${__dirname}/content/note/`,
+        name: "notes",
+        path: `${__dirname}/content/notes/`,
       },
     },
 
@@ -139,7 +139,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: [`/note/tags/*`, `/goodies`],
+        exclude: [`/notes/tags/*`, `/goodies`],
       },
     },
     `gatsby-plugin-styled-components`,

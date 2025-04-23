@@ -7,8 +7,8 @@ demo: //chenx820.github.io/VerlyRangeSlider
 src: //github.com/chenx820/VerlyRangeSlider
 
 info:
-  idea: The main idea was to make some verlet simulated ropes and connect them to the rang slider's thumb and let them sway
-  tech: [Javascript, Canvas]
+  abstract: The main abstract was to make some verlet simulated ropes and connect them to the rang slider's thumb and let them sway
+  collaborators: [Javascript, Canvas]
   links:
     - [On Codepen, https://codepen.io/chenx820/pen/agKJEd]
     - [
@@ -17,7 +17,7 @@ info:
       ]
     - [
         Article at DataGenetic | Verlet Simulation,
-        https://datagenetics.com/note/july22018/index.html,
+        https://datagenetics.com/notes/july22018/index.html,
       ]
 ---
 

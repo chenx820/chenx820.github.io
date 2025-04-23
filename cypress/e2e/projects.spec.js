@@ -1,6 +1,6 @@
 describe("Should check Case Studies it's and subpages", () => {
   const PROJECT_NAME = /Verly Range Slider/i;
-  const URL = "case-studies/verly-range-slider";
+  const URL = "projects/verly-range-slider";
   const LIVE_DEMO_URL = "//chenx820.github.io/VerlyRangeSlider";
   const GITHUB_URL = "//github.com/chenx820/VerlyRangeSlider";
 
@@ -15,15 +15,15 @@ describe("Should check Case Studies it's and subpages", () => {
       .should("have.attr", "href", GITHUB_URL);
   }
 
-  it("should navigate to note", () => {
+  it("should navigate to notes", () => {
     cy.findByText(PROJECT_NAME, { selector: "h2" })
       .parent()
       .parent()
       .parent() // parent of projects
       .within(() => {
-        cy.get("iframe").should("exist");
-        assertProjectLinks();
-        cy.findByText(/Case Study/i, { selector: "a" }).click();
+        // cy.get("iframe").should("exist");
+        // assertProjectLinks();
+        cy.findByText(/Read More/i, { selector: "a" }).click();
       })
       .url()
       .should("contain", URL)
@@ -32,6 +32,6 @@ describe("Should check Case Studies it's and subpages", () => {
       .should("exist");
 
     // asset project links on individual case study page
-    assertProjectLinks();
+    // assertProjectLinks();
   });
 });
