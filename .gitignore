@@ -1,3 +1,25 @@
-assets/.DS_Store
+# Node modules
+node_modules/
 
+# Gatsby build output
+public/
+.cache/
+
+# Deployment directories
+.deploy-tmp/
+.deploy-gh/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Mac system files
 .DS_Store
+
+# VSCode settings (optional)
+.vscode/
+
+# Optional: ignore environment variables file
+.env
