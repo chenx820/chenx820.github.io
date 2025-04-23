@@ -1,16 +1,16 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Button from '@common/Button';
-import PageHeader from '@common/PageHeader';
-import useForm from '@src/hooks/useForm';
+import Button from "@common/Button";
+import PageHeader from "@common/PageHeader";
+import useForm from "@src/hooks/useForm";
 
 import {
   ContactWrapper,
   LeftContent,
   ContactBox,
   ContactForm,
-} from './Contact.style';
+} from "./Contact.style";
 
 function Contact() {
   const { formData, errors, handleInput, isFormValid } = useForm();
@@ -20,7 +20,7 @@ function Contact() {
       <PageHeader>Get In Touch</PageHeader>
       <ContactBox>
         <LeftContent>
-          <FontAwesomeIcon size={'5x'} icon="handshake" />
+          <FontAwesomeIcon size={"5x"} icon="handshake" />
           <h3>Thank You</h3>
           <p>Do You Have Any Queries?</p>
         </LeftContent>
@@ -32,7 +32,7 @@ function Contact() {
           <label className="label__email">
             <span>Email</span>
             <input
-              className={errors._replyto && 'invalid'}
+              className={errors._replyto && "invalid"}
               onChange={handleInput}
               value={formData.email}
               id="email"
@@ -45,19 +45,19 @@ function Contact() {
           <label className="label__name">
             <span>Name</span>
             <input
-              className={errors.name && 'invalid'}
+              className={errors.name && "invalid"}
               onChange={handleInput}
               value={formData.name}
               name="name"
               type="text"
               required
-              placeholder="Chen Huang"
+              placeholder="Your Name"
             />
           </label>
           <label className="label__message">
             <span>Message</span>
             <textarea
-              className={errors.message && 'invalid'}
+              className={errors.message && "invalid"}
               onChange={handleInput}
               value={formData.message}
               name="message"

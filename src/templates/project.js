@@ -103,7 +103,6 @@ export const query = graphql`
         slug
       }
       frontmatter {
-        demo
         iframe
         src
         title

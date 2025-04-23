@@ -41,7 +41,7 @@ test("should have title and description", () => {
 test("should have links and preview", () => {
   const node = {
     fields: {
-      slug: "/projects/project",
+      slug: "/case-studies/project",
     },
     frontmatter: {
       title: "Project Title",
@@ -67,7 +67,7 @@ test("should have links and preview", () => {
             </Button>
             <IconButton
               label="github"
-              icon={["fab", "github"]}
+              icon={['fab', 'github']}
               href={node.frontmatter.src}
             /> */}
           </ProjectLinks>
@@ -92,7 +92,10 @@ test("should have links and preview", () => {
 
   // debug();
 
-  expect(getByText(/case study/i)).toHaveAttribute("to", "/projects/project");
+  expect(getByText(/case study/i)).toHaveAttribute(
+    "to",
+    "/case-studies/project"
+  );
   expect(getByText(/live demo/i)).toHaveAttribute("href", "https://demo.com");
   expect(getByTitle(/^github$/i)).toHaveAttribute("href", "https://github.com");
 
