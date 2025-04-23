@@ -1,9 +1,10 @@
 {
-  "name": "anurag-hazra",
+  "name": "chen-huang",
   "private": true,
-  "description": "Anurag Hazra Portfolio Site",
+  "description": "Chen Huang Portfolio Site",
   "version": "0.1.0",
-  "author": "Anurag Hazra <hazru.anurag@gmail.com>",
+  "author": "Chen Huang <chen.huang678@gmail.com>",
+  "homepage": "https://chenx820.github.io/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-brands-svg-icons": "^5.9.0",
@@ -86,12 +87,5 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "prettier": "prettier --write **/*.{ts,js,css,html}"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
