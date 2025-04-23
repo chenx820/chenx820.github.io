@@ -1,8 +1,8 @@
 describe("Should check Case Studies it's and subpages", () => {
   const PROJECT_NAME = /Verly Range Slider/i;
   const URL = "case-studies/verly-range-slider";
-  const LIVE_DEMO_URL = "//anuraghazra.github.io/VerlyRangeSlider";
-  const GITHUB_URL = "//github.com/anuraghazra/VerlyRangeSlider";
+  const LIVE_DEMO_URL = "//chenx820.github.io/VerlyRangeSlider";
+  const GITHUB_URL = "//github.com/chenx820/VerlyRangeSlider";
 
   beforeEach(() => {
     cy.visit("/");

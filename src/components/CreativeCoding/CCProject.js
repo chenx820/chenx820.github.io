@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import { IconButton } from '@common/Button';
-import { CardFooter } from '@common/Card';
+import { IconButton } from "@common/Button";
+import { CardFooter } from "@common/Card";
 
-import Image from '@components/Image';
-import { CCard } from './CreativeCoding.style';
+import Image from "@components/Image";
+import { CCard } from "./CreativeCoding.style";
 
 const CCProject = ({ node }) => {
   let img = node.img.replace(
-    'https://anuraghazra.github.io/CanvasFun/thumbnails/',
-    ''
+    "https://chenx820.github.io/CanvasFun/thumbnails/",
+    ""
   );
   return (
     <CCard key={node.id}>
@@ -34,7 +34,7 @@ const CCProject = ({ node }) => {
           <IconButton
             label={`Source Code - ${node.title}`}
             href={node.src}
-            icon={['fab', 'github']}
+            icon={["fab", "github"]}
           />
         </div>
       </CardFooter>

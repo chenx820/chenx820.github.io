@@ -1,20 +1,20 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from "react";
 
 const useDarkMode = () => {
-  let [theme, setTheme] = useState('light');
+  let [theme, setTheme] = useState("light");
 
   const toggleTheme = useCallback(() => {
-    if (theme === 'light') {
-      localStorage.setItem('anuraghazra-theme', 'dark');
-      setTheme('dark');
+    if (theme === "light") {
+      localStorage.setItem("chenx820-theme", "dark");
+      setTheme("dark");
     } else {
-      localStorage.setItem('anuraghazra-theme', 'light');
-      setTheme('light');
+      localStorage.setItem("chenx820-theme", "light");
+      setTheme("light");
     }
   }, [theme]);
 
   useEffect(() => {
-    const localTheme = localStorage.getItem('anuraghazra-theme');
+    const localTheme = localStorage.getItem("chenx820-theme");
     if (localTheme) {
       setTheme(localTheme);
     }

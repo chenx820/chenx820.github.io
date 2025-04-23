@@ -16,7 +16,7 @@ import { InfoTitle, CaseStudyWrapper } from "./case-study.style";
 
 const CaseStudy = ({ data }) => {
   const baseSlugUrl =
-    "https://anuraghazra.github.io" + data.markdownRemark.fields.slug;
+    "https://chenx820.github.io" + data.markdownRemark.fields.slug;
   const study = data.markdownRemark.frontmatter;
 
   const infoLinks = study.info.links && (

@@ -3,8 +3,8 @@ title: Evolution Aquerium
 excerpt: Evolution Aquarium is based on Craig Reynold's Steering Behaviors and Flocking System, and It implements a Genetic Algorithm and mutations. Daniel Shiffman showcased this on his Youtube Channel at TheCodingTrain. And I was pleased about the humble feedback; sir Daniel Shiffman gave to me. It just boosted my confidence more and more, and motivated me to make this project better.
 
 iframe: //www.youtube.com/embed/GKIhVrOsQCI/?modestbranding=1&showinfo=0&autohide=1&rel=0
-demo: //anuraghazra.github.io/EvolutionAquerium
-src: //github.com/anuraghazra/EvolutionAquerium
+demo: //chenx820.github.io/EvolutionAquerium
+src: //github.com/chenx820/EvolutionAquerium
 
 info:
   idea: The basic idea of the project is to achieve and simulate biological creatures in an aquarium to see how they react in different scenarios
@@ -42,24 +42,24 @@ I make use of the "builder" pattern to create different varieties of creatures w
 ```js
 class AgentBuilder {
   constructor(type) {
-    this.acc = new Vector(0, 0)
-    this.vel = new Vector(0, -2)
-    this.type = type
+    this.acc = new Vector(0, 0);
+    this.vel = new Vector(0, -2);
+    this.type = type;
   }
   setPos(x, y) {
-    this.pos = new Vector(x, y)
-    return this
+    this.pos = new Vector(x, y);
+    return this;
   }
   setRadius(r = 5) {
-    this.radius = r
-    return this
+    this.radius = r;
+    return this;
   }
   setColor(color) {
-    return (this.color = color)
+    return (this.color = color);
   }
   setDNA(dna) {
-    this.dna = dna
-    return this
+    this.dna = dna;
+    return this;
   }
 
   // ... more setFunctions
@@ -73,7 +73,7 @@ class AgentBuilder {
       this.dna,
       this.color,
       this
-    )
+    );
   }
 }
 ```
@@ -88,7 +88,7 @@ let Predator = new AgentBuilder("PREDATOR")
   .setMaxForce(0.05)
   .setHealthDecrease(0.002)
   .setColor([255, 0, 0])
-  .setFoodMultiplier([0.5, -0.5])
+  .setFoodMultiplier([0.5, -0.5]);
 
 let Avoider = new AgentBuilder("AVOIDER")
   .setRadius(5)
@@ -97,14 +97,14 @@ let Avoider = new AgentBuilder("AVOIDER")
   .setMaxForce(0.2)
   .setHealthDecrease(0.003)
   .setColor([255, 165, 0])
-  .setFoodMultiplier([0.5, -0.5])
+  .setFoodMultiplier([0.5, -0.5]);
 ```
 
 ## BaseAgent Class
 
 BaseAgent class handles all the logic for the update, render, and physics, it's the heart of the codebase. the basic idea is to give each `agent` some essential traits like `health`, `radius`, `maxSpeed`, `maxSpeed` etc etc.
 
-> see the full BaseAgent class's [code at github](https://github.com/anuraghazra/EvolutionAquerium/blob/master/src/js/BaseAgent.js#L15)
+> see the full BaseAgent class's [code at github](https://github.com/chenx820/EvolutionAquerium/blob/master/src/js/BaseAgent.js#L15)
 
 ```js
 class BaseAgent {
@@ -171,35 +171,35 @@ this.name = (this.getGender() === 'MALE') ? this.getRandomName(names_male) : thi
 And now, let's talk only about the main meat of the code, not any other unnecessary code.
 so in the base class we have some methods
 
-- [applyFlock()](https://github.com/anuraghazra/EvolutionAquerium/blob/master/src/js/BaseAgent.js#L235)
+- [applyFlock()](https://github.com/chenx820/EvolutionAquerium/blob/master/src/js/BaseAgent.js#L235)
 
   applies the flocking behavior
 
-- [defineFear()](https://github.com/anuraghazra/EvolutionAquerium/blob/master/src/js/BaseAgent.js#L184)
+- [defineFear()](https://github.com/chenx820/EvolutionAquerium/blob/master/src/js/BaseAgent.js#L184)
 
 The primary function which defines the fear behavior and we can also use this inversely
 
-- [eat()](https://github.com/anuraghazra/EvolutionAquerium/blob/master/src/js/BaseAgent.js#L271)
+- [eat()](https://github.com/chenx820/EvolutionAquerium/blob/master/src/js/BaseAgent.js#L271)
 
   seeks the nearby food
 
-- [Behaviour()](https://github.com/anuraghazra/EvolutionAquerium/blob/master/src/js/BaseAgent.js#L215)
+- [Behaviour()](https://github.com/chenx820/EvolutionAquerium/blob/master/src/js/BaseAgent.js#L215)
 
   applies the force which returns from eat()
 
-- [reproduce()](https://github.com/anuraghazra/EvolutionAquerium/blob/master/src/js/BaseAgent.js#L320)
+- [reproduce()](https://github.com/chenx820/EvolutionAquerium/blob/master/src/js/BaseAgent.js#L320)
 
   Reproduction System checks for male and female agents, and if their radius is greater than 8 and they are close enough to each other, then they can reproduce with their specific DNA and creates a small Agent based on their DNA data and with some mutation.
 
 ## Flock Class
 
-[Flock class](https://github.com/anuraghazra/EvolutionAquerium/blob/master/src/js/Flock.js) takes an agent and do the calculations for flocking behaviors like `separate`, `align`, `cohesion`, `seek`.
+[Flock class](https://github.com/chenx820/EvolutionAquerium/blob/master/src/js/Flock.js) takes an agent and do the calculations for flocking behaviors like `separate`, `align`, `cohesion`, `seek`.
 
 ```js
 class Flock {
   constructor(currentAgent) {
-    this.currentAgent = currentAgent
-    this.wandertheta = 0
+    this.currentAgent = currentAgent;
+    this.wandertheta = 0;
   }
 
   seek(target) {}
@@ -217,33 +217,33 @@ EcoSystem class manages all the `agents` and `behaviors`, basically it is like a
 
 it has some methods which are
 
-- [addEntities](https://github.com/anuraghazra/EvolutionAquerium/blob/master/src/js/EcoSystem.js#L17)
+- [addEntities](https://github.com/chenx820/EvolutionAquerium/blob/master/src/js/EcoSystem.js#L17)
 
   adds all entities to the entities (food, poison) object
 
-- [registerAgents](https://github.com/anuraghazra/EvolutionAquerium/blob/master/src/js/EcoSystem.js#L28)
+- [registerAgents](https://github.com/chenx820/EvolutionAquerium/blob/master/src/js/EcoSystem.js#L28)
 
   registers Agents to the state and also creates corresponding Arrays for each of them which you can use by calling ecoSys.groups[your_given_name]
 
-- [initialPopulation](https://github.com/anuraghazra/EvolutionAquerium/blob/master/src/js/EcoSystem.js#L39)
+- [initialPopulation](https://github.com/chenx820/EvolutionAquerium/blob/master/src/js/EcoSystem.js#L39)
 
   initializes the groups of population by the given amount
 
-- [addBehavior](https://github.com/anuraghazra/EvolutionAquerium/blob/master/src/js/EcoSystem.js#L98)
+- [addBehavior](https://github.com/chenx820/EvolutionAquerium/blob/master/src/js/EcoSystem.js#L98)
 
   specifies the behavior of the agent declaratively
 
-- [batchUpdateAgents](https://github.com/anuraghazra/EvolutionAquerium/blob/master/src/js/EcoSystem.js#L150)
+- [batchUpdateAgents](https://github.com/chenx820/EvolutionAquerium/blob/master/src/js/EcoSystem.js#L150)
 
   updates all the agents
 
 ```js
 class EcoSystem {
   constructor() {
-    this.groups = {} // agents
-    this.entities = {} // generic container (food, poison)
-    this.agents = {} // agent classes
-    this.behaviors = {} // calculated behaviors
+    this.groups = {}; // agents
+    this.entities = {}; // generic container (food, poison)
+    this.agents = {}; // agent classes
+    this.behaviors = {}; // calculated behaviors
   }
 
   addEntities(names) {}
@@ -254,38 +254,36 @@ class EcoSystem {
 }
 ```
 
-
 ## Setting up everything
 
 And the last step is to assemble every part of the code to create these boids like creatures and gave each of them behaviors
 
 ```js
 // Global
-let canvas = document.querySelector('#c');
-let WIDTH = canvas.width = window.innerWidth;
-let HEIGHT = canvas.height = 600;
-let ctx = canvas.getContext('2d');
-
+let canvas = document.querySelector("#c");
+let WIDTH = (canvas.width = window.innerWidth);
+let HEIGHT = (canvas.height = 600);
+let ctx = canvas.getContext("2d");
 
 let MAX_CREATURES = 300;
 const REPRODUCTION_RATE = 0.5;
 const ENABLE_SUPER_DEBUG = false;
 
 // constants for flexibilty
-const CREATURE = 'CREATURE';
-const PREDATOR = 'PREDATOR';
-const AVOIDER = 'AVOIDER';
-const EATER = 'EATER';
-const FOOD = 'FOOD';
-const POISON = 'POISON';
+const CREATURE = "CREATURE";
+const PREDATOR = "PREDATOR";
+const AVOIDER = "AVOIDER";
+const EATER = "EATER";
+const FOOD = "FOOD";
+const POISON = "POISON";
 
 function load() {
   const ecoSys = new EcoSystem();
 
-  // creates a Array which you can access with ecoSys.entities 
+  // creates a Array which you can access with ecoSys.entities
   ecoSys.addEntities({
     FOOD: [],
-    POISON: []
+    POISON: [],
   });
 
   // register classes it will also create corresponding Arrays
@@ -306,14 +304,21 @@ function load() {
     EATER: randomInt(1, 4),
   });
 
-  let add = document.getElementById('addnew');
-  canvas.addEventListener('click', function (e) {
-    ecoSys.add(add.value, e.offsetX, e.offsetY)
-  })
+  let add = document.getElementById("addnew");
+  canvas.addEventListener("click", function(e) {
+    ecoSys.add(add.value, e.offsetX, e.offsetY);
+  });
 
   //  ANIMATE LOOP
   function animate() {
-    let grd = ctx.createRadialGradient(WIDTH / 2, HEIGHT / 2, 0, WIDTH / 2, HEIGHT / 2, WIDTH);
+    let grd = ctx.createRadialGradient(
+      WIDTH / 2,
+      HEIGHT / 2,
+      0,
+      WIDTH / 2,
+      HEIGHT / 2,
+      WIDTH
+    );
     grd.addColorStop(0, "rgba(25,25,25,1)");
     grd.addColorStop(1, "rgba(0,0,25,1)");
     // Fill with gradient
@@ -331,15 +336,17 @@ function load() {
       dislike: POISON,
       fear: {
         PREDATOR: [-4, 75],
-        EATER: [-2, 100]
+        EATER: [-2, 100],
       },
       cloneItSelf: 0.0015,
-      callback: function () {
-        if (ecoSys.groups.CREATURE.length < MAX_CREATURES
-          && random(1) < REPRODUCTION_RATE) {
+      callback: function() {
+        if (
+          ecoSys.groups.CREATURE.length < MAX_CREATURES &&
+          random(1) < REPRODUCTION_RATE
+        ) {
           this.reproduce(ecoSys.groups.CREATURE);
         }
-      }
+      },
     });
 
     /**
@@ -354,11 +361,15 @@ function load() {
       likeDislikeWeight: [1, -1],
       fear: {
         EATER: [-10, 50],
-        CREATURE: [1, 200, function (agents, i) {
-          agents.splice(i, 1);
-          this.health += this.goodFoodMultiplier;
-          this.radius += this.goodFoodMultiplier;
-        }]
+        CREATURE: [
+          1,
+          200,
+          function(agents, i) {
+            agents.splice(i, 1);
+            this.health += this.goodFoodMultiplier;
+            this.radius += this.goodFoodMultiplier;
+          },
+        ],
       },
     });
 
@@ -375,12 +386,15 @@ function load() {
       fear: {
         CREATURE: [-0.9, 100],
         EATER: [-1, 100],
-        PREDATOR: [-1, 100, function () {
-          this.health += this.badFoodMultiplier;
-        }]
+        PREDATOR: [
+          -1,
+          100,
+          function() {
+            this.health += this.badFoodMultiplier;
+          },
+        ],
       },
     });
-
 
     /**
      * likes poison
@@ -393,43 +407,53 @@ function load() {
       dislike: POISON,
       likeDislikeWeight: [1, 1],
       fear: {
-        CREATURE: [1.0, 100, function (list, i) {
-          list.splice(i, 1);
-          this.health += this.goodFoodMultiplier;
-          this.radius += this.goodFoodMultiplier;
-        }],
-        PREDATOR: [1.0, 100, function (list, i) {
-          list.splice(i, 1);
-          this.health += this.goodFoodMultiplier;
-          this.radius += this.goodFoodMultiplier;
-        }],
-        AVOIDER: [1.0, 100, function (list, i) {
-          list.splice(i, 1);
-          this.health += this.goodFoodMultiplier;
-          this.radius += this.goodFoodMultiplier;
-        }],
+        CREATURE: [
+          1.0,
+          100,
+          function(list, i) {
+            list.splice(i, 1);
+            this.health += this.goodFoodMultiplier;
+            this.radius += this.goodFoodMultiplier;
+          },
+        ],
+        PREDATOR: [
+          1.0,
+          100,
+          function(list, i) {
+            list.splice(i, 1);
+            this.health += this.goodFoodMultiplier;
+            this.radius += this.goodFoodMultiplier;
+          },
+        ],
+        AVOIDER: [
+          1.0,
+          100,
+          function(list, i) {
+            list.splice(i, 1);
+            this.health += this.goodFoodMultiplier;
+            this.radius += this.goodFoodMultiplier;
+          },
+        ],
       },
-      callback: function () {
+      callback: function() {
         if (random(0, 1) < 0.05) {
-          addItem(ecoSys.entities.FOOD, 1, this.pos.x, this.pos.y)
+          addItem(ecoSys.entities.FOOD, 1, this.pos.x, this.pos.y);
         }
-      }
+      },
     });
 
     // UPDATE & RENDER
     ecoSys.render();
     ecoSys.update();
-    renderItem(ecoSys.entities.FOOD, 'white', 1, true);
-    renderItem(ecoSys.entities.POISON, 'crimson', 2);
+    renderItem(ecoSys.entities.FOOD, "white", 1, true);
+    renderItem(ecoSys.entities.POISON, "crimson", 2);
 
     requestAnimationFrame(animate);
   }
   animate();
-
 }
 
 window.onload = load;
 ```
-
 
 And that's it, phew, that was a lot of work. But in the end, we have beautiful flocking creatures playing around and interacting with each other. have fun watching them all day. <3

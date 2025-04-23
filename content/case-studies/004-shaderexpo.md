@@ -3,8 +3,8 @@ title: ShaderExpo
 excerpt: ShaderExpo is a purely dependency-free shader editor made in Raw WebGL API. Experiment with basic WebGL shaders on the fly. ShaderExpo Includes rich features like Inline Error Logs, AutoCompletion, Live Editing, Example Shaders, etc. ShaderExpo is also mentioned in Awesome-Webgl.
 
 iframe: //www.youtube.com/embed/rtPhA041U4U/?modestbranding=1&showinfo=0&autohide=1&rel=0
-demo: //anuraghazra.github.io/ShaderExpo
-src: //github.com/anuraghazra/ShaderExpo
+demo: //chenx820.github.io/ShaderExpo
+src: //github.com/chenx820/ShaderExpo
 
 info:
   idea: The basic idea of the project was to create a real-time WebGL shader editor with linting and on the fly updates.
@@ -42,32 +42,33 @@ It holds the `WebGL Program`, fragmentShader and VertexShader source String and 
 ```js
 class Shader {
   constructor(gl, vShader, fShader) {
-    this.gl = gl
-    this.vShader = vShader
-    this.fShader = fShader
+    this.gl = gl;
+    this.vShader = vShader;
+    this.fShader = fShader;
 
-    this.vertexShader = null
-    this.fragmentShader = null
+    this.vertexShader = null;
+    this.fragmentShader = null;
 
-    this.uniforms = {}
-    this.attribs = {}
+    this.uniforms = {};
+    this.attribs = {};
 
-    this.program = null
+    this.program = null;
 
-    this.isVertexShaderError = false
-    this.isFragmentShaderError = false
-    this.fragmentShaderErrors = []
-    this.vertexShaderErrors = []
+    this.isVertexShaderError = false;
+    this.isFragmentShaderError = false;
+    this.fragmentShaderErrors = [];
+    this.vertexShaderErrors = [];
   }
 }
 ```
 
 ### Init Shaders
 
-> [init code on github](https://github.com/anuraghazra/ShaderExpo/blob/master/js/Shader.js#L23) 
+> [init code on github](https://github.com/chenx820/ShaderExpo/blob/master/js/Shader.js#L23)
 
 Then I added a init method which initializes the shaders from its source and creates the program with `this.createProgram` method.
 If we encounter any errors, then we will not create the program and terminate the function. We also have `this.createShader()` method, which creates and initialize the shader.
+
 ```js
 init() {
   this.vertexShader = this.createShader(this.gl.VERTEX_SHADER, this.vShader);
@@ -81,9 +82,10 @@ init() {
 
 ### createShader
 
-> [createShader code on github](https://github.com/anuraghazra/ShaderExpo/blob/master/js/Shader.js#L101) 
+> [createShader code on github](https://github.com/chenx820/ShaderExpo/blob/master/js/Shader.js#L101)
 
 createShader method creates the WebGL shader from the source, compiles it, and checks for errors. and if we encounter any errors while compiling we set the `isVertexShaderError` and `isFragmentShaderError` to `true` and also sets the `vertexShaderErrors`, `fragmentShaderErrors` with the error message.
+
 ```js
 createShader(type, source) {
   const shader = this.gl.createShader(type);
@@ -110,10 +112,12 @@ createShader(type, source) {
 ```
 
 ### createProgram
-> [createProgram code on github](https://github.com/anuraghazra/ShaderExpo/blob/master/js/Shader.js#L36) 
+
+> [createProgram code on github](https://github.com/chenx820/ShaderExpo/blob/master/js/Shader.js#L36)
 
 The `createProgram` function creates the program, attaches the shaders, links the program, and also throws errors if we encounter any Errors.
-And finally returns the program. 
+And finally returns the program.
+
 ```js
 createProgram() {
   this.program = this.gl.createProgram();
@@ -130,8 +134,10 @@ createProgram() {
 ```
 
 ### getShaderError
-> [getShaderError code on github](https://github.com/anuraghazra/ShaderExpo/blob/master/js/Shader.js#L75) 
-We also have `getShaderError` method which is a helper method to get specific error message for specific shader, it also shows where the error happend in the source code with line number.
+
+> [getShaderError code on github](https://github.com/chenx820/ShaderExpo/blob/master/js/Shader.js#L75)
+> We also have `getShaderError` method which is a helper method to get specific error message for specific shader, it also shows where the error happend in the source code with line number.
+
 ```js
 getShaderError(shader, shaderString) {
   if (!this.gl.getShaderParameter(shader, this.gl.COMPILE_STATUS)) {
@@ -155,13 +161,15 @@ getShaderError(shader, shaderString) {
 ```
 
 ## Other Classes
-`Shader` class was the most important for this project. We also have `Camera`, `RawModel`, `Mesh` classes, which handle different parts of the WebGL context.
-> [see all the classes on Github](https://github.com/anuraghazra/ShaderExpo/tree/master/js)
 
+`Shader` class was the most important for this project. We also have `Camera`, `RawModel`, `Mesh` classes, which handle different parts of the WebGL context.
+
+> [see all the classes on Github](https://github.com/chenx820/ShaderExpo/tree/master/js)
 
 ## Setup
+
 In the end, I also used [Ace](https://ace.c9.io/) library to get my code editor up and running. (which was easy)
 
-> [see index.js setup](https://github.com/anuraghazra/ShaderExpo/blob/master/index.js)
+> [see index.js setup](https://github.com/chenx820/ShaderExpo/blob/master/index.js)
 
 I also used some different shaders from [GLSL Sandbox](https://glslsandbox.com) to check things out and see the capabilities of ShaderExpo.

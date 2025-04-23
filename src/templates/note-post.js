@@ -24,7 +24,7 @@ const NotePost = ({ data, pageContext }) => {
     url: baseSlugUrl,
   };
 
-  const githubLink = `https://github.com/anuraghazra/anuraghazra.github.io/tree/develop/content${pageContext.slug}/index.md`;
+  const githubLink = `https://github.com/chenx820/chenx820.github.io/tree/develop/content${pageContext.slug}/index.md`;
 
   return (
     <Layout>

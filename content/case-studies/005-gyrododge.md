@@ -3,8 +3,8 @@ title: GyroDodge
 excerpt: Dodge! Shoot! Win! GyroDodge is a simple gyroscopic mobile game. I used device orientation API to get the alpha, gamma, delta rotations of the mobile device and then use it to control the player. also available on itch.io
 
 iframe: //www.youtube.com/embed/GdRlkHTMk9c/?modestbranding=1&showinfo=0&autohide=1&rel=0
-demo: //anuraghazra.github.io/GyroDodge/
-src: //github.com/anuraghazra/GyroDodge
+demo: //chenx820.github.io/GyroDodge/
+src: //github.com/chenx820/GyroDodge
 
 info:
   idea: Gyrododge was an experimental game for testing out the Javascript's Gyroscope API. It turns out that we can do pretty much anything with it. So i made a game with it.
@@ -30,28 +30,28 @@ here's the code to get the device orientation of the device
 ```js
 // check if browser supports DeviceOrientationEvent event
 if (!window.DeviceOrientationEvent) {
-  alert("Sorry, your browser doesn't support Device Orientation")
+  alert("Sorry, your browser doesn't support Device Orientation");
 } else {
-  window.addEventListener("deviceorientation", e => {
-    let alpha = event.alpha
-    let beta = event.beta
-    let gamma = event.gamma
-  })
+  window.addEventListener("deviceorientation", (e) => {
+    let alpha = event.alpha;
+    let beta = event.beta;
+    let gamma = event.gamma;
+  });
 }
 ```
 
 to move the player in the desired location with these parameters, I add them to the player's `acceleration` by using p5.js's `Vector` class
 
-> [check out the code](https://github.com/anuraghazra/gyrododge/blob/master/js/Player.js#L44)
+> [check out the code](https://github.com/chenx820/gyrododge/blob/master/js/Player.js#L44)
 
 ```js
-window.addEventListener("deviceorientation", e => {
-  this.tiltLR = e.gamma
-  this.tiltFB = e.beta
-  let gyro = createVector(this.tiltLR, this.tiltFB)
+window.addEventListener("deviceorientation", (e) => {
+  this.tiltLR = e.gamma;
+  this.tiltFB = e.beta;
+  let gyro = createVector(this.tiltLR, this.tiltFB);
   // add the force
-  this.applyForce(gyro)
-})
+  this.applyForce(gyro);
+});
 ```
 
 ## How I created those asteroids?
@@ -61,22 +61,22 @@ To create those polygonal asteroids, I created a `Rock.js` class, which updates,
 ```js
 class Rock {
   constructor(x, y, radius) {
-    this.pos = createVector(x || random(width), y || random(height))
-    this.vel = p5.Vector.random2D()
-    this.radius = radius || random(15, 30)
-    this.vertices = []
-    this.offsets = []
-    this.total = random(5, 15)
+    this.pos = createVector(x || random(width), y || random(height));
+    this.vel = p5.Vector.random2D();
+    this.radius = radius || random(15, 30);
+    this.vertices = [];
+    this.offsets = [];
+    this.total = random(5, 15);
 
     for (let i = 0; i < this.total; i++) {
-      this.offsets[i] = random(-5, 5)
+      this.offsets[i] = random(-5, 5);
     }
     for (let i = 0; i < this.total; i++) {
-      let angle = map(i, 0, this.total, 0, TWO_PI)
-      let r = this.radius + this.offsets[i]
-      let x = r * cos(angle)
-      let y = r * sin(angle)
-      this.vertices.push({ x, y })
+      let angle = map(i, 0, this.total, 0, TWO_PI);
+      let r = this.radius + this.offsets[i];
+      let x = r * cos(angle);
+      let y = r * sin(angle);
+      this.vertices.push({ x, y });
     }
   }
 }
@@ -126,33 +126,33 @@ And that's it, for the Rock.js class.
 
 ## Particles Class
 
-I also added Particles class which emits particles in a random direction, and it extends the [Bullet](https://github.com/anuraghazra/GyroDodge/blob/master/js/Bullet.js) class
+I also added Particles class which emits particles in a random direction, and it extends the [Bullet](https://github.com/chenx820/GyroDodge/blob/master/js/Bullet.js) class
 
 ```js
 class Particle extends Bullet {
   constructor(spos, angle) {
-    super(spos, angle)
-    this.vel = p5.Vector.random2D()
-    this.life = 1
+    super(spos, angle);
+    this.vel = p5.Vector.random2D();
+    this.life = 1;
   }
 
   render() {
-    this.vel.y += random(-0.2, 0.2)
-    push()
-    stroke(255, this.life * 255)
-    strokeWeight(2)
-    point(this.pos.x, this.pos.y)
-    pop()
+    this.vel.y += random(-0.2, 0.2);
+    push();
+    stroke(255, this.life * 255);
+    strokeWeight(2);
+    point(this.pos.x, this.pos.y);
+    pop();
   }
   die() {
-    this.life -= 0.03
+    this.life -= 0.03;
   }
 }
 ```
 
 ## Bullet Class
 
-> [check out the code](https://github.com/anuraghazra/GyroDodge/blob/master/js/Bullet.js)
+> [check out the code](https://github.com/chenx820/GyroDodge/blob/master/js/Bullet.js)
 
 In bullet class, there's not much going on just basic stuff
 
@@ -197,7 +197,7 @@ class Bullet {
 
 ## Player Class
 
-> [check out the code](https://github.com/anuraghazra/GyroDodge/blob/master/js/Player.js)
+> [check out the code](https://github.com/chenx820/GyroDodge/blob/master/js/Player.js)
 
 In Player class we have some exciting stuff, let's see the constructor first
 
@@ -266,12 +266,12 @@ It's the vital part of the class because it checks if the Player hits any Astero
 
 ## Game Class
 
-> [check out the code](https://github.com/anuraghazra/GyroDodge/blob/master/js/Game.js)
+> [check out the code](https://github.com/chenx820/GyroDodge/blob/master/js/Game.js)
 
 Game class is just a state manager for the game, which holds all the variables and state management.
 
-we also have [AssetMan](https://github.com/anuraghazra/GyroDodge/blob/master/js/AssetMan.js) class which preloads all the assets for the game (sound effects)
+we also have [AssetMan](https://github.com/chenx820/GyroDodge/blob/master/js/AssetMan.js) class which preloads all the assets for the game (sound effects)
 
 ## Setting Up
 
-And lastly but not least, we have [index.js](https://github.com/anuraghazra/GyroDodge/blob/master/js/index.js) where I wrote all the necessary game logic and initialization.
+And lastly but not least, we have [index.js](https://github.com/chenx820/GyroDodge/blob/master/js/index.js) where I wrote all the necessary game logic and initialization.
