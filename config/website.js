@@ -17,7 +17,7 @@ const website = {
   ...meta,
   ...social,
   disqusShortName: "chenx820",
-  googleAnalyticsID: "UA-119972196-1",
+  googleAnalyticsID: "G-6S4PRFFZ9P",
   // Manifest
   themeColor: "#6D83F2",
   backgroundColor: "#6D83F2",
