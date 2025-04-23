@@ -5,8 +5,6 @@ author: Chen Huang
 tags: ["physics", "graduate"]
 ---
 
-This course was taught by Prof. Myungshik Kim. My notes were based on his lecture notes and the textbook by Nielsen and Chuang. The topics covered include quantum gates, quantum algorithms, quantum error correction, and quantum entanglement.
-
 These are my lecture notes from the Quantum Mechanics II course taught by Prof. Zhixin Qian during the 2020 Summer School at Peking University.
 
 - [Chapter 1: Phase in Quantum Mechanics](./docs/ch1-phase-in-qm.pdf)
