@@ -1,13 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-import Wrapper from '@common/Wrapper';
+import React from "react";
+import styled from "styled-components";
+import Wrapper from "@common/Wrapper";
 
-import logo from '@src/static/logo_white.svg';
+import logo from "@src/static/logo_white.svg";
 
 const FooterWrapper = styled.footer`
   width: 100vw;
   padding: 10px;
-  background: ${p =>
+  background: ${(p) =>
     p.theme.dark ? p.theme.secondaryColor : p.theme.gradient};
 
   p {
@@ -17,10 +17,10 @@ const FooterWrapper = styled.footer`
   }
 
   a {
-    color: ${p =>
+    color: ${(p) =>
       p.theme.dark ? p.theme.primaryColor : p.theme.secondaryColor};
     &:hover {
-      color: ${p => p.theme.primaryText};
+      color: ${(p) => p.theme.primaryText};
     }
   }
 `;
@@ -28,15 +28,9 @@ const FooterWrapper = styled.footer`
 const Footer = () => (
   <FooterWrapper>
     <Wrapper>
-      <img width="35px" src={logo} alt="anurag hazra" />
-      <p>
-        <b>Chen Huang</b> &copy; {new Date().getFullYear()}
-    </p>
-      <p style={{ float: 'right' }}>
-        Designed by
-        <a href="https://github.com/anuraghazra" target="__blank">
-          &nbsp;anuraghazra
-        </a>
+      <img width="35px" src={logo} alt="Chen Huang" />
+      <p style={{ float: "right" }}>
+        &copy; {new Date().getFullYear()} Chen Huang. All rights reserved.
       </p>
     </Wrapper>
   </FooterWrapper>

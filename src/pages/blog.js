@@ -1,11 +1,11 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
-import Layout from '@components/Layout/Layout';
-import SEO from '@components/seo';
+import Layout from "@components/Layout/Layout";
+import SEO from "@components/seo";
 
-import BlogCard from '@components/Blog/BlogCard';
-import BlogLayout from '@components/Blog/BlogLayout';
+import BlogCard from "@components/Blog/BlogCard";
+import BlogLayout from "@components/Blog/BlogLayout";
 
 const BlogPage = () => {
   const blogposts = useStaticQuery(
@@ -36,7 +36,7 @@ const BlogPage = () => {
   );
   return (
     <Layout>
-      <SEO title="Blog | Anurag Hazra" />
+      <SEO title="Blog | Chen Huang" />
 
       <BlogLayout>
         {blogposts.allMarkdownRemark.edges.map(({ node }) => (

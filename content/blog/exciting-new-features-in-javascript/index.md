@@ -1,12 +1,11 @@
 ---
 title: Exciting New Features In Javascript
 date: 2019-08-07 14:08:00
-author: Anurag Hazra
+author: Chen Huang
 tags: ["javascript"]
 ---
 
 Javascript community is going very well with the TC39 (Technical Committee 39), and it's proposal system. And javascript is now evolving fast, and we can expect some amazing features. I will talk about some of the most useful and exciting features which will make our life easy.
-
 
 ## 1. Optional Chaining ?
 
@@ -22,13 +21,13 @@ const js = {
     do: "anything",
     will: "do anything",
   },
-}
+};
 
 // old way
-const canDoAnything = js && js.can && js.can.do
+const canDoAnything = js && js.can && js.can.do;
 
 // new way
-const canDoAnythingNew = js?.can?.do
+const canDoAnythingNew = js?.can?.do;
 ```
 
 ## 3. Private fields _#_
@@ -80,14 +79,14 @@ and there are many [use cases](https://github.com/tc39/proposal-top-level-await#
 
 ```js
 // top level window
-await fetch("https://somesite.com/api/data") // -> Response {..}
+await fetch("https://somesite.com/api/data"); // -> Response {..}
 ```
 
 ## 5. BigInt
 
 > Available in Chrome & NodeJS 12
 
-Javascript always has been tribble at Math because we cannot reliably store numbers larger than 2 ^ 53, which limits its capabilities in many regions, for example, graphics and data processing. 
+Javascript always has been tribble at Math because we cannot reliably store numbers larger than 2 ^ 53, which limits its capabilities in many regions, for example, graphics and data processing.
 
 > Check the [TC39 proposal for BigInt](https://github.com/tc39/proposal-bigint)
 
@@ -95,13 +94,13 @@ here's how the syntax looks
 
 ```js
 // can define BigInt by appending 'n' to a number literal
-const theBiggestInt = 9997199254748991n
+const theBiggestInt = 9997199254748991n;
 
 // using the constructor with a literal
-const alsoHuge = BigInt(9997199254748991n)
+const alsoHuge = BigInt(9997199254748991n);
 
 // or with a string
-const hugeButString = BigInt("9997199254748991n")
+const hugeButString = BigInt("9997199254748991n");
 ```
 
 You can also do the same `+, -, /, *, %` operations on BigInt as you would expect from regular numbers, but you can't mix BigInt with numbers in most operations. Comparing Number and BigInt works, but not adding them.
@@ -121,16 +120,16 @@ var getGlobal = function() {
   // in node, it's named 'global'. If we're in a shell, 'this' might work.
   // some times also self. and in browsers its window
   if (typeof self !== "undefined") {
-    return self
+    return self;
   }
   if (typeof window !== "undefined") {
-    return window
+    return window;
   }
   if (typeof global !== "undefined") {
-    return global
+    return global;
   }
-  throw new Error("unable to locate global object")
-}
+  throw new Error("unable to locate global object");
+};
 ```
 
 Now, this can get quite messy because we have to check for every environment and find the actual `global`. You might think that its not a big issue, but it is a massive issue because the problem here is about standardization.
@@ -140,10 +139,10 @@ And for that reason, `globalThis` is introduced. the new syntax will look like t
 ```js
 // taken from mdn
 function canMakeHTTPRequest() {
-  return typeof globalThis.XMLHttpRequest === "function"
+  return typeof globalThis.XMLHttpRequest === "function";
 }
 
-console.log(canMakeHTTPRequest())
+console.log(canMakeHTTPRequest());
 // expected output (in a browser): true
 ```
 

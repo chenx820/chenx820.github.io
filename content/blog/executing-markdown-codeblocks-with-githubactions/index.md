@@ -1,14 +1,14 @@
 ---
 title: Executing Markdown Codeblocks With Github Actions
 date: 2019-11-11 11:58:00 # YYYY-MM-DD - H:M:S
-author: Anurag Hazra
-tags: ['github', 'dev-ops', 'CI / CD']
+author: Chen Huang
+tags: ["github", "dev-ops", "CI / CD"]
 ---
 
 Let's get started, so you might say what are we going to do? Let's break it down:-
 
 We are going to create a [GithubAction](https://github.com/features/actions) which will extract the markdown codeblock
-*(js)* from the specified repo's issues and then execute the javascript and add a comment with the output.
+_(js)_ from the specified repo's issues and then execute the javascript and add a comment with the output.
 
 ![GithubAction automatically executes the code](./images/issue_example.png)
 
@@ -86,7 +86,7 @@ And then, in index.js file require the dotenv module.
 
 ```js
 // index.js
-require('dotenv').config();
+require("dotenv").config();
 ```
 
 You might say okay that would work in my local machine but how will GitHub know about my personal access token then?
@@ -109,11 +109,11 @@ In the index.js file, we are going to require all the necessary dependencies 1st
 
 ```js
 // index.js
-const Octokit = require('@octokit/rest');
-const Parser = require('markdown-parser');
-const { VM } = require('vm2');
+const Octokit = require("@octokit/rest");
+const Parser = require("markdown-parser");
+const { VM } = require("vm2");
 
-require('dotenv').config();
+require("dotenv").config();
 ```
 
 Now let's also initialize `VM2`
@@ -159,8 +159,8 @@ clean.
 // get data
 (async () => {
   const { data: issuesRes } = await octokit.issues.listForRepo({
-    owner: 'username',
-    repo: 'my-awesome-repo',
+    owner: "username",
+    repo: "my-awesome-repo",
   });
 
   console.log(issuesRes); // all issues
@@ -175,8 +175,8 @@ Now we need to loop through all the issues and parse the markdown to find the `m
 // get data
 (async () => {
   const { data: issuesRes } = await octokit.issues.listForRepo({
-    owner: 'username',
-    repo: 'my-awesome-repo',
+    owner: "username",
+    repo: "my-awesome-repo",
   });
 
   // loop thought all the issues NOTE: PR are also considered as issues
@@ -189,15 +189,14 @@ Now we need to loop through all the issues and parse the markdown to find the `m
       if (err) throw new Error(err);
 
       // we got the codeblock from the issue
-      let code = result.codes[0].code.replace(/\n,/gim, '');
+      let code = result.codes[0].code.replace(/\n,/gim, "");
 
       // running the codeblock with vm.run()
-      let res = vm.run(`${consoleOverwriteScript}\n${code}`)
-      
+      let res = vm.run(`${consoleOverwriteScript}\n${code}`);
+
       console.log(res);
     });
   });
-  
 })();
 ```
 
@@ -213,15 +212,17 @@ Now lastly, we need to create the comment with octokit's api, and we are all set
 // outside the async function add a new this new function
 async function createComment(msg, issueNumber) {
   await octokit.issues.createComment({
-    owner: 'username',
-    repo: 'my-awesome-repo',
+    owner: "username",
+    repo: "my-awesome-repo",
     issue_number: issueNumber,
-    body: `**Code executed [bot]:**\n\n\`\`\`bash\n${JSON.stringify(msg)}\n\`\`\``
-  })
+    body: `**Code executed [bot]:**\n\n\`\`\`bash\n${JSON.stringify(
+      msg
+    )}\n\`\`\``,
+  });
 }
 ```
 
-`createComment` function will take the msg (outputted result of the code) and an *issueNumber* so it can comment on the right issue.
+`createComment` function will take the msg (outputted result of the code) and an _issueNumber_ so it can comment on the right issue.
 
 Let's continue with our code and finish it.
 
@@ -258,13 +259,12 @@ console.log = function (value) {
   console.oldLog(value);
   return value;
 };
-`
+`;
 ```
 
 I hope you understand what I'm doing here, and I know it's rather funky.
 
 Now we are all good to go. If you run `node index.js`, you should see it working locally.
-
 
 ## Github Actions
 
@@ -273,7 +273,6 @@ Setting up Github Actions is relatively simple at this point because we already 
 So let's jump right into it.
 
 create a new folder in your root dir called `.github` and inside that create another directory called `workflows`
-
 
 (just copy-paste this whole yml)
 
@@ -309,7 +308,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      
+
       # run our nodejs code
       - name: Run Code
         run: |
@@ -332,12 +331,11 @@ That's all, folks!
 
 Hopefully, this post was helpful to you, and you learned something about "Github actions". Now i encourage you also to create your own Action and have fun with it. Tinker with things and also octokit's API to see what cool stuff you can also make. and if you created anything cool, don't hesitate to **share it with me.**
 
-----
+---
 
 NOTE: I disabled GitHub action on this repo, so someone cleaver than me doesn't exploit anything.
 
 **[See Full Code on GitHub](https://github.com/anuraghazra/GithubActionsPlayground)**
-
 
 **Useful resources:-**
 

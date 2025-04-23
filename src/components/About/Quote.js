@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const QuoteWrapper = styled.article`
   position: relative;
@@ -14,13 +14,14 @@ const QuoteWrapper = styled.article`
   min-width: 200px;
   flex: 1;
 
-  background-color: ${p =>
+  background-color: ${(p) =>
     p.theme.dark ? p.theme.accentColor : p.theme.secondaryColor};
-  box-shadow: ${props => props.theme.shadowSmall};
+  box-shadow: ${(props) => props.theme.shadowSmall};
 
   &,
   p {
-    color: ${p => (p.theme.dark ? p.theme.primaryText : p.theme.primaryColor)};
+    color: ${(p) =>
+      p.theme.dark ? p.theme.primaryText : p.theme.primaryColor};
   }
 
   i {
@@ -35,7 +36,7 @@ const Quote = ({ children }) => (
   <QuoteWrapper>
     {children}
     <br />
-    <i>- anurag hazra</i>
+    <i>- Chen Huang</i>
   </QuoteWrapper>
 );
 

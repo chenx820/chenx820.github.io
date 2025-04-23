@@ -1,11 +1,10 @@
 const meta = {
   // Metadata
-  siteTitle: "Anurag Hazra - Creative Web Designer",
-  siteDescription:
-    "Anurag Hazra - Creative frontEnd web developer who loves javascript and modern web technologies.",
-  siteTitleAlt: "Anurag Hazra",
-  siteShortName: "Anurag Hazra",
-  siteUrl: "https://anuraghazra.github.io", // No trailing slash!
+  siteTitle: "Chen Huang - Chen's Physics World",
+  siteDescription: "Chen Huang - Chen's Physics World.",
+  siteTitleAlt: "Chen Huang",
+  siteShortName: "Chen Huang",
+  siteUrl: "https://chenx820.github.io", // No trailing slash!
 };
 
 const social = {

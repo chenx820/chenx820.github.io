@@ -1,22 +1,22 @@
-import React from 'react';
-import { graphql } from 'gatsby';
+import React from "react";
+import { graphql } from "gatsby";
 
-import SEO from '@components/seo';
-import Layout from '@components/Layout/Layout';
-import BlogCard from '@components/Blog/BlogCard';
-import BlogLayout from '@components/Blog/BlogLayout';
+import SEO from "@components/seo";
+import Layout from "@components/Layout/Layout";
+import BlogCard from "@components/Blog/BlogCard";
+import BlogLayout from "@components/Blog/BlogLayout";
 
 const TagsPage = ({ data, pageContext }) => {
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
 
   const tagHeader = `${totalCount} post${
-    totalCount === 1 ? '' : 's'
+    totalCount === 1 ? "" : "s"
   } tagged with "${tag}"`;
 
   return (
     <Layout>
-      <SEO title={tagHeader + ' | Anurag Hazra'} />
+      <SEO title={tagHeader + " | Chen Huang"} />
 
       <BlogLayout>
         <h1>{tagHeader}</h1>

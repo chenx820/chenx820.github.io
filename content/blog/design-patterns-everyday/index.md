@@ -1,8 +1,8 @@
 ---
 title: Design Patterns Everyday
 date: 2020-05-20 12:28:00
-author: Anurag Hazra
-tags: ['javascript', 'design-patterns']
+author: Chen Huang
+tags: ["javascript", "design-patterns"]
 ---
 
 Hey folks! few weeks ago i started a new challenge to learn about one design pattern everyday i called it
@@ -53,7 +53,7 @@ There are 3 categories of design patterns, we are going to cover them one by one
 - **Behavioural**  
   Helps to communicate between objects and concerned with responsiblities between objects.
 
-Also note that, One thing is really important for utilizing design patterns in your project.   
+Also note that, One thing is really important for utilizing design patterns in your project.  
 Never start with the mindset of "okay I'm going to use {this pattern} in the codebase"
 
 Judge & analyze the code base, plan the logic and implementation first then apply design patterns to solve any
@@ -117,9 +117,9 @@ class LinuxFactory extends Factory {
 class AbstractFactory {
   static factory(type) {
     switch (type) {
-      case 'windows':
+      case "windows":
         return new WinFactory();
-      case 'linux':
+      case "linux":
         return new LinuxFactory();
 
       default:
@@ -128,7 +128,7 @@ class AbstractFactory {
   }
 }
 
-let guiFactory = AbstractFactory.factory('linux');
+let guiFactory = AbstractFactory.factory("linux");
 let button = guiFactory.createButton();
 console.log(button.render());
 ```
@@ -172,9 +172,9 @@ class Car {
 }
 class CarBuilder {
   constructor() {
-    this.engine = '';
-    this.seats = '';
-    this.fuelTank = '';
+    this.engine = "";
+    this.seats = "";
+    this.fuelTank = "";
   }
 
   addSeats(name) {
@@ -197,14 +197,14 @@ class CarBuilder {
 
 let truck = new CarBuilder()
   .addSeats(8)
-  .addEngine('v12')
-  .addFuelTank('200liters')
+  .addEngine("v12")
+  .addFuelTank("200liters")
   .build();
 
 let sedan = new CarBuilder()
   .addSeats(4)
-  .addEngine('v6')
-  .addFuelTank('100liters')
+  .addEngine("v6")
+  .addFuelTank("100liters")
   .build();
 ```
 
@@ -233,20 +233,20 @@ class Document {
 }
 class Div extends Document {
   render() {
-    return '<div />';
+    return "<div />";
   }
 }
 class Section extends Document {
   render() {
-    return '<section />';
+    return "<section />";
   }
 }
 class DOMFactory {
   createElement(type) {
     switch (type) {
-      case 'div':
+      case "div":
         return new Div();
-      case 'section':
+      case "section":
         return new Section();
       default:
         break;
@@ -255,8 +255,8 @@ class DOMFactory {
 }
 
 let domFactory = new DOMFactory();
-let div = domFactory.createElement('div');
-let section = domFactory.createElement('section');
+let div = domFactory.createElement("div");
+let section = domFactory.createElement("section");
 ```
 
 ## Day 4
@@ -282,7 +282,7 @@ class Singleton {
   }
 
   showMessage() {
-    console.log('Hello singleton');
+    console.log("Hello singleton");
   }
 }
 
@@ -330,17 +330,17 @@ class Javascript {
 class LoggerAdapter {
   adapter: any;
   constructor(type: string) {
-    if (type === 'py') {
+    if (type === "py") {
       this.adapter = new Python();
-    } else if (type === 'js') {
+    } else if (type === "js") {
       this.adapter = new Javascript();
     }
   }
 
   log(type: string, msg: string) {
-    if (type === 'py') {
+    if (type === "py") {
       this.adapter.print(msg);
-    } else if (type === 'js') {
+    } else if (type === "js") {
       this.adapter.console(msg);
     }
   }
@@ -356,8 +356,8 @@ class Logger {
 
 const logger = new Logger();
 
-logger.log('js', 'Hello world js');
-logger.log('py', 'Hello world py');
+logger.log("js", "Hello world js");
+logger.log("py", "Hello world py");
 ```
 
 ## Day 6
@@ -368,7 +368,7 @@ logger.log('py', 'Hello world py');
 
 Well, it's confusing but it's interesting to see how useful this pattern could be.
 
-Basically Bridge pattern allows us to separate the platform depended logic from platform independent logic.  
+Basically Bridge pattern allows us to separate the platform depended logic from platform independent logic.
 
 This could be useful for building User Interfaces where you want to make different views depending on different
 resources and doing that in traditional manner will force you to implement each and every view and their resource
@@ -394,7 +394,7 @@ abstract class View {
   }
 
   render(): string {
-    return '';
+    return "";
   }
 }
 
@@ -462,16 +462,16 @@ class SongResource implements IResource {
 }
 
 const artist = new ArtistResource({
-  name: 'Anurag',
-  bio: '404 not found',
-  image: '/img/mypic.png',
-  slug: '/u/anuraghazra',
+  name: "Anurag",
+  bio: "404 not found",
+  image: "/img/mypic.png",
+  slug: "/u/anuraghazra",
 });
 const song = new SongResource({
-  name: 'Cant belive i can fly',
-  lyrics: 'la la la la la',
-  coverImage: '/img/cover.png',
-  spotifyLink: '/s/song/132894',
+  name: "Cant belive i can fly",
+  lyrics: "la la la la la",
+  coverImage: "/img/cover.png",
+  spotifyLink: "/s/song/132894",
 });
 
 const artist_detail_view = new DetailedView(artist);
@@ -501,10 +501,10 @@ relatively positioned and parented to that Layer.
 - [CodeSandbox example](https://codesandbox.io/s/composite-pattern-layers-4v079)
 
 ```js
-const rootLayer = new Layer('rootlayer');
-const shapesLayer = new Layer('my layer');
-const circle = new Shape(100, 100, 'red');
-const box = new Shape(200, 100, 'red');
+const rootLayer = new Layer("rootlayer");
+const shapesLayer = new Layer("my layer");
+const circle = new Shape(100, 100, "red");
+const box = new Shape(200, 100, "red");
 
 layer.add(circle);
 layer.add(box);
@@ -543,8 +543,8 @@ class FolderNode implements Component {
   }
 
   ls() {
-    let str = '\n---' + this.name;
-    this.childrens.forEach(child => {
+    let str = "\n---" + this.name;
+    this.childrens.forEach((child) => {
       str += child.ls();
     });
     return str;
@@ -554,7 +554,7 @@ class FolderNode implements Component {
 class FileNode implements Component {
   name: string;
   constructor(name: string) {
-    this.name = '\n------' + name;
+    this.name = "\n------" + name;
   }
 
   ls() {
@@ -562,14 +562,14 @@ class FileNode implements Component {
   }
 }
 
-let root = new FolderNode('root');
-let src = new FolderNode('src');
-let lib = new FolderNode('lib');
+let root = new FolderNode("root");
+let src = new FolderNode("src");
+let lib = new FolderNode("lib");
 
-let jsFile = new FileNode('app.js');
-let htmlFile = new FileNode('index.html');
-let cssFile = new FileNode('style.css');
-let mainFile = new FileNode('index.js');
+let jsFile = new FileNode("app.js");
+let htmlFile = new FileNode("index.html");
+let cssFile = new FileNode("style.css");
+let mainFile = new FileNode("index.js");
 
 src.add(jsFile);
 src.add(htmlFile);
@@ -606,13 +606,13 @@ Javascript will also have native @Decorators support some point in future the @D
 // simplified example
 function loggerDecorator(wrapped) {
   return function(...args) {
-    console.log('******');
+    console.log("******");
     console.log(wrapped.apply(this, args));
-    console.log('******');
+    console.log("******");
   };
 }
 function mapper(arr: any[], add: number) {
-  return arr.map(i => i + add);
+  return arr.map((i) => i + add);
 }
 
 loggerDecorator(mapper)([1, 2, 3], 10);
@@ -672,10 +672,10 @@ interface IServer {
 }
 class Server implements IServer {
   request(url: string) {
-    console.log('------');
-    console.log('loading:    ', url);
-    console.log('completed:  ', url);
-    console.log('------');
+    console.log("------");
+    console.log("loading:    ", url);
+    console.log("completed:  ", url);
+    console.log("------");
   }
 }
 
@@ -684,13 +684,17 @@ class ProtectedServer implements IServer {
   bannedWebsites: string[];
   constructor() {
     this.api = new Server();
-    this.bannedWebsites = ['https://fakesite.com', 'https://spamming.com', 'https://harmfulsiteyoushouldvisit.com'];
+    this.bannedWebsites = [
+      "https://fakesite.com",
+      "https://spamming.com",
+      "https://harmfulsiteyoushouldvisit.com",
+    ];
   }
   request(url: string) {
     if (this.bannedWebsites.includes(url)) {
-      console.log('------');
-      console.log('BANNED:    ', url);
-      console.log('------');
+      console.log("------");
+      console.log("BANNED:    ", url);
+      console.log("------");
     } else {
       this.api.request(url);
     }
@@ -698,10 +702,10 @@ class ProtectedServer implements IServer {
 }
 
 const server = new ProtectedServer();
-console.log('EXAMPLE-1 Protected Proxy');
-server.request('https://google.com');
-server.request('https://fakesite.com');
-server.request('https://facebook.com');
+console.log("EXAMPLE-1 Protected Proxy");
+server.request("https://google.com");
+server.request("https://fakesite.com");
+server.request("https://facebook.com");
 ```
 
 ---
@@ -736,7 +740,7 @@ specific work and passes the data to the next handler.
 
 ```ts
 // Chain of responsibility
-import { consoleColor } from '../utils';
+import { consoleColor } from "../utils";
 
 interface IHandler {
   addMiddleware(h: IHandler): IHandler;
@@ -763,7 +767,7 @@ class Auth extends AbstractHandler {
     super();
 
     this.isAuthenticated = false;
-    if (username === 'anuraghazra' && password === 'password123') {
+    if (username === "anuraghazra" && password === "password123") {
       this.isAuthenticated = true;
     }
   }
@@ -772,14 +776,14 @@ class Auth extends AbstractHandler {
     if (this.isAuthenticated) {
       return super.get(url, callback);
     } else {
-      throw new Error('Not Authorized');
+      throw new Error("Not Authorized");
     }
   }
 }
 
 class Logger extends AbstractHandler {
   get(url: string, callback: (data: any) => void) {
-    consoleColor('green', '/GET Request to: ', url);
+    consoleColor("green", "/GET Request to: ", url);
     return super.get(url, callback);
   }
 }
@@ -790,8 +794,8 @@ class Route extends AbstractHandler {
   constructor() {
     super();
     this.URLMaps = {
-      '/api/todos': [{ title: 'hello' }, { title: 'world' }],
-      '/api/random': Math.random(),
+      "/api/todos": [{ title: "hello" }, { title: "world" }],
+      "/api/random": Math.random(),
     };
   }
 
@@ -805,12 +809,14 @@ class Route extends AbstractHandler {
 }
 
 const route = new Route();
-route.addMiddleware(new Auth('anuraghazra', 'password123')).addMiddleware(new Logger());
+route
+  .addMiddleware(new Auth("anuraghazra", "password123"))
+  .addMiddleware(new Logger());
 
-route.get('/api/todos', data => {
-  consoleColor('blue', JSON.stringify({ data }, null, 2));
+route.get("/api/todos", (data) => {
+  consoleColor("blue", JSON.stringify({ data }, null, 2));
 });
-route.get('/api/random', data => {
+route.get("/api/random", (data) => {
   console.log(data);
 });
 ```
@@ -1006,7 +1012,7 @@ other by the mediator instead of passing callbacks/props.
 
 ```ts
 // mediator pattern
-import { consoleColor } from '../utils';
+import { consoleColor } from "../utils";
 
 interface IMediator {
   sendMessage(msg: string, from: any, to?: any): void;
@@ -1024,7 +1030,7 @@ class Chatroom implements IMediator {
   }
 
   sendMessage(msg: string, from: Member, to?: Member) {
-    Object.keys(this.members).forEach(name => {
+    Object.keys(this.members).forEach((name) => {
       if (!to && name !== from.name) {
         this.members[name].receive(msg, from);
         return;
@@ -1049,25 +1055,25 @@ class Member {
   }
 
   receive(msg: string, from: Member) {
-    consoleColor('magenta', `-------`);
-    consoleColor('cyan', `${from.name} says to ${this.name} : `);
-    consoleColor('green', `${msg}`);
-    consoleColor('magenta', `-------`);
+    consoleColor("magenta", `-------`);
+    consoleColor("cyan", `${from.name} says to ${this.name} : `);
+    consoleColor("green", `${msg}`);
+    consoleColor("magenta", `-------`);
   }
 }
 
 const chatroom = new Chatroom();
 
-let anurag = new Member('Anurag');
-let hitman = new Member('hitman');
-let jonathan = new Member('John Wick');
+let anurag = new Member("Anurag");
+let hitman = new Member("hitman");
+let jonathan = new Member("John Wick");
 chatroom.addMember(anurag);
 chatroom.addMember(hitman);
 chatroom.addMember(jonathan);
 
 anurag.send("I'm more dangerous than you hitman");
-hitman.send('Sorry brother forgive me! pls', anurag);
-jonathan.send('Hey hey hey hitman, nerver ever mess with Anurag', hitman);
+hitman.send("Sorry brother forgive me! pls", anurag);
+jonathan.send("Hey hey hey hitman, nerver ever mess with Anurag", hitman);
 ```
 
 ## Day 15
@@ -1107,7 +1113,7 @@ object has to be reflected on other objects
 > [code on github](https://github.com/anuraghazra/design-patterns-everyday/blob/master/behavioral/observer-pattern.ts)
 
 ```ts
-import { consoleColor } from '../utils';
+import { consoleColor } from "../utils";
 
 interface IPublisher {
   addSubscriber(subscriber: any): void;
@@ -1138,7 +1144,7 @@ class Publisher implements IPublisher {
   }
 
   notifyObservers() {
-    this.subscribers.forEach(subs => {
+    this.subscribers.forEach((subs) => {
       subs.notify(this.state);
     });
   }
@@ -1152,10 +1158,13 @@ class Publisher implements IPublisher {
 class UserInterface implements IObserver {
   renderTodos(todos) {
     console.clear();
-    todos.forEach(todo => {
-      consoleColor('cyan', '-----');
-      consoleColor(todo.isCompleted ? 'green' : 'red', `${todo.title} ${todo.isCompleted ? '[DONE]' : '[PENDING]'}`);
-      consoleColor('cyan', '-----');
+    todos.forEach((todo) => {
+      consoleColor("cyan", "-----");
+      consoleColor(
+        todo.isCompleted ? "green" : "red",
+        `${todo.title} ${todo.isCompleted ? "[DONE]" : "[PENDING]"}`
+      );
+      consoleColor("cyan", "-----");
     });
   }
 
@@ -1166,8 +1175,8 @@ class UserInterface implements IObserver {
 
 const store = new Publisher({
   todos: [
-    { title: 'hello', isCompleted: false, id: 1 },
-    { title: 'world', isCompleted: false, id: 2 },
+    { title: "hello", isCompleted: false, id: 1 },
+    { title: "world", isCompleted: false, id: 2 },
   ],
 });
 
@@ -1176,12 +1185,12 @@ store.addSubscriber(userInterface);
 
 // add todo
 store.setState({
-  todos: [...store.state.todos, { title: 'new item', id: Math.random() }],
+  todos: [...store.state.todos, { title: "new item", id: Math.random() }],
 });
 
 // remove todo
 store.setState({
-  todos: store.state.todos.filter(t => t.id !== 2),
+  todos: store.state.todos.filter((t) => t.id !== 2),
 });
 ```
 
@@ -1245,13 +1254,13 @@ class ToggleContext {
 
 class Off implements IToggleState {
   toggle(ctx: ToggleContext) {
-    console.log('OFF');
+    console.log("OFF");
     ctx.setState(new On());
   }
 }
 class On implements IToggleState {
   toggle(ctx: ToggleContext) {
-    console.log('ON');
+    console.log("ON");
     ctx.setState(new Off());
   }
 }
@@ -1307,7 +1316,7 @@ class Authenticator {
 
   authenticate(...args: any) {
     if (!this.strategy) {
-      console.log('No Authentication strategy provided');
+      console.log("No Authentication strategy provided");
       return;
     }
     return this.strategy.authenticate(...args);
@@ -1316,37 +1325,37 @@ class Authenticator {
 
 class GoogleStrategy implements IStrategy {
   authenticate(googleToken: string) {
-    if (googleToken !== '12345') {
-      console.log('Invalid Google User');
+    if (googleToken !== "12345") {
+      console.log("Invalid Google User");
       return;
     }
-    console.log('Authenticated with Google');
+    console.log("Authenticated with Google");
   }
 }
 
 class LocalStrategy implements IStrategy {
   authenticate(username: string, password: string) {
-    if (username !== 'johnwick' && password !== 'gunslotsofguns') {
-      console.log('Invalid user. you are `Excommunicado`');
+    if (username !== "johnwick" && password !== "gunslotsofguns") {
+      console.log("Invalid user. you are `Excommunicado`");
       return;
     }
-    console.log('Authenticated as Baba Yaga');
+    console.log("Authenticated as Baba Yaga");
   }
 }
 
 const auth = new Authenticator();
 
 auth.setStrategy(new GoogleStrategy());
-auth.authenticate('invalidpass');
+auth.authenticate("invalidpass");
 
 auth.setStrategy(new GoogleStrategy());
-auth.authenticate('12345');
+auth.authenticate("12345");
 
 auth.setStrategy(new LocalStrategy());
-auth.authenticate('anurag', '12345');
+auth.authenticate("anurag", "12345");
 
 auth.setStrategy(new LocalStrategy());
-auth.authenticate('johnwick', 'gunslotsofguns');
+auth.authenticate("johnwick", "gunslotsofguns");
 ```
 
 ## Day 18
@@ -1381,13 +1390,13 @@ Btw fun fact, these kind of inversion of control is called "the Hollywood princi
 
 ```ts
 // template method
-import fs from 'fs';
+import fs from "fs";
 
 abstract class DataParser {
   data: string;
   out: any;
   constructor() {
-    this.data = '';
+    this.data = "";
     this.out = null;
   }
 
@@ -1399,7 +1408,7 @@ abstract class DataParser {
   }
 
   readFile(pathUrl: string) {
-    this.data = fs.readFileSync(pathUrl, 'utf8');
+    this.data = fs.readFileSync(pathUrl, "utf8");
   }
 
   doParsing() {}
@@ -1418,7 +1427,7 @@ class DateParser extends DataParser {
 
 class CSVParser extends DataParser {
   doParsing() {
-    this.out = this.data.split(',');
+    this.out = this.data.split(",");
   }
 }
 
@@ -1432,7 +1441,7 @@ class MarkupParser extends DataParser {
   }
 }
 
-const dataUrl = '../../behavioral/data.csv';
+const dataUrl = "../../behavioral/data.csv";
 
 new DateParser().parse(dataUrl);
 new CSVParser().parse(dataUrl);
@@ -1474,8 +1483,7 @@ CanvasCallsExporter.
 
 [Check out the example on github](https://github.com/anuraghazra/design-patterns-everyday/blob/master/behavioral/visitor-pattern.ts)
 
-
--------
+---
 
 ANNNDDD THATS IT! Phew! it was long.. **i know you probably did not read it but thats ok**, you can come back anytime
 when you are stuck with a specific design pattern or confused about it.

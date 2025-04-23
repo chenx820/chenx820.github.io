@@ -1,7 +1,7 @@
 ---
 title: Making a Verlet Physics Engine in Javascript
 date: 2019-08-04 11:38:00
-author: Anurag Hazra
+author: Chen Huang
 tags: ["verlet", "physics", "javascript"]
 ---
 
@@ -34,14 +34,14 @@ We have to keep track of the dots’ current and old positions to add the physic
 // Dot.js
 class Dot {
   constructor(x, y) {
-    this.pos = new Vector(x, y)
-    this.oldpos = new Vector(x, y)
-    this.friction = 0.97
-    this.groundFriction = 0.7
-    this.gravity = new Vector(0, 1)
-    this.radius = 5
-    this.color = "#e62a4f"
-    this.mass = 1
+    this.pos = new Vector(x, y);
+    this.oldpos = new Vector(x, y);
+    this.friction = 0.97;
+    this.groundFriction = 0.7;
+    this.gravity = new Vector(0, 1);
+    this.radius = 5;
+    this.color = "#e62a4f";
+    this.mass = 1;
   }
 }
 ```
@@ -111,33 +111,33 @@ Setting up:
 
 ```js {13,20-24}
 // index.js | setup
-let canvas = document.getElementById("c")
-let ctx = canvas.getContext("2d")
-let CANVAS_WIDTH = window.innerWidth
-let CANVAS_HEIGHT = window.innerHeight
-canvas.width = CANVAS_WIDTH
-canvas.height = CANVAS_HEIGHT
+let canvas = document.getElementById("c");
+let ctx = canvas.getContext("2d");
+let CANVAS_WIDTH = window.innerWidth;
+let CANVAS_HEIGHT = window.innerHeight;
+canvas.width = CANVAS_WIDTH;
+canvas.height = CANVAS_HEIGHT;
 
-let dots = []
+let dots = [];
 
 for (let i = 0; i < 50; i++) {
   dots.push(
     new Dot(Math.random() * CANVAS_WIDTH, Math.random() * CANVAS_HEIGHT)
-  )
+  );
 }
 
 function animate() {
-  ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
+  ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
   for (let d of dots) {
-    d.update()
-    d.constrain()
-    d.render(ctx)
+    d.update();
+    d.constrain();
+    d.render(ctx);
   }
 
-  requestAnimationFrame(animate)
+  requestAnimationFrame(animate);
 }
-animate()
+animate();
 ```
 
 We added a lot more dots in random positions and then `update()` `constrain()` `render()` them.
@@ -162,16 +162,16 @@ Sticks are the core of Verlet physics. Sticks make sure that the dots don’t ge
 // Stick.js
 class Stick {
   constructor(p1, p2, length) {
-    this.startPoint = p1
-    this.endPoint = p2
-    this.stiffness = 2
-    this.color = "#f5476a"
+    this.startPoint = p1;
+    this.endPoint = p2;
+    this.stiffness = 2;
+    this.color = "#f5476a";
 
     // if the length is not given then calculate the distance based on the position
     if (!length) {
-      this.length = this.startPoint.pos.dist(this.endPoint.pos)
+      this.length = this.startPoint.pos.dist(this.endPoint.pos);
     } else {
-      this.length = length
+      this.length = length;
     }
   }
 }
@@ -281,33 +281,33 @@ Adding these lines to the existing code will make the box rigid:
 
 ```js {2,8}
 // index.js | setup
-const ITERATION = 100 // max physics iterations per frame
+const ITERATION = 100; // max physics iterations per frame
 
 function animate() {
-  ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
+  ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
   // iterate over the simulation
   for (let i = 0; i < ITERATION; i++) {
     for (let d of dots) {
-      d.constrain()
+      d.constrain();
     }
     for (let s of sticks) {
-      s.update()
+      s.update();
     }
   }
 
   for (let d of dots) {
-    d.update()
-    d.render(ctx)
+    d.update();
+    d.render(ctx);
   }
   for (let s of sticks) {
-    s.update()
-    s.render(ctx)
+    s.update();
+    s.render(ctx);
   }
 
-  requestAnimationFrame(animate)
+  requestAnimationFrame(animate);
 }
-animate()
+animate();
 ```
 
 https://codepen.io/anuraghazra/pen/gJWpmX?default-tab=results
@@ -324,56 +324,56 @@ We will create an Entity Class that will easily handle the Updates and Renders o
 // Entity.js
 class Entity {
   constructor(iterations) {
-    this.dots = []
-    this.sticks = []
-    this.iterations = iterations || 16
+    this.dots = [];
+    this.sticks = [];
+    this.iterations = iterations || 16;
   }
 
   addDot(x, y, vx, vy) {
-    this.dots.push(new Dot(x, y, vx, vy))
+    this.dots.push(new Dot(x, y, vx, vy));
   }
 
   addStick(p1, p2, length) {
-    this.sticks.push(new Stick(this.dots[p1], this.dots[p2], length))
+    this.sticks.push(new Stick(this.dots[p1], this.dots[p2], length));
   }
 
   updatePoints() {
     for (let i = 0; i < this.dots.length; i++) {
-      this.dots[i].update()
+      this.dots[i].update();
     }
   }
 
   updateSticks() {
     for (let i = 0; i < this.sticks.length; i++) {
-      this.sticks[i].update()
+      this.sticks[i].update();
     }
   }
 
   updateContrains() {
     for (let i = 0; i < this.dots.length; i++) {
-      this.dots[i].constrain()
+      this.dots[i].constrain();
     }
   }
 
   renderPoints(ctx) {
     for (let i = 0; i < this.dots.length; i++) {
-      this.dots[i].render(ctx)
+      this.dots[i].render(ctx);
     }
   }
   renderSticks(ctx) {
     for (let i = 0; i < this.sticks.length; i++) {
-      this.sticks[i].render(ctx)
+      this.sticks[i].render(ctx);
     }
   }
 
   update(ctx) {
-    this.updatePoints()
+    this.updatePoints();
     for (let j = 0; j < this.iterations; j++) {
-      this.updateSticks()
-      this.updateContrains()
+      this.updateSticks();
+      this.updateContrains();
     }
-    this.renderPoints(ctx)
-    this.renderSticks(ctx)
+    this.renderPoints(ctx);
+    this.renderSticks(ctx);
   }
 }
 ```
@@ -420,21 +420,21 @@ With Verly.js you can create a tearable cloth in just 15 lines of code:
 
 ```js {7-8,12-13}
 // Verly.js | demo
-let canvas = document.getElementById("c")
-let ctx = canvas.getContext("2d")
-let width = (canvas.width = 800)
-let height = (canvas.height = 600)
+let canvas = document.getElementById("c");
+let ctx = canvas.getContext("2d");
+let width = (canvas.width = 800);
+let height = (canvas.height = 600);
 
-let verly = new Verly(16)
-let cloth = verly.createCloth(150, 150, 250, 250, 15, 2)
+let verly = new Verly(16);
+let cloth = verly.createCloth(150, 150, 250, 250, 15, 2);
 
 function animate() {
-  ctx.clearRect(0, 0, width, height)
-  verly.update()
-  cloth.tear(100) // tear threshold
-  requestAnimationFrame(animate)
+  ctx.clearRect(0, 0, width, height);
+  verly.update();
+  cloth.tear(100); // tear threshold
+  requestAnimationFrame(animate);
 }
-animate()
+animate();
 ```
 
 Demo: https://anuraghazra.github.io/Verly.js/
@@ -458,7 +458,7 @@ Verly.js’s API is easy to use and flexible because of its Entity Component Str
 
 Thanks for reading — I hope you learned something!
 
-------
+---
 
 ### Other places to learn about Verlet physics:
 

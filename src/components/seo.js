@@ -1,7 +1,7 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import { useStaticQuery, graphql } from 'gatsby';
-import socialBanner from '@src/static/images/social-banner.jpg';
+import React from "react";
+import Helmet from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
+import socialBanner from "@src/static/images/social-banner.jpg";
 
 function SEO({ title, description, slug, isBlogPost }) {
   const { site } = useStaticQuery(graphql`
@@ -25,20 +25,20 @@ function SEO({ title, description, slug, isBlogPost }) {
   //   defaults.siteUrl = window.location.origin;
   // }
 
-  if (defaults.siteUrl === '') {
-    console.error('Please set a siteUrl in your site metadata!');
+  if (defaults.siteUrl === "") {
+    console.error("Please set a siteUrl in your site metadata!");
     return null;
   }
 
   title = title || defaults.title;
   description = description || defaults.description;
 
-  let url = `${defaults.siteUrl}${slug || ''}`;
+  let url = `${defaults.siteUrl}${slug || ""}`;
   let twitter = defaults.twitter;
   let ogimage = `${defaults.siteUrl}${socialBanner}`;
 
   if (isBlogPost) {
-    title = title + ' | Anurag Hazra';
+    title = title + " | Chen Huang";
     ogimage = `${defaults.siteUrl}${slug}/social-banner-img.jpg`;
   }
   // console.log({ url, title, description, twitter, ogimage, imageWidth, imageHeight })

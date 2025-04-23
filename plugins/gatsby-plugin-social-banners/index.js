@@ -1,18 +1,18 @@
-const path = require('path');
-const jimp = require('jimp');
-const dateformat = require('dateformat');
+const path = require("path");
+const jimp = require("jimp");
+const dateformat = require("dateformat");
 
 module.exports = async ({ markdownNode }) => {
   const { frontmatter, fields } = markdownNode;
-  if (fields.posttype === 'case-studies') return;
+  if (fields.posttype === "case-studies") return;
 
-  const output = path.join('./public', fields.slug, 'social-banner-img.jpg');
+  const output = path.join("./public", fields.slug, "social-banner-img.jpg");
   // console.log(`markdownNode plugin:${JSON.stringify(markdownNode, null, 2)}`);
 
   const [image, montserrat, karla] = await Promise.all([
-    jimp.read(path.join(__dirname, './src/social-banner-template.jpg')),
-    jimp.loadFont(path.join(__dirname, './src/fonts/montserrat.fnt')),
-    jimp.loadFont(path.join(__dirname, './src/fonts/karla-26-regular.fnt')),
+    jimp.read(path.join(__dirname, "./src/social-banner-template.jpg")),
+    jimp.loadFont(path.join(__dirname, "./src/fonts/montserrat.fnt")),
+    jimp.loadFont(path.join(__dirname, "./src/fonts/karla-26-regular.fnt")),
   ]);
 
   image
@@ -34,10 +34,7 @@ module.exports = async ({ markdownNode }) => {
       0,
       434,
       {
-        text: `${dateformat(
-          frontmatter.date,
-          'mmmm d, yyyy'
-        )}  |  Anurag Hazra`,
+        text: `${dateformat(frontmatter.date, "mmmm d, yyyy")}  |  Chen Huang`,
         alignmentX: jimp.HORIZONTAL_ALIGN_CENTER,
         alignmentY: jimp.VERTICAL_ALIGN_MIDDLE,
       },
