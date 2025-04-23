@@ -16,7 +16,7 @@ const NoteLayout = ({ children, sharerSection }) => {
       aside={
         <>
           <section>
-            <h4>Random post</h4>
+            <h4>Random note</h4>
             <Link style={{ fontSize: "16px" }} to={randomSlug}>
               {randomTitle}
             </Link>
