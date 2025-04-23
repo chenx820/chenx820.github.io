@@ -20,7 +20,7 @@ const About = () => {
         </div>
         <p>
           Hi, I'm Chen Huang, an MSc student in Physics at Imperial College
-          London and a remote research intern at the
+          London and a remote research intern at the{" "}
           <a
             className="about__link"
             href="http://en.baqis.ac.cn/research/groups/?cid=814"
