@@ -1,20 +1,20 @@
-import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react";
+import { useStaticQuery, graphql, Link } from "gatsby";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import PageHeader from '@common/PageHeader';
-import IFrame from '@common/IFrame';
-import Button, { IconButton } from '@common/Button';
+import PageHeader from "@common/PageHeader";
+import IFrame from "@common/IFrame";
+import Button, { IconButton } from "@common/Button";
 
-import SmallProjects from './SmallProjects';
-import JsProjects from './JsProjects';
+import SmallProjects from "./SmallProjects";
+import JsProjects from "./JsProjects";
 
-import ProjectTemplate from './ProjectTemplate';
-import { ProjectLinks, ProjectPreview, Tags } from './ProjectTemplate.style';
+import ProjectTemplate from "./ProjectTemplate";
+import { ProjectLinks, ProjectPreview, Tags } from "./ProjectTemplate.style";
 
 const ProjectsWrapper = styled.section`
-  ${props => props.theme.spacing.sectionBottom};
+  ${(props) => props.theme.spacing.sectionBottom};
 `;
 const Projects = () => {
   const projects = useStaticQuery(
@@ -46,7 +46,7 @@ const Projects = () => {
 
   return (
     <ProjectsWrapper id="projects" style={{ marginBottom: 100 }}>
-      <PageHeader>Side Projects</PageHeader>
+      <PageHeader>Projects</PageHeader>
 
       {projects.allMarkdownRemark.edges.map(({ node }) => (
         <ProjectTemplate
@@ -63,7 +63,7 @@ const Projects = () => {
               </Button>
               <IconButton
                 label="github"
-                icon={['fab', 'github']}
+                icon={["fab", "github"]}
                 href={node.frontmatter.src}
               />
             </ProjectLinks>
@@ -71,21 +71,21 @@ const Projects = () => {
           preview={
             <ProjectPreview>
               <IFrame
-                livedemo={!!node.frontmatter.iframe.match('codepen')}
+                livedemo={!!node.frontmatter.iframe.match("codepen")}
                 src={node.frontmatter.iframe}
               />
               <Tags>
-                <FontAwesomeIcon icon={['fab', 'js']} />
-                <FontAwesomeIcon icon={['fab', 'html5']} />
-                <FontAwesomeIcon icon={['fab', 'css3']} />
+                <FontAwesomeIcon icon={["fab", "js"]} />
+                <FontAwesomeIcon icon={["fab", "html5"]} />
+                <FontAwesomeIcon icon={["fab", "css3"]} />
               </Tags>
             </ProjectPreview>
           }
         />
       ))}
 
-      <SmallProjects />
-      <JsProjects />
+      {/* <SmallProjects /> */}
+      {/* <JsProjects /> */}
     </ProjectsWrapper>
   );
 };

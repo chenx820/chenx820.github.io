@@ -39,12 +39,6 @@ const NavItemsGatsbyLinks = ({ NavItem }) => (
       <Link to="/#projects">projects</Link>
     </NavItem>
     <NavItem>
-      <Link to="/#creative-coding">creative coding</Link>
-    </NavItem>
-    <NavItem>
-      <Link to="/#concepts">concepts</Link>
-    </NavItem>
-    <NavItem>
       <Link to="/#contact">contact</Link>
     </NavItem>
   </>

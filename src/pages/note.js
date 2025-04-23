@@ -36,7 +36,7 @@ const NotePage = () => {
   );
   return (
     <Layout>
-      <SEO title="Note | Chen Huang" />
+      <SEO title="Note - Chen's Physics World" />
 
       <NoteLayout>
         {noteposts.allMarkdownRemark.edges.map(({ node }) => (

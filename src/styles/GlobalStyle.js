@@ -71,7 +71,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   /*             */
-  /* BLOG STYLES */
+  /* Note STYLES */
   /*             */
   ${notestyles}
   
