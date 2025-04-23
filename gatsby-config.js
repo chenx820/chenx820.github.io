@@ -136,22 +136,6 @@ module.exports = {
         head: true,
       },
     },
-    // others
-    {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        host: config.siteUrl,
-        sitemap: `${config.siteUrl}/sitemap.xml`,
-        env: {
-          development: {
-            policy: [{ userAgent: '*', disallow: ['/'] }],
-          },
-          production: {
-            policy: [{ userAgent: '*', allow: '/', disallow: '/goodies' }],
-          },
-        },
-      },
-    },
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {

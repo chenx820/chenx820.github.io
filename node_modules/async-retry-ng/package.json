@@ -1,0 +1,21 @@
+{
+  "name": "async-retry-ng",
+  "version": "2.0.2",
+  "description": "Retrying made simple, easy and async",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "jest --testTimeout 20000",
+    "prettier": "prettier --single-quote --write './{src,__tests__}/**/*.js'"
+  },
+  "files": [
+    "lib"
+  ],
+  "license": "MIT",
+  "repository": "turist-cloud/async-retry-ng",
+  "devDependencies": {
+    "jest": "29.7.0",
+    "node-fetch": "2.6.7",
+    "prettier": "3.4.2",
+    "then-sleep": "1.0.1"
+  }
+}
