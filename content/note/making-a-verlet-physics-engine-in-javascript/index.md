@@ -464,4 +464,4 @@ Thanks for reading — I hope you learned something!
 
 > [Keith Peter’s CodingMath Verlet Physics Videos.](https://www.youtube.com/watch?v=3HjO_RGIjCU)
 
-> Amazing [Article At DataGenetic](http://datagenetics.com/blog/july22018/index.html)
+> Amazing [Article At DataGenetic](http://datagenetics.com/note/july22018/index.html)

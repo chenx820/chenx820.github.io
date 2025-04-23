@@ -6,7 +6,7 @@ tags: ["javascript", "tricks", "like a pro"]
 ---
 
 Let's get started with some mapping. Previously I made a post about  
-**[filtering arrays like a pro](https://anuraghazra.github.io/blog/filtering-arrays-like-a-pro)** and this one also will be somewhat same, so put your seat belts on.  
+**[filtering arrays like a pro](https://anuraghazra.github.io/note/filtering-arrays-like-a-pro)** and this one also will be somewhat same, so put your seat belts on.  
 In this post, I will show you some cool tricks and hacks to map arrays.
 
 To map arrays like a **PRO** we will use [Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method.
@@ -154,4 +154,4 @@ hope you like this, and now you are also a **PRO** at mapping arrays! 😉.
 
 And Don't forget to comment down your favorite array tricks and tips and let me know your thought's about these tricks. See ya!.
 
-And also don't forget to checkout my other post:- **[filtering arrays like a pro](https://anuraghazra.github.io/blog/filtering-arrays-like-a-pro)**
+And also don't forget to checkout my other post:- **[filtering arrays like a pro](https://anuraghazra.github.io/note/filtering-arrays-like-a-pro)**

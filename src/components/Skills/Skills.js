@@ -47,7 +47,7 @@ const WordClouds = () => {
       aria-hidden="true"
       className="skills__word-clouds"
     >
-      <p style={{ top: 50, left: "100%", fontSize: 23 }}>Neutral Atoms</p>
+      <p style={{ top: 50, left: "100%", fontSize: 23 }}>Coding</p>
       <p style={{ top: 0, left: 0, fontSize: 25 }}>Trapped-Ions</p>
       <p style={{ top: 200, left: -60, fontSize: 14 }}>Semiconductor Qubits</p>
       <p style={{ top: "30%", left: "35%", fontSize: 18 }}>
@@ -56,7 +56,7 @@ const WordClouds = () => {
       <p style={{ top: 40, left: "75%", fontSize: 12 }}>Quantum Circuits</p>
       <p style={{ top: 380, left: "85%", fontSize: 18 }}>Quantum Computing</p>
       <p style={{ top: 320, left: "65%", fontSize: 18 }}>Hardware</p>
-      <p style={{ top: 350, left: 150, fontSize: 20 }}>Qiskit</p>
+      <p style={{ top: 350, left: 150, fontSize: 20 }}>Neutral Atoms</p>
       <p style={{ top: 120, left: "22%", fontSize: 12 }}>Experiments</p>
     </Parallax>
   );

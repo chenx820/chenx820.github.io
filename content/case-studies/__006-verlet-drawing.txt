@@ -24,7 +24,7 @@ well I'm not going to go deep into the codebase and explaining step by step how 
 
 ## How It Works?
 
-If you had read my blog post about [Making a Verlet Physics Engine in Javascript](/blog/making-a-verlet-physics-engine-in-javascript) then you will know that every verlet physics simulation has two main components - `dots` and `sticks`, so you can basically add points and create sticks with the mouse.client positions and save them in an array and update the simulation accordingly in real-time. 
+If you had read my note post about [Making a Verlet Physics Engine in Javascript](/note/making-a-verlet-physics-engine-in-javascript) then you will know that every verlet physics simulation has two main components - `dots` and `sticks`, so you can basically add points and create sticks with the mouse.client positions and save them in an array and update the simulation accordingly in real-time. 
 
 ## What did I learned from this project?
 

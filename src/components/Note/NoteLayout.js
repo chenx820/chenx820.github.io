@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
+import PropTypes from "prop-types";
+import Link from "gatsby-link";
 
-import Tags from '@components/Blog/Tags';
-import SplitLayout from '@common/SplitLayout';
-import useRandomBlogPost from '@src/hooks/useRandomBlogPost';
+import Tags from "@components/Note/Tags";
+import SplitLayout from "@common/SplitLayout";
+import useRandomNotePost from "@src/hooks/useRandomNotePost";
 
-const BlogLayout = ({ children, sharerSection }) => {
-  const { randomSlug, randomTitle } = useRandomBlogPost();
+const NoteLayout = ({ children, sharerSection }) => {
+  const { randomSlug, randomTitle } = useRandomNotePost();
 
   return (
     <SplitLayout
@@ -17,7 +17,7 @@ const BlogLayout = ({ children, sharerSection }) => {
         <>
           <section>
             <h4>Random post</h4>
-            <Link style={{ fontSize: '16px' }} to={randomSlug}>
+            <Link style={{ fontSize: "16px" }} to={randomSlug}>
               {randomTitle}
             </Link>
             <br />
@@ -35,9 +35,9 @@ const BlogLayout = ({ children, sharerSection }) => {
   );
 };
 
-BlogLayout.propTypes = {
+NoteLayout.propTypes = {
   children: PropTypes.node.isRequired,
   sharerSection: PropTypes.node,
 };
 
-export default BlogLayout;
+export default NoteLayout;

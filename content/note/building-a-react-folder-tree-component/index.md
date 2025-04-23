@@ -209,7 +209,7 @@ Initially our Folder component is very simple, just the title and childrens.
 
 > btw if you dont know what that `children` prop is then heres some resources  
 > [A quick intro to React’s props.children](https://codeburst.io/a-quick-intro-to-reacts-props-children-cb3d2fce4891)  
-> [A deep dive into children in React](https://mxstbr.blog/2017/02/react-children-deepdive)
+> [A deep dive into children in React](https://mxstbr.note/2017/02/react-children-deepdive)
 
 ```jsx
 import { AiOutlineFolder } from "react-icons/ai";
@@ -401,7 +401,7 @@ Now for those who are looking for some more fun try to implement these features 
 - CodeSandbox [Link for Declerative API](https://codesandbox.io/s/react-tree-component-p1-dzrxk)
 - CodeSandbox [Link for Imperative API](https://codesandbox.io/s/react-tree-component-p2-ngoqe)
 - [A quick intro to React’s props.children](https://codeburst.io/a-quick-intro-to-reacts-props-children-cb3d2fce4891)
-- [A deep dive into children in React](https://mxstbr.blog/2017/02/react-children-deepdive)
+- [A deep dive into children in React](https://mxstbr.note/2017/02/react-children-deepdive)
 - [A Quick Intro to Recursion in Javascript](https://www.freecodecamp.org/news/quick-intro-to-recursion/)
 - [Intro to Recursion in JS](https://dev.to/ryanfarney3/intro-to-recursion-in-js-32g)
 

@@ -1,5 +1,5 @@
-const path = require('path');
-const config = require('./config/website');
+const path = require("path");
+const config = require("./config/website");
 
 module.exports = {
   siteMetadata: {
@@ -28,7 +28,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: 'language-',
+              classPrefix: "language-",
               inlineCodeMarker: null,
               aliases: {},
               showLineNumbers: true,
@@ -60,15 +60,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'case-studies',
+        name: "case-studies",
         path: `${__dirname}/content/case-studies`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'blog',
-        path: `${__dirname}/content/blog/`,
+        name: "note",
+        path: `${__dirname}/content/note/`,
       },
     },
 
@@ -130,7 +130,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: config.googleAnalyticsID,
         head: true,
@@ -139,7 +139,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: [`/blog/tags/*`, `/goodies`],
+        exclude: [`/note/tags/*`, `/goodies`],
       },
     },
     `gatsby-plugin-styled-components`,

@@ -64,6 +64,6 @@ Browser support is also pretty nice with the exception of IE11 and Opera Mini. (
 - [CanIUse Browser Support](https://caniuse.com/#feat=css-all)
 
 🙏 Thanks for reading! hope you liked the post.
-I will be writing more short blogs about CSS's unknown parts so stay tuned. Have a nice day bye! 👋
+I will be writing more short notes about CSS's unknown parts so stay tuned. Have a nice day bye! 👋
 
 _Comment down if you want to see more tricks and tricks about CSS_

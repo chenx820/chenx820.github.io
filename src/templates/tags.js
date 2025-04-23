@@ -3,8 +3,8 @@ import { graphql } from "gatsby";
 
 import SEO from "@components/seo";
 import Layout from "@components/Layout/Layout";
-import BlogCard from "@components/Blog/BlogCard";
-import BlogLayout from "@components/Blog/BlogLayout";
+import NoteCard from "@components/Note/NoteCard";
+import NoteLayout from "@components/Note/NoteLayout";
 
 const TagsPage = ({ data, pageContext }) => {
   const { tag } = pageContext;
@@ -18,7 +18,7 @@ const TagsPage = ({ data, pageContext }) => {
     <Layout>
       <SEO title={tagHeader + " | Chen Huang"} />
 
-      <BlogLayout>
+      <NoteLayout>
         <h1>{tagHeader}</h1>
         <br />
         <br />
@@ -26,7 +26,7 @@ const TagsPage = ({ data, pageContext }) => {
           const { slug } = node.fields;
           const { title, date, tags } = node.frontmatter;
           return (
-            <BlogCard
+            <NoteCard
               tags={tags}
               key={node.id}
               slug={slug}
@@ -37,7 +37,7 @@ const TagsPage = ({ data, pageContext }) => {
             />
           );
         })}
-      </BlogLayout>
+      </NoteLayout>
     </Layout>
   );
 };

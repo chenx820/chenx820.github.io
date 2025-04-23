@@ -1,22 +1,22 @@
-import React from 'react';
-import { graphql } from 'gatsby';
+import React from "react";
+import { graphql } from "gatsby";
 
-import Layout from '@components/Layout/Layout';
-import SEO from '@components/seo';
+import Layout from "@components/Layout/Layout";
+import SEO from "@components/seo";
 
-import Flex from '@common/Flex';
-import IFrame from '@common/IFrame';
-import Button, { IconButton } from '@common/Button';
+import Flex from "@common/Flex";
+import IFrame from "@common/IFrame";
+import Button, { IconButton } from "@common/Button";
 
-import { ProjectLinks } from '@components/Projects/ProjectTemplate.style';
-import SocialShareSection from '@components/Blog/SocialShareSection';
-import SplitLayout from '@components/common/SplitLayout';
+import { ProjectLinks } from "@components/Projects/ProjectTemplate.style";
+import SocialShareSection from "@components/Note/SocialShareSection";
+import SplitLayout from "@components/common/SplitLayout";
 
-import { InfoTitle, CaseStudyWrapper } from './case-study.style';
+import { InfoTitle, CaseStudyWrapper } from "./case-study.style";
 
 const CaseStudy = ({ data }) => {
   const baseSlugUrl =
-    'https://anuraghazra.github.io' + data.markdownRemark.fields.slug;
+    "https://anuraghazra.github.io" + data.markdownRemark.fields.slug;
   const study = data.markdownRemark.frontmatter;
 
   const infoLinks = study.info.links && (
@@ -45,7 +45,7 @@ const CaseStudy = ({ data }) => {
             </Button>
             <IconButton
               label="github"
-              icon={['fab', 'github']}
+              icon={["fab", "github"]}
               href={study.src}
             />
           </ProjectLinks>

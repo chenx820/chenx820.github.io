@@ -1,32 +1,32 @@
-const axios = require('axios');
+const axios = require("axios");
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
-const path = require('path');
+const path = require("path");
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        src: path.join(__dirname, 'src'),
-        '@src': path.join(__dirname, 'src'),
-        '@common': path.join(__dirname, 'src/components/common'),
-        '@components': path.join(__dirname, 'src/components'),
-        '@pages': path.join(__dirname, 'src/pages'),
+        src: path.join(__dirname, "src"),
+        "@src": path.join(__dirname, "src"),
+        "@common": path.join(__dirname, "src/components/common"),
+        "@components": path.join(__dirname, "src/components"),
+        "@pages": path.join(__dirname, "src/pages"),
       },
     },
   });
 };
 
-const slugify = require('./src/components/slugify.js');
+const slugify = require("./src/components/slugify.js");
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type !== 'MarkdownRemark') return;
+  if (node.internal.type !== "MarkdownRemark") return;
 
   const fileNode = getNode(node.parent);
   const slugFromTitle = slugify(node.frontmatter.title);
 
-  // sourceInstanceName defined if its a blog or case-studie
+  // sourceInstanceName defined if its a note or case-studie
   const sourceInstanceName = fileNode.sourceInstanceName;
 
   // extract the name of the file because we need to sort by it's name
@@ -36,25 +36,25 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   // create slug nodes
   createNodeField({
     node,
-    name: 'slug',
-    // value will be {blog||case-studies}/my-title
-    value: '/' + sourceInstanceName + '/' + slugFromTitle,
+    name: "slug",
+    // value will be {note||case-studies}/my-title
+    value: "/" + sourceInstanceName + "/" + slugFromTitle,
   });
 
-  // adds a posttype field to extinguish between blog and case-study
+  // adds a posttype field to extinguish between note and case-study
   createNodeField({
     node,
-    name: 'posttype',
-    // value will be {blog||case-studies}
+    name: "posttype",
+    // value will be {note||case-studies}
     value: sourceInstanceName,
   });
 
   // if sourceInstanceName is case-studies then add the fileIndex field because we need
   // this to sort the Projects with their respective file name `001-blahblah`
-  if (sourceInstanceName == 'case-studies') {
+  if (sourceInstanceName == "case-studies") {
     createNodeField({
       node,
-      name: 'fileIndex',
+      name: "fileIndex",
       value: fileIndex,
     });
   }
@@ -62,9 +62,9 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
-  const caseStudyTemplate = path.resolve('src/templates/case-study.js');
-  const blogPostTemplate = path.resolve('src/templates/blog-post.js');
-  const tagTemplate = path.resolve('src/templates/tags.js');
+  const caseStudyTemplate = path.resolve("src/templates/case-study.js");
+  const notePostTemplate = path.resolve("src/templates/note-post.js");
+  const tagTemplate = path.resolve("src/templates/tags.js");
 
   return graphql(`
     {
@@ -82,7 +82,7 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then(res => {
+  `).then((res) => {
     if (res.errors) return Promise.reject(res.errors);
 
     const edges = res.data.allMarkdownRemark.edges;
@@ -90,7 +90,7 @@ exports.createPages = ({ actions, graphql }) => {
     edges.forEach(({ node }) => {
       // if the posttype is case-studies then createPage with caseStudyTemplate
       // we get fileds.posttype because we created this node with onCreateNode
-      if (node.fields.posttype === 'case-studies') {
+      if (node.fields.posttype === "case-studies") {
         createPage({
           path: node.fields.slug,
           component: caseStudyTemplate,
@@ -101,14 +101,14 @@ exports.createPages = ({ actions, graphql }) => {
       } else {
         const tagSet = new Set();
         // for each tags on the frontmatter add them to the set
-        node.frontmatter.tags.forEach(tag => tagSet.add(tag));
+        node.frontmatter.tags.forEach((tag) => tagSet.add(tag));
 
         const tagList = Array.from(tagSet);
-        // for each tags create a page with the specific `tag slug` (/blog/tags/:name)
+        // for each tags create a page with the specific `tag slug` (/note/tags/:name)
         // pass the tag through the PageContext
-        tagList.forEach(tag => {
+        tagList.forEach((tag) => {
           createPage({
-            path: `/blog/tags/${slugify(tag)}/`,
+            path: `/note/tags/${slugify(tag)}/`,
             component: tagTemplate,
             context: {
               tag,
@@ -116,10 +116,10 @@ exports.createPages = ({ actions, graphql }) => {
           });
         });
 
-        // create each individual blog post with `blogPostTemplate`
+        // create each individual note post with `notePostTemplate`
         createPage({
           path: node.fields.slug,
-          component: blogPostTemplate,
+          component: notePostTemplate,
           context: {
             slug: node.fields.slug,
           },
@@ -137,7 +137,7 @@ exports.sourceNodes = ({
   cache,
 }) => {
   const { createNode } = actions;
-  const CC_PROJECTS_URI = 'https://anuraghazra.github.io/CanvasFun/data.json';
+  const CC_PROJECTS_URI = "https://anuraghazra.github.io/CanvasFun/data.json";
 
   const createCreativeCodingNode = (project, i) => {
     const node = {
@@ -169,28 +169,28 @@ exports.sourceNodes = ({
         createNodeId,
       });
     } catch (error) {
-      throw new Error('error creating remote img node - ' + error);
+      throw new Error("error creating remote img node - " + error);
     }
   };
 
   // promise based sourcing
   return axios
     .get(CC_PROJECTS_URI)
-    .then(res => {
+    .then((res) => {
       res.data.forEach((project, i) => {
         createCreativeCodingNode(project, i);
         createRemoteImage(project, i);
       });
     })
-    .catch(err => {
+    .catch((err) => {
       // just create a dummy node to pass the build if faild to fetch data
       createCreativeCodingNode(
         {
-          id: '0',
-          demo: '',
-          img: '',
-          title: 'Error while loading Data',
-          src: '',
+          id: "0",
+          demo: "",
+          img: "",
+          title: "Error while loading Data",
+          src: "",
         },
         0
       );

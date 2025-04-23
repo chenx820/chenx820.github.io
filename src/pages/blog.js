@@ -4,15 +4,15 @@ import { useStaticQuery, graphql } from "gatsby";
 import Layout from "@components/Layout/Layout";
 import SEO from "@components/seo";
 
-import BlogCard from "@components/Blog/BlogCard";
-import BlogLayout from "@components/Blog/BlogLayout";
+import NoteCard from "@components/Note/NoteCard";
+import NoteLayout from "@components/Note/NoteLayout";
 
-const BlogPage = () => {
-  const blogposts = useStaticQuery(
+const NotePage = () => {
+  const noteposts = useStaticQuery(
     graphql`
       query {
         allMarkdownRemark(
-          filter: { fields: { posttype: { eq: "blog" } } }
+          filter: { fields: { posttype: { eq: "note" } } }
           sort: { fields: frontmatter___date, order: DESC }
         ) {
           edges {
@@ -36,11 +36,11 @@ const BlogPage = () => {
   );
   return (
     <Layout>
-      <SEO title="Blog | Chen Huang" />
+      <SEO title="Note | Chen Huang" />
 
-      <BlogLayout>
-        {blogposts.allMarkdownRemark.edges.map(({ node }) => (
-          <BlogCard
+      <NoteLayout>
+        {noteposts.allMarkdownRemark.edges.map(({ node }) => (
+          <NoteCard
             key={node.id}
             slug={node.fields.slug}
             title={node.frontmatter.title}
@@ -50,9 +50,9 @@ const BlogPage = () => {
             excerpt={node.excerpt}
           />
         ))}
-      </BlogLayout>
+      </NoteLayout>
     </Layout>
   );
 };
 
-export default BlogPage;
+export default NotePage;

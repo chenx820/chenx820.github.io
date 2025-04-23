@@ -1,19 +1,19 @@
-import React from 'react';
-import { graphql } from 'gatsby';
+import React from "react";
+import { graphql } from "gatsby";
 
-import SEO from '@components/seo';
-import Layout from '@components/Layout/Layout';
+import SEO from "@components/seo";
+import Layout from "@components/Layout/Layout";
 
-import BlogLayout from '@components/Blog/BlogLayout';
-import SocialShareSection from '@components/Blog/SocialShareSection';
+import NoteLayout from "@components/Note/NoteLayout";
+import SocialShareSection from "@components/Note/SocialShareSection";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { BlogDateAndReadTime } from '@components/Blog/BlogCard';
-import { DiscussionEmbed } from 'disqus-react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { NoteDateAndReadTime } from "@components/Note/NoteCard";
+import { DiscussionEmbed } from "disqus-react";
 
-import { siteUrl, disqusShortName } from '../../config/website';
+import { siteUrl, disqusShortName } from "../../config/website";
 
-const BlogPost = ({ data, pageContext }) => {
+const NotePost = ({ data, pageContext }) => {
   const { title, date } = data.markdownRemark.frontmatter;
   const { timeToRead, html, excerpt, id } = data.markdownRemark;
 
@@ -29,20 +29,20 @@ const BlogPost = ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO
-        isBlogPost
+        isNotePost
         title={title}
         description={excerpt}
         slug={pageContext.slug}
       />
 
-      <BlogLayout
+      <NoteLayout
         sharerSection={
           <div>
             <h4>Share on</h4>
             <SocialShareSection baseSlugUrl={baseSlugUrl} title={title} />
-            <hr style={{ margin: '25px 0' }} />
+            <hr style={{ margin: "25px 0" }} />
             <a
-              style={{ fontSize: '16px' }}
+              style={{ fontSize: "16px" }}
               aria-label="Edit post on github"
               rel="noopener norefferer"
               target="__blank"
@@ -54,20 +54,20 @@ const BlogPost = ({ data, pageContext }) => {
           </div>
         }
       >
-        <BlogDateAndReadTime date={date} readtime={timeToRead} />
+        <NoteDateAndReadTime date={date} readtime={timeToRead} />
         <h1>{title}</h1>
         <article
           className="markdown-content"
           dangerouslySetInnerHTML={{ __html: html }}
         />
         <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
-      </BlogLayout>
+      </NoteLayout>
     </Layout>
   );
 };
 
 export const query = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query NotePostBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       excerpt
       html
@@ -81,4 +81,4 @@ export const query = graphql`
   }
 `;
 
-export default BlogPost;
+export default NotePost;

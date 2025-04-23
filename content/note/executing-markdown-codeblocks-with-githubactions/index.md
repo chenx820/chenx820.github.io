@@ -342,4 +342,4 @@ NOTE: I disabled GitHub action on this repo, so someone cleaver than me doesn't 
 - [Octokit Docs](https://octokit.github.io/rest.js/)
 - [Creating A Personal Access Token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
 - [Lots Of Actions](https://github.com/actions)
-- [GitHub Actions now supports CI/CD, free for public repositories - Blog](https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/)
+- [GitHub Actions now supports CI/CD, free for public repositories - Note](https://github.note/2019-08-08-github-actions-now-supports-ci-cd/)
