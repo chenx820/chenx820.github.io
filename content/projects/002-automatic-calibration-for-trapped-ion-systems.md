@@ -8,7 +8,7 @@ iframe: //codepen.io/chenx820/embed/agKJEd/?default-tab=result&theme-id=light
 
 info:
   abstract: The key advantages of trapped-ion quantum computing include long quantum coherence times, high-precision single-qubit and two-qubit operations, and high-fidelity operations between any two qubits within the system. In trapped-ion quantum computing, single-qubit operations typically involve transitions between internal energy levels of the ions, which can be achieved by addressing the target ion with laser pulses. However, multi-qubit operations rely on the collective vibrational modes of the ion chain, known as phonons. Critical parameters such as ion positions, phonon frequencies, and the strength of ion-phonon interactions are closely related to the structure of the ion trap chip, the surrounding environment, and the configuration of the trapping potential. To achieve high-performance trapped-ion quantum computing, precise calibration of system parameters is essential.
-  collaborators: [Institute for Quantum Computing, Baidu Research, Baidu Inc.]
+  collaborators: [Baidu Research]
   links:
     - [
         Ion trap chip
@@ -33,7 +33,7 @@ info:
       ]
 ---
 
-s## Introduction
+## Introduction
 
 Trapped-ion quantum computing, as one of the earliest platforms to demonstrate quantum computation, has been under development for over 30 years. From the initial demonstration of Schrödinger's cat states to the creation of fully connected qubit chips, the trapped-ion platform has consistently shown great potential as a quantum computing hardware solution. The fundamental principles of trapped-ion quantum computing are as follows:
 
