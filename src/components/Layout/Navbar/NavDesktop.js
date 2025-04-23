@@ -1,20 +1,20 @@
-import React from 'react';
-import logo from '@src/static/logo.svg';
+import React from "react";
+import logo from "@src/static/logo.png";
 
-import Link from 'gatsby-link';
-import { Link as SLink } from 'react-scroll';
+import Link from "gatsby-link";
+import { Link as SLink } from "react-scroll";
 
-import { NavItems, NavItem } from './Navbar.style';
+import { NavItems, NavItem } from "./Navbar.style";
 
-import NavLinks from './NavLinks';
-import ToggleSwitch from '@common/ToggleSwitch';
+import NavLinks from "./NavLinks";
+import ToggleSwitch from "@common/ToggleSwitch";
 
 const NavDesktop = () => {
   return (
     <>
       <SLink smooth offset={-100} hashSpy={true} to="home">
         <Link className="logo" to="/">
-          <img src={logo} alt="Anurag Hazra" />
+          <img src={logo} alt="Chen Huang" />
         </Link>
       </SLink>
 
