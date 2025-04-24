@@ -32,7 +32,6 @@ const TagsPage = ({ data, pageContext }) => {
               slug={slug}
               title={title}
               date={date}
-              readtime={node.timeToRead}
               university={university}
               excerpt={node.excerpt}
             />

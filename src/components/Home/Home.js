@@ -16,7 +16,7 @@ const ThingsILove = () => (
   <Flex justify="space-between" align="center">
     <Card>
       <CardIcon>
-        <FontAwesomeIcon icon="atom" />
+        <FontAwesomeIcon icon={["fab", "react"]} />
       </CardIcon>
       <CardTitle>Physics</CardTitle>
       <CardText>I am majoring in Physics and all about quantum.</CardText>
@@ -24,7 +24,7 @@ const ThingsILove = () => (
 
     <Card>
       <CardIcon>
-        <FontAwesomeIcon icon={["fab", "js"]} />
+        <FontAwesomeIcon icon={["fas", "network-wired"]} />
       </CardIcon>
       <CardTitle>Quantum Computing</CardTitle>
       <CardText>My research focus on quantum computing.</CardText>
@@ -81,10 +81,10 @@ const Home = () => {
       </Intro>
 
       {/* Things I LOVE */}
-      <PageHeader style={{ marginBottom: 30 }}>
+      {/* <PageHeader style={{ marginBottom: 30 }}>
         Things I love <i className="fas fa-heart" />
       </PageHeader>
-      <ThingsILove />
+      <ThingsILove /> */}
     </HomeWrapper>
   );
 };

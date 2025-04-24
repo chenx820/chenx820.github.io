@@ -1,15 +1,15 @@
 /*
 Name: Purple King
-Author: Simurai, adapted from DuoTone themes for Atom (http://simurai.com/projects/2016/01/01/duotone-themes)
+Author: Simurai, adapted from DuoTone themes for Atom (http://simurai.com/research/2016/01/01/duotone-themes)
 Conversion: Bram de Haan (http://atelierbram.github.io/Base2Tone-prism/output/prism/prism-base2tone-evening-dark.css)
 */
 
-code[class*='language-'],
-pre[class*='language-'] {
-  font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono',
-    'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono',
-    'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L',
-    'Courier New', Courier, monospace;
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono",
+    "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
+    "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L",
+    "Courier New", Courier, monospace;
   font-size: 14px;
   direction: ltr;
   text-align: left;
@@ -33,48 +33,48 @@ pre[class*='language-'] {
 /* font-size: 1em; */
 /* } */
 
-pre[class*='language-']::-moz-selection,
-pre[class*='language-'] ::-moz-selection,
-code[class*='language-']::-moz-selection,
-code[class*='language-'] ::-moz-selection {
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
   text-shadow: none;
   background: #90a3ff;
 }
 
-pre[class*='language-']::selection,
-pre[class*='language-'] ::selection,
-code[class*='language-']::selection,
-code[class*='language-'] ::selection {
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
   text-shadow: none;
   background: #90a3ff;
 }
 
 /* Code blocks */
-pre[class*='language-'] {
+pre[class*="language-"] {
   padding: 1em;
   margin: 0.5em 0;
   overflow: auto;
 }
 
 /* Code Language Tag */
-pre[class*='language-css']:before {
-  content: 'css';
+pre[class*="language-css"]:before {
+  content: "css";
 }
-pre[class*='language-js']:before {
-  content: 'js';
+pre[class*="language-js"]:before {
+  content: "js";
 }
-pre[class*='language-jsx']:before {
-  content: 'jsx';
+pre[class*="language-jsx"]:before {
+  content: "jsx";
 }
-pre[class*='language-html']:before {
-  content: 'html';
+pre[class*="language-html"]:before {
+  content: "html";
 }
-pre[class*='language-md']:before {
-  content: 'md';
+pre[class*="language-md"]:before {
+  content: "md";
 }
 
 /* Inline code */
-:not(pre) > code[class*='language-'] {
+:not(pre) > code[class*="language-"] {
   padding: 0.1em;
   border-radius: 0.3em;
 }

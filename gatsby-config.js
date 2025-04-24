@@ -5,7 +5,6 @@ module.exports = {
   siteMetadata: {
     title: config.siteTitle,
     description: config.siteDescription,
-    twitter: config.twitter,
     siteUrl: config.siteUrl,
     siteLogo: config.siteLogo,
     siteBanner: config.siteBanner,
@@ -60,7 +59,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: "projects",
+        name: "research",
         path: `${__dirname}/content/projects`,
       },
     },

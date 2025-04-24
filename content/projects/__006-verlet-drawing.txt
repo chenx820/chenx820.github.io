@@ -28,7 +28,7 @@ If you had read my notes post about [Making a Verlet Physics Engine in Javascrip
 
 ## What did I learned from this project?
 
-When I started this project, I was not that good in javascript, and I also did not know how all the modern cool syntactic sugar works and what even OOP means. so basically I just jumped into this project and started working, and after finishing this project I realized my mistakes, and I tried to fix my mistakes with my later projects and progression on my javascript knowledge, things that I learned from this projects are
+When I started this project, I was not that good in javascript, and I also did not know how all the modern cool syntactic sugar works and what even OOP means. so basically I just jumped into this project and started working, and after finishing this project I realized my mistakes, and I tried to fix my mistakes with my later research and progression on my javascript knowledge, things that I learned from this research are
 
 - Writing clean code is necessary 
 - Modularizing and refactoring is mandatory

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import React, { useState } from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
-import { CreativeCodingWrapper } from './CreativeCoding.style';
-import CCProject from './CCProject';
+import { CreativeCodingWrapper } from "./CreativeCoding.style";
+import CCProject from "./CCProject";
 
-import Grid from '@common/Grid';
-import PageHeader from '@common/PageHeader';
-import Button from '../common/Button';
+import Grid from "@common/Grid";
+import PageHeader from "@common/PageHeader";
+import Button from "../common/Button";
 
 const CreativeCoding = () => {
   const [showAll, setShowAll] = useState(false);
@@ -35,7 +35,7 @@ const CreativeCoding = () => {
 
   return (
     <CreativeCodingWrapper id="creative-coding">
-      <PageHeader>Creative Coding Projects</PageHeader>
+      <PageHeader>Creative Coding Research</PageHeader>
 
       <Grid collapseHeight="1150px" showAll={showAll}>
         {ccprojects.allCreativeCoding.edges.map(({ node }) => (

@@ -47,7 +47,6 @@ const NotePage = () => {
             title={node.frontmatter.title}
             date={node.frontmatter.date}
             tags={node.frontmatter.tags}
-            readtime={node.timeToRead}
             university={node.frontmatter.university}
             excerpt={node.excerpt}
           />

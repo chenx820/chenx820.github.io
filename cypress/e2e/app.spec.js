@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 function scrollLinks() {
-  let routes = ["home", "about", "projects"];
+  let routes = ["home", "about", "research"];
   cy.wrap(routes).each((route) => {
     cy.findByText(new RegExp(route, "i"), { selector: "a" })
       .click()

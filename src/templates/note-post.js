@@ -56,7 +56,6 @@ const NotePost = ({ data, pageContext }) => {
       >
         <NoteDateAndReadTime
           date={date}
-          readtime={timeToRead}
           university={university}
         />
         <h1>{title}</h1>

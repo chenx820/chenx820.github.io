@@ -19,7 +19,7 @@ export const InfoTitle = styled.h4`
   }
 `;
 
-export const ProjectWrapper = styled.section`
+export const ResearchWrapper = styled.section`
   margin-top: 100px;
   margin-bottom: 100px;
 

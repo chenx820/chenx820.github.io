@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Ion trap chip parameter correction method and device, electronic equipment and medium",
+    "date": "2025-02-11",
+    "number": "CN117454997",
+    "status": "Issued",
+    "inventor": "Chen Huang, Jingbo Wang",
+    "links": {
+      "src": "https://patents.google.com/patent/CN117454997/en"
+    },
+    "description": "The present disclosure provides a method, apparatus, electronic device, computer readable storage medium and computer program product for ion trap chip parameter correction, and relates to the field of quantum computers, in particular to the technical field of ion trap chips. The implementation scheme is as follows: determining an intrinsic phonon frequency of a first ion in the ion trap chip; the following operations are performed a plurality of times: adjusting the power value of the laser and determining the equivalent amplitude of the laser irradiated to the first ion under the current power value; acquiring and setting a second pulse duration of the laser, and changing the frequency difference between two laser beams divided by the beam splitter by the laser to determine a second probability that the first ion is in an excited state under each frequency difference; determining a first phonon frequency based on a change in the second probability with the frequency difference; determining a difference between the first phonon frequency and the eigen-phonon frequency; and performing function fitting based on the corresponding relation between the equivalent amplitude and the corresponding difference value, so as to correct the phonon frequency under the corresponding equivalent amplitude based on the fitting function."
+  },
+  {
+    "title": "Ion trap chip parameter calibration method and device, electronic equipment and medium",
+    "date": "2024-11-26",
+    "number": "CN117494829",
+    "status": "Issued",
+    "inventor": "Jingbo Wang, Chen Huang",
+    "links": {
+      "src": "https://patents.google.com/patent/CN117494829/en"
+    },
+    "description": "The disclosure provides an ion trap chip parameter calibration method, an ion trap chip parameter calibration device, electronic equipment, a computer readable storage medium and a computer program product, and relates to the field of quantum computers, in particular to the technical field of ion trap chips. The implementation scheme is as follows: determining the positions of one or more ions in the ion trap chip; for each of the one or more ions, performing the following: irradiating the ion by a laser to determine the equivalent amplitude of the laser irradiated to the ion; determining pi pulse duration corresponding to the ion based on the equivalent amplitude; and setting pulse time of the laser based on pi pulse duration, and changing the frequency of the laser within a first preset range according to a first preset step length to determine phonon frequency and coupling strength between the phonon and the ion. The pi pulse duration represents the laser pulse time required for the ion to switch between the ground and excited states."
+  },
+  {
+    "title": "Ion trap chip parameter determining method and device, electronic equipment and medium",
+    "date": "2024-08-27",
+    "number": "CN117371547",
+    "status": "Issued",
+    "inventor": "Jingbo Wang, Chen Huang",
+    "links": {
+      "src": "https://patents.google.com/patent/CN117494829/en"
+    },
+    "description": "The present disclosure provides a method, a device, an electronic device, a computer-readable storage medium and a computer program product for determining parameters of an ion trap chip, and relates to the field of quantum computers, especially to the technical field of ion trap chips. The implementation plan is: determine the position of the first ion to be calibrated in the ion trap chip; obtain and determine the initial frequency difference between the two laser beams split by the laser through the beam splitter; determine the equivalent amplitude after the laser irradiates the first ion ;Adjust the frequency difference between the two laser beams and determine the corresponding laser pulse duration; for each combination of frequency difference and laser pulse duration, determine the first probability that the first ion is in an excited state under this combination; based on The first probability determines the phonon frequency as a function of the frequency difference in the combination. Based on formula Determine the laser pulse duration τ_opt , n is an odd number, Ω is the equivalent amplitude, and Δ is the frequency difference."
+  }
+]

@@ -10,7 +10,6 @@ function SEO({ title, description, slug, isNotePost }) {
         siteMetadata {
           title
           description
-          twitter
           siteUrl
           siteLogo
           siteBanner

@@ -3,7 +3,7 @@ import IconLink from "./IconLink";
 
 const common = css`
   background: ${(props) => props.theme.gradient};
-  color: #171d1d;
+  color: #f8f8f8;
   border: none;
   cursor: pointer;
   transition: 0.2s;
@@ -13,7 +13,7 @@ const common = css`
     opacity: 0.6;
   }
   &:hover {
-    color: #171d1d;
+    color: #f8f8f8;
     background: ${(props) => props.theme.gradient2};
     transform: scale(1.05);
     transition: 0.2s;

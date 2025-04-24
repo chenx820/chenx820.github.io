@@ -30,11 +30,15 @@ export const CardIcon = styled.div`
   height: 100px;
   border-radius: 50%;
   background: ${(props) => props.theme.gradient};
-  color: #171d1d;
+  color: #f8f8f8;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   svg {
-    height: 100px;
-    line-height: 100px;
+    height: 50px;
+    line-height: 50px;
     font-size: 2.2rem;
   }
 `;

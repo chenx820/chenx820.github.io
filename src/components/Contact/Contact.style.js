@@ -34,7 +34,7 @@ export const LeftContent = styled.div`
   &,
   p,
   h3 {
-    color: #171d1d;
+    color: #f8f8f8;
   }
 
   @media ${(props) => props.theme.media.fablet} {

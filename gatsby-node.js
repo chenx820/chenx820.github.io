@@ -37,21 +37,21 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   createNodeField({
     node,
     name: "slug",
-    // value will be {notes||projects}/my-title
+    // value will be {notes||research}/my-title
     value: "/" + sourceInstanceName + "/" + slugFromTitle,
   });
 
-  // adds a posttype field to extinguish between notes and projects
+  // adds a posttype field to extinguish between notes and research
   createNodeField({
     node,
     name: "posttype",
-    // value will be {notes||projects}
+    // value will be {notes||research}
     value: sourceInstanceName,
   });
 
-  // if sourceInstanceName is projects then add the fileIndex field because we need
-  // this to sort the Projects with their respective file name `001-blahblah`
-  if (sourceInstanceName == "projects") {
+  // if sourceInstanceName is research then add the fileIndex field because we need
+  // this to sort the Research with their respective file name `001-blahblah`
+  if (sourceInstanceName == "research") {
     createNodeField({
       node,
       name: "fileIndex",
@@ -88,9 +88,9 @@ exports.createPages = ({ actions, graphql }) => {
     const edges = res.data.allMarkdownRemark.edges;
 
     edges.forEach(({ node }) => {
-      // if the posttype is projects then createPage with projectTemplate
+      // if the posttype is research then createPage with projectTemplate
       // we get fileds.posttype because we created this node with onCreateNode
-      if (node.fields.posttype === "projects") {
+      if (node.fields.posttype === "research") {
         createPage({
           path: node.fields.slug,
           component: projectTemplate,

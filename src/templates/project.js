@@ -8,13 +8,13 @@ import Flex from "@common/Flex";
 import IFrame from "@common/IFrame";
 import Button, { IconButton } from "@common/Button";
 
-import { ProjectLinks } from "@components/Projects/ProjectTemplate.style";
+import { ResearchLinks } from "@components/Research/ResearchTemplate.style";
 import SocialShareSection from "@src/components/Notes/SocialShareSection";
 import SplitLayout from "@components/common/SplitLayout";
 
-import { InfoTitle, ProjectWrapper } from "./project.style";
+import { InfoTitle, ResearchWrapper } from "./project.style";
 
-const Project = ({ data }) => {
+const Research = ({ data }) => {
   const baseSlugUrl =
     "https://chenx820.github.io" + data.markdownRemark.fields.slug;
   const study = data.markdownRemark.frontmatter;
@@ -35,11 +35,11 @@ const Project = ({ data }) => {
   return (
     <Layout>
       <SEO slug={data.markdownRemark.fields.slug} title={study.title} />
-      <ProjectWrapper>
+      <ResearchWrapper>
         <Flex className="case__title" justify="space-between" align="center">
           <h1>{study.title}</h1>
 
-          {/* <ProjectLinks className="case__links">
+          {/* <ResearchLinks className="case__links">
             <Button target="__blank" as="a" href={study.demo}>
               Live Demo
             </Button>
@@ -48,7 +48,7 @@ const Project = ({ data }) => {
               icon={["fab", "github"]}
               href={study.src}
             />
-          </ProjectLinks> */}
+          </ResearchLinks> */}
         </Flex>
 
         <section className="case__info">
@@ -89,7 +89,7 @@ const Project = ({ data }) => {
             </div>
           }
         />
-      </ProjectWrapper>
+      </ResearchWrapper>
     </Layout>
   );
 };
@@ -116,4 +116,4 @@ export const query = graphql`
   }
 `;
 
-export default Project;
+export default Research;

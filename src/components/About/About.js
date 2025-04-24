@@ -16,11 +16,14 @@ const About = () => {
       <SkewBg />
       <AboutInfo>
         <div>
-          <Avatar src="avatar.JPG" />
+          <Avatar src="avatar.png" />
         </div>
         <p>
-          Hi, I'm Chen Huang, an MSc student in Physics at Imperial College
-          London and a remote research intern at the{" "}
+          Hi, I'm Chen Huang, an MSc student in Physics at{" "}
+          <a className="about__link" href="#about">
+            Imperial College London
+          </a>{" "}
+          and a remote research intern at the{" "}
           <a
             className="about__link"
             href="http://en.baqis.ac.cn/research/groups/?cid=814"

@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    /* overflow hidden for SmallProject's 100vw width div */
+    /* overflow hidden for Patent's 100vw width div */
     overflow-x: hidden;
     background-color: ${(p) => p.theme.bg};
     color: ${(p) => p.theme.primaryText};

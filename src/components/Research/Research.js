@@ -1,0 +1,78 @@
+import React from "react";
+import { useStaticQuery, graphql, Link } from "gatsby";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import PageHeader from "@common/PageHeader";
+import IFrame from "@common/IFrame";
+import Button, { IconButton } from "@common/Button";
+
+import Patents from "./Patents";
+
+import ResearchTemplate from "./ResearchTemplate";
+import { ResearchLinks, ResearchPreview, Tags } from "./ResearchTemplate.style";
+
+const ResearchWrapper = styled.section`
+  ${(props) => props.theme.spacing.sectionBottom};
+`;
+const Research = () => {
+  const research = useStaticQuery(
+    graphql`
+      query {
+        allMarkdownRemark(
+          filter: { fields: { posttype: { eq: "research" } } }
+          sort: { fields: fields___fileIndex, order: ASC }
+        ) {
+          edges {
+            node {
+              id
+              frontmatter {
+                demo
+                excerpt
+                iframe
+                src
+                title
+              }
+              fields {
+                slug
+              }
+            }
+          }
+        }
+      }
+    `
+  );
+
+  return (
+    <ResearchWrapper id="research" style={{ marginBottom: 100 }}>
+      <PageHeader>Research</PageHeader>
+
+      {research.allMarkdownRemark.edges.map(({ node }) => (
+        <ResearchTemplate
+          key={node.id}
+          title={node.frontmatter.title}
+          desc={node.frontmatter.excerpt}
+          links={
+            <ResearchLinks>
+              <Button as={Link} to={node.fields.slug}>
+                Read More
+              </Button>
+            </ResearchLinks>
+          }
+          preview={
+            <ResearchPreview>
+              <IFrame
+                livedemo={!!node.frontmatter.iframe.match("codepen")}
+                src={node.frontmatter.iframe}
+              />
+            </ResearchPreview>
+          }
+        />
+      ))}
+
+      <Patents />
+    </ResearchWrapper>
+  );
+};
+
+export default Research;

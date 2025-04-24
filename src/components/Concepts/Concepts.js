@@ -85,7 +85,6 @@ const Concepts = () => {
               description
               title
               links {
-                demo
                 image
                 dribbble
               }

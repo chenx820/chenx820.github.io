@@ -37,9 +37,9 @@ const themeCommon = {
 
 export const themelight = {
   dark: false,
-  bg: "#171D1D",
+  bg: "#F8F8F8",
   primaryColor: "#105286",
-  secondaryColor: "#171D1D",
+  secondaryColor: "#F8F8F8",
   accentColor: "#FDB338",
   primaryBlack: "#383838",
   primaryText: "#383838",
@@ -52,20 +52,20 @@ export const themedarkblue = {
   primaryColor: "#105286",
   secondaryColor: "#0F1221",
   accentColor: "#15182E",
-  primaryBlack: "#171D1D",
+  primaryBlack: "#F8F8F8",
   elevation0: "#105286",
-  primaryText: "#171D1D",
+  primaryText: "#F8F8F8",
   ...themeCommon,
 };
 
 export const themedark = {
   dark: true,
   bg: "#191919",
-  primaryColor: "#105286",
+  primaryColor: "#FDB338",
   secondaryColor: "#232323",
-  accentColor: "#303030",
-  primaryBlack: "#171D1D",
+  accentColor: "#105286",
+  primaryBlack: "#F8F8F8",
   elevation0: "#191919",
-  primaryText: "#171D1D",
+  primaryText: "#F8F8F8",
   ...themeCommon,
 };
