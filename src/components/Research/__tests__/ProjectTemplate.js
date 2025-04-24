@@ -41,7 +41,7 @@ test("should have title and description", () => {
 test("should have links and preview", () => {
   const node = {
     fields: {
-      slug: "/case-studies/project",
+      slug: "/research/project",
     },
     frontmatter: {
       title: "Research Title",
@@ -78,11 +78,11 @@ test("should have links and preview", () => {
               livedemo={!!node.frontmatter.iframe.match("codepen")}
               src={node.frontmatter.iframe}
             />
-            <Tags>
+            {/* <Tags>
               <FontAwesomeIcon icon={["fab", "js"]} />
               <FontAwesomeIcon icon={["fab", "html5"]} />
               <FontAwesomeIcon icon={["fab", "css3"]} />
-            </Tags>
+            </Tags> */}
           </ResearchPreview>
         }
       />
@@ -92,11 +92,7 @@ test("should have links and preview", () => {
 
   // debug();
 
-  expect(getByText(/case study/i)).toHaveAttribute(
-    "to",
-    "/case-studies/project"
-  );
-  expect(getByText(/live demo/i)).toHaveAttribute("href", "https://demo.com");
+  expect(getByText(/read more/i)).toHaveAttribute("to", "/research/project");
   expect(getByTitle(/^github$/i)).toHaveAttribute("href", "https://github.com");
 
   const iframe = getByTitle("https://codepen.io");

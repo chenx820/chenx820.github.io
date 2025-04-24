@@ -15,7 +15,7 @@ import { siteUrl, disqusShortName } from "../../config/website";
 
 const NotePost = ({ data, pageContext }) => {
   const { title, date, university } = data.markdownRemark.frontmatter;
-  const { timeToRead, html, excerpt, id } = data.markdownRemark;
+  const { html, excerpt, id } = data.markdownRemark;
 
   const baseSlugUrl = siteUrl + pageContext.slug;
   const disqusConfig = {
@@ -74,7 +74,6 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       excerpt
       html
-      timeToRead
       id
       frontmatter {
         date(formatString: "MMMM DD, YYYY", locale: "en")

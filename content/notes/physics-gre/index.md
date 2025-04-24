@@ -1,9 +1,11 @@
 ---
-title: Introduction to Plasma Physics
-date: 2021-09-31
+title: Physics GRE
+date: 2021-05-31
 author: Chen Huang
-university: Self-Study
-tags: ["physics", "undergraduate"]
+university: Huazhong University of Science and Technology
+tags: ["physics", "gre"]
 ---
 
-Taught by Prof. He-Lin Wei.
+Self-study notes for the Physics GRE exam taken in 2021.
+
+- [Physics GRE](physics-gre/pdf/physics-gre.pdf)

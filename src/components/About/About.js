@@ -19,7 +19,7 @@ const About = () => {
           <Avatar src="avatar.png" />
         </div>
         <p>
-          Hi, I'm Chen Huang, an MSc student in Physics at{" "}
+          Hi, I'm Chen, an MSc student in Physics at{" "}
           <a className="about__link" href="#about">
             Imperial College London
           </a>{" "}

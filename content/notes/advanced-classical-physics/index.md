@@ -6,4 +6,4 @@ university: Imperial College London
 tags: ["physics", "graduate"]
 ---
 
-[Advanced Classical Physics](advanced-classical-physics/pdf/notes-on-advanced-classical-physics.pdf)
+- [Advanced classical physics](advanced-classical-physics/pdf/notes-on-advanced-classical-physics.pdf)

@@ -5,3 +5,5 @@ author: Chen Huang
 university: Huazhong University of Science and Technology
 tags: ["physics", "undergraduate"]
 ---
+
+- [Theoretical mechanics](theoretical-mechanics/pdf/classical-mechanics.pdf)

@@ -4,7 +4,7 @@ const dateformat = require("dateformat");
 
 module.exports = async ({ markdownNode }) => {
   const { frontmatter, fields } = markdownNode;
-  if (fields.posttype === "projects") return;
+  if (fields.posttype === "research") return;
 
   const output = path.join("./public", fields.slug, "social-banner-img.jpg");
   // console.log(`markdownNode plugin:${JSON.stringify(markdownNode, null, 2)}`);

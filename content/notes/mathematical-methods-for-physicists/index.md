@@ -5,3 +5,6 @@ author: Chen Huang
 university: Imperial College London
 tags: ["math", "graduate"]
 ---
+
+- [Mathematical methods for physicists](mathematical-methods-for-physicists/pdf/mathematical-methods-for-physicists.pdf)
+- [Review](mathematical-methods-for-physicists/pdf/revision-for-2024-mmp-exam.pdf)

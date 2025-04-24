@@ -6,4 +6,8 @@ university: Huazhong University of Science and Technology
 tags: ["engineering", "undergraduate"]
 ---
 
-This course was taught by Prof. Ying Wu and Prof. Jia-Hua Li. However, it overlapped with another advanced course I had selected, so I decided to learn independently. My studies were based on Griffiths' Introduction to Quantum Mechanics and the online course from [https://ocw.mit.edu/courses/8-04-quantum-physics-i-spring-2016/](MIT OCW).
+- [Digital electronics part 1](digital-electronics/pdf/digital-electronics-part1.pdf)
+- [Digital electronics part 2](digital-electronics/pdf/digital-electronics-part2.pdf)
+- [Digital electronics part 3](digital-electronics/pdf/digital-electronics-part3.pdf)
+- [Digital electronics part 4](digital-electronics/pdf/digital-electronics-part4.pdf)
+- [Digital electronics part 5](digital-electronics/pdf/digital-electronics-part5.pdf)
