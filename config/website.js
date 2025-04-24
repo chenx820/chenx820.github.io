@@ -8,7 +8,7 @@ const meta = {
 };
 
 const social = {
-  siteLogo: `src/static/logo.png`,
+  siteLogo: `src/static/logo.svg`,
   siteBanner: `${meta.siteUrl}/images/social-banner.png`,
   twitter: `@chenx820`,
 };
@@ -19,8 +19,8 @@ const website = {
   disqusShortName: "chenx820",
   googleAnalyticsID: "G-6S4PRFFZ9P",
   // Manifest
-  themeColor: "#6D83F2",
-  backgroundColor: "#6D83F2",
+  themeColor: "#105286",
+  backgroundColor: "#105286",
 };
 
 module.exports = website;

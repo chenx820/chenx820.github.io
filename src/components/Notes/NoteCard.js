@@ -29,7 +29,7 @@ const PostWrapper = styled.article`
   }
 `;
 
-export const NoteDateAndReadTime = ({ date, readtime }) => (
+export const NoteDateAndReadTime = ({ date, readtime, university }) => (
   <span style={{ fontSize: 13, color: "gray" }}>
     <span aria-label={`publish date ${date}`}>
       <FontAwesomeIcon color="gray" icon="calendar-alt" />
@@ -40,14 +40,34 @@ export const NoteDateAndReadTime = ({ date, readtime }) => (
       <FontAwesomeIcon color="gray" icon="clock" />
       &nbsp;&nbsp;{readtime}min read
     </span>
+    &nbsp;&nbsp;&nbsp;
+    <span aria-label={`${university}`}>
+      <FontAwesomeIcon color="gray" icon={["fas", "university"]} />
+      &nbsp;&nbsp;{university}
+    </span>
   </span>
 );
 
-const NoteCard = ({ date, readtime, title, excerpt, slug, tags }) => {
+const NoteCard = ({
+  date,
+  readtime,
+  university,
+  title,
+  excerpt,
+  slug,
+  tags,
+}) => {
   return (
-    <Link to={slug} aria-label={`${title} - read time ${readtime} minutes`}>
+    <Link
+      to={slug}
+      aria-label={`${title} - read time ${readtime} minutes - ${university}`}
+    >
       <PostWrapper>
-        <NoteDateAndReadTime date={date} readtime={readtime} />
+        <NoteDateAndReadTime
+          date={date}
+          readtime={readtime}
+          university={university}
+        />
 
         <h2>{title}</h2>
         <p>{excerpt}</p>
@@ -71,11 +91,13 @@ const NoteCard = ({ date, readtime, title, excerpt, slug, tags }) => {
 NoteDateAndReadTime.propTypes = {
   date: PropTypes.string.isRequired,
   readtime: PropTypes.number.isRequired,
+  university: PropTypes.string.isRequired,
 };
 
 NoteCard.propTypes = {
   date: PropTypes.string.isRequired,
   readtime: PropTypes.number.isRequired,
+  university: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   excerpt: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,

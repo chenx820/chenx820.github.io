@@ -16,7 +16,7 @@ const ThingsILove = () => (
   <Flex justify="space-between" align="center">
     <Card>
       <CardIcon>
-        <FontAwesomeIcon icon="code" />
+        <FontAwesomeIcon icon="atom" />
       </CardIcon>
       <CardTitle>Physics</CardTitle>
       <CardText>I am majoring in Physics and all about quantum.</CardText>
@@ -32,7 +32,7 @@ const ThingsILove = () => (
 
     <Card>
       <CardIcon>
-        <FontAwesomeIcon icon="paint-brush" />
+        <FontAwesomeIcon icon="code" />
       </CardIcon>
       <CardTitle>Coding</CardTitle>
       <CardText>I love coding.</CardText>
@@ -65,7 +65,7 @@ const Home = () => {
               />
               <IconLink
                 label="email"
-                icon={["fab", "email"]}
+                icon={["fas", "envelope"]}
                 href="mailto:chen.huang23@imperial.ac.uk"
               />
               <IconLink

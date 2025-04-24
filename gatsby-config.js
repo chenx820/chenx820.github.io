@@ -83,6 +83,15 @@ module.exports = {
       },
     },
 
+    // FILES TRANSFORMER
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `notes_files`,
+        path: `src/static/notes`,
+      },
+    },
+
     // manifest & helmet
     `gatsby-plugin-react-helmet`,
 
@@ -125,7 +134,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
-        color: `#6D83F2`,
+        color: `#105286`,
         showSpinner: false,
       },
     },

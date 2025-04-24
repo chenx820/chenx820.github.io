@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
 
-import { useInView } from 'react-intersection-observer';
+import { useInView } from "react-intersection-observer";
 
 const IframeWrapper = styled.div`
   position: relative;
   overflow: hidden;
   padding-top: 56.25%;
-  background-color: ${props => props.theme.accentColor};
+  background-color: ${(props) => props.theme.accentColor};
   border-radius: 10px;
 
-  ${props =>
+  ${(props) =>
     props.livedemo &&
     css`
-      @media ${props => props.theme.media.tablet} {
+      @media ${(props) => props.theme.media.tablet} {
         min-height: 400px;
       }
     `}
 
-  /* @media ${props => props.theme.media.tablet} {
+  /* @media ${(props) => props.theme.media.tablet} {
     min-height: 100px;
   } */
   iframe {
@@ -132,7 +132,7 @@ const Loader = () => {
             y2="257.386"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#6A98F0" />
+            <stop stopColor="#105286" />
             <stop offset="1" stopColor="#4961DC" />
           </linearGradient>
         </defs>
@@ -156,7 +156,7 @@ const IFrame = ({ src, livedemo }) => {
     <IframeWrapper livedemo={livedemo} className="iframe-wrapper" ref={ref}>
       <iframe
         title={src}
-        style={{ opacity: isLoading ? '0' : '1' }}
+        style={{ opacity: isLoading ? "0" : "1" }}
         src={inView ? src : undefined}
         onLoad={handleLoaded}
         frameBorder="0"

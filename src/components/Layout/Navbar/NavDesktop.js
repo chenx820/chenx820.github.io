@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "@src/static/logo.png";
+import logo from "@src/static/logo.svg";
 
 import Link from "gatsby-link";
 import { Link as SLink } from "react-scroll";

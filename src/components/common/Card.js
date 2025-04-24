@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import Flex from './Flex';
+import styled from "styled-components";
+import Flex from "./Flex";
 
 export const Card = styled.div`
   margin: 10px;
@@ -15,11 +15,11 @@ export const Card = styled.div`
   flex-direction: column;
   text-align: center;
 
-  background-color: ${props => props.theme.secondaryColor};
-  box-shadow: ${props => props.theme.shadowSmall};
+  background-color: ${(props) => props.theme.secondaryColor};
+  box-shadow: ${(props) => props.theme.shadowSmall};
   border-radius: 10px;
 
-  @media ${props => props.theme.media.tablet} {
+  @media ${(props) => props.theme.media.tablet} {
     flex: 1 1 100%;
     margin: 20px auto;
   }
@@ -29,8 +29,8 @@ export const CardIcon = styled.div`
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: ${props => props.theme.gradient};
-  color: #f8f8f8;
+  background: ${(props) => props.theme.gradient};
+  color: #171d1d;
 
   svg {
     height: 100px;
@@ -41,7 +41,7 @@ export const CardIcon = styled.div`
 
 export const CardTitle = styled.h3`
   font-weight: normal;
-  color: ${p => (p.theme.dark ? p.theme.primaryText : p.theme.primaryColor)};
+  color: ${(p) => (p.theme.dark ? p.theme.primaryText : p.theme.primaryColor)};
 `;
 
 export const CardText = styled.p`

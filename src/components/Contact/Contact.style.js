@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ContactWrapper = styled.section`
   margin-bottom: 200px;
@@ -12,12 +12,12 @@ export const ContactBox = styled.div`
   margin-bottom: 50px;
   margin-top: 150px;
 
-  background: ${props => props.theme.gradient};
+  background: ${(props) => props.theme.gradient};
 
   padding: 20px;
   border-radius: 10px;
 
-  @media ${props => props.theme.media.fablet} {
+  @media ${(props) => props.theme.media.fablet} {
     width: 100%;
     padding: 10px;
     margin-top: 50px;
@@ -34,10 +34,10 @@ export const LeftContent = styled.div`
   &,
   p,
   h3 {
-    color: #f8f8f8;
+    color: #171d1d;
   }
 
-  @media ${props => props.theme.media.fablet} {
+  @media ${(props) => props.theme.media.fablet} {
     display: none;
   }
 `;
@@ -49,23 +49,23 @@ export const ContactForm = styled.form`
   top: -50px;
   right: -40px;
   padding: 50px 30px;
-  background: ${props => props.theme.secondaryColor};
+  background: ${(props) => props.theme.secondaryColor};
   border-radius: 10px;
   min-height: 400px;
 
-  box-shadow: ${props => props.theme.shadowSmall};
+  box-shadow: ${(props) => props.theme.shadowSmall};
 
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    'email name'
-    'textarea textarea'
-    '. button';
+    "email name"
+    "textarea textarea"
+    ". button";
 
   label span {
     font-size: 0.85em;
-    color: ${p => (p.theme.dark ? '#fff' : '#252525')};
+    color: ${(p) => (p.theme.dark ? "#fff" : "#252525")};
   }
   .label__email {
     grid-area: email;
@@ -82,12 +82,12 @@ export const ContactForm = styled.form`
     grid-area: button;
   }
 
-  @media ${props => props.theme.media.tablet} {
+  @media ${(props) => props.theme.media.tablet} {
     grid-template-areas:
-      'email email'
-      'name name'
-      'textarea textarea'
-      '. button';
+      "email email"
+      "name name"
+      "textarea textarea"
+      ". button";
   }
 
   input,
@@ -107,7 +107,7 @@ export const ContactForm = styled.form`
     resize: none;
   }
 
-  @media ${props => props.theme.media.fablet} {
+  @media ${(props) => props.theme.media.fablet} {
     input,
     textarea {
       padding: 20px 15px;

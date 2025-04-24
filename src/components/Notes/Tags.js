@@ -29,7 +29,7 @@ export const TagBreadcrumb = styled(Link)`
 
   &:hover {
     background: ${(p) => (p.theme.dark ? p.theme.primaryColor : "#d9e0ff")};
-    color: ${(p) => (p.theme.dark ? "#d9e0ff" : "#6D83F2")};
+    color: ${(p) => (p.theme.dark ? "#d9e0ff" : "#105286")};
   }
 `;
 

@@ -1,16 +1,16 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const AboutWrapper = styled.section`
   margin-bottom: 200px;
 
-  @media ${props => props.theme.media.tablet} {
+  @media ${(props) => props.theme.media.tablet} {
     position: relative;
   }
   .quotes__wrapper {
     position: relative;
     top: 80px;
 
-    @media ${props => props.theme.media.tablet} {
+    @media ${(props) => props.theme.media.tablet} {
       top: 40px;
     }
   }
@@ -27,13 +27,13 @@ export const AboutInfo = styled.article`
   }
 
   p {
-    color: #f8f8f8;
+    color: #171d1d;
   }
 
   .about__link {
-    color: ${p => (p.theme.dark ? p.theme.primaryColor : '#111')};
+    color: ${(p) => (p.theme.dark ? p.theme.primaryColor : "#111")};
   }
-  @media ${props => props.theme.media.tablet} {
+  @media ${(props) => props.theme.media.tablet} {
     flex-direction: column;
     margin-top: 120px;
 

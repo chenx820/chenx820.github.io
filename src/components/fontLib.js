@@ -1,8 +1,9 @@
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { library, config } from '@fortawesome/fontawesome-svg-core';
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { library, config } from "@fortawesome/fontawesome-svg-core";
 
 import {
   faGithub,
+  faLinkedin,
   faDribbble,
   faTwitter,
   faFacebook,
@@ -13,9 +14,10 @@ import {
   faCodepen,
   faReact,
   faNode,
-} from '@fortawesome/free-brands-svg-icons';
+} from "@fortawesome/free-brands-svg-icons";
 import {
   faPaintBrush,
+  faEnvelope,
   faCode,
   faWindowMaximize,
   faHandshake,
@@ -29,16 +31,20 @@ import {
   faMoon,
   faSun,
   faEdit,
-} from '@fortawesome/free-solid-svg-icons';
+  faAtom,
+  faUniversity
+} from "@fortawesome/free-solid-svg-icons";
 
 library.add(
   faGithub,
+  faLinkedin,
   faDribbble,
   faTwitter,
   faFacebook,
   faReddit,
   faPaintBrush,
   faWindowMaximize,
+  faEnvelope,
   faCode,
   faJs,
   faHandshake,
@@ -56,6 +62,8 @@ library.add(
   faTimes,
   faMoon,
   faSun,
-  faEdit
+  faEdit,
+  faAtom,
+  faUniversity
 );
 config.autoAddCss = false;
