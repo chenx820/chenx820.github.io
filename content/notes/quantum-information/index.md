@@ -7,3 +7,5 @@ tags: ["physics", "graduate"]
 ---
 
 This course was taught by Prof. Myungshik Kim. My notes were based on his lecture notes and the textbook by Nielsen and Chuang. The topics covered include quantum gates, quantum algorithms, quantum error correction, and quantum entanglement.
+
+- [Study notes on quantum information](notes/notes-on-quantum-information.pdf)

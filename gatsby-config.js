@@ -82,15 +82,6 @@ module.exports = {
       },
     },
 
-    // FILES TRANSFORMER
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `notes_files`,
-        path: `src/static/notes`,
-      },
-    },
-
     // manifest & helmet
     `gatsby-plugin-react-helmet`,
 

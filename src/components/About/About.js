@@ -39,10 +39,10 @@ const About = () => {
           experience with a variety of quantum systems, including neutral atoms,
           trapped ions, and semiconductor qubits.
           <br />
-          <br />I also work extensively with quantum circuits. At BAQIS, my
-          research focuses on developing efficient quantum compilation
-          strategies that help bridge the gap between hardware capabilities and
-          practical, scalable quantum computing.
+          <br />I also work with quantum circuits. At BAQIS, my research focuses
+          on developing efficient quantum compilation strategies that help
+          bridge the gap between hardware capabilities and practical, scalable
+          quantum computing.
         </p>
       </AboutInfo>
     </AboutWrapper>
