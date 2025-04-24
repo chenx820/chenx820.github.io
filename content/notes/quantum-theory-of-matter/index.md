@@ -1,6 +1,6 @@
 ---
 title: Quantum Theory of Matter
-date: 2024-05-31
+date: 2024-06-03
 author: Chen Huang
 university: Imperial College London
 tags: ["physics", "graduate"]
