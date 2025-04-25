@@ -31,7 +31,8 @@ export const AboutInfo = styled.article`
   }
 
   .about__link {
-    color: ${(p) => p.theme.accentColor};
+    color: ${(p) =>
+      p.theme.dark ? p.theme.primaryColor : p.theme.accentColor};
   }
   @media ${(props) => props.theme.media.tablet} {
     flex-direction: column;

@@ -2,8 +2,8 @@ import styled, { css } from "styled-components";
 import IconLink from "./IconLink";
 
 const common = css`
-  background: ${(props) => props.theme.gradient};
-  color: #f8f8f8;
+  background: ${(props) => props.theme.primaryColor};
+  color: ${(props) => props.theme.secondaryColor};
   border: none;
   cursor: pointer;
   transition: 0.2s;
@@ -13,8 +13,8 @@ const common = css`
     opacity: 0.6;
   }
   &:hover {
-    color: #f8f8f8;
-    background: ${(props) => props.theme.gradient2};
+    background: ${(props) => props.theme.primaryColor};
+    color: ${(props) => props.theme.secondaryColor};
     transform: scale(1.05);
     transition: 0.2s;
   }

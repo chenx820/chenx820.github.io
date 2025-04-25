@@ -8,7 +8,7 @@ const FooterWrapper = styled.footer`
   width: 100vw;
   padding: 10px;
   background: ${(p) =>
-    p.theme.dark ? p.theme.secondaryColor : p.theme.gradient};
+    p.theme.dark ? p.theme.secondaryColor : p.theme.primaryColor};
 
   p {
     font-size: 1rem;

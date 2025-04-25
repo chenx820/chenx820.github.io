@@ -13,8 +13,7 @@ const PostWrapper = styled.article`
   margin-bottom: 70px;
   /* margin-top: 100px; */
   padding: 30px 30px;
-  border-top: 5px solid
-    ${(p) => (p.theme.dark ? p.theme.accentColor : p.theme.primaryColor)};
+  border-top: 5px solid ${(p) => p.theme.primaryColor};
   border-radius: 10px;
   box-shadow: ${(p) => p.theme.shadowSmall};
   background-color: ${(p) => p.theme.secondaryColor};
@@ -43,24 +42,11 @@ export const NoteDateAndReadTime = ({ date, university }) => (
   </span>
 );
 
-const NoteCard = ({
-  date,
-  university,
-  title,
-  excerpt,
-  slug,
-  tags,
-}) => {
+const NoteCard = ({ date, university, title, excerpt, slug, tags }) => {
   return (
-    <Link
-      to={slug}
-      aria-label={`${title} - ${university}`}
-    >
+    <Link to={slug} aria-label={`${title} - ${university}`}>
       <PostWrapper>
-        <NoteDateAndReadTime
-          date={date}
-          university={university}
-        />
+        <NoteDateAndReadTime date={date} university={university} />
 
         <h2>{title}</h2>
         <p>{excerpt}</p>

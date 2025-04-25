@@ -1,4 +1,4 @@
-describe("Should check Case Studies it's and subpages", () => {
+describe("Should check projects it's and subpages", () => {
   const PROJECT_NAME = /Verly Range Slider/i;
   const URL = "research/verly-range-slider";
   const LIVE_DEMO_URL = "//chenx820.github.io/VerlyRangeSlider";
@@ -9,7 +9,7 @@ describe("Should check Case Studies it's and subpages", () => {
   });
 
   function assertResearchLinks() {
-    cy.findByText(/Live Demo/i, { selector: "a" })
+    cy.findByText(/Read More/i, { selector: "a" })
       .should("have.attr", "href", LIVE_DEMO_URL)
       .findByLabelText("github")
       .should("have.attr", "href", GITHUB_URL);
@@ -31,7 +31,7 @@ describe("Should check Case Studies it's and subpages", () => {
       .get("iframe")
       .should("exist");
 
-    // asset project links on individual case study page
+    // asset project links on individual research page
     // assertResearchLinks();
   });
 });

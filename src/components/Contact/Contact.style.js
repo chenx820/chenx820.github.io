@@ -12,7 +12,7 @@ export const ContactBox = styled.div`
   margin-bottom: 50px;
   margin-top: 150px;
 
-  background: ${(props) => props.theme.gradient};
+  background: ${(props) => props.theme.primaryColor};
 
   padding: 20px;
   border-radius: 10px;

@@ -41,22 +41,37 @@ export const CodeCard = () => {
   return (
     <CodeCardWrapper>
       <pre>
-        1&nbsp;&nbsp;class <b>Person</b> {"{"}
+        1&nbsp;&nbsp;class <b>Physicist</b>:
       </pre>
-      <pre>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; constructor() {"{"}</pre>
+      <pre>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self):</pre>
       <pre>
-        3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.name = "
-        <b>Chen Huang</b>";
+        3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.name =
+        "<b>Chen Huang</b>"
       </pre>
       <pre>
-        4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.traits = ["
-        <b>QUANTUM</b>"];
+        4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.traits
+        = ["
+        <b>QUANTUM COMPUTING</b>"]
       </pre>
-      <pre onClick={changeText}>
-        5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.age = {text}
+      <pre>
+        5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.email
+        = "chen.huang23@imperial.ac.uk"
       </pre>
-      <pre>6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {"}"}</pre>
-      <pre>7&nbsp;&nbsp;{"}"}</pre>
+      <pre>
+        6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.education
+        = {"{"}
+      </pre>
+      <pre>
+        7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"MSc":
+        "Imperial College London",
+      </pre>
+      <pre>
+        8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"BSc":
+        "Huazhong University of Science and Technology"
+      </pre>
+      <pre>
+        9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"}
+      </pre>
     </CodeCardWrapper>
   );
 };
@@ -86,7 +101,7 @@ export const ColorPalette = withTheme(({ theme }) => {
   return (
     <ColorPaletteWrapper>
       <ColorBox color={theme.primaryColor} />
-      <ColorBox color={"#105286"} />
+      <ColorBox color={theme.secondaryColor} />
       <ColorBox color={theme.gradient} />
       <ColorBox color={theme.primaryBlack} />
       <ColorBox color={theme.accentColor} />

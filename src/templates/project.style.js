@@ -27,18 +27,18 @@ export const ResearchWrapper = styled.section`
     margin: 5px 0;
   }
 
-  .case__title {
+  .research_title {
     margin-bottom: 50px;
     h1 {
       margin: 0;
       line-height: 70px;
     }
-    .case__links {
+    .research__links {
       margin: 0;
     }
   }
 
-  .case__info {
+  .research__info {
     margin-bottom: 70px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -52,7 +52,7 @@ export const ResearchWrapper = styled.section`
     }
   }
 
-  .case__iframe-container {
+  .research__iframe-container {
     width: 100%;
     margin: 10px 0;
   }

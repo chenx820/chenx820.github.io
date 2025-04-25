@@ -37,35 +37,22 @@ const themeCommon = {
 
 export const themelight = {
   dark: false,
-  bg: "#F8F8F8",
-  primaryColor: "#105286",
-  secondaryColor: "#F8F8F8",
-  accentColor: "#FDB338",
-  primaryBlack: "#383838",
-  primaryText: "#383838",
-  ...themeCommon,
-};
-
-export const themedarkblue = {
-  dark: true,
-  bg: "#0B0D18",
-  primaryColor: "#105286",
-  secondaryColor: "#0F1221",
-  accentColor: "#15182E",
-  primaryBlack: "#F8F8F8",
-  elevation0: "#105286",
-  primaryText: "#F8F8F8",
+  bg: "#F8F8F8", // white
+  primaryColor: "#105286", // blue
+  secondaryColor: "#F8F8F8", // white
+  accentColor: "#FDB338", // yellow
+  primaryBlack: "#383838", // black
+  primaryText: "#383838", // black
   ...themeCommon,
 };
 
 export const themedark = {
   dark: true,
-  bg: "#191919",
-  primaryColor: "#FDB338",
-  secondaryColor: "#232323",
-  accentColor: "#105286",
-  primaryBlack: "#F8F8F8",
-  elevation0: "#191919",
-  primaryText: "#F8F8F8",
+  bg: "#191919", // black
+  primaryColor: "#FDB338", // yellow
+  secondaryColor: "#232323", // dark gray
+  accentColor: "#105286", // blue
+  primaryBlack: "#F8F8F8", // white
+  primaryText: "#F8F8F8", // white
   ...themeCommon,
 };

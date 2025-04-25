@@ -36,10 +36,10 @@ const Research = ({ data }) => {
     <Layout>
       <SEO slug={data.markdownRemark.fields.slug} title={study.title} />
       <ResearchWrapper>
-        <Flex className="case__title" justify="space-between" align="center">
+        <Flex className="research_title" justify="space-between" align="center">
           <h1>{study.title}</h1>
 
-          {/* <ResearchLinks className="case__links">
+          {/* <ResearchLinks className="research__links">
             <Button target="__blank" as="a" href={study.demo}>
               Live Demo
             </Button>
@@ -51,7 +51,7 @@ const Research = ({ data }) => {
           </ResearchLinks> */}
         </Flex>
 
-        <section className="case__info">
+        <section className="research__info">
           <div>
             <aside>
               <InfoTitle>Abstract</InfoTitle>
@@ -67,7 +67,7 @@ const Research = ({ data }) => {
             </aside>
             {infoLinks}
           </div>
-          <div className="case__iframe-container">
+          <div className="research__iframe-container">
             <IFrame src={study.iframe} />
           </div>
         </section>

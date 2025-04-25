@@ -26,7 +26,7 @@ const BG = styled.div`
   position: absolute;
   z-index: 0;
   background: ${(p) =>
-    p.theme.dark ? p.theme.secondaryColor : p.theme.gradient};
+    p.theme.dark ? p.theme.secondaryColor : p.theme.primaryColor};
   transform: skewY(-3deg);
   right: 0;
   left: 0;
