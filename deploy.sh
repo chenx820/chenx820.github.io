@@ -23,7 +23,7 @@ git commit -m "🚀 Deploy to GitHub Pages"
 
 echo "🌐 Pushing to remote gh-pages branch..."
 git remote add origin https://github.com/chenx820/chenx820.github.io.git
-git push origin gh-pages --force
+git push origin gh-pages --force 
 
 cd ..
 rm -rf $DEPLOY_DIR
