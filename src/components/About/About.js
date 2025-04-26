@@ -20,12 +20,17 @@ const About = () => {
         </div>
         <p>
           Hi, I'm Chen, an MSc student in Physics at{" "}
-          <a className="about__link" href="#about">
+          <a
+            className="about__link"
+            target="__blank"
+            href="https://www.imperial.ac.uk/a-z-research/quantum-optics-and-laser-science/research/controlled-quantum-dynamics/"
+          >
             Imperial College London
           </a>{" "}
           and a remote research intern at the{" "}
           <a
             className="about__link"
+            target="__blank"
             href="http://en.baqis.ac.cn/research/groups/?cid=814"
           >
             Beijing Academy of Quantum Information Sciences (BAQIS)

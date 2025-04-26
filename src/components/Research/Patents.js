@@ -83,6 +83,7 @@ const Patents = () => {
               inventor
               links {
                 src
+                file
               }
               description
             }
@@ -152,6 +153,12 @@ const Patents = () => {
                 <Button target="__blank" as="a" href={node.links.src}>
                   See Patent
                 </Button>
+                <IconButton
+                  label="file"
+                  icon={["fas", "file-pdf"]}
+                  href={node.links.file}
+                  target="__blank"
+                />
               </ResearchLinks>
             </PatentCard>
           ))}
