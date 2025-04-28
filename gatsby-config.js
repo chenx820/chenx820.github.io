@@ -15,6 +15,12 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              strict: `ignore`,
+            },
+          },
           `gatsby-remark-embedder`,
           {
             resolve: `gatsby-remark-autolink-headers`,
@@ -41,21 +47,11 @@ module.exports = {
               showCaptions: true,
             },
           },
-          {
-            resolve: `gatsby-remark-katex`,
-            options: {
-              strict: `ignore`,
-            },
-          },
-          `gatsby-remark-prismjs`,
-          `gatsby-plugin-social-banners`,
-          `gatsby-remark-autolink-headers`,
         ],
       },
-    },
-
-    // SOURCE FILE SYSTEM -
-    // SOURCE JSON
+    }, 
+    `gatsby-plugin-social-banners`,
+    // SOURCE JSON // SOURCE FILE SYSTEM -
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,

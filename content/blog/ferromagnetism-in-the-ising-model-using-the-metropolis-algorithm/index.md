@@ -46,8 +46,10 @@ The Ising model originated from the work of Wilhelm Lenz, who initially develope
 In the one-dimensional Ising model, periodic boundary conditions $s_1=s_{N+1}$ are applied. The partition function can be written as:
 
 $$
-\begin{aligned} Z&=\sum_{s_1=\pm1}\sum_{s_2=\pm1}\cdots\sum_{s_N=\pm1}e^{-\beta H}\\
-&=\sum_{s_1=\pm1}\sum_{s_2=\pm1}\cdots\sum_{s_N=\pm1}e^{\beta J\sum_{\left<i,j\right>}s_is_j-\beta B\sum_{i}s_i}\\ &=\sum_{s_1=\pm1}\sum_{S_2=\pm1}\cdots\sum_{s_N=\pm1}A_{s_1s_2}A_{s_2s_3}\cdots A_{s_Ns_1}, \end{aligned}
+\begin{aligned} Z
+&=\sum_{s_1=\pm1}\sum_{s_2=\pm1}\cdots\sum_{s_N=\pm1}e^{-\beta H}\\
+&=\sum_{s_1=\pm1}\sum_{s_2=\pm1}\cdots\sum_{s_N=\pm1}e^{\beta J\sum_{\langle i,j\rangle}s_is_j-\beta B\sum_{i}s_i}\\
+&=\sum_{s_1=\pm1}\sum_{S_2=\pm1}\cdots\sum_{s_N=\pm1}A_{s_1s_2}A_{s_2s_3}\cdots A_{s_Ns_1}, \end{aligned}
 $$
 
 where $A_{s_is_j}$ represents the elements of the matrix $\underline{\underline{A}}\$:
