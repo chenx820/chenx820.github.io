@@ -41,7 +41,15 @@ module.exports = {
               showCaptions: true,
             },
           },
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              strict: `ignore`,
+            },
+          },
+          `gatsby-remark-prismjs`,
           `gatsby-plugin-social-banners`,
+          `gatsby-remark-autolink-headers`,
         ],
       },
     },

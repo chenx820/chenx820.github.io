@@ -107,6 +107,13 @@ The Metropolis algorithm proceeds as follows:
 
 By iterating through these steps, the Metropolis algorithm generates a sequence of configurations that accurately represents the equilibrium behavior of the Ising model at a given temperature. Next, we will discuss the implementation of the Metropolis algorithm for simulating the Ising model and analyzing its properties.
 
+### One-dimensional Ising model
+
+To simulate the one-dimensional Ising model using the Metropolis algorithm, we follow the general procedure outlined earlier. We initialize the system with a specific configuration of spins and iteratively apply the Metropolis algorithm to generate a sequence of configurations representing the equilibrium state of the system at a given temperature.
+
+![Simulation results for the energy of a 1-D lattice of 100 spins as a function of temperature.](./images/EvT1.png)
+![Simulation results for the magnetization of a 1-D lattice of 100 spins as a function of temperature.](./images/mvT1.png)
+
 ```matlab
 clear;  % Clear workspace
 
@@ -180,20 +187,15 @@ function [spins, energy] = solveIsing(N, T, J)
 end
 ```
 
-### One-dimensional Ising model
-
-To simulate the one-dimensional Ising model using the Metropolis algorithm, we follow the general procedure outlined earlier. We initialize the system with a specific configuration of spins and iteratively apply the Metropolis algorithm to generate a sequence of configurations representing the equilibrium state of the system at a given temperature.
-
-![1d-ising-model](./images/mvT1.png)
-
 ### Two-dimensional Ising model
 
 Moving beyond the simplicity of the one-dimensional Ising model, we delve into the richer behavior of the two-dimensional Ising model. This model captures more realistic features of magnetic materials by considering spins arranged on a two-dimensional lattice, such as a square lattice. The interactions between neighboring spins in this model can lead to fascinating phenomena, including phase transitions and critical behavior.
 
 To simulate the two-dimensional Ising model, we extend the Metropolis algorithm to handle the additional complexity introduced by the lattice structure. Similar to the one-dimensional case, we initialize the system with a specific configuration of spins and iteratively apply the Metropolis algorithm to update the spin configuration. However, in the two-dimensional case, we must consider interactions between spins in both horizontal and vertical directions.
 
-![2d-ising-model-spin](./images/spins2.png)
-![2d-ising-model](./images/mvT2.png)
+![Spin configurations of a 2-D lattice (50$\times$ 50) at various temperatures. Navy blue denotes spin up $(\uparrow)$, while light blue signifies spin down $(\downarrow)$. ](./images/spins2.png)
+![Simulation results for the energy of a 2-D lattice of 50×50 spins as a function of temperature.](./images/EvT2.png)
+![Simulation results for the magnetization of a 2-D lattice of 50×50 spins as a function of temperature.](./images/mvT2.png)
 
 At low temperatures in the two-dimensional Ising model, the spins tend to align parallel to each other, resulting in a non-zero magnetization. This alignment arises due to the dominance of spin-spin interactions over thermal fluctuations, leading to the formation of ferromagnetic domains.
 
