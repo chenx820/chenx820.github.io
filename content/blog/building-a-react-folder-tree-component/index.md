@@ -58,20 +58,11 @@ The basic principles are:
 
 ## Recommended literature on trapped-ion quantum computing
 
-- A recent review summarizing the general landscape and the latest experimental advancements.
+- A recent review summarizing the general landscape and the latest experimental advancements: [Trapped-ion quantum computing: Progress and challenges](https://pubs.aip.org/aip/apr/article-abstract/6/2/021314/570103/Trapped-ion-quantum-computing-Progress-and?redirectedFrom=fulltext)
 
-  - [Trapped-ion quantum computing: Progress and challenges](https://pubs.aip.org/aip/apr/article-abstract/6/2/021314/570103/Trapped-ion-quantum-computing-Progress-and?redirectedFrom=fulltext)
+- A Review article deriving basic electromagnetic interaction and fundamental mathematics for trapped-ion quantum computing: [Quantum Dynamics of Single Trapped Ions](https://www.quantumoptics.at/images/publications/papers/rmp03_blatt.pdf)
 
-- A Review article deriving basic electromagnetic interaction and fundamental mathematics for trapped-ion quantum computing.
-
-  - [Quantum Dynamics of Single Trapped Ions](https://www.quantumoptics.at/images/publications/papers/rmp03_blatt.pdf)
-
-- A handbook for trapped-ion qubits, easy to understand and suitable for beginners.
-
-  - [The Trapped-Ion Qubit Toolbox](https://www.weizmann.ac.il/complex/ozeri/sites/complex.ozeri/files/publications/00107514.2011.pdf)
-
-- A PhD thesis from Christopher Monroe's group, offering detailed derivations on trapped-ion chip design.
-  - Quantum Information Processing with Trapped Ion Chains
+- A handbook for trapped-ion qubits, easy to understand and suitable for beginners: [The Trapped-Ion Qubit Toolbox](https://www.weizmann.ac.il/complex/ozeri/sites/complex.ozeri/files/publications/00107514.2011.pdf)
 
 ## Research groups in trapped-ion quantum computing
 
@@ -90,9 +81,3 @@ The basic principles are:
 1. **University of Maryland (USA)** - Christopher Monroe’s group
 2. **Sandia National Laboratories (USA)** - Including the QSCOUT program, with a large research team.
 3. **University of Innsbruck (Austria)** - Peter Zoller’s group, among the earliest participants in trapped-ion research.
-
-## Conclusion
-
-In summary, trapped-ion quantum computing boasts numerous advantages but also faces significant challenges. The opportunities outweigh the challenges: mastering precise control of single ions and encoding information with minimal loss could drive a major technological leap for humanity.
-
-We hope every student working on trapped-ion quantum computing can fully unleash their talents and become a trailblazer in this quantum revolution!
