@@ -13,14 +13,6 @@ const IframeWrapper = styled.div`
   background-color: ${(props) => props.theme.accentColor};
   border-radius: 10px;
 
-  ${(props) =>
-    props.livedemo &&
-    css`
-      @media ${(props) => props.theme.media.tablet} {
-        min-height: 400px;
-      }
-    `}
-
   /* @media ${(props) => props.theme.media.tablet} {
     min-height: 100px;
   } */
@@ -71,7 +63,7 @@ const Loader = () => {
   );
 };
 
-const IFrame = ({ src, livedemo }) => {
+const IFrame = ({ src }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [ref, inView] = useInView({
     threshold: 0,
@@ -83,13 +75,12 @@ const IFrame = ({ src, livedemo }) => {
   };
 
   return (
-    <IframeWrapper livedemo={livedemo} className="iframe-wrapper" ref={ref}>
+    <IframeWrapper className="iframe-wrapper" ref={ref}>
       <iframe
         title={src}
         style={{ opacity: isLoading ? "0" : "1" }}
         src={inView ? src : undefined}
         onLoad={handleLoaded}
-        frameBorder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope"
         allowFullScreen
       />
@@ -98,12 +89,8 @@ const IFrame = ({ src, livedemo }) => {
   );
 };
 
-IFrame.defaultProps = {
-  livedemo: false,
-};
 IFrame.propTypes = {
   src: PropTypes.string.isRequired,
-  livedemo: PropTypes.bool,
 };
 
 export default IFrame;

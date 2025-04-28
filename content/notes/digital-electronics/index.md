@@ -3,7 +3,7 @@ title: Digital Electronics
 date: 2020-05-31
 author: Chen Huang
 university: Huazhong University of Science and Technology
-tags: ["engineering", "undergraduate"]
+notetags: ["engineering", "undergraduate"]
 ---
 
 - [Digital electronics part 1](digital-electronics/pdf/digital-electronics-part1.pdf)

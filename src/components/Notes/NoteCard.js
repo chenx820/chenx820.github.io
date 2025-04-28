@@ -5,7 +5,7 @@ import Link from "gatsby-link";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { TagBreadcrumb } from "./Tags";
+import { TagBreadcrumb } from "./NotesTags";
 import slugify from "@components/slugify";
 
 const PostWrapper = styled.article`
@@ -42,7 +42,7 @@ export const NoteDateAndReadTime = ({ date, university }) => (
   </span>
 );
 
-const NoteCard = ({ date, university, title, excerpt, slug, tags }) => {
+const NoteCard = ({ date, university, title, excerpt, slug, notetags }) => {
   return (
     <Link to={slug} aria-label={`${title} - ${university}`}>
       <PostWrapper>
@@ -52,7 +52,7 @@ const NoteCard = ({ date, university, title, excerpt, slug, tags }) => {
         <p>{excerpt}</p>
 
         <div style={{ marginTop: 20 }}>
-          {tags.map((tag) => (
+          {notetags.map((tag) => (
             <TagBreadcrumb
               key={tag}
               aria-label={`${tag} tag`}
@@ -78,6 +78,6 @@ NoteCard.propTypes = {
   title: PropTypes.string.isRequired,
   excerpt: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
-  tags: PropTypes.array.isRequired,
+  notetags: PropTypes.array.isRequired,
 };
 export default NoteCard;

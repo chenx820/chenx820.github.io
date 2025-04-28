@@ -17,13 +17,13 @@ import { InfoTitle, ResearchWrapper } from "./project.style";
 const Research = ({ data }) => {
   const baseSlugUrl =
     "https://chenx820.github.io" + data.markdownRemark.fields.slug;
-  const study = data.markdownRemark.frontmatter;
+  const project = data.markdownRemark.frontmatter;
 
-  const infoLinks = study.info.links && (
+  const infoLinks = project.info.links && (
     <div>
       <InfoTitle>Links & Resources</InfoTitle>
       <ul>
-        {study.info.links.map((link, i) => (
+        {project.info.links.map((link, i) => (
           <li key={i}>
             <a href={link[1]}>{link[0]}</a>
           </li>
@@ -34,33 +34,22 @@ const Research = ({ data }) => {
 
   return (
     <Layout>
-      <SEO slug={data.markdownRemark.fields.slug} title={study.title} />
+      <SEO slug={data.markdownRemark.fields.slug} title={project.title} />
       <ResearchWrapper>
         <Flex className="research_title" justify="space-between" align="center">
-          <h1>{study.title}</h1>
-
-          {/* <ResearchLinks className="research__links">
-            <Button target="__blank" as="a" href={study.demo}>
-              Live Demo
-            </Button>
-            <IconButton
-              label="github"
-              icon={["fab", "github"]}
-              href={study.src}
-            />
-          </ResearchLinks> */}
+          <h1>{project.title}</h1>
         </Flex>
 
         <section className="research__info">
           <div>
             <aside>
               <InfoTitle>Abstract</InfoTitle>
-              <p>{study.info.abstract}</p>
+              <p>{project.info.abstract}</p>
             </aside>
             <aside>
               <InfoTitle>Collaborators</InfoTitle>
               <ul>
-                {study.info.collaborators.map((collaborators, i) => (
+                {project.info.collaborators.map((collaborators, i) => (
                   <li key={i}>{collaborators}</li>
                 ))}
               </ul>
@@ -68,7 +57,7 @@ const Research = ({ data }) => {
             {infoLinks}
           </div>
           <div className="research__iframe-container">
-            <IFrame src={study.iframe} />
+            <IFrame src={project.iframe} />
           </div>
         </section>
 
@@ -84,7 +73,7 @@ const Research = ({ data }) => {
               <h4>Share on</h4>
               <SocialShareSection
                 baseSlugUrl={baseSlugUrl}
-                title={study.title}
+                title={project.title}
               />
             </div>
           }
@@ -104,7 +93,6 @@ export const query = graphql`
       }
       frontmatter {
         iframe
-        src
         title
         info {
           abstract

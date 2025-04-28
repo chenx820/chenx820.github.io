@@ -70,6 +70,13 @@ module.exports = {
         path: `${__dirname}/content/notes/`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: "blog",
+        path: `${__dirname}/content/blog/`,
+      },
+    },
 
     // IMAGE TRANSFORMER
     `gatsby-transformer-sharp`,
@@ -139,6 +146,12 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         exclude: [`/notes/tags/*`, `/goodies`],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        exclude: [`/blog/tags/*`, `/goodies`],
       },
     },
     `gatsby-plugin-styled-components`,

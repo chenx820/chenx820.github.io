@@ -3,14 +3,13 @@ title: Quantum Theory of Matter
 date: 2024-06-03
 author: Chen Huang
 university: Imperial College London
-tags: ["physics", "graduate"]
+notetags: ["physics", "graduate"]
 ---
 
 - [Quantum theory of matter](quantum-theory-of-matter/pdf/quantum-theory-of-matter.pdf)
 
-
-
 contains:
+
 - Geometry phase
 - Electron bands
 - Tight binding chains

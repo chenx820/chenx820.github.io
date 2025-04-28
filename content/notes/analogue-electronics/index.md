@@ -3,7 +3,7 @@ title: Analogue Electronics
 date: 2020-05-31
 author: Chen Huang
 university: Huazhong University of Science and Technology
-tags: ["engineering", "undergraduate"]
+notetags: ["engineering", "undergraduate"]
 ---
 
 - [Analogue electronics part 1](analogue-electronics/pdf/analogue-electronics-part1.pdf)

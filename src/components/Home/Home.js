@@ -53,7 +53,12 @@ const Home = () => {
           <p className="adjust">EXPLORING THE QUANTUM WORLD</p>
 
           <div className="home__CTA">
-            <Button className="cta" as="a" href="/CV_ChenHuang.pdf">
+            <Button
+              className="cta"
+              target="__blank"
+              as="a"
+              href="/CV_ChenHuang.pdf"
+            >
               Download Resume
             </Button>
 

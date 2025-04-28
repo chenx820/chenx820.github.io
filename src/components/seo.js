@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import socialBanner from "@src/static/images/social-banner.jpg";
 
-function SEO({ title, description, slug, isNotePost }) {
+function SEO({ title, description, slug, isPost }) {
   const { site } = useStaticQuery(graphql`
     {
       site {
@@ -36,7 +36,7 @@ function SEO({ title, description, slug, isNotePost }) {
   let twitter = defaults.twitter;
   let ogimage = `${defaults.siteUrl}${socialBanner}`;
 
-  if (isNotePost) {
+  if (isPost) {
     title = title + " | Chen Huang";
     ogimage = `${defaults.siteUrl}${slug}/social-banner-img.jpg`;
   }
@@ -52,7 +52,7 @@ function SEO({ title, description, slug, isNotePost }) {
 
       {/* OpenGraph tags */}
       <meta property="og:url" content={url} />
-      {isNotePost ? <meta property="og:type" content="article" /> : null}
+      {isPost ? <meta property="og:type" content="article" /> : null}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       {ogimage && <meta property="og:image" content={ogimage} />}

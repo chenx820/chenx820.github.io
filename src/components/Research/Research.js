@@ -27,10 +27,8 @@ const Research = () => {
             node {
               id
               frontmatter {
-                demo
                 excerpt
                 iframe
-                src
                 title
               }
               fields {
@@ -62,7 +60,6 @@ const Research = () => {
           preview={
             <ResearchPreview>
               <IFrame
-                livedemo={!!node.frontmatter.iframe.match("codepen")}
                 src={node.frontmatter.iframe}
               />
             </ResearchPreview>

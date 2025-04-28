@@ -46,9 +46,7 @@ test("should have links and preview", () => {
     frontmatter: {
       title: "Research Title",
       description: "Research description",
-      demo: "https://demo.com",
-      src: "https://github.com",
-      iframe: "https://codepen.io",
+      iframe: "https://whatever-link.com",
     },
   };
   let { getByText, getByTitle, debug } = render(
@@ -62,27 +60,11 @@ test("should have links and preview", () => {
             <Button as={"a"} to={node.fields.slug}>
               Read More
             </Button>
-            {/* <Button target="__blank" as="a" href={node.frontmatter.demo}>
-              Live Demo
-            </Button>
-            <IconButton
-              label="github"
-              icon={['fab', 'github']}
-              href={node.frontmatter.src}
-            /> */}
           </ResearchLinks>
         }
         preview={
           <ResearchPreview>
-            <IFrame
-              livedemo={!!node.frontmatter.iframe.match("codepen")}
-              src={node.frontmatter.iframe}
-            />
-            {/* <Tags>
-              <FontAwesomeIcon icon={["fab", "js"]} />
-              <FontAwesomeIcon icon={["fab", "html5"]} />
-              <FontAwesomeIcon icon={["fab", "css3"]} />
-            </Tags> */}
+            <IFrame src={node.frontmatter.iframe} />
           </ResearchPreview>
         }
       />
@@ -95,7 +77,6 @@ test("should have links and preview", () => {
   expect(getByText(/read more/i)).toHaveAttribute("to", "/research/project");
   expect(getByTitle(/^github$/i)).toHaveAttribute("href", "https://github.com");
 
-  const iframe = getByTitle("https://codepen.io");
-  expect(iframe).toHaveAttribute("src", "https://codepen.io");
+  const iframe = getByRole("document");
   expect(iframe).toBeInTheDocument();
 });

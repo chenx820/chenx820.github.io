@@ -5,7 +5,7 @@ import Layout from "@components/Layout/Layout";
 import SEO from "@components/seo";
 
 import NoteCard from "@src/components/Notes/NoteCard";
-import NoteLayout from "@src/components/Notes/NoteLayout";
+import NoteLayout from "@src/components/Notes/NotesLayout";
 
 const NotePage = () => {
   const noteposts = useStaticQuery(
@@ -22,7 +22,7 @@ const NotePage = () => {
               frontmatter {
                 title
                 date(formatString: "MMMM DD, YYYY", locale: "en")
-                tags
+                notetags
                 university
               }
               fields {
@@ -36,7 +36,7 @@ const NotePage = () => {
   );
   return (
     <Layout>
-      <SEO title="Notes - Chen's Physics World" />
+      <SEO title="Notes | Chen Huang" />
 
       <NoteLayout>
         {noteposts.allMarkdownRemark.edges.map(({ node }) => (
@@ -45,7 +45,7 @@ const NotePage = () => {
             slug={node.fields.slug}
             title={node.frontmatter.title}
             date={node.frontmatter.date}
-            tags={node.frontmatter.tags}
+            notetags={node.frontmatter.notetags}
             university={node.frontmatter.university}
             excerpt={node.excerpt}
           />

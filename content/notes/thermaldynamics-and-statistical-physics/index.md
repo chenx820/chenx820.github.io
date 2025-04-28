@@ -3,7 +3,7 @@ title: Thermodynamics and Statistical Physics
 date: 2021-05-31
 author: Chen Huang
 university: Huazhong University of Science and Technology
-tags: ["physics", "undergraduate"]
+notetags: ["physics", "undergraduate"]
 ---
 
 This course, taught by Prof. Shun Wang, was quite challenging. It was conducted entirely in English, including the coursework and exams. Each week, we were

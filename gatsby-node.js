@@ -26,7 +26,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const fileNode = getNode(node.parent);
   const slugFromTitle = slugify(node.frontmatter.title);
 
-  // sourceInstanceName defined if its a notes or case-studie
+  // sourceInstanceName defined if its a notes or case-studie or blog
   const sourceInstanceName = fileNode.sourceInstanceName;
 
   // extract the name of the file because we need to sort by it's name
@@ -37,20 +37,18 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   createNodeField({
     node,
     name: "slug",
-    // value will be {notes||research}/my-title
+    // value will be {notes||research||blog}/my-title
     value: "/" + sourceInstanceName + "/" + slugFromTitle,
   });
 
-  // adds a posttype field to extinguish between notes and research
+  // adds a posttype field to extinguish between notes, blog and research
   createNodeField({
     node,
     name: "posttype",
-    // value will be {notes||research}
+    // value will be {notes||research||blog}
     value: sourceInstanceName,
   });
 
-  // if sourceInstanceName is research then add the fileIndex field because we need
-  // this to sort the Research with their respective file name `001-blahblah`
   if (sourceInstanceName == "research") {
     createNodeField({
       node,
@@ -64,7 +62,9 @@ exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
   const projectTemplate = path.resolve("src/templates/project.js");
   const notePostTemplate = path.resolve("src/templates/note-post.js");
-  const tagTemplate = path.resolve("src/templates/tags.js");
+  const blogPostTemplate = path.resolve("src/templates/blog-post.js");
+  const noteTagTemplate = path.resolve("src/templates/notes-tags.js");
+  const blogTagTemplate = path.resolve("src/templates/blog-tags.js");
 
   return graphql(`
     {
@@ -72,7 +72,8 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             frontmatter {
-              tags
+              notetags
+              blogtags
             }
             fields {
               slug
@@ -88,8 +89,6 @@ exports.createPages = ({ actions, graphql }) => {
     const edges = res.data.allMarkdownRemark.edges;
 
     edges.forEach(({ node }) => {
-      // if the posttype is research then createPage with projectTemplate
-      // we get fileds.posttype because we created this node with onCreateNode
       if (node.fields.posttype === "research") {
         createPage({
           path: node.fields.slug,
@@ -98,18 +97,15 @@ exports.createPages = ({ actions, graphql }) => {
             slug: node.fields.slug,
           },
         });
-      } else {
-        const tagSet = new Set();
-        // for each tags on the frontmatter add them to the set
-        node.frontmatter.tags.forEach((tag) => tagSet.add(tag));
+      } else if (node.fields.posttype === "notes") {
+        const noteTagSet = new Set();
+        node.frontmatter.notetags.forEach((tag) => noteTagSet.add(tag));
 
-        const tagList = Array.from(tagSet);
-        // for each tags create a page with the specific `tag slug` (/notes/tags/:name)
-        // pass the tag through the PageContext
+        const tagList = Array.from(noteTagSet);
         tagList.forEach((tag) => {
           createPage({
             path: `/notes/tags/${slugify(tag)}/`,
-            component: tagTemplate,
+            component: noteTagTemplate,
             context: {
               tag,
             },
@@ -120,6 +116,29 @@ exports.createPages = ({ actions, graphql }) => {
         createPage({
           path: node.fields.slug,
           component: notePostTemplate,
+          context: {
+            slug: node.fields.slug,
+          },
+        });
+      } else {
+        const blogTagSet = new Set();
+        node.frontmatter.blogtags.forEach((tag) => blogTagSet.add(tag));
+
+        const tagList = Array.from(blogTagSet);
+        tagList.forEach((tag) => {
+          createPage({
+            path: `/blog/tags/${slugify(tag)}/`,
+            component: blogTagTemplate,
+            context: {
+              tag,
+            },
+          });
+        });
+
+        // create each individual blog post with `blogPostTemplate`
+        createPage({
+          path: node.fields.slug,
+          component: blogPostTemplate,
           context: {
             slug: node.fields.slug,
           },

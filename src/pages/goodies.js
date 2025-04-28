@@ -24,7 +24,7 @@ const Goodies = () => {
 
   return (
     <Layout>
-      <SEO title="Chen Huang - All Links" />
+      <SEO title="Chen Huang | All Links" />
 
       <h1>Goodies</h1>
       <p>

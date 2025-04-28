@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import PrismJsStyles from "./prismjs.style";
 import scrollBar from "./scrollbar.style";
 import notestyles from "./notecss.style";
+import blogtyles from "./blogcss.style";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -74,6 +75,12 @@ const GlobalStyle = createGlobalStyle`
   /* Notes STYLES */
   /*             */
   ${notestyles}
+
+
+  /*             */
+  /* Blog STYLES */
+  /*             */
+  ${blogtyles}
   
   /*             */
   /* Prismjs STYLES */

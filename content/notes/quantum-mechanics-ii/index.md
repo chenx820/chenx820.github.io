@@ -3,7 +3,7 @@ title: Quantum Mechanics II
 date: 2020-07-20
 author: Chen Huang
 university: Peking University
-tags: ["physics", "graduate"]
+notetags: ["physics", "graduate"]
 ---
 
 These are my lecture notes from the Quantum Mechanics II course taught by Prof. Zhixin Qian during the 2020 Summer School at Peking University.

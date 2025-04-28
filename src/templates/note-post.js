@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import SEO from "@components/seo";
 import Layout from "@components/Layout/Layout";
 
-import NoteLayout from "@src/components/Notes/NoteLayout";
+import NoteLayout from "@src/components/Notes/NotesLayout";
 import SocialShareSection from "@src/components/Notes/SocialShareSection";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,12 +28,7 @@ const NotePost = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <SEO
-        isNotePost
-        title={title}
-        description={excerpt}
-        slug={pageContext.slug}
-      />
+      <SEO isPost title={title} description={excerpt} slug={pageContext.slug} />
 
       <NoteLayout
         sharerSection={
@@ -54,10 +49,7 @@ const NotePost = ({ data, pageContext }) => {
           </div>
         }
       >
-        <NoteDateAndReadTime
-          date={date}
-          university={university}
-        />
+        <NoteDateAndReadTime date={date} university={university} />
         <h1>{title}</h1>
         <article
           className="markdown-content"

@@ -13,7 +13,7 @@ import Contact from "@components/Contact/Contact";
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Chen Huang - Chen's Physics World" />
+    <SEO title="Chen Huang | Chen's Physics World" />
 
     <Home />
     <About />
