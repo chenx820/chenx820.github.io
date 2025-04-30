@@ -71,13 +71,13 @@ The basic principles are:
 1. **Tsinghua University - Institute for Interdisciplinary Information Sciences**
 
    - Prof. Luming Duan (theory)
-   - Prof. Qihuan Jin (experiment)
+   - Prof. Kihwan Kim (experiment)
 
 2. **Southern University of Science and Technology (SUSTech) - Yao Lu’s Group**
-   - Originated from the split of Prof. Qihuan Jin’s group.
+   - Originated from the split of Prof. Kihwan Kim’s group.
 
 ### International
 
-1. **University of Maryland (USA)** - Christopher Monroe’s group
+1. **University of Maryland (USA)** - Christopher Monroe’s group, move to Duke now.
 2. **Sandia National Laboratories (USA)** - Including the QSCOUT program, with a large research team.
 3. **University of Innsbruck (Austria)** - Peter Zoller’s group, among the earliest participants in trapped-ion research.
