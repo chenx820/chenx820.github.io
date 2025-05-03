@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Link from "gatsby-link";
 
 import Tags from "@src/components/Notes/NotesTags";
+import Universities from "@src/components/Notes/NotesUniversities";
 import SplitLayout from "@common/SplitLayout";
 import useRandomNotePost from "@src/hooks/useRandomNotePost";
 
@@ -26,6 +27,11 @@ const NoteLayout = ({ children, sharerSection }) => {
           <section>
             <h4>Tags</h4>
             <Tags />
+            <br />
+          </section>
+          <section>
+            <h4>University</h4>
+            <Universities />
             <br />
           </section>
           {sharerSection && sharerSection}

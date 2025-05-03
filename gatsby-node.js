@@ -65,6 +65,7 @@ exports.createPages = ({ actions, graphql }) => {
   const blogPostTemplate = path.resolve("src/templates/blog-post.js");
   const noteTagTemplate = path.resolve("src/templates/notes-tags.js");
   const blogTagTemplate = path.resolve("src/templates/blog-tags.js");
+  const noteUniTemplate = path.resolve("src/templates/notes-uniersities.js");
 
   return graphql(`
     {
@@ -74,6 +75,7 @@ exports.createPages = ({ actions, graphql }) => {
             frontmatter {
               notetags
               blogtags
+              university
             }
             fields {
               slug
@@ -109,6 +111,19 @@ exports.createPages = ({ actions, graphql }) => {
             context: {
               tag,
             },
+          });
+        });
+
+        const universityField = node.frontmatter.university;
+        const universityList = Array.isArray(universityField)
+          ? universityField
+          : [universityField]; // wrap single string in array
+
+        universityList.forEach((uni) => {
+          createPage({
+            path: `/notes/uni/${slugify(uni)}/`,
+            component: noteUniTemplate,
+            context: { uni },
           });
         });
 

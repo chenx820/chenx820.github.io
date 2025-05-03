@@ -1,17 +1,17 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import React from "react";
+import { ThemeProvider } from "styled-components";
 
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, cleanup, fireEvent } from "@testing-library/react";
 
-import { HeroCard, CodeCard } from '../HeroCard';
-import { themelight } from '../../Layout/theme';
+import { HeroCard, ContentCard } from "../HeroCard";
+import { themelight } from "../../Layout/theme";
 
 afterEach(cleanup);
 
-test('HeroCard renders correctly', () => {
+test("HeroCard renders correctly", () => {
   let { getByText, debug } = render(
     <ThemeProvider theme={themelight}>
-      <CodeCard />
+      <ContentCard />
     </ThemeProvider>
   );
 

@@ -1,26 +1,26 @@
-import React, { useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import { useStaticQuery, graphql } from 'gatsby';
-import { MapInteractionCSS } from 'react-map-interaction';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Img from 'gatsby-image';
+import React, { useState, useCallback } from "react";
+import PropTypes from "prop-types";
+import { useStaticQuery, graphql } from "gatsby";
+import { MapInteractionCSS } from "react-map-interaction";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Img from "gatsby-image";
 
-import PageHeader from '@common/PageHeader';
-import Button, { IconButton } from '@common/Button';
-import Grid from '@common/Grid';
+import PageHeader from "@common/PageHeader";
+import Button, { IconButton } from "@common/Button";
+import Grid from "@common/Grid";
 
 import {
-  ConceptsWrapper,
-  ConceptCard,
-  ConceptCardFooter,
+  PhotosWrapper,
+  PhotoCard,
+  PhotoCardFooter,
   Lightbox,
   LightBoxCloseButton,
-} from './Concepts.style';
+} from "./Gallery.style";
 
 const Card = React.memo(({ nodes, currentImg, openLightbox }) => (
-  <ConceptCard>
+  <PhotoCard>
     <div
-      style={{ width: '100%', height: '100%' }}
+      style={{ width: "100%", height: "100%" }}
       onClick={() => openLightbox(currentImg)}
     >
       <Img
@@ -29,33 +29,19 @@ const Card = React.memo(({ nodes, currentImg, openLightbox }) => (
       />
     </div>
 
-    <ConceptCardFooter
+    <PhotoCardFooter
       nowrap
       align="center"
       justify="space-between"
       className="ccard__footer"
-      onClick={e => e.stopPropagation()}
+      onClick={(e) => e.stopPropagation()}
     >
       <p>{nodes.node.title}</p>
-      <div>
-        <IconButton
-          label="Dribble Shot"
-          href={nodes.node.links.dribbble}
-          icon={['fab', 'dribbble']}
-        />
-        {nodes.node.links.demo && (
-          <IconButton
-            label="Live Demo"
-            href={nodes.node.links.demo}
-            icon="window-maximize"
-          />
-        )}
-      </div>
-    </ConceptCardFooter>
-  </ConceptCard>
+    </PhotoCardFooter>
+  </PhotoCard>
 ));
 
-const Concepts = () => {
+const Gallery = () => {
   const [selectedImg, setSelectedImg] = useState(null);
   const [isLightboxOpen, setLightboxOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
@@ -63,22 +49,22 @@ const Concepts = () => {
   const handleShowAll = () => {
     setShowAll(true);
   };
-  const openLightbox = useCallback(img => {
+  const openLightbox = useCallback((img) => {
     setSelectedImg(img);
     setLightboxOpen(true);
   }, []);
 
   function closeLightBox(e) {
-    if (e.target.tagName !== 'IMG') {
+    if (e.target.tagName !== "IMG") {
       setSelectedImg(null);
       setLightboxOpen(false);
     }
   }
 
-  const concepts = useStaticQuery(
+  const photo = useStaticQuery(
     graphql`
       query {
-        allConceptsJson(sort: { fields: links___image }) {
+        allPhotosJson(sort: { fields: links___image }) {
           edges {
             node {
               id
@@ -86,13 +72,12 @@ const Concepts = () => {
               title
               links {
                 image
-                dribbble
               }
             }
           }
         }
         allFile(
-          filter: { name: { regex: "/^concept_/" } }
+          filter: { name: { regex: "/^photo_/" } }
           sort: { fields: name }
         ) {
           edges {
@@ -111,11 +96,10 @@ const Concepts = () => {
   );
 
   return (
-    <ConceptsWrapper id="concepts">
-      <PageHeader>Concepts</PageHeader>
+    <PhotosWrapper id="photo">
       <Grid collapseHeight="1000px" showAll={showAll}>
-        {concepts.allConceptsJson.edges.map((nodes, index) => {
-          let currentImg = concepts.allFile.edges[index];
+        {photo.allPhotosJson.edges.map((nodes, index) => {
+          let currentImg = photo.allFile.edges[index];
           return (
             <Card
               key={nodes.node.id}
@@ -151,7 +135,7 @@ const Concepts = () => {
           </LightBoxCloseButton>
         </Lightbox>
       )}
-    </ConceptsWrapper>
+    </PhotosWrapper>
   );
 };
 
@@ -161,4 +145,4 @@ Card.propTypes = {
   openLightbox: PropTypes.func.isRequired,
 };
 
-export default Concepts;
+export default Gallery;

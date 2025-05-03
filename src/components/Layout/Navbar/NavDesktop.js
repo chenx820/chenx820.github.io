@@ -29,6 +29,9 @@ const NavDesktop = () => {
             <Link to="/blog">blog</Link>
           </NavItem>
           <NavItem>
+            <Link to="/gallery">gallery</Link>
+          </NavItem>
+          <NavItem>
             <ToggleSwitch />
           </NavItem>
         </NavItems>

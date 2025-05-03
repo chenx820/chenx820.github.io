@@ -2,7 +2,7 @@
 title: Physics GRE
 date: 2021-05-31
 author: Chen Huang
-university: Huazhong University of Science and Technology
+university: Self-Study
 notetags: ["physics", "gre"]
 ---
 

@@ -1,29 +1,35 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { slideDownKeyframe, tooltipKeyframe } from '../css-animations';
+import { slideDownKeyframe, tooltipKeyframe } from "../css-animations";
 
 export const HeroCardWrapper = styled.div`
   position: relative;
+  width: 40vw;
   animation: ${slideDownKeyframe} 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s
     forwards;
 
-  @media ${props => props.theme.media.tablet} {
+  @media ${(props) => props.theme.media.tablet} {
     /* releated to "things i love" section bug */
+    width: calc(100vw - 32px);
     margin-top: 25px;
   }
 `;
 
-export const CodeCardWrapper = styled.div`
+export const ContentCardWrapper = styled.div`
   padding: 30px 35px;
   border-radius: 10px;
-  background-color: ${props => props.theme.secondaryColor};
-  box-shadow: ${props => props.theme.shadowSmall};
 
-  pre {
-    font-size: 0.8rem;
-    font-family: ${props => props.theme.fontFamily};
-    color: ${p => (p.theme.dark ? p.theme.primaryText : p.theme.primaryColor)};
-  }
+  /* Ensure wrapping */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+
+  background-color: ${(props) => props.theme.secondaryColor};
+  box-shadow: ${(props) => props.theme.shadowSmall};
+
+  font-size: 0.8rem;
+  font-family: ${(props) => props.theme.fontFamily};
+  color: ${(p) => (p.theme.dark ? p.theme.primaryText : p.theme.primaryColor)};
 `;
 
 export const ColorPaletteWrapper = styled.div`
@@ -33,12 +39,12 @@ export const ColorPaletteWrapper = styled.div`
 
   display: flex;
   justify-content: space-around;
-  background-color: ${props => props.theme.secondaryColor};
-  box-shadow: ${props => props.theme.shadowSmall};
+  background-color: ${(props) => props.theme.secondaryColor};
+  box-shadow: ${(props) => props.theme.shadowSmall};
   padding: 8px;
   border-radius: 5px;
 
-  @media ${props => props.theme.media.tablet} {
+  @media ${(props) => props.theme.media.tablet} {
     bottom: -40px;
     left: 50%;
     transform: translateX(-50%) !important;
@@ -67,7 +73,7 @@ export const ColorBoxWrapper = styled.div`
     pointer-events: none;
     position: absolute;
     text-align: center;
-    content: 'Copied';
+    content: "Copied";
     opacity: 0;
     width: 50px;
     bottom: -130%;
@@ -75,8 +81,8 @@ export const ColorBoxWrapper = styled.div`
     padding: 10px;
     border-radius: 10px;
     color: inherit;
-    background: ${p => p.theme.secondaryColor};
-    box-shadow: ${p => p.theme.shadowSmall};
+    background: ${(p) => p.theme.secondaryColor};
+    box-shadow: ${(p) => p.theme.shadowSmall};
     font-size: 12px;
     transition: 0.3s;
     transform: translateX(-50%);

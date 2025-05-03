@@ -1,15 +1,15 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { FloatingButton } from '@components/Layout/Navbar/NavMobile.style';
-import { CCard } from '@components/CreativeCoding/CreativeCoding.style';
+import { FloatingButton } from "@components/Layout/Navbar/NavMobile.style";
+import { CCard } from "@components/CreativeCoding/CreativeCoding.style";
 
-import { CardFooter } from '@common/Card';
+import { CardFooter } from "@common/Card";
 
-export const ConceptsWrapper = styled.section`
-  ${props => props.theme.spacing.sectionBottom};
+export const PhotosWrapper = styled.section`
+  ${(props) => props.theme.spacing.sectionBottom};
 `;
 
-export const ConceptCard = styled(CCard)`
+export const PhotoCard = styled(CCard)`
   overflow: hidden;
   height: 300px;
 
@@ -22,7 +22,7 @@ export const ConceptCard = styled(CCard)`
   }
 `;
 
-export const ConceptCardFooter = styled(CardFooter)`
+export const PhotoCardFooter = styled(CardFooter)`
   position: absolute;
 
   bottom: -100px;
@@ -30,9 +30,9 @@ export const ConceptCardFooter = styled(CardFooter)`
   opacity: 0;
   transition: 0.3s ease-in-out;
   padding: 10px 15px;
-  background: ${props => props.theme.secondaryColor};
+  background: ${(props) => props.theme.secondaryColor};
 
-  @media ${props => props.theme.media.mobile} {
+  @media ${(props) => props.theme.media.mobile} {
     bottom: 0;
     opacity: 1;
   }
@@ -48,7 +48,7 @@ export const LightBoxCloseButton = styled(FloatingButton)`
   right: 20px;
   z-index: 5;
 
-  @media ${props => props.theme.media.minMobile} {
+  @media ${(props) => props.theme.media.minMobile} {
     display: none;
   }
 `;
@@ -68,7 +68,7 @@ export const Lightbox = styled.div`
     transform-origin: center 0;
     transform: scale(0.7);
 
-    @media ${props => props.theme.media.tablet} {
+    @media ${(props) => props.theme.media.tablet} {
       transform: translateY(35vh) scale(0.9);
     }
   }

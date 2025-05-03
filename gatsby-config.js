@@ -49,13 +49,14 @@ module.exports = {
           },
         ],
       },
-    }, 
+    },
     `gatsby-plugin-social-banners`,
     // SOURCE JSON // SOURCE FILE SYSTEM -
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: "json",
         path: `${__dirname}/content/json`,
       },
     },
@@ -150,6 +151,12 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         exclude: [`/notes/tags/*`, `/goodies`],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        exclude: [`/notes/uni/*`, `/goodies`],
       },
     },
     {

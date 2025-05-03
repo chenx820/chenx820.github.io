@@ -3,40 +3,16 @@ import { withTheme } from "styled-components";
 
 import {
   HeroCardWrapper,
-  CodeCardWrapper,
+  ContentCardWrapper,
   ColorPaletteWrapper,
   ColorBoxWrapper,
 } from "./HeroCard.style";
 
-function repeatString(str, count) {
-  let maxCount = str.length * count;
-  count = Math.floor(Math.log(count) / Math.log(2));
-  while (count) {
-    str += str;
-    count--;
-  }
-  str += str.substring(0, maxCount - str.length);
-  return str;
-}
-
-function copyToClipboard(str) {
-  var el = document.createElement("textarea");
-  el.value = str;
-  el.setAttribute("readonly", "");
-  el.style = { position: "absolute", left: "-9999px" };
-  document.body.appendChild(el);
-  el.select();
-  document.execCommand("copy");
-  document.body.removeChild(el);
-}
-
-export const CodeCard = ({ codeLines }) => {
+export const ContentCard = ({ contentText }) => {
   return (
-    <CodeCardWrapper>
-      {codeLines.map((line, index) => (
-        <pre key={index}>{line}</pre>
-      ))}
-    </CodeCardWrapper>
+    <ContentCardWrapper>
+      <div dangerouslySetInnerHTML={{ __html: contentText }} />
+    </ContentCardWrapper>
   );
 };
 
@@ -61,72 +37,32 @@ const ColorBox = ({ color, changeText }) => {
   );
 };
 
-export const ColorPalette = withTheme(({ changeText, defaultCode }) => {
+export const ColorPalette = withTheme(({ changeText, defaultContent }) => {
   const colors = [
     {
       color: "#082b41",
-      message: defaultCode,
+      message: defaultContent,
     },
     {
       color: "#105286",
-      message: [
-        `10         self.projects = {`,
-        `11             \"Imperial\": [`,
-        `12                 \"Charge noise in semiconductor qubits\",`,
-        `13                 \"Quantum computing stack optimization\"`,
-        `14             ],`,
-        `15             \"BAQIS\": [`,
-        `16                 \"Quantum compilation with neutral atoms\",`,
-        `17                 \"Quantum error correction in neutral atoms\"`,
-        `18             ],`,
-        `19             \"Baidu\": [`,
-        `20                 \"Automatic calibration for trapped-ion systems\"`,
-        `21             ]`,
-        `22         }`,
-      ],
+      message: `My given name is <b>Chen</b>, which means "dawn" or
+              "early morning" in Chinese. This meaning suits me well, as I am a
+              morning person who enjoys the calm and peacefulness of the early
+              hours. Interestingly, "Chen" is sometimes misheard as "Cheng",
+              which means "orange" in Chinese. Because of this playful
+              similarity, my friends affectionately call me "Cheng-Zi".`,
     },
     {
       color: "#F1F2F4",
-      message: [
-        `23         self.skills = {`,
-        `24             \"Programming\": [\"Python\", \"MATLAB\", \"LaTeX\"],`,
-        `25             \"Quantum Computing\": [\"Qiskit\", \"QuTiP\"],`,
-        `26             \"Experimental\": [`,
-        `27                   \"Dilution refrigerators\",`,
-        `28                   "Semiconductor device\"`,
-        `29             ],`,
-        `30             \"Languages\": {`,
-        `31                 \"Chinese\": \"Native\",`,
-        `32                 \"English\": \"Fluent\"`,
-        `33             }`,
-        `34         }`,
-      ],
+      message: `My surname is <b>Huang</b>, which means "yellow" in Chinese. This name has deep historical and cultural roots. It is often associated with the <a href="https://en.wikipedia.org/wiki/Yellow_Emperor">Yellow Emperor</a>, a legendary figure considered one of the founding ancestors of Chinese civilization.`,
     },
     {
       color: "#FDB338",
-      message: [
-        `35         self.awards_and_honors = {`,
-        `36             \"HUST\": [`,
-        `37                 \"China National Scholarship\",`,
-        `38                 \"Outstanding UG in Term of Academic Performance\",`,
-        `39                 \"Outstanding Graduate\"`,
-        `40             ],`,
-        `41             \"Chinese Academy of Sciences\": [`,
-        `42                 \"Yan Ji-Ci Scholarship\",`,
-        `43                 \"UCAS Scholarship\"`,
-        `44             ],`,
-        `45             \"Baidu Research\": [\"Outstanding Intern\"]`,
-        `46         }`,
-      ],
+      message: ` `,
     },
     {
       color: "#171D1D",
-      message: [
-        `47        self.leadership = {`,
-        `48            \"HerSTEM\": \"Co-founder\",`,
-        `49            \"IBPE\": \"President\"`,
-        `50        }`,
-      ],
+      message: ` `,
     },
   ];
 
@@ -144,28 +80,18 @@ export const ColorPalette = withTheme(({ changeText, defaultCode }) => {
 });
 
 export const HeroCard = () => {
-  const defaultCode = [
-    `1  class Physicist:`,
-    `2      def __init__(self):`,
-    `3          self.name = \"Chen Huang\"`,
-    `4          self.traits = [\"quantum computing\"]`,
-    `5          self.email = \"chen.huang23@imperial.ac.uk\"`,
-    `6          self.education = {`,
-    `7              \"MSc\": \"Imperial College London\",`,
-    `8              \"BSc\": \"Huazhong University of Science and Technology\"`,
-    `9          }`,
-  ];
+  const defaultContent = `I am passionate about expanding my knowledge through interdisciplinary research and collaboration. If you are interested in discussing research or potential collaborations, feel free to reach out via <a href="mailto:chen.huang23@imperial.ac.uk">email</a> or connect with me on <a href="https://www.linkedin.com/in/chen-huang-820x" target="_blank" >LinkedIn</a>.`;
 
-  const [codeLines, setCodeLines] = useState(defaultCode);
+  const [contentText, setContentText] = useState(defaultContent);
 
-  const changeText = (lines) => {
-    setCodeLines(lines);
+  const changeText = (text) => {
+    setContentText(text);
   };
 
   return (
     <HeroCardWrapper>
-      <CodeCard codeLines={codeLines} />
-      <ColorPalette changeText={changeText} defaultCode={defaultCode} />
+      <ContentCard contentText={contentText} />
+      <ColorPalette changeText={changeText} defaultContent={defaultContent} />
     </HeroCardWrapper>
   );
 };

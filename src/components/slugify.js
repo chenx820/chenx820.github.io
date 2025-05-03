@@ -1,8 +1,10 @@
-const slugify = str =>
-  str &&
+const slugify = (str) =>
   str
-    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    .map(x => x.toLowerCase())
-    .join('-');
+    ?.toString()
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "") // remove non-alphanumeric characters except space and dash
+    .replace(/\s+/g, "-") // replace spaces with dashes
+    .replace(/-+/g, "-"); // collapse multiple dashes
 
 module.exports = slugify;

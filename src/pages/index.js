@@ -8,7 +8,6 @@ import About from "@components/About/About";
 import Skills from "@components/Skills/Skills";
 import Research from "@components/Research/Research";
 import CreativeCoding from "@components/CreativeCoding/CreativeCoding";
-import Concepts from "@components/Concepts/Concepts";
 import Contact from "@components/Contact/Contact";
 
 const IndexPage = () => (
