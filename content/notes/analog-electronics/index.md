@@ -11,3 +11,6 @@ notetags: ["engineering", "undergraduate"]
 - [Analog electronics part 3](analog-electronics/pdf/analog-electronics-part3.pdf)
 - [Analog electronics part 4](analog-electronics/pdf/analog-electronics-part4.pdf)
 - [Analog electronics part 5](analog-electronics/pdf/analog-electronics-part5.pdf)
+
+
+- [Analog electronics](analog-electronics/pdf/analog-electronics.pdf)
