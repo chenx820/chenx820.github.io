@@ -86,8 +86,8 @@
             <div class="col-4 col-12-mobile" id="sidebar">
               <hr class="first" />
               <section class="tag-cloud">
-                <h4><i class="fas fa-university"></i> University</h4>
-                <div class="tag-container" data-filter="university">
+                <h4><i class="fas fa-institution"></i> University</h4>
+                <div class="tag-container" data-filter="institution">
                   <!-- 动态生成大学标签 -->
                 </div>
               </section>
@@ -135,7 +135,7 @@
                 </div>
               </div>
               <article id="main">
-                <section id="imperial" data-university="Imperial">
+                <section id="imperial" data-institution="Imperial">
                   <header>
                     <h3>
                       <a href="#imperial" class="scrolly"
@@ -327,7 +327,7 @@
                     </div>
                   </div>
                 </section>
-                <section id="hust" data-university="HUST">
+                <section id="hust" data-institution="HUST">
                   <header>
                     <h3>
                       <a href="#hust" class="scrolly">
@@ -775,7 +775,7 @@
                     </div>
                   </div>
                 </section>
-                <section id="pku" data-university="PKU">
+                <section id="pku" data-institution="PKU">
                   <header>
                     <h3>
                       <a href="#pku" class="scrolly">Peking University</a>
@@ -848,7 +848,7 @@
                     </div>
                   </div>
                 </section>
-                <section id="others" data-university="Others">
+                <section id="others" data-institution="Others">
                   <header>
                     <h3>
                       <a href="#others" class="scrolly">Self-Study</a>
@@ -963,7 +963,7 @@
   class NotesFilter {
     constructor() {
       this.activeFilters = {
-        university: new Set(),
+        institution: new Set(),
         year: new Set(),
         level: new Set(),
         subject: new Set(),
@@ -971,7 +971,7 @@
       };
 
       this.filterDimensions = [
-        "university",
+        "institution",
         "year",
         "level",
         "subject",
@@ -1003,7 +1003,7 @@
       document.querySelectorAll(".card").forEach((card) => {
         const section = card.closest("section");
         if (section) {
-          card.dataset.university = this.getUniversityFromSection(section.id);
+          card.dataset.institution = this.getUniversityFromSection(section.id);
         }
 
         this.extractYearInfo(card);

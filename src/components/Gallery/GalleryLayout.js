@@ -4,10 +4,14 @@ import { useStaticQuery, graphql } from "gatsby";
 import { MapInteractionCSS } from "react-map-interaction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Img from "gatsby-image";
+import IFrame from "@common/IFrame";
 
 import PageHeader from "@common/PageHeader";
-import Button, { IconButton } from "@common/Button";
+import Button from "@common/Button";
 import Grid from "@common/Grid";
+
+import HighlightTemplate from "./HighlightTemplate";
+import { HighlightPreview } from "./HighlightTemplate.style";
 
 import {
   PhotosWrapper,
@@ -97,6 +101,16 @@ const Gallery = () => {
 
   return (
     <PhotosWrapper id="photo">
+      <HighlightTemplate
+        title="2024 Journey Highlights"
+        desc="This year's adventures took me through breathtaking landscapes and vibrant cities across many countries."
+        preview={
+          <HighlightPreview>
+            <IFrame src="https://www.youtube.com/embed/PSpghrPLQXI?rel=0&autoplay=0" />
+          </HighlightPreview>
+        }
+      />
+      <PageHeader>Photography</PageHeader>
       <Grid collapseHeight="1000px" showAll={showAll}>
         {photo.allPhotosJson.edges.map((nodes, index) => {
           let currentImg = photo.allFile.edges[index];

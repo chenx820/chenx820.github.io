@@ -2,7 +2,7 @@
 title: Solid State Physics
 date: 2021-12-31
 author: Chen Huang
-university: Huazhong University of Science and Technology
+institution: Huazhong University of Science and Technology
 notetags: ["physics", "undergraduate"]
 ---
 

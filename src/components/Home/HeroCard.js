@@ -54,15 +54,15 @@ export const ColorPalette = withTheme(({ changeText, defaultContent }) => {
     },
     {
       color: "#F1F2F4",
-      message: `My surname is <b>Huang</b>, which means "yellow" in Chinese. This name has deep historical and cultural roots. It is often associated with the <a href="https://en.wikipedia.org/wiki/Yellow_Emperor">Yellow Emperor</a>, a legendary figure considered one of the founding ancestors of Chinese civilization.`,
+      message: `My surname is <b>Huang</b>, which means "yellow" in Chinese. This name has deep historical and cultural roots. It is often associated with the Yellow Emperor, a legendary figure considered one of the founding ancestors of Chinese civilization.`,
     },
     {
       color: "#FDB338",
-      message: ` `,
+      message: `I am an MSc student in the <b>Controlled Quantum Dynamics Group</b> at Imperial College London. My research focuses on charge noise in semiconductor qubits. By conducting experiments and simulations, I aim to understand the impact of charge noise on qubit performance and develop strategies to mitigate its effects. `,
     },
     {
       color: "#171D1D",
-      message: ` `,
+      message: `Simutaneously, I am also a remote research intern in the  <b>Quantum Operation System Group</b> at the Beijing Academy of Quantum Information Sciences (BAQIS). My research focuses on quantum compilation with neutral atoms.`,
     },
   ];
 

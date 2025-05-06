@@ -2,7 +2,7 @@
 title: Introduction to Plasma Physics
 date: 2021-09-31
 author: Chen Huang
-university: Huazhong University of Science and Technology
+institution: Huazhong University of Science and Technology
 notetags: ["physics", "undergraduate"]
 ---
 

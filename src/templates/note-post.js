@@ -14,7 +14,7 @@ import { DiscussionEmbed } from "disqus-react";
 import { siteUrl, disqusShortName } from "../../config/website";
 
 const NotePost = ({ data, pageContext }) => {
-  const { title, date, university } = data.markdownRemark.frontmatter;
+  const { title, date, institution } = data.markdownRemark.frontmatter;
   const { html, excerpt, id } = data.markdownRemark;
 
   const baseSlugUrl = siteUrl + pageContext.slug;
@@ -49,7 +49,7 @@ const NotePost = ({ data, pageContext }) => {
           </div>
         }
       >
-        <NoteDateAndReadTime date={date} university={university} />
+        <NoteDateAndReadTime date={date} institution={institution} />
         <h1>{title}</h1>
         <article
           className="markdown-content"
@@ -70,7 +70,7 @@ export const query = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY", locale: "en")
         title
-        university
+        institution
       }
     }
   }

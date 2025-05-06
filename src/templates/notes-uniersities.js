@@ -8,12 +8,12 @@ import NoteCard from "@src/components/Notes/NoteCard";
 import NoteLayout from "@src/components/Notes/NotesLayout";
 
 const UniversitiesPage = ({ data, pageContext }) => {
-  const { uni } = pageContext;
+  const { inst } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
 
   const uniHeader = `${totalCount} post${
     totalCount === 1 ? "" : "s"
-  } tagged with "${uni}"`;
+  } tagged with "${inst}"`;
 
   return (
     <Layout>
@@ -25,7 +25,7 @@ const UniversitiesPage = ({ data, pageContext }) => {
         <br />
         {edges.map(({ node }) => {
           const { slug } = node.fields;
-          const { title, date, notetags, university } = node.frontmatter;
+          const { title, date, notetags, institution } = node.frontmatter;
           return (
             <NoteCard
               notetags={notetags}
@@ -33,7 +33,7 @@ const UniversitiesPage = ({ data, pageContext }) => {
               slug={slug}
               title={title}
               date={date}
-              university={university}
+              institution={institution}
               excerpt={node.excerpt}
             />
           );
@@ -45,10 +45,10 @@ const UniversitiesPage = ({ data, pageContext }) => {
 export default UniversitiesPage;
 
 export const pageQuery = graphql`
-  query($uni: String) {
+  query($inst: String) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { university: { in: [$uni] } } }
+      filter: { frontmatter: { institution: { in: [$inst] } } }
     ) {
       totalCount
       edges {
@@ -62,7 +62,7 @@ export const pageQuery = graphql`
             notetags
             title
             date(formatString: "MMMM DD, YYYY", locale: "en")
-            university
+            institution
           }
         }
       }

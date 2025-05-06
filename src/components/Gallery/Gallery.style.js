@@ -9,6 +9,7 @@ export const PhotosWrapper = styled.section`
   ${(props) => props.theme.spacing.sectionBottom};
 `;
 
+
 export const PhotoCard = styled(CCard)`
   overflow: hidden;
   height: 300px;

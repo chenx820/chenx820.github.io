@@ -23,7 +23,7 @@ const NotePage = () => {
                 title
                 date(formatString: "MMMM DD, YYYY", locale: "en")
                 notetags
-                university
+                institution
               }
               fields {
                 slug
@@ -46,7 +46,7 @@ const NotePage = () => {
             title={node.frontmatter.title}
             date={node.frontmatter.date}
             notetags={node.frontmatter.notetags}
-            university={node.frontmatter.university}
+            institution={node.frontmatter.institution}
             excerpt={node.excerpt}
           />
         ))}

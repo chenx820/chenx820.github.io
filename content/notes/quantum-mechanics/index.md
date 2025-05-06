@@ -2,7 +2,7 @@
 title: Quantum Mechanics
 date: 2020-05-31
 author: Chen Huang
-university: Huazhong University of Science and Technology
+institution: Huazhong University of Science and Technology
 notetags: ["physics", "undergraduate"]
 ---
 

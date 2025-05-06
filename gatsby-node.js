@@ -75,7 +75,7 @@ exports.createPages = ({ actions, graphql }) => {
             frontmatter {
               notetags
               blogtags
-              university
+              institution
             }
             fields {
               slug
@@ -114,16 +114,16 @@ exports.createPages = ({ actions, graphql }) => {
           });
         });
 
-        const universityField = node.frontmatter.university;
+        const universityField = node.frontmatter.institution;
         const universityList = Array.isArray(universityField)
           ? universityField
           : [universityField]; // wrap single string in array
 
-        universityList.forEach((uni) => {
+        universityList.forEach((inst) => {
           createPage({
-            path: `/notes/uni/${slugify(uni)}/`,
+            path: `/notes/institution/${slugify(inst)}/`,
             component: noteUniTemplate,
-            context: { uni },
+            context: { inst },
           });
         });
 

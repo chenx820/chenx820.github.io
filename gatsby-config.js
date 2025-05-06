@@ -156,7 +156,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: [`/notes/uni/*`, `/goodies`],
+        exclude: [`/notes/institution/*`, `/goodies`],
       },
     },
     {

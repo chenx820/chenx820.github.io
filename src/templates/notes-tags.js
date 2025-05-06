@@ -25,7 +25,7 @@ const TagsPage = ({ data, pageContext }) => {
         <br />
         {edges.map(({ node }) => {
           const { slug } = node.fields;
-          const { title, date, notetags, university } = node.frontmatter;
+          const { title, date, notetags, institution } = node.frontmatter;
           return (
             <NoteCard
               notetags={notetags}
@@ -33,7 +33,7 @@ const TagsPage = ({ data, pageContext }) => {
               slug={slug}
               title={title}
               date={date}
-              university={university}
+              institution={institution}
               excerpt={node.excerpt}
             />
           );
@@ -62,7 +62,7 @@ export const pageQuery = graphql`
             notetags
             title
             date(formatString: "MMMM DD, YYYY", locale: "en")
-            university
+            institution
           }
         }
       }

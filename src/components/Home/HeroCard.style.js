@@ -19,7 +19,6 @@ export const ContentCardWrapper = styled.div`
   padding: 30px 35px;
   border-radius: 10px;
 
-  /* Ensure wrapping */
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
@@ -29,7 +28,19 @@ export const ContentCardWrapper = styled.div`
 
   font-size: 0.8rem;
   font-family: ${(props) => props.theme.fontFamily};
-  color: ${(p) => (p.theme.dark ? p.theme.primaryText : p.theme.primaryColor)};
+  color: ${(p) => p.theme.primaryText};
+  line-height: 170%;
+
+  a {
+    color: ${(props) => props.theme.primaryColor};
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.2s;
+  }
+
+  b {
+    color: ${(props) => props.theme.primaryColor};
+  }
 `;
 
 export const ColorPaletteWrapper = styled.div`

@@ -2,7 +2,7 @@
 title: Electromagnetics
 date: 2019-12-31
 author: Chen Huang
-university: Huazhong University of Science and Technology
+institution: Huazhong University of Science and Technology
 notetags: ["physics", "undergraduate"]
 ---
 

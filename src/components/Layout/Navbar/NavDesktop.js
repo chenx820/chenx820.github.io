@@ -14,7 +14,11 @@ const NavDesktop = () => {
     <>
       <SLink smooth offset={-100} hashSpy={true} to="home">
         <Link className="logo" to="/">
-          <img src={logo} alt="Chen Huang" />
+          <img
+            src={logo}
+            alt="Chen Huang"
+            style={{ width: "clamp(80px, 8vw, 200px)", height: "auto" }}
+          />
         </Link>
       </SLink>
 
