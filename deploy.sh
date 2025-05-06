@@ -1,5 +1,3 @@
-#!/bin/bash
-
 set -e
 
 echo "📦 Building Gatsby site..."
@@ -10,6 +8,15 @@ DEPLOY_DIR=.deploy-gh
 rm -rf $DEPLOY_DIR
 mkdir $DEPLOY_DIR
 cp -R public/* $DEPLOY_DIR
+
+# Ensure Git LFS files are properly handled
+echo "📦 Copying Git LFS files..."
+git lfs ls-files | cut -d' ' -f3 | while read file; do
+  if [ -f "$file" ]; then
+    mkdir -p "$DEPLOY_DIR/$(dirname "$file")"
+    cp "$file" "$DEPLOY_DIR/$file"
+  fi
+done
 
 cd $DEPLOY_DIR
 git init
