@@ -1,0 +1,21 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "research": "Research",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Welcome to My Portfolio",
+    "subtitle": "Research Scientist & Creative Developer"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I am a research scientist passionate about physics and creative coding."
+  },
+  "gallery": {
+    "title": "Photography",
+    "showAll": "Show all"
+  }
+}

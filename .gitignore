@@ -1,25 +1,71 @@
-# Node modules
+# Dependencies
 node_modules/
+/.pnp
+.pnp.js
+package-lock.json
+yarn.lock
 
-# Gatsby build output
-public/
+# Gatsby
 .cache/
+public/
+dist/
+.gatsby-context.js
 
-# Deployment directories
-.deploy-tmp/
-.deploy-gh/
+# Build
+build/
+out/
+.next/
 
-# Log files
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
 
-# Mac system files
-.DS_Store
-
-# VSCode settings (optional)
+# IDE and editors
+.idea/
 .vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
 
-# Optional: ignore environment variables file
-.env
+# Testing
+coverage/
+.nyc_output/
+cypress/videos/
+cypress/screenshots/
+
+# Temporary files
+*.log
+*.tmp
+*.temp
+.temp/
+.tmp/
+
+# Deployment
+.deploy-tmp/
+.deploy-gh/
+.netlify/
+
+# Git
+.gitattributes
+.git/
+.gitignore
+
+# Misc
+.DS_Store
+*.pem
+.vercel
+.turbo
+
+# Old files
+old-files/

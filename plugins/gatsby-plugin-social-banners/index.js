@@ -7,7 +7,6 @@ module.exports = async ({ markdownNode }) => {
   if (fields.posttype === "research") return;
 
   const output = path.join("./public", fields.slug, "social-banner-img.jpg");
-  // console.log(`markdownNode plugin:${JSON.stringify(markdownNode, null, 2)}`);
 
   const [image, montserrat, karla] = await Promise.all([
     jimp.read(path.join(__dirname, "./src/social-banner-template.jpg")),

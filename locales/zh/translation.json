@@ -1,0 +1,21 @@
+{
+  "navigation": {
+    "home": "首页",
+    "about": "关于",
+    "research": "研究",
+    "gallery": "画廊",
+    "contact": "联系"
+  },
+  "home": {
+    "title": "欢迎来到我的个人网站",
+    "subtitle": ""
+  },
+  "about": {
+    "title": "关于我",
+    "description": ""
+  },
+  "gallery": {
+    "title": "摄影作品",
+    "showAll": "显示全部"
+  }
+}
