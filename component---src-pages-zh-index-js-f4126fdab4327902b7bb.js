@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[18],{TFpd:function(e,a,n){"use strict";n.r(a);var l=n("q1tI"),t=n.n(l),c=n("yBb5"),r=n("vrFN"),u=n("P1qj"),s=n("DNOX"),E=n("98Mn"),i=n("K7JE");a.default=()=>t.a.createElement(c.a,null,t.a.createElement(r.a,{title:"Chen Huang | Chen's Physics World"}),t.a.createElement(u.a,null),t.a.createElement(s.a,null),t.a.createElement(E.a,null),t.a.createElement(i.a,null))}}]);
+//# sourceMappingURL=component---src-pages-zh-index-js-f4126fdab4327902b7bb.js.map
