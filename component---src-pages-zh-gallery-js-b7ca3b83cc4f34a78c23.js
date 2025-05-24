@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[17],{UyYz:function(e,a,n){"use strict";n.r(a);var t=n("q1tI"),l=n.n(t),r=n("yBb5"),c=n("vrFN"),u=n("z3Bh");a.default=()=>l.a.createElement(r.a,null,l.a.createElement(c.a,{title:"Gallery | Chen Huang"}),l.a.createElement(u.a,null))}}]);
+//# sourceMappingURL=component---src-pages-zh-gallery-js-b7ca3b83cc4f34a78c23.js.map
