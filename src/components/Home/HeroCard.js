@@ -18,6 +18,7 @@ export const ContentCard = ({ contentText }) => {
 
 const ColorBox = ({ color, changeText }) => {
   const tooltipRef = useRef();
+
   useEffect(() => {
     return tooltipRef.current.addEventListener("animationend", () => {
       tooltipRef.current.classList.remove("tooltip-animate");

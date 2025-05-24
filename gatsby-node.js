@@ -101,7 +101,12 @@ exports.createPages = ({ actions, graphql }) => {
         });
       } else if (node.fields.posttype === "notes") {
         const noteTagSet = new Set();
-        node.frontmatter.notetags.forEach((tag) => noteTagSet.add(tag));
+        if (
+          node.frontmatter.notetags &&
+          Array.isArray(node.frontmatter.notetags)
+        ) {
+          node.frontmatter.notetags.forEach((tag) => noteTagSet.add(tag));
+        }
 
         const tagList = Array.from(noteTagSet);
         tagList.forEach((tag) => {
@@ -115,19 +120,23 @@ exports.createPages = ({ actions, graphql }) => {
         });
 
         const universityField = node.frontmatter.institution;
-        const universityList = Array.isArray(universityField)
-          ? universityField
-          : [universityField]; // wrap single string in array
-
-        universityList.forEach((inst) => {
-          createPage({
-            path: `/notes/institution/${slugify(inst)}/`,
-            component: noteUniTemplate,
-            context: { inst },
+        if (
+          universityField &&
+          (Array.isArray(universityField) ||
+            typeof universityField === "string")
+        ) {
+          const universityList = Array.isArray(universityField)
+            ? universityField
+            : [universityField];
+          universityList.forEach((inst) => {
+            createPage({
+              path: `/notes/institution/${slugify(inst)}/`,
+              component: noteUniTemplate,
+              context: { inst },
+            });
           });
-        });
+        }
 
-        // create each individual notes post with `notePostTemplate`
         createPage({
           path: node.fields.slug,
           component: notePostTemplate,
@@ -135,9 +144,14 @@ exports.createPages = ({ actions, graphql }) => {
             slug: node.fields.slug,
           },
         });
-      } else {
+      } else if (node.fields.posttype === "blog") {
         const blogTagSet = new Set();
-        node.frontmatter.blogtags.forEach((tag) => blogTagSet.add(tag));
+        if (
+          node.frontmatter.blogtags &&
+          Array.isArray(node.frontmatter.blogtags)
+        ) {
+          node.frontmatter.blogtags.forEach((tag) => blogTagSet.add(tag));
+        }
 
         const tagList = Array.from(blogTagSet);
         tagList.forEach((tag) => {
@@ -150,7 +164,6 @@ exports.createPages = ({ actions, graphql }) => {
           });
         });
 
-        // create each individual blog post with `blogPostTemplate`
         createPage({
           path: node.fields.slug,
           component: blogPostTemplate,

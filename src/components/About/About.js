@@ -2,9 +2,6 @@ import React from "react";
 
 import SkewBg from "@common/SkewBg";
 import PageHeader from "@common/PageHeader";
-import Flex from "@common/Flex";
-
-import Quote from "./Quote";
 import Avatar from "./Avatar";
 
 import { AboutWrapper, AboutInfo } from "./About.style";

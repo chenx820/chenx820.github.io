@@ -3,19 +3,32 @@
     "home": "首页",
     "about": "关于",
     "research": "研究",
-    "gallery": "画廊",
-    "contact": "联系"
+    "blog": "博客",
+    "notes": "笔记",
+    "gallery": "作品集"
   },
   "home": {
-    "title": "欢迎来到我的个人网站",
-    "subtitle": ""
+    "title": "首页",
+    "description": "欢迎来到我的个人网站"
   },
   "about": {
     "title": "关于我",
-    "description": ""
+    "description": "了解更多关于我的信息"
+  },
+  "research": {
+    "title": "研究",
+    "description": "我的研究项目和成果"
+  },
+  "blog": {
+    "title": "博客",
+    "description": "我的博客文章"
+  },
+  "notes": {
+    "title": "笔记",
+    "description": "我的学习笔记和心得"
   },
   "gallery": {
-    "title": "摄影作品",
-    "showAll": "显示全部"
+    "title": "作品集",
+    "description": "我的作品展示"
   }
 }

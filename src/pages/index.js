@@ -5,9 +5,7 @@ import SEO from "@components/seo";
 
 import Home from "@components/Home/Home";
 import About from "@components/About/About";
-import Skills from "@components/Skills/Skills";
 import Research from "@components/Research/Research";
-import CreativeCoding from "@components/CreativeCoding/CreativeCoding";
 import Contact from "@components/Contact/Contact";
 
 const IndexPage = () => (
@@ -16,7 +14,6 @@ const IndexPage = () => (
 
     <Home />
     <About />
-    {/* <Skills /> */}
     <Research />
     <Contact />
   </Layout>

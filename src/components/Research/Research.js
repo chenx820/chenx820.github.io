@@ -1,16 +1,15 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import PageHeader from "@common/PageHeader";
 import IFrame from "@common/IFrame";
-import Button, { IconButton } from "@common/Button";
+import Button from "@common/Button";
 
 import Patents from "./Patents";
 
 import ResearchTemplate from "./ResearchTemplate";
-import { ResearchLinks, ResearchPreview, Tags } from "./ResearchTemplate.style";
+import { ResearchLinks, ResearchPreview } from "./ResearchTemplate.style";
 
 const ResearchWrapper = styled.section`
   ${(props) => props.theme.spacing.sectionBottom};
@@ -59,9 +58,7 @@ const Research = () => {
           }
           preview={
             <ResearchPreview>
-              <IFrame
-                src={node.frontmatter.iframe}
-              />
+              <IFrame src={node.frontmatter.iframe} />
             </ResearchPreview>
           }
         />

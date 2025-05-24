@@ -6,9 +6,7 @@ import SEO from "@components/seo";
 
 import Flex from "@common/Flex";
 import IFrame from "@common/IFrame";
-import Button, { IconButton } from "@common/Button";
 
-import { ResearchLinks } from "@components/Research/ResearchTemplate.style";
 import SocialShareSection from "@src/components/Notes/SocialShareSection";
 import SplitLayout from "@components/common/SplitLayout";
 

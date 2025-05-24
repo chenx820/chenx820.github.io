@@ -6,39 +6,7 @@ import { HeroCard } from "./HeroCard";
 import { HomeWrapper, Intro } from "./Home.style";
 
 import IconLink from "@common/IconLink";
-import PageHeader from "@common/PageHeader";
-import Flex from "@common/Flex";
 import Button from "@common/Button";
-
-import { Card, CardIcon, CardText, CardTitle } from "@common/Card";
-
-const ThingsILove = () => (
-  <Flex justify="space-between" align="center">
-    <Card>
-      <CardIcon>
-        <FontAwesomeIcon icon={["fab", "react"]} />
-      </CardIcon>
-      <CardTitle>Physics</CardTitle>
-      <CardText>I am majoring in Physics and all about quantum.</CardText>
-    </Card>
-
-    <Card>
-      <CardIcon>
-        <FontAwesomeIcon icon={["fas", "network-wired"]} />
-      </CardIcon>
-      <CardTitle>Quantum Computing</CardTitle>
-      <CardText>My research focus on quantum computing.</CardText>
-    </Card>
-
-    <Card>
-      <CardIcon>
-        <FontAwesomeIcon icon="code" />
-      </CardIcon>
-      <CardTitle>Coding</CardTitle>
-      <CardText>I love coding.</CardText>
-    </Card>
-  </Flex>
-);
 
 const Home = () => {
   return (
@@ -46,7 +14,6 @@ const Home = () => {
       <img className="svg-rect" src={svgRect} alt=""></img>
 
       <Intro>
-        {/* <Parallax y={[50, -50]} className="home__text"> */}
         <div className="home__text">
           <p>Hello, I'm</p>
           <h1>CHEN HUANG</h1>
@@ -81,15 +48,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {/* </Parallax> */}
         <HeroCard />
       </Intro>
-
-      {/* Things I LOVE */}
-      {/* <PageHeader style={{ marginBottom: 30 }}>
-        Things I love <i className="fas fa-heart" />
-      </PageHeader>
-      <ThingsILove /> */}
     </HomeWrapper>
   );
 };

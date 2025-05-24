@@ -8,6 +8,7 @@ import { NavItems, NavItem } from "./Navbar.style";
 
 import NavLinks from "./NavLinks";
 import ToggleSwitch from "@common/ToggleSwitch";
+import LanguageSwitcher from "@common/LanguageSwitcher";
 
 const NavDesktop = () => {
   return (
@@ -37,6 +38,9 @@ const NavDesktop = () => {
           </NavItem>
           <NavItem>
             <ToggleSwitch />
+          </NavItem>
+          <NavItem>
+            <LanguageSwitcher />
           </NavItem>
         </NavItems>
       </nav>

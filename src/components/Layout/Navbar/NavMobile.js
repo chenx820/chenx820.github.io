@@ -10,6 +10,7 @@ import {
 } from "./NavMobile.style";
 
 import NavLinks from "./NavLinks";
+import LanguageSwitcher from "@common/LanguageSwitcher";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeToggleContext from "../ThemeToggleContext";
@@ -68,6 +69,9 @@ const NavbarMobile = () => {
           </NavItem>
           <NavItem style={{ width: "auto" }}>
             <DarkModeButton />
+          </NavItem>
+          <NavItem>
+            <LanguageSwitcher />
           </NavItem>
         </NavItemsBottomNav>
       </MobileMenuWrapper>
