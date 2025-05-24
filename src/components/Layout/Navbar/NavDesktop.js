@@ -39,9 +39,9 @@ const NavDesktop = () => {
           <NavItem>
             <ToggleSwitch />
           </NavItem>
-          <NavItem>
+          {/* <NavItem>
             <LanguageSwitcher />
-          </NavItem>
+          </NavItem> */}
         </NavItems>
       </nav>
     </>

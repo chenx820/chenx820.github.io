@@ -70,9 +70,9 @@ const NavbarMobile = () => {
           <NavItem style={{ width: "auto" }}>
             <DarkModeButton />
           </NavItem>
-          <NavItem>
+          {/* <NavItem>
             <LanguageSwitcher />
-          </NavItem>
+          </NavItem> */}
         </NavItemsBottomNav>
       </MobileMenuWrapper>
     </>

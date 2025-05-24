@@ -43,7 +43,8 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 1200,
+              quality: 100,
               showCaptions: true,
             },
           },
@@ -85,7 +86,16 @@ module.exports = {
 
     // IMAGE TRANSFORMER
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          quality: 100,
+          formats: ["auto", "webp"],
+          placeholder: "blurred",
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
