@@ -24,7 +24,7 @@ const Home = () => {
               className="cta"
               target="__blank"
               as="a"
-              href="/CV_ChenHuang.pdf"
+              href="/CV_chenhuang.pdf"
             >
               Download Resume
             </Button>

@@ -88,7 +88,7 @@ const Gallery = () => {
             node {
               relativePath
               childImageSharp {
-                fluid(quality: 100, maxWidth: 1200) {
+                fluid(quality: 90, maxWidth: 600) {
                   ...GatsbyImageSharpFluid
                 }
               }
