@@ -3,9 +3,15 @@ title: Solid State Physics
 date: 2021-12-31
 author: Chen Huang
 institution: Huazhong University of Science and Technology
-notetags: ["physics", "undergraduate"]
+notetags: ["physics", "undergraduate", "condensed matter"]
 ---
 
-Taught by Prof. Liu-Song Yuan.
+These are my review notes for the undergraduate **Solid State Physics** course, taught by Professor Liu-Song Yuan.
 
-- [Solid state physics](solid-state-physics/pdf/review-solid-state-physics.pdf)
+[**Download the Review Notes (PDF)**](solid-state-physics/pdf/review-solid-state-physics.pdf)
+
+---
+
+This is just one part of my HUST course notes collection. If you find this resource helpful, I'd appreciate a star on the GitHub repository!
+
+[**View on GitHub**](https://github.com/chenx820/HUST-course-notes)

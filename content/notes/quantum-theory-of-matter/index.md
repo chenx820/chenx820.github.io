@@ -3,21 +3,29 @@ title: Quantum Theory of Matter
 date: 2024-06-03
 author: Chen Huang
 institution: Imperial College London
-notetags: ["physics", "graduate"]
+notetags: ["physics", "graduate", "condensed matter"]
 ---
 
-- [Quantum theory of matter](quantum-theory-of-matter/pdf/quantum-theory-of-matter.pdf)
+Here are my comprehensive notes for the **Quantum Theory of Matter** course. This document provides a summary of the key topics discussed in the lectures.
 
-contains:
+The notes cover:
 
-- Geometry phase
-- Electron bands
-- Tight binding chains
-- Edge states on chains
-- Adiabatic transport
-- Electrons in a vector potential
-- Electrons in a magnetic field
-- Carbon and carbon allotropes
-- Electronic states in graphene
-- Symmetries of electronic states
-- Topological materials
+- Geometric Phase
+- Electron Bands
+- Tight Binding Chains
+- Edge States on Chains
+- Adiabatic Transport
+- Electrons in a Vector Potential
+- Electrons in a Magnetic Field
+- Carbon and Carbon Allotropes
+- Electronic States in Graphene
+- Symmetries of Electronic States
+- Topological Materials
+
+[**Download the full notes (PDF)**](quantum-theory-of-matter/pdf/quantum-theory-of-matter.pdf)
+
+---
+
+You can find my complete collection of notes from Imperial on GitHub. If you find them useful, please consider giving the repository a star!
+
+[**View on GitHub**](https://github.com/chenx820/imperial-course-notes)

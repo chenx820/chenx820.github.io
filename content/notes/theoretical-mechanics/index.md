@@ -6,4 +6,12 @@ institution: Huazhong University of Science and Technology
 notetags: ["physics", "undergraduate"]
 ---
 
-- [Theoretical mechanics](theoretical-mechanics/pdf/classical-mechanics.pdf)
+These are my study notes for the undergraduate **Theoretical Mechanics** course.
+
+[**Download the notes (PDF)**](theoretical-mechanics/pdf/classical-mechanics.pdf)
+
+---
+
+This is just one part of my HUST course notes collection. If you find this resource helpful, I'd appreciate a star on the GitHub repository!
+
+[**View on GitHub**](https://github.com/chenx820/HUST-course-notes)

@@ -6,7 +6,13 @@ institution: Huazhong University of Science and Technology
 notetags: ["math", "undergraduate"]
 ---
 
-This course was divided into two parts: **Complex Analysis**, taught by Prof. Cheng-Gang Shao, and **Equations of Mathematical Physics**, taught by Prof. Yong Hu.
+These are my notes for Mathematical Methods in Physics, a course that was divided into two parts, each taught by a different professor.
 
-- [Complex analysis](mathematical-methods-in-physics/pdf/review-complex-analysis.pdf)
-- [Equations of mathematical physics](mathematical-methods-in-physics/pdf/equations-of-mathematical-physics.pdf)
+-   [**Complex Analysis (PDF)**](mathematical-methods-in-physics/pdf/review-complex-analysis.pdf): Taught by Professor Cheng-Gang Shao.
+-   [**Equations of Mathematical Physics (PDF)**](mathematical-methods-in-physics/pdf/equations-of-mathematical-physics.pdf): Taught by Professor Yong Hu.
+
+***
+
+This is just one part of my HUST course notes collection. If you find this resource helpful, I'd appreciate a star on the GitHub repository!
+
+- [**View on GitHub**](https://github.com/chenx820/HUST-course-notes)

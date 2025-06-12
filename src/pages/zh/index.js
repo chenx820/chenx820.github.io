@@ -15,7 +15,7 @@ const ZhIndexPage = () => (
     <Home />
     <About />
     <Research />
-    <Contact />
+    {/* <Contact /> */}
   </Layout>
 );
 

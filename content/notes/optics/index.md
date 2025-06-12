@@ -6,10 +6,17 @@ institution: Huazhong University of Science and Technology
 notetags: ["physics", "undergraduate"]
 ---
 
-This term was unique due to COVID-19, as we had to attend lectures online from home. The course was taught by Prof. Lu-Shuai Cao and Prof. Ze-Huang Lu. My notes
-were selected as exemplary for the course and shared with classmates. Due to the large file size, the notes have been divided into four parts.
+These are my notes for the undergraduate Optics course, taught by Professor Lu-Shuai Cao and Professor Ze-Huang Lu. I was honored that they were selected as **exemplary notes** for the course and shared with all my classmates.
 
-- [Optics part 1](optics/pdf/optics-part1.pdf)
-- [Optics part 2](optics/pdf/optics-part2.pdf)
-- [Optics part 3](optics/pdf/optics-part3.pdf)
-- [Optics part 4](optics/pdf/optics-part4.pdf)
+We took this course online during the unique Spring 2020 term. Due to their large file size, I have divided them into four parts.
+
+- [**Optics - Part 1 (PDF)**](optics/pdf/optics-part1.pdf)
+- [**Optics - Part 2 (PDF)**](optics/pdf/optics-part2.pdf)
+- [**Optics - Part 3 (PDF)**](optics/pdf/optics-part3.pdf)
+- [**Optics - Part 4 (PDF)**](optics/pdf/optics-part4.pdf)
+
+---
+
+This is just one part of my HUST course notes collection. If you find this resource helpful, I'd appreciate a star on the GitHub repository!
+
+- [**View on GitHub**](https://github.com/chenx820/HUST-course-notes)

@@ -6,8 +6,16 @@ institution: Huazhong University of Science and Technology
 notetags: ["physics", "undergraduate"]
 ---
 
-This course, taught by Prof. Shun Wang, was quite challenging. It was conducted entirely in English, including the coursework and exams. Each week, we were
-required to read research papers, answer related questions, and at the end of the term, we wrote a small essay. Additionally, I worked on a small project focused
-on the Ising Model. My study notes are primarily based on the textbook by David Tong.
+This was a particularly challenging course taught by Professor Shun Wang, conducted entirely in **English**, including all coursework and exams. The curriculum was rigorous, requiring us to read and analyze research papers each week and write a term essay.
 
-- [Statistical physics](thermaldynamics-and-statistical-physics/pdf/statistical-physics.pdf)
+My notes are primarily based on the excellent textbook by **David Tong**. This guide is for students looking for a deep dive into the subject.
+
+[**Download the full Notes (PDF)**](thermaldynamics-and-statistical-physics/pdf/statistical-physics.pdf)
+
+As part of the course, I also completed a project [modeling the 2D Ising model using the Metropolis algorithm](https://chenx820.github.io/blog/ferromagnetism-in-the-ising-model-using-the-metropolis-algorithm).
+
+---
+
+This is just one part of my HUST course notes collection. If you find this resource helpful, I'd appreciate a star on the GitHub repository!
+
+[**View on GitHub**](https://github.com/chenx820/HUST-course-notes)

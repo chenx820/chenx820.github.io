@@ -28,7 +28,7 @@ const FooterWrapper = styled.footer`
 const Footer = () => (
   <FooterWrapper>
     <Wrapper>
-      <img width="35px" src={logo} alt="Chen Huang" />
+      {/* <img width="35px" src={logo} alt="Chen Huang" /> */}
       <p style={{ float: "right" }}>
         &copy; {new Date().getFullYear()} Chen Huang. All rights reserved.
       </p>

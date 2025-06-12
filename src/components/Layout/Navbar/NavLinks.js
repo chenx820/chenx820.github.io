@@ -19,11 +19,11 @@ const NavItemsSmoothLinks = ({ NavItem }) => (
         research
       </SLink>
     </NavItem>
-    <NavItem>
+    {/* <NavItem>
       <SLink smooth offset={-100} hashSpy to="contact">
         contact
       </SLink>
-    </NavItem>
+    </NavItem> */}
   </>
 );
 
@@ -38,9 +38,9 @@ const NavItemsGatsbyLinks = ({ NavItem }) => (
     <NavItem>
       <Link to="/#research">research</Link>
     </NavItem>
-    <NavItem>
+    {/* <NavItem>
       <Link to="/#contact">contact</Link>
-    </NavItem>
+    </NavItem> */}
   </>
 );
 
