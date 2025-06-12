@@ -1,10 +1,16 @@
 ---
-title: Biology
+title: High School Biology
 date: 2017-12-31
 author: Chen Huang
 institution: Xiamen Foreign Language School
 notetags: ["biology", "high school", "mind map"]
 ---
+
+This collection features a series of mind maps I created for my high school biology course, designed to make complex topics easier to visualize and remember.
+
+Below is a preview of the mind maps, which cover key areas of cell biology, genetics, evolution, and ecology. I've also compiled a ["Golden Nuggets"](high-school-biology/pdf/biology-golden-nuggets.pdf) with essential facts and summaries for quick review.
+
+#### Mind Map Gallery
 
 ![Cell Respiration](./images/mindmap_cell-respiration.jpeg)
 ![Cell Proliferation](./images/mindmap_cell-proliferation.jpeg)
@@ -19,5 +25,3 @@ notetags: ["biology", "high school", "mind map"]
 ![Community](./images/mindmap_community.jpeg)
 ![Ecosystem](./images/mindmap_ecosystem.jpeg)
 ![Homeostasis](./images/mindmap_homeostasis.jpeg)
-
-- [Golden nuggets](high-school-biology/pdf/biology-golden-nuggets.pdf)

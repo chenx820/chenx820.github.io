@@ -1,12 +1,14 @@
 ---
-title: Chinese
-date: 2017-12-31
+title: High School Chinese
+date: 2018-06-05
 author: Chen Huang
 institution: Xiamen Foreign Language School
 notetags: ["chinese", "high school"]
 ---
 
-- [terminology](high-school-chinese/pdf/terminology.pdf)
-- [culture](high-school-chinese/pdf/culture.pdf)
-- [values](high-school-chinese/pdf/values.pdf)
-- [youth](high-school-chinese/pdf/youth.pdf)
+This is a collection of materials I accumulated to improve my essay writing in High School Chinese. It's a bank of ideas, phrases, and examples organized by common composition themes.
+
+- [**Composition Terminology**](high-school-chinese/pdf/terminology.pdf): Key terms and literary devices.
+- [**Materials on Culture**](high-school-chinese/pdf/culture.pdf): Examples and ideas related to cultural topics.
+- [**Materials on Values**](high-school-chinese/pdf/values.pdf): Exploring different values and beliefs.
+- [**Materials on Youth**](high-school-chinese/pdf/youth.pdf): Reflections on youth development.
