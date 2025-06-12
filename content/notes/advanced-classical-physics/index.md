@@ -6,7 +6,7 @@ institution: Imperial College London
 notetags: ["physics", "graduate"]
 ---
 
-These are my personal study notes for the graduate-level **Advanced Classical Physics** course. They cover the following key topics
+These are my personal study notes for the graduate-level **Advanced Classical Physics** course. They cover the following key topics:
 
 1. Lagrangian Mechanics
 2. Hamiltonian Mechanics
