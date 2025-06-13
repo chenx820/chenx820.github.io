@@ -30,29 +30,26 @@ const themeCommon = {
   },
   gradient: "linear-gradient(134deg, #3E7CB1 0%, #105286 50%)",
   gradient2: "linear-gradient(99deg, #3E7CB1 0%, #082B41 130%)",
-  swapIfDark(prop1, prop2) {
-    return `${this.dark ? this[prop1] : this[prop2]};`;
-  },
 };
 
 export const themelight = {
   dark: false,
-  bg: "#F8F8F8", // white
-  primaryColor: "#105286", // blue
-  secondaryColor: "#F8F8F8", // white
-  accentColor: "#FDB338", // yellow
-  primaryBlack: "#383838", // black
-  primaryText: "#383838", // black
+  bg: "#F8F8F8",
+  primaryColor: "#105286",
+  secondaryColor: "#F8F8F8",
+  accentColor: "#FDB338",
+  primaryBlack: "#383838",
+  primaryText: "#383838",
   ...themeCommon,
 };
 
 export const themedark = {
   dark: true,
-  bg: "#191919", // black
-  primaryColor: "#FDB338", // yellow
-  secondaryColor: "#232323", // dark gray
-  accentColor: "#105286", // blue
-  primaryBlack: "#F8F8F8", // white
-  primaryText: "#F8F8F8", // white
+  bg: "#191919",
+  primaryColor: "#FDB338",
+  secondaryColor: "#232323",
+  accentColor: "#105286",
+  primaryBlack: "#F8F8F8",
+  primaryText: "#F8F8F8",
   ...themeCommon,
 };
