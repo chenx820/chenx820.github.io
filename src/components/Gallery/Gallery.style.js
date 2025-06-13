@@ -1,16 +1,52 @@
 import styled from "styled-components";
 
 import { FloatingButton } from "@components/Layout/Navbar/NavMobile.style";
-import { CCard } from "@components/CreativeCoding/CreativeCoding.style";
-
-import { CardFooter } from "@common/Card";
+import { Card, CardFooter } from "@common/Card";
 
 export const PhotosWrapper = styled.section`
   ${(props) => props.theme.spacing.sectionBottom};
 `;
 
+export const PhotoCard = styled(Card)`
+  justify-self: center;
 
-export const PhotoCard = styled(CCard)`
+  margin: 0;
+  position: relative;
+  padding: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: unset;
+  width: 100%;
+
+  height: auto;
+  max-width: 90%;
+
+  transform: translateY(0px);
+  transition: transform 0.2s ease;
+  &:hover {
+    transition: transform 0.2s ease;
+    transform: translateY(-5px);
+  }
+
+  h4 {
+    font-weight: normal;
+  }
+
+  .gatsby-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  .thumbnail-a {
+    width: 100%;
+    height: 100%;
+  }
+
   overflow: hidden;
   height: 300px;
 
@@ -25,7 +61,6 @@ export const PhotoCard = styled(CCard)`
 
 export const PhotoCardFooter = styled(CardFooter)`
   position: absolute;
-
   bottom: -100px;
   left: 0;
   opacity: 0;

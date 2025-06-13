@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import { MapInteractionCSS } from "react-map-interaction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import IFrame from "@common/IFrame";
 
 import PageHeader from "@common/PageHeader";
@@ -27,8 +27,8 @@ const Card = React.memo(({ nodes, currentImg, openLightbox }) => (
       style={{ width: "100%", height: "100%" }}
       onClick={() => openLightbox(currentImg)}
     >
-      <Img
-        fluid={currentImg.node.childImageSharp.fluid}
+      <GatsbyImage
+        image={getImage(currentImg.node.childImageSharp.gatsbyImageData)}
         alt={nodes.node.title}
       />
     </div>
@@ -81,16 +81,22 @@ const Gallery = () => {
           }
         }
         allFile(
-          filter: { name: { regex: "/^photo_/" } }
+          filter: {
+            sourceInstanceName: { eq: "images" }
+            name: { regex: "/^photo_/" }
+          }
           sort: { fields: name }
         ) {
           edges {
             node {
-              relativePath
+              name
               childImageSharp {
-                fluid(quality: 90, maxWidth: 600) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  quality: 90
+                  width: 1200
+                  placeholder: BLURRED
+                )
               }
             }
           }
@@ -134,9 +140,9 @@ const Gallery = () => {
       {isLightboxOpen && (
         <Lightbox data-testid="lightbox" onClick={closeLightBox}>
           <MapInteractionCSS>
-            <Img
+            <GatsbyImage
               className="lightbox__gatsbyimage"
-              fluid={selectedImg.node.childImageSharp.fluid}
+              image={getImage(selectedImg.node.childImageSharp.gatsbyImageData)}
             />
           </MapInteractionCSS>
 
