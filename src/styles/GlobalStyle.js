@@ -59,7 +59,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .active {
-    color: #383838;
+    color: ${(p) => p.theme.primaryText};
   }
 
   hr {

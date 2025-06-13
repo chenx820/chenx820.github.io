@@ -25,10 +25,23 @@
   },
   "notes": {
     "title": "笔记",
-    "description": "我的学习笔记和心得"
+    "description": "我的学习笔记"
   },
   "gallery": {
     "title": "作品集",
     "description": "我的作品展示"
+  },
+  "nav": {
+    "home": "首页",
+    "about": "关于我",
+    "research": "研究",
+    "blog": "博客",
+    "notes": "笔记",
+    "gallery": "相册",
+    "goodies": "资源"
+  },
+  "common": {
+    "readMore": "阅读更多",
+    "backToTop": "返回顶部"
   }
 }
