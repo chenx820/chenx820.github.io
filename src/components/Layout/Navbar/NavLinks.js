@@ -1,6 +1,7 @@
 import React from "react";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 import { Link as SLink } from "react-scroll";
+import { useTranslation } from "react-i18next";
 
 const NavItemsSmoothLinks = ({ NavItem }) => (
   <>
@@ -20,10 +21,10 @@ const NavItemsSmoothLinks = ({ NavItem }) => (
       </SLink>
     </NavItem>
     {/* <NavItem>
-      <SLink smooth offset={-100} hashSpy to="contact">
-        contact
-      </SLink>
-    </NavItem> */}
+        <SLink smooth offset={-100} hashSpy to="contact">
+          contact
+        </SLink>
+      </NavItem> */}
   </>
 );
 
@@ -39,8 +40,8 @@ const NavItemsGatsbyLinks = ({ NavItem }) => (
       <Link to="/#research">research</Link>
     </NavItem>
     {/* <NavItem>
-      <Link to="/#contact">contact</Link>
-    </NavItem> */}
+        <Link to="/#contact">contact</Link>
+      </NavItem> */}
   </>
 );
 
