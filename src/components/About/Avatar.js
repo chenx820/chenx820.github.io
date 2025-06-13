@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import styled from "styled-components";
-import Image from "@components/Image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { useStaticQuery, graphql } from "gatsby";
 
 const AvatarWrapper = styled.div`
   width: 230px;
@@ -13,10 +13,29 @@ const AvatarWrapper = styled.div`
   margin: 0;
   background-color: #f8f8f8;
 `;
+
 const Avatar = ({ src }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      file(name: { eq: "avatar" }) {
+        childImageSharp {
+          gatsbyImageData(
+            layout: CONSTRAINED
+            width: 230
+            height: 230
+            quality: 90
+            placeholder: BLURRED
+          )
+        }
+      }
+    }
+  `);
+
+  const image = getImage(data.file.childImageSharp.gatsbyImageData);
+
   return (
     <AvatarWrapper>
-      <Image src={src} />
+      <GatsbyImage image={image} alt="Chen Huang" />
     </AvatarWrapper>
   );
 };
