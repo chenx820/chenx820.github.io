@@ -1,18 +1,16 @@
-import styled from 'styled-components';
-import Wrapper from '@common/Wrapper';
+import styled from "styled-components";
+import Wrapper from "@common/Wrapper";
 
 export const NavWrapper = styled.div`
   position: fixed;
   top: 0;
-
   display: flex;
   align-items: center;
-
   height: 60px;
   width: 100vw;
 
-  background-color: ${props => props.theme.secondaryColor};
-  box-shadow: ${props => props.theme.shadowSmall};
+  background-color: ${(props) => props.theme.secondaryColor};
+  box-shadow: ${(props) => props.theme.shadowSmall};
   z-index: 1000;
 
   .logo {
@@ -25,7 +23,7 @@ export const NavWrapper = styled.div`
     }
   }
 
-  @media ${props => props.theme.media.tablet} {
+  @media ${(props) => props.theme.media.tablet} {
     display: none;
   }
 `;
@@ -37,7 +35,7 @@ export const NavItems = styled.ul`
   align-items: center;
   transition: 0.2s;
 
-  @media ${props => props.theme.media.tablet} {
+  @media ${(props) => props.theme.media.tablet} {
     padding: 0 30px;
     position: fixed;
     top: 60px;
@@ -45,9 +43,9 @@ export const NavItems = styled.ul`
     flex-direction: column;
     align-items: initial;
 
-    background-color: ${props => props.theme.secondaryColor};
-    border-top: 2px solid ${props => props.theme.accentColor};
-    right: ${props => (props.isSidebarOpen ? '0px' : '-250px')} !important;
+    background-color: ${(props) => props.theme.secondaryColor};
+    border-top: 2px solid ${(props) => props.theme.accentColor};
+    right: ${(props) => (props.isSidebarOpen ? "0px" : "-250px")} !important;
   }
 `;
 
@@ -55,18 +53,17 @@ export const NavItem = styled.li`
   margin-left: 30px;
   display: inline-block;
   text-align: center;
-  
+
   a {
-    /* color: ${p => p.theme.swapIfDark('primaryText', 'primaryColor')}; */
-    color: ${p => (p.theme.dark ? p.theme.primaryText : p.theme.primaryColor)};
+    color: ${(p) => p.theme.primaryText};
   }
 
   a:hover {
     cursor: pointer;
-    color: ${p => (p.theme.dark ? p.theme.primaryColor : p.theme.primaryText)};
+    color: ${(p) => p.theme.primaryColor};
   }
 
-  @media ${props => props.theme.media.tablet} {
+  @media ${(props) => props.theme.media.tablet} {
     a {
       display: block;
       width: 100%;
@@ -87,10 +84,8 @@ export const NavContent = styled(Wrapper)`
 export const Burger = styled.div`
   width: 30px;
   height: 25px;
-
   transform: rotate(0deg);
   transition: 0.5s ease-in-out;
-
   display: none;
   cursor: pointer;
 
@@ -101,7 +96,7 @@ export const Burger = styled.div`
     left: 0;
     width: 100%;
     height: 3px;
-    background: ${props => props.theme.primaryColor};
+    background: ${(props) => props.theme.primaryColor};
     border-radius: 10px;
     transform: rotate(0deg);
     transition: 0.25s ease-in-out;
@@ -135,7 +130,7 @@ export const Burger = styled.div`
     transform: rotate(-135deg);
   }
 
-  @media ${props => props.theme.media.tablet} {
+  @media ${(props) => props.theme.media.tablet} {
     display: block;
   }
 `;
