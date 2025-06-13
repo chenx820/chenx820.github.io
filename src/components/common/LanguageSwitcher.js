@@ -106,10 +106,11 @@ const LanguageSwitcher = () => {
     <SwitchWrapper>
       <div className="button r" id="button-1">
         <input
-          type="checkbox"
-          checked={isEn}
-          onChange={() => changeLanguage(isEn ? "zh" : "en")}
+          className="checkbox"
           aria-label="toggle language"
+          type="checkbox"
+          onChange={() => changeLanguage(isEn ? "zh" : "en")}
+          checked={isEn}
         />
         <div className="knobs"></div>
         <div className="layer"></div>
