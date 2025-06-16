@@ -55,7 +55,9 @@ const NotePost = ({ data, pageContext }) => {
           className="markdown-content"
           dangerouslySetInnerHTML={{ __html: html }}
         />
-        <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
+        {typeof window !== "undefined" && (
+          <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
+        )}
       </NoteLayout>
     </Layout>
   );

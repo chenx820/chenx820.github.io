@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-
-import Link from "gatsby-link";
+import { Link } from "gatsby";
+import { useTranslation } from "react-i18next";
 
 import {
   MobileMenuWrapper,
@@ -43,6 +43,7 @@ const DarkModeButton = () => {
 
 const NavbarMobile = () => {
   const [isMenuOpen, setMenu] = useState(false);
+  const { t } = useTranslation();
 
   const handleMenuState = () => {
     setMenu(!isMenuOpen);
@@ -67,12 +68,9 @@ const NavbarMobile = () => {
           <NavItem>
             <Link to="/gallery">gallery</Link>
           </NavItem>
-          <NavItem style={{ width: "auto" }}>
-            <DarkModeButton />
-          </NavItem>
-          {/* <NavItem>
+          <NavItem>
             <LanguageSwitcher />
-          </NavItem> */}
+          </NavItem>
         </NavItemsBottomNav>
       </MobileMenuWrapper>
     </>

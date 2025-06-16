@@ -1,5 +1,3 @@
-const axios = require("axios");
-const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
 const path = require("path");
 
 exports.onCreateWebpackConfig = ({ actions }) => {
@@ -58,16 +56,16 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 };
 
-exports.createPages = ({ actions, graphql }) => {
+exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
   const projectTemplate = path.resolve("src/templates/project.js");
   const notePostTemplate = path.resolve("src/templates/note-post.js");
   const blogPostTemplate = path.resolve("src/templates/blog-post.js");
   const noteTagTemplate = path.resolve("src/templates/notes-tags.js");
   const blogTagTemplate = path.resolve("src/templates/blog-tags.js");
-  const noteUniTemplate = path.resolve("src/templates/notes-uniersities.js");
+  const noteUniTemplate = path.resolve("src/templates/notes-universities.js");
 
-  return graphql(`
+  const res = await graphql(`
     {
       allMarkdownRemark {
         edges {
@@ -85,10 +83,11 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then((res) => {
-    if (res.errors) return Promise.reject(res.errors);
+  `);
 
-    const edges = res.data.allMarkdownRemark.edges;
+  if (res.errors) return Promise.reject(res.errors);
+
+  const edges = res.data.allMarkdownRemark.edges;
 
     edges.forEach(({ node }) => {
       if (node.fields.posttype === "research") {
@@ -108,139 +107,68 @@ exports.createPages = ({ actions, graphql }) => {
           node.frontmatter.notetags.forEach((tag) => noteTagSet.add(tag));
         }
 
-        const tagList = Array.from(noteTagSet);
-        tagList.forEach((tag) => {
-          createPage({
-            path: `/notes/tags/${slugify(tag)}/`,
-            component: noteTagTemplate,
-            context: {
-              tag,
-            },
-          });
-        });
-
-        const universityField = node.frontmatter.institution;
-        if (
-          universityField &&
-          (Array.isArray(universityField) ||
-            typeof universityField === "string")
-        ) {
-          const universityList = Array.isArray(universityField)
-            ? universityField
-            : [universityField];
-          universityList.forEach((inst) => {
-            createPage({
-              path: `/notes/institution/${slugify(inst)}/`,
-              component: noteUniTemplate,
-              context: { inst },
-            });
-          });
-        }
-
+      const tagList = Array.from(noteTagSet);
+      tagList.forEach((tag) => {
         createPage({
-          path: node.fields.slug,
-          component: notePostTemplate,
+          path: `/notes/tags/${slugify(tag)}/`,
+          component: noteTagTemplate,
           context: {
-            slug: node.fields.slug,
+            tag,
           },
         });
-      } else if (node.fields.posttype === "blog") {
-        const blogTagSet = new Set();
-        if (
-          node.frontmatter.blogtags &&
-          Array.isArray(node.frontmatter.blogtags)
-        ) {
-          node.frontmatter.blogtags.forEach((tag) => blogTagSet.add(tag));
-        }
+      });
 
-        const tagList = Array.from(blogTagSet);
-        tagList.forEach((tag) => {
+      const universityField = node.frontmatter.institution;
+      if (
+        universityField &&
+        (Array.isArray(universityField) || typeof universityField === "string")
+      ) {
+        const universityList = Array.isArray(universityField)
+          ? universityField
+          : [universityField];
+        universityList.forEach((inst) => {
           createPage({
-            path: `/blog/tags/${slugify(tag)}/`,
-            component: blogTagTemplate,
-            context: {
-              tag,
-            },
+            path: `/notes/institution/${slugify(inst)}/`,
+            component: noteUniTemplate,
+            context: { inst },
           });
-        });
-
-        createPage({
-          path: node.fields.slug,
-          component: blogPostTemplate,
-          context: {
-            slug: node.fields.slug,
-          },
         });
       }
-    });
-  });
-};
 
-exports.sourceNodes = ({
-  actions,
-  createNodeId,
-  createContentDigest,
-  store,
-  cache,
-}) => {
-  const { createNode } = actions;
-  const CC_PROJECTS_URI = "https://anuraghazra.github.io/CanvasFun/data.json";
-
-  const createCreativeCodingNode = (project, i) => {
-    const node = {
-      id: createNodeId(`${i}`),
-      parent: null,
-      children: [],
-      internal: {
-        type: `CreativeCoding`,
-        content: JSON.stringify(project),
-        contentDigest: createContentDigest(project),
-      },
-      ...project,
-    };
-
-    // create `allCreativeCoding` Node
-    createNode(node);
-  };
-
-  // GET IMAGE THUMBNAILS
-  const createRemoteImage = async (project, i) => {
-    try {
-      // it will download the remote files
-      await createRemoteFileNode({
-        id: `${i}`,
-        url: project.img, // the image url
-        store,
-        cache,
-        createNode,
-        createNodeId,
-      });
-    } catch (error) {
-      throw new Error("error creating remote img node - " + error);
-    }
-  };
-
-  // promise based sourcing
-  return axios
-    .get(CC_PROJECTS_URI)
-    .then((res) => {
-      res.data.forEach((project, i) => {
-        createCreativeCodingNode(project, i);
-        createRemoteImage(project, i);
-      });
-    })
-    .catch((err) => {
-      // just create a dummy node to pass the build if faild to fetch data
-      createCreativeCodingNode(
-        {
-          id: "0",
-          demo: "",
-          img: "",
-          title: "Error while loading Data",
-          src: "",
+      createPage({
+        path: node.fields.slug,
+        component: notePostTemplate,
+        context: {
+          slug: node.fields.slug,
         },
-        0
-      );
-      throw new Error(err);
-    });
+      });
+    } else if (node.fields.posttype === "blog") {
+      const blogTagSet = new Set();
+      if (
+        node.frontmatter.blogtags &&
+        Array.isArray(node.frontmatter.blogtags)
+      ) {
+        node.frontmatter.blogtags.forEach((tag) => blogTagSet.add(tag));
+      }
+
+      const tagList = Array.from(blogTagSet);
+      tagList.forEach((tag) => {
+        createPage({
+          path: `/blog/tags/${slugify(tag)}/`,
+          component: blogTagTemplate,
+          context: {
+            tag,
+          },
+        });
+      });
+
+      createPage({
+        path: node.fields.slug,
+        component: blogPostTemplate,
+        context: {
+          slug: node.fields.slug,
+        },
+      });
+    }
+  });
 };

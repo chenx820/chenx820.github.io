@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "@components/Layout/Layout";
 import SEO from "@components/seo";
 
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 
 const NotFoundPage = () => (
   <Layout>

@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { NavContent, NavWrapper } from './Navbar.style';
+import { NavContent, NavWrapper } from "./Navbar.style";
 
-import NavDesktop from './NavDesktop';
-import NavMobile from './NavMobile';
+import NavDesktop from "./NavDesktop";
+import NavMobile from "./NavMobile";
 
-import { Visible } from 'react-grid-system';
+import { Visible } from "react-grid-system";
 
 const Navbar = () => {
   return (

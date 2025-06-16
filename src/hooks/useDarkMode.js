@@ -1,26 +1,43 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 
 const useDarkMode = () => {
-  let [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== "undefined") {
+      const localTheme = localStorage.getItem("chenx820-theme");
+      if (localTheme) {
+        return localTheme;
+      }
+      // 检查系统主题偏好
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches;
+      return prefersDark ? "dark" : "light";
+    }
+    return "light";
+  });
+
+  const toggleRef = useRef(null);
 
   const toggleTheme = useCallback(() => {
-    if (theme === "light") {
-      localStorage.setItem("chenx820-theme", "dark");
-      setTheme("dark");
-    } else {
-      localStorage.setItem("chenx820-theme", "light");
-      setTheme("light");
-    }
-  }, [theme]);
-
-  useEffect(() => {
-    const localTheme = localStorage.getItem("chenx820-theme");
-    if (localTheme) {
-      setTheme(localTheme);
-    }
+    setTheme((prevTheme) => {
+      const newTheme = prevTheme === "light" ? "dark" : "light";
+      localStorage.setItem("chenx820-theme", newTheme);
+      return newTheme;
+    });
   }, []);
 
-  return [theme, toggleTheme];
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e) => {
+      if (!localStorage.getItem("chenx820-theme")) {
+        setTheme(e.matches ? "dark" : "light");
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  return [theme, toggleTheme, toggleRef];
 };
 
 export default useDarkMode;

@@ -10,81 +10,9 @@ module.exports = {
     siteBanner: config.siteBanner,
   },
   plugins: [
-    // MARKDOWN
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-katex`,
-            options: {
-              strict: `ignore`,
-            },
-          },
-          `gatsby-remark-embedder`,
-          {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              className: `gatsby-remark-autolink`,
-              maintainCase: true,
-              removeAccents: true,
-            },
-          },
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: "language-",
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: true,
-              noInlineHighlight: false,
-            },
-          },
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1200,
-              quality: 100,
-              showCaptions: true,
-            },
-          },
-        ],
-      },
-    },
-    `gatsby-plugin-social-banners`,
-    // SOURCE JSON // SOURCE FILE SYSTEM -
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
     `gatsby-transformer-json`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: "json",
-        path: `${__dirname}/content/json`,
-      },
-    },
-    // SOURCE MARKDOWN
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: "research",
-        path: `${__dirname}/content/research`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: "notes",
-        path: `${__dirname}/content/notes/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: "blog",
-        path: `${__dirname}/content/blog/`,
-      },
-    },
-
-    // IMAGE TRANSFORMER
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,
@@ -99,13 +27,105 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `src/static/images`,
+        name: "json",
+        path: path.join(__dirname, "content", "json"),
       },
     },
-
-    // manifest & helmet
-    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: "research",
+        path: path.join(__dirname, "content", "research"),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: "notes",
+        path: path.join(__dirname, "content", "notes"),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: "blog",
+        path: path.join(__dirname, "content", "blog"),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `locales`,
+        path: path.join(__dirname, `locales`),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, "src", "static", "images"),
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          `gatsby-remark-embedder`,
+          {
+            resolve: `gatsby-remark-katex`,
+            options: { strict: `ignore` },
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              className: `gatsby-remark-autolink`,
+              maintainCase: true,
+              removeAccents: true,
+            },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              showLineNumbers: true,
+            },
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+              quality: 100,
+              showCaptions: true,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-react-i18next`,
+      options: {
+        localeJsonSourceName: `locales`,
+        languages: [`en`, `zh`],
+        defaultLanguage: `en`,
+        redirect: true,
+        i18nextOptions: {
+          detection: {
+            order: [
+              "querystring",
+              "cookie",
+              "localStorage",
+              "navigator",
+              "htmlTag",
+            ],
+            caches: [],
+          },
+          interpolation: {
+            escapeValue: false,
+          },
+          keySeparator: ".",
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -118,8 +138,6 @@ module.exports = {
         icon: config.siteLogo,
       },
     },
-
-    // NProgress
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
@@ -128,30 +146,25 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: config.googleAnalyticsID,
-        head: true,
+        trackingIds: [config.googleAnalyticsID],
+        pluginConfig: {
+          head: true,
+        },
       },
     },
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: [`/notes/tags/*`, `/goodies`],
+        excludes: [
+          `/notes/tags/*`,
+          `/notes/institution/*`,
+          `/blog/tags/*`,
+          `/goodies`,
+        ],
       },
     },
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        exclude: [`/notes/institution/*`, `/goodies`],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        exclude: [`/blog/tags/*`, `/goodies`],
-      },
-    },
-    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-social-banners`,
   ],
 };
