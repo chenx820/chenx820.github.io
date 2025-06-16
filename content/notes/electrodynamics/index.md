@@ -8,9 +8,9 @@ notetags: ["physics", "undergraduate"]
 
 These notes were created to prepare for the final exam in **Electrodynamics**, taught by Professor Zhao-Feng Kang.
 
-More than just a summary of key points, this guide also provides a breakdown of the important **physics models** essential for solving problems in electrodynamics. It’s designed to be a comprehensive tool for both review and practical application.
+More than just a summary of key points, this guide also provides a breakdown of the important **physics models** essential for solving problems in electrodynamics. It's designed to be a comprehensive tool for both review and practical application.
 
-[**Download the Electrodynamics Review (PDF)**](electrodynamics/pdf/review-electrodynamics.pdf)
+[**Download the Electrodynamics Review (PDF)**](/notes/electrodynamics/pdf/review-electrodynamics.pdf)
 
 ---
 

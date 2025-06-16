@@ -8,8 +8,8 @@ notetags: ["physics", "graduate"]
 
 Here is a complete study system for the **Quantum Optics** course, taught by Professor Jia-Hua Li. This collection includes both my detailed in-class notes and a condensed guide for final exam preparation.
 
-- [**Full Course Notes (PDF)**](quantum-optics/pdf/quantum-optics.pdf): My comprehensive notes covering all the topics from the lectures.
-- [**Final Review Guide (PDF)**](quantum-optics/pdf/review-quantum-optics.pdf): A summary of the most important concepts for efficient revision.
+- [**Full Course Notes (PDF)**](/notes/quantum-optics/pdf/quantum-optics.pdf): My comprehensive notes covering all the topics from the lectures.
+- [**Final Review Guide (PDF)**](/notes/quantum-optics/pdf/review-quantum-optics.pdf): A summary of the most important concepts for efficient revision.
 
 ---
 

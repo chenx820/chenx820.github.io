@@ -15,7 +15,7 @@ These are my personal study notes for the graduate-level **Advanced Classical Ph
 5. Relativity
 6. Electromagnetism
 
-[**Download the full notes (PDF)**](advanced-classical-physics/pdf/advanced-classical-physics.pdf)
+[**Download the full notes (PDF)**](/notes/advanced-classical-physics/pdf/advanced-classical-physics.pdf)
 
 ---
 

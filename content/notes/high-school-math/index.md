@@ -10,4 +10,4 @@ Here are my notes for high school mathematics, created specifically for efficien
 
 This guide consolidates the most critical formulas, theorems, and problem-solving strategies into a single document, designed to help you review the core material effectively before the exam.
 
-[**Download the Full Notes (PDF)**](high-school-math/pdf/math-review.pdf)
+[**Download the Full Notes (PDF)**](/notes/high-school-math/pdf/math-review.pdf)

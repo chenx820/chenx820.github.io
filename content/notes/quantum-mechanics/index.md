@@ -8,8 +8,8 @@ notetags: ["physics", "undergraduate"]
 
 Here is a complete study system for the undergraduate **Quantum Mechanics** course. This collection includes both my detailed in-class notes and a condensed guide for final exam preparation.
 
-- [**Full Course Notes (PDF)**](quantum-mechancis/pdf/quantum-mechanics.pdf): My comprehensive notes covering all the topics from the lectures.
-- [**Final Review Guide (PDF)**](quantum-mechancis/pdf/review-quantum-mechanics.pdf): A summary of the most important concepts for efficient revision.
+- [**Full Course Notes (PDF)**](/notes/quantum-mechanics/pdf/quantum-mechanics.pdf): My comprehensive notes covering all the topics from the lectures.
+- [**Final Review Guide (PDF)**](/notes/quantum-mechanics/pdf/review-quantum-mechanics.pdf): A summary of the most important concepts for efficient revision.
 
 ---
 

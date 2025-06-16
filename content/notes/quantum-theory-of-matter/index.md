@@ -22,7 +22,7 @@ The notes cover:
 - Symmetries of Electronic States
 - Topological Materials
 
-[**Download the full notes (PDF)**](quantum-theory-of-matter/pdf/quantum-theory-of-matter.pdf)
+[**Download the full notes (PDF)**](/notes/quantum-theory-of-matter/pdf/quantum-theory-of-matter.pdf)
 
 ---
 

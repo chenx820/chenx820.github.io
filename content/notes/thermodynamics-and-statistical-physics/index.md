@@ -10,7 +10,7 @@ This was a particularly challenging course taught by Professor Shun Wang, conduc
 
 My notes are primarily based on the excellent textbook by **David Tong**. This guide is for students looking for a deep dive into the subject.
 
-[**Download the full Notes (PDF)**](thermaldynamics-and-statistical-physics/pdf/statistical-physics.pdf)
+[**Download the full Notes (PDF)**](/notes/thermodynamics-and-statistical-physics/pdf/statistical-physics.pdf)
 
 As part of the course, I also completed a project [modeling the 2D Ising model using the Metropolis algorithm](https://chenx820.github.io/blog/ferromagnetism-in-the-ising-model-using-the-metropolis-algorithm).
 

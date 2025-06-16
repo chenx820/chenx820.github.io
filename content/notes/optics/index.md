@@ -10,10 +10,10 @@ These are my notes for the undergraduate Optics course, taught by Professor Lu-S
 
 We took this course online during the unique Spring 2020 term. Due to their large file size, I have divided them into four parts.
 
-- [**Optics - Part 1 (PDF)**](optics/pdf/optics-part1.pdf)
-- [**Optics - Part 2 (PDF)**](optics/pdf/optics-part2.pdf)
-- [**Optics - Part 3 (PDF)**](optics/pdf/optics-part3.pdf)
-- [**Optics - Part 4 (PDF)**](optics/pdf/optics-part4.pdf)
+- [**Optics - Part 1 (PDF)**](/notes/optics/pdf/optics-part1.pdf)
+- [**Optics - Part 2 (PDF)**](/notes/optics/pdf/optics-part2.pdf)
+- [**Optics - Part 3 (PDF)**](/notes/optics/pdf/optics-part3.pdf)
+- [**Optics - Part 4 (PDF)**](/notes/optics/pdf/optics-part4.pdf)
 
 ---
 

@@ -14,7 +14,7 @@ Key topics include:
 - Magnetostatics
 - Maxwell's Equations
 
-[**Download the full notes (PDF)**](electromagnetics/pdf/review-electromagnetics.pdf)
+[**Download the full notes (PDF)**](/notes/electromagnetics/pdf/review-electromagnetics.pdf)
 
 ---
 

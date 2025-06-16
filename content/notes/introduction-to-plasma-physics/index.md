@@ -10,7 +10,7 @@ These are my study notes for the undergraduate course **Introduction to Plasma P
 
 The notes serve as a comprehensive guide to the fundamental concepts covered in the course.
 
-[**Download the full notes (PDF)**](introduction-to-plasma-physics/pdf/introduction-to-plasma-physics.pdf)
+[**Download the full notes (PDF)**](/notes/introduction-to-plasma-physics/pdf/introduction-to-plasma-physics.pdf)
 
 ---
 

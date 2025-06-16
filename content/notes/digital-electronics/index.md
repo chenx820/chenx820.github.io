@@ -8,7 +8,7 @@ notetags: ["engineering", "undergraduate"]
 
 These notes are the ultimate proof of an effective study guide: I used them to learn **Digital Electronics** from scratch in just **three days**, and scored **97/100** on the final exam.
 
-[**Download the full notes (PDF)**](digital-electronics/pdf/digital-electronics.pdf)
+[**Download the full notes (PDF)**](/notes/digital-electronics/pdf/digital-electronics.pdf)
 
 When posted on Zhihu, these notes (along with my analog electronics summary) became a popular resource, earning over **5,000 likes and shares**.
 

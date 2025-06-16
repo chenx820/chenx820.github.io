@@ -8,8 +8,8 @@ notetags: ["physics", "graduate"]
 
 These notes cover the two main components of the graduate-level Laser Technology course: **Laser Device Technology** and **Nonlinear Optics**. The two topics are quite distinct in their approach.
 
-- [**Laser Device Technology (PDF)**](laser-technology/pdf/laser-device-technology.pdf): This section focuses on the practical and conceptual aspects of laser systems. It is less about mathematical derivations and more about understanding the design, components, and operational principles.
-- [**Nonlinear Optics (PDF)**](laser-technology/pdf/nonlinear-optics.pdf): This part is a more theoretical exploration, delving into the rigorous mathematical framework that describes how intense light interacts with materials.
+- [**Laser Device Technology (PDF)**](/notes/laser-technology/pdf/laser-device-technology.pdf): This section focuses on the practical and conceptual aspects of laser systems. It is less about mathematical derivations and more about understanding the design, components, and operational principles.
+- [**Nonlinear Optics (PDF)**](/notes/laser-technology/pdf/nonlinear-optics.pdf): This part is a more theoretical exploration, delving into the rigorous mathematical framework that describes how intense light interacts with materials.
 
 ---
 

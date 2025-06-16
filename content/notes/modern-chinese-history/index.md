@@ -10,7 +10,7 @@ This mind map was created as a study guide for the final exam in **Modern Chines
 
 Since history isn't my strongest subject, I focused on creating a clear and concise visual overview. The content is organized strictly around the key points and topics emphasized in the lectures, making it a targeted tool for exam preparation.
 
-[**View the Mind Map (PDF)**](modern-chinese-history/pdf/modern-chinese-history-mindmap.pdf)
+[**View the Mind Map (PDF)**](/notes/modern-chinese-history/pdf/modern-chinese-history-mindmap.pdf)
 
 ---
 

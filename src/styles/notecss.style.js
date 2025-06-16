@@ -9,7 +9,7 @@ const notestyles = css`
 
   /* Other Specific Global Styles */
   div#disqus_thread {
-    background: whitesmoke;
+    background: ${(p) => p.theme.secondaryColor};
     padding: 15px 25px;
     border-radius: 10px;
   }

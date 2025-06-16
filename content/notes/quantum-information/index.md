@@ -10,13 +10,13 @@ Here are my notes for **Quantum Information**, a fascinating course taught by my
 
 My notes synthesize the key concepts from his lectures and the foundational textbook by Nielsen and Chuang. They cover:
 
-- Elements of quantum mechanics and quantum information (quantum cryptography)
+- Elements of quantum mechanics and quantum information
 - Quantum algorithms
 - Physical realisation - trapped ions
 - Decoherence and quantum error correction
 - Properties and applications of entangled states
 
-[**Download the full notes (PDF)**](quantum-information/pdf/quantum-information.pdf)
+[**Download the full notes (PDF)**](/notes/quantum-information/pdf/quantum-information.pdf)
 
 ---
 

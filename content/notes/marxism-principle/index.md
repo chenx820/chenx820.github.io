@@ -8,4 +8,4 @@ notetags: ["general", "undergraduate", "mind map"]
 
 This mind map for **Marxism Principle** is a focused study tool created specifically for exam preparation.
 
-[**Download the Mind Map (PDF)**](marxism-principle/pdf/marxism-pinciple-mindmap.pdf)
+[**Download the Mind Map (PDF)**](/notes/marxism-principle/pdf/marxism-pinciple-mindmap.pdf)

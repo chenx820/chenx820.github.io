@@ -8,7 +8,7 @@ notetags: ["physics", "undergraduate"]
 
 These are my study notes for the undergraduate **Theoretical Mechanics** course.
 
-[**Download the notes (PDF)**](theoretical-mechanics/pdf/classical-mechanics.pdf)
+[**Download the notes (PDF)**](/notes/theoretical-mechanics/pdf/classical-mechanics.pdf)
 
 ---
 

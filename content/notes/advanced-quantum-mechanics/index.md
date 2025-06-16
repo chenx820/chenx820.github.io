@@ -8,7 +8,7 @@ notetags: ["physics", "graduate"]
 
 Advanced Quantum Mechanics with Professor Yong Hu was a fantastic and challenging course. I took it as an undergraduate, and it offers deep insights for anyone with a good grasp of introductory quantum mechanics. These are my study notes from the class. **(Note: written in Chinese)**.
 
-[**Download the full notes (PDF)**](advanced-quantum-mechanics/pdf/advanced-quantum-mechanics.pdf)
+[**Download the full notes (PDF)**](/notes/advanced-quantum-mechanics/pdf/advanced-quantum-mechanics.pdf)
 
 One of the most interesting parts was a homework assignment on the "Quantum Swing," which I had a lot of fun simulating with a QuTiP script. You can find a write-up and the code for that project on my Zhihu page.
 

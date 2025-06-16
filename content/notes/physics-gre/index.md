@@ -8,4 +8,4 @@ notetags: ["physics", "gre"]
 
 Here is my personal study guide for the Physics GRE exam. I created this resource while preparing for the test in 2021.
 
-[**Download my Physics GRE notes (PDF)**](physics-gre/pdf/physics-gre.pdf)
+[**Download my Physics GRE notes (PDF)**](/notes/physics-gre/pdf/physics-gre.pdf)

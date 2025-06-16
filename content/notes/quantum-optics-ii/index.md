@@ -1,12 +1,12 @@
 ---
 title: Quantum Optics II
-date: 2023-12-31
+date: 2024-06-03
 author: Chen Huang
 institution: Imperial College London
 notetags: ["physics", "graduate"]
 ---
 
-These are my notes for **Quantum Optics II**, taught by Professor Florian Mintert and Professor Michael Vanner. The material is based on their lecture notes and covers key topics like:
+These are my notes for the graduate-level **Quantum Optics** course. The material is based on their lecture notes and covers key topics like:
 
 - Semi-classical atom-field interaction (optical Bloch equations, Ramsey interferometry)
 - Field quantisation (Fock states, coherent states)
@@ -15,7 +15,7 @@ These are my notes for **Quantum Optics II**, taught by Professor Florian Minter
 - Current quantum optical experiments
 - Atom-field interaction (dipole interaction, Jaynes-Cumming model)
 
-[**Download the notes (PDF)**](quantum-optics-ii/pdf/quantum-optics.pdf)
+[**Download the notes (PDF)**](/notes/quantum-optics-ii/pdf/quantum-optics.pdf)
 
 A special thanks to **Hao Chen**, a PhD candidate at Princeton University, for his insightful discussions which greatly enriched my understanding.
 

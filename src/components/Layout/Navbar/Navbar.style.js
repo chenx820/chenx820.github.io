@@ -44,7 +44,7 @@ export const NavItems = styled.ul`
     align-items: initial;
 
     background-color: ${(props) => props.theme.secondaryColor};
-    border-top: 2px solid ${(props) => props.theme.accentColor};
+    border-top: 2px solid ${(props) => props.theme.primaryColor};
     right: ${(props) => (props.isSidebarOpen ? "0px" : "-250px")} !important;
   }
 `;

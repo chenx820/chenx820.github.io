@@ -8,7 +8,7 @@ notetags: ["physics", "undergraduate", "condensed matter"]
 
 These are my review notes for the undergraduate **Solid State Physics** course, taught by Professor Liu-Song Yuan.
 
-[**Download the Review Notes (PDF)**](solid-state-physics/pdf/review-solid-state-physics.pdf)
+[**Download the Review Notes (PDF)**](/notes/solid-state-physics/pdf/review-solid-state-physics.pdf)
 
 ---
 

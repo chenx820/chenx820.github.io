@@ -10,8 +10,8 @@ This was one of my favorite courses at Imperial, taught by the excellent [Profes
 
 Here are the notes I created for the course, including a comprehensive summary and a targeted revision guide for the final exam.
 
-- [**Mathematical Methods for Physicists (PDF)**](mathematical-methods-for-physicists/pdf/mathematical-methods-for-physicists.pdf)
-- [**Exam Review Guide (PDF)**](mathematical-methods-for-physicists/pdf/revision-for-2024-mmp-exam.pdf)
+- [**Mathematical Methods for Physicists (PDF)**](/notes/mathematical-methods-for-physicists/pdf/mathematical-methods-for-physicists.pdf)
+- [**Exam Review Guide (PDF)**](/notes/mathematical-methods-for-physicists/pdf/revision-for-2024-mmp-exam.pdf)
 
 ---
 
