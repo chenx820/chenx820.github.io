@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby";
 
 const AvatarWrapper = styled.div`
@@ -18,24 +17,22 @@ const Avatar = ({ src }) => {
   const data = useStaticQuery(graphql`
     query {
       file(name: { eq: "avatar" }) {
-        childImageSharp {
-          gatsbyImageData(
-            layout: CONSTRAINED
-            width: 230
-            height: 230
-            quality: 90
-            placeholder: BLURRED
-          )
-        }
+        publicURL
       }
     }
   `);
 
-  const image = getImage(data.file.childImageSharp.gatsbyImageData);
-
   return (
     <AvatarWrapper>
-      <GatsbyImage image={image} alt="Chen Huang" />
+      <img
+        src={data.file.publicURL}
+        alt="Chen Huang"
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+        }}
+      />
     </AvatarWrapper>
   );
 };
