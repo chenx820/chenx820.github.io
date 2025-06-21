@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { withTheme } from "styled-components";
-import { useTranslation } from "react-i18next";
+import { Link, Trans, useTranslation } from "gatsby-plugin-react-i18next";
 
 import {
   HeroCardWrapper,

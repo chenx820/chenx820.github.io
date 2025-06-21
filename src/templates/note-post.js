@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import SEO from "@components/seo";
+import { PageHead } from "@components/seo";
 import Layout from "@components/Layout/Layout";
 
 import NoteLayout from "@src/components/Notes/NotesLayout";
@@ -28,7 +28,7 @@ const NotePost = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <SEO isPost title={title} description={excerpt} slug={pageContext.slug} />
+      <PageHead isPost title={title} description={excerpt} slug={pageContext.slug} />
 
       <NoteLayout
         sharerSection={

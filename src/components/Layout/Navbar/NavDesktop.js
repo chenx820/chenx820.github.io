@@ -1,12 +1,10 @@
 import React from "react";
 import logo from "@src/static/logo.svg";
 
-import { Link } from "gatsby-plugin-react-i18next";
+import { Link, Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import { Link as SLink } from "react-scroll";
 
 import { NavItems, NavItem } from "./Navbar.style";
-
-import { useTranslation } from "react-i18next";
 
 import NavLinks from "./NavLinks";
 import ToggleSwitch from "@common/ToggleSwitch";
@@ -14,6 +12,7 @@ import LanguageSwitcher from "@common/LanguageSwitcher";
 
 const NavDesktop = () => {
   const { t } = useTranslation();
+
   return (
     <>
       <SLink smooth offset={-100} hashSpy={true} to="home">
@@ -31,13 +30,13 @@ const NavDesktop = () => {
           <NavLinks NavItem={NavItem} />
 
           <NavItem>
-            <Link to="/notes">notes</Link>
+            <Link to="/notes">{t("notes")}</Link>
           </NavItem>
           <NavItem>
-            <Link to="/blog">blog</Link>
+            <Link to="/blog">{t("blog")}</Link>
           </NavItem>
           <NavItem>
-            <Link to="/gallery">gallery</Link>
+            <Link to="/gallery">{t("gallery")}</Link>
           </NavItem>
           {/* <NavItem>
             <ToggleSwitch />

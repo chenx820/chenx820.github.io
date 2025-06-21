@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "gatsby";
+import {Link, Trans, useTranslation} from 'gatsby-plugin-react-i18next';
 import { Link as SLink } from "react-scroll";
-import { useTranslation } from "react-i18next";
 
 const NavItemsSmoothLinks = ({ NavItem }) => {
   const { t } = useTranslation();
@@ -9,22 +8,22 @@ const NavItemsSmoothLinks = ({ NavItem }) => {
     <>
       <NavItem>
         <SLink smooth offset={-70} hashSpy to="home">
-          home
+          {t("home")}
         </SLink>
       </NavItem>
       <NavItem>
         <SLink smooth offset={-100} hashSpy to="about">
-          about
+          {t("about")}
         </SLink>
       </NavItem>
       <NavItem>
         <SLink smooth offset={-100} hashSpy to="research">
-          research
+          {t("research")}
         </SLink>
       </NavItem>
       {/* <NavItem>
         <SLink smooth offset={-100} hashSpy to="contact">
-          contact
+          {t('contact')}
         </SLink>
       </NavItem> */}
     </>
@@ -36,16 +35,16 @@ const NavItemsGatsbyLinks = ({ NavItem }) => {
   return (
     <>
       <NavItem>
-        <Link to="/">home</Link>
+        <Link to="/">{t("home")}</Link>
       </NavItem>
       <NavItem>
-        <Link to="/#about">about</Link>
+        <Link to="/#about">{t("about")}</Link>
       </NavItem>
       <NavItem>
-        <Link to="/#research">research</Link>
+        <Link to="/#research">{t("research")}</Link>
       </NavItem>
       {/* <NavItem>
-        <Link to="/#contact">contact</Link>
+        <Link to="/#contact">{t("contact")}</Link>
       </NavItem> */}
     </>
   );

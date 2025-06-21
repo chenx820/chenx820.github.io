@@ -1,8 +1,7 @@
 import React from "react";
 
 import PropTypes from "prop-types";
-import { Link } from "gatsby";
-
+import { Link, Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import Tags from "@src/components/Blog/BlogTags";
 import SplitLayout from "@common/SplitLayout";
 import useRandomBlogPost from "@src/hooks/useRandomBlogPost";

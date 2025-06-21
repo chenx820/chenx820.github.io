@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "gatsby";
-import { useTranslation } from "react-i18next";
+import { Link, Trans, useTranslation } from "gatsby-plugin-react-i18next";
 
 import {
   MobileMenuWrapper,
@@ -60,13 +59,13 @@ const NavbarMobile = () => {
           <NavLinks NavItem={NavItem} />
 
           <NavItem>
-            <Link to="/notes">notes</Link>
+            <Link to="/notes">t("notes")</Link>
           </NavItem>
           <NavItem>
-            <Link to="/blog">blog</Link>
+            <Link to="/blog">t("blog")</Link>
           </NavItem>
           <NavItem>
-            <Link to="/gallery">gallery</Link>
+            <Link to="/gallery">t("gallery")</Link>
           </NavItem>
           <NavItem>
             <LanguageSwitcher />

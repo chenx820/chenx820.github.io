@@ -83,7 +83,7 @@ const SwitchWrapper = styled.div`
   #button-1 .checkbox:checked + .knobs:before {
     content: "EN";
     left: 32px;
-    color: #000;
+    color: #fff;
     background-color: ${(p) => p.theme.primaryColor};
   }
 

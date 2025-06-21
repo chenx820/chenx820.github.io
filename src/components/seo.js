@@ -1,9 +1,13 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
+import { useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 import socialBanner from "@src/static/images/social-banner.jpg";
 
 function SEO({ title, description, slug, isPost }) {
+  return null;
+}
+
+export function PageHead({ title, description, slug, isPost }) {
   const { site } = useStaticQuery(graphql`
     {
       site {
@@ -18,53 +22,49 @@ function SEO({ title, description, slug, isPost }) {
     }
   `);
 
-  const defaults = site.siteMetadata;
+  // Use useTranslation hook to get current language for htmlAttributes
+  const { language } = useI18next();
+  const { t } = useTranslation();
 
-  // if (!defaults.siteUrl && typeof window !== 'undefined') {
-  //   defaults.siteUrl = window.location.origin;
-  // }
+  const defaults = site.siteMetadata;
 
   if (defaults.siteUrl === "") {
     console.error("Please set a siteUrl in your site metadata!");
-    return null;
   }
 
-  title = title || defaults.title;
-  description = description || defaults.description;
+  const pageTitle = title || t("siteTitle", { defaultValue: defaults.title });
+  const pageDescription =
+    description || t("siteDescription", { defaultValue: defaults.description });
 
   let url = `${defaults.siteUrl}${slug || ""}`;
-  let twitter = defaults.twitter;
+  let twitter = defaults.twitter; // Assuming defaults.twitter exists
   let ogimage = `${defaults.siteUrl}${socialBanner}`;
 
   if (isPost) {
-    title = title + " | Chen Huang";
-    ogimage = `${defaults.siteUrl}${slug}/social-banner-img.jpg`;
+    const postTitle = title
+      ? `${title} | Chen Huang`
+      : `${t("postPrefix", { defaultValue: "Post" })} | Chen Huang`;
+    ogimage = `${defaults.siteUrl}${slug}/social-banner-img.jpg`; // Ensure this path is correct if dynamic
   }
-  // console.log({ url, title, description, twitter, ogimage, imageWidth, imageHeight })
+
   return (
-    <Helmet>
-      {/* General tags */}
-      <title>{title}</title>
-      <meta name="url" content={url} />
-      <meta name="description" content={description} />
+    <>
+      <html lang={language} />
+      <title>{pageTitle}</title>
+      <meta name="description" content={pageDescription} />
       {ogimage && <meta name="image" content={ogimage} />}
       <link rel="canonical" href={url} />
-
-      {/* OpenGraph tags */}
       <meta property="og:url" content={url} />
       {isPost ? <meta property="og:type" content="article" /> : null}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={pageDescription} />
       {ogimage && <meta property="og:image" content={ogimage} />}
-
-      {/* Twitter Card tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content={twitter} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-
+      {twitter && <meta name="twitter:creator" content={twitter} />}
+      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content={pageDescription} />
       {ogimage && <meta name="twitter:image" content={ogimage} />}
-    </Helmet>
+    </>
   );
 }
 

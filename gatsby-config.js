@@ -10,7 +10,6 @@ module.exports = {
     siteBanner: config.siteBanner,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-json`,
     `gatsby-transformer-sharp`,
@@ -55,14 +54,14 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `locales`,
-        path: path.join(__dirname, `locales`),
+        name: "locales",
+        path: path.join(__dirname, "locales"),
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
+        name: "images",
         path: path.join(__dirname, "src", "static", "images"),
       },
     },
@@ -109,20 +108,19 @@ module.exports = {
         defaultLanguage: `en`,
         redirect: true,
         i18nextOptions: {
-          detection: {
-            order: [
-              "querystring",
-              "cookie",
-              "localStorage",
-              "navigator",
-              "htmlTag",
-            ],
-            caches: [],
-          },
+          // detection: {
+          //   order: [
+          //     "querystring",
+          //     "cookie",
+          //     "localStorage",
+          //     "navigator",
+          //     "htmlTag",
+          //   ],
+          //   caches: [],
+          // },
           interpolation: {
             escapeValue: false,
           },
-          keySeparator: ".",
         },
       },
     },
@@ -143,15 +141,6 @@ module.exports = {
       options: {
         color: `#105286`,
         showSpinner: false,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: [config.googleAnalyticsID],
-        pluginConfig: {
-          head: true,
-        },
       },
     },
     {

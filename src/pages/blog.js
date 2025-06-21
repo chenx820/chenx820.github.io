@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Layout from '@components/Layout/Layout';
-import SEO from '@components/seo';
+import { PageHead } from "@components/seo";
 
 import BlogCard from '@components/Blog/BlogCard';
 import BlogLayout from '@components/Blog/BlogLayout';
@@ -36,7 +36,7 @@ const BlogPage = () => {
   );
   return (
     <Layout>
-      <SEO title="Blog | Chen Huang" />
+      <PageHead title="Blog | Chen Huang" />
 
       <BlogLayout>
         {blogposts.allMarkdownRemark.edges.map(({ node }) => (

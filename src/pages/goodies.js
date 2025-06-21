@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import Layout from "@components/Layout/Layout";
-import SEO from "@components/seo";
+import { PageHead } from "@components/seo";
 
 const UnstyledUl = styled.ul`
   list-style: initial;
@@ -15,7 +15,7 @@ const Goodies = () => {
   const [links, setLinks] = useState();
 
   useEffect(() => {
-    fetch("https://api.github.com/gists/17793ea33123f0ce4c0200cc734d7889")
+    fetch("https://api.github.com/gists/0d7483bb276abfa9f0bc074b954add1c")
       .then((res) => res.json())
       .then((data) => {
         setLinks(JSON.parse(data.files["goodies.json"].content));
@@ -24,7 +24,7 @@ const Goodies = () => {
 
   return (
     <Layout>
-      <SEO title="Chen Huang | All Links" />
+      <PageHead title="Chen Huang | All Links" />
 
       <h1>Goodies</h1>
       <p>

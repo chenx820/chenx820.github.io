@@ -1,14 +1,14 @@
 import React from "react";
 
 import Layout from "@components/Layout/Layout";
-import SEO from "@components/seo";
+import { PageHead } from "@components/seo";
 
 import Gallery from "@src/components/Gallery/GalleryLayout";
 
 const GalleryPage = () => {
   return (
     <Layout>
-      <SEO title="Gallery | Chen Huang" />
+      <PageHead title="Gallery | Chen Huang" />
 
       <Gallery />
     </Layout>

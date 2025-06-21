@@ -2,7 +2,7 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
 import Layout from "@components/Layout/Layout";
-import SEO from "@components/seo";
+import { PageHead } from "@components/seo";
 
 import NoteCard from "@src/components/Notes/NoteCard";
 import NoteLayout from "@src/components/Notes/NotesLayout";
@@ -36,7 +36,7 @@ const NotePage = () => {
   );
   return (
     <Layout>
-      <SEO title="Notes | Chen Huang" />
+      <PageHead title="Notes | Chen Huang" />
 
       <NoteLayout>
         {noteposts.allMarkdownRemark.edges.map(({ node }) => (

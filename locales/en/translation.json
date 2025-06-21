@@ -1,56 +1,11 @@
 {
-  "navigation": {
-    "home": "Home",
-    "about": "About Me",
-    "research": "Research",
-    "blog": "Blog",
-    "notes": "Notes",
-    "gallery": "Gallery"
-  },
-  "home": {
-    "title": "Welcome to My Portfolio",
-    "subtitle": "Research Scientist & Creative Developer",
-    "description": "Welcome to my personal website"
-  },
-  "about": {
-    "title": "About Me",
-    "description": "Hi, I'm Chen, an MSc student in Physics at Imperial College London and a remote research intern at the Beijing Academy of Quantum Information Sciences (BAQIS).",
-    "nameMeaning": {
-      "chen": "My given name is <b>Chen</b>, which means \"dawn\" or \"early morning\" in Chinese. This meaning suits me well, as I am a morning person who enjoys the calm and peacefulness of the early hours. Interestingly, \"Chen\" is sometimes misheard as \"Cheng\", which means \"orange\" in Chinese. Because of this playful similarity, my friends affectionately call me \"Cheng-Zi\".",
-      "huang": "My surname is <b>Huang</b>, which means \"yellow\" in Chinese. This name has deep historical and cultural roots. It is often associated with the Yellow Emperor, a legendary figure considered one of the founding ancestors of Chinese civilization."
-    },
-    "research": {
-      "imperial": "I am an MSc student in the <b>Controlled Quantum Dynamics Group</b> at Imperial College London. My research focuses on charge noise in semiconductor qubits. By conducting experiments and simulations, I aim to understand the impact of charge noise on qubit performance and develop strategies to mitigate its effects.",
-      "baqis": "Simultaneously, I am also a remote research intern in the <b>Quantum Operation System Group</b> at the Beijing Academy of Quantum Information Sciences (BAQIS). My research focuses on quantum compilation with neutral atoms."
-    }
-  },
-  "research": {
-    "title": "Research",
-    "description": "My research projects and achievements"
-  },
-  "blog": {
-    "title": "Blog",
-    "description": "My blog posts"
-  },
-  "notes": {
-    "title": "Notes",
-    "description": "My study notes"
-  },
-  "gallery": {
-    "title": "Photography",
-    "description": "My photography works",
-    "showAll": "Show all"
-  },
-  "nav": {
+  "translation": {
     "home": "Home",
     "about": "About Me",
     "research": "Research",
     "blog": "Blog",
     "notes": "Notes",
     "gallery": "Gallery",
-    "goodies": "Goodies"
-  },
-  "common": {
     "readMore": "Read More",
     "backToTop": "Back to Top"
   }

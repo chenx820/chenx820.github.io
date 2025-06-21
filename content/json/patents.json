@@ -1,5 +1,17 @@
 [
   {
+    "title": "Quantum computing methods and quantum computing devices based on partition architecture",
+    "date": "2025-06-20",
+    "number": "CN120181251",
+    "status": "Filed",
+    "inventor": "Jingbo Wang, Chen Huang, Xi Zhao, Hongze Xu, Meng-Jun Hu",
+    "links": {
+      "src": "https://patents.google.com/patent/CN120181251/en",
+      "file": "/patents/patent-2025101007932.pdf"
+    },
+    "description": "This application proposes a quantum computing method and device based on a partitioned architecture, which consists of a storage region and an operation region. In response to a quantum computing instruction, the original circuit is first mapped to the storage region to generate a quantum circuit composed of multiple quantum gates. Neutral atoms that are required for the computation of these gates are then moved to the operation region to perform the quantum operations. After the computation, neutral atoms that are no longer needed for subsequent gate operations are moved back to the storage region, while those required for the next quantum gate remain in the operation region. By confining only the qubits involved in active computation to the operation region and isolating idle qubits in the storage region, this partitioned design effectively minimizes the undesired impact of global Rydberg laser beams on qubits not currently engaged in quantum operations."
+  },
+  {
     "title": "Ion trap chip parameter correction method and device, electronic equipment and medium",
     "date": "2025-02-11",
     "number": "CN117454997",

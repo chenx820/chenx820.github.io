@@ -7,7 +7,7 @@ echo "🚚 Preparing deployment directory..."
 DEPLOY_DIR=.deploy-gh
 rm -rf $DEPLOY_DIR
 mkdir $DEPLOY_DIR
-cp -R public/* $DEPLOY_DIR
+cp -a public/. $DEPLOY_DIR
 
 # Ensure Git LFS files are properly handled
 echo "📦 Copying Git LFS files..."
@@ -29,6 +29,7 @@ git add .
 git commit -m "🚀 Deploy to GitHub Pages"
 
 echo "🌐 Pushing to remote gh-pages branch..."
+git remote remove origin 2>/dev/null || true
 git remote add origin https://github.com/chenx820/chenx820.github.io.git
 git push origin gh-pages --force 
 

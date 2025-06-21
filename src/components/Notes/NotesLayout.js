@@ -1,8 +1,7 @@
 import React from "react";
 
 import PropTypes from "prop-types";
-import { Link } from "gatsby";
-
+import {Link, Trans, useTranslation} from 'gatsby-plugin-react-i18next';
 import Tags from "@src/components/Notes/NotesTags";
 import Institutions from "@src/components/Notes/NotesInstitutions";
 import SplitLayout from "@common/SplitLayout";
