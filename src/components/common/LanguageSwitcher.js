@@ -68,7 +68,7 @@ const SwitchWrapper = styled.div`
     left: 4px;
     width: 30px;
     height: 5px;
-    color: #fff;
+    color: #000;
     font-size: 8px;
     font-weight: bold;
     text-align: center;
@@ -83,7 +83,7 @@ const SwitchWrapper = styled.div`
   #button-1 .checkbox:checked + .knobs:before {
     content: "EN";
     left: 32px;
-    color: #fff;
+    color: #000;
     background-color: ${(p) => p.theme.primaryColor};
   }
 

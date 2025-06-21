@@ -108,7 +108,6 @@ const Gallery = () => {
                 layout: CONSTRAINED
                 quality: 90
                 width: 1200
-                placeholder: BLURRED
               )
             }
           }

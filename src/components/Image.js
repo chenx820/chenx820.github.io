@@ -13,7 +13,6 @@ const Image = ({ src, alt = "", ...props }) => {
               layout: CONSTRAINED
               quality: 90
               width: 2000
-              placeholder: BLURRED
             )
           }
         }
