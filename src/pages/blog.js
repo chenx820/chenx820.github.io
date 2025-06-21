@@ -1,19 +1,19 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import SEO from "@components/seo";
 
-import Layout from '@components/Layout/Layout';
-import { PageHead } from "@components/seo";
-
-import BlogCard from '@components/Blog/BlogCard';
-import BlogLayout from '@components/Blog/BlogLayout';
+import Layout from "@components/Layout/Layout";
+import BlogCard from "@components/Blog/BlogCard";
+import BlogLayout from "@components/Blog/BlogLayout";
 
 const BlogPage = () => {
   const blogposts = useStaticQuery(
     graphql`
-      query {
+      {
         allMarkdownRemark(
           filter: { fields: { posttype: { eq: "blog" } } }
-          sort: { fields: frontmatter___date, order: DESC }
+          sort: { frontmatter: { date: DESC } }
         ) {
           edges {
             node {
@@ -36,7 +36,7 @@ const BlogPage = () => {
   );
   return (
     <Layout>
-      <PageHead title="Blog | Chen Huang" />
+      <SEO title="Blog | Chen Huang" />
 
       <BlogLayout>
         {blogposts.allMarkdownRemark.edges.map(({ node }) => (

@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import { PageHead } from "@components/seo";
+import SEO from "@components/seo";
 import Layout from "@components/Layout/Layout";
 
 import NoteLayout from "@src/components/Notes/NotesLayout";
@@ -9,7 +9,7 @@ import SocialShareSection from "@src/components/Notes/SocialShareSection";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NoteDateAndReadTime } from "@src/components/Notes/NoteCard";
-import { DiscussionEmbed } from "disqus-react";
+// import { DiscussionEmbed } from "disqus-react";
 
 import { siteUrl, disqusShortName } from "../../config/website";
 
@@ -28,7 +28,7 @@ const NotePost = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <PageHead isPost title={title} description={excerpt} slug={pageContext.slug} />
+      <SEO isPost title={title} description={excerpt} slug={pageContext.slug} />
 
       <NoteLayout
         sharerSection={
@@ -55,9 +55,9 @@ const NotePost = ({ data, pageContext }) => {
           className="markdown-content"
           dangerouslySetInnerHTML={{ __html: html }}
         />
-        {typeof window !== "undefined" && (
+        {/* {typeof window !== "undefined" && (
           <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
-        )}
+        )} */}
       </NoteLayout>
     </Layout>
   );

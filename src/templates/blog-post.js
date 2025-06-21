@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import { PageHead } from "@components/seo";
+import SEO from "@components/seo";
 import Layout from "@components/Layout/Layout";
 
 import BlogLayout from "@components/Blog/BlogLayout";
@@ -9,12 +9,12 @@ import SocialShareSection from "@components/Blog/SocialShareSection";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BlogDateAndReadTime } from "@components/Blog/BlogCard";
-import { DiscussionEmbed } from "disqus-react";
+// import { DiscussionEmbed } from "disqus-react";
 
 import { siteUrl, disqusShortName } from "../../config/website";
 
 const BlogPost = ({ data, pageContext }) => {
-  const { title, date } = data.markdownRemark.frontmatter;
+  const { title, date, blogtags } = data.markdownRemark.frontmatter;
   const { timeToRead, html, excerpt, id } = data.markdownRemark;
 
   const baseSlugUrl = siteUrl + pageContext.slug;
@@ -28,7 +28,7 @@ const BlogPost = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <PageHead isPost title={title} description={excerpt} slug={pageContext.slug} />
+      <SEO isPost title={title} description={excerpt} slug={pageContext.slug} />
 
       <BlogLayout
         sharerSection={
@@ -55,9 +55,9 @@ const BlogPost = ({ data, pageContext }) => {
           className="markdown-content"
           dangerouslySetInnerHTML={{ __html: html }}
         />
-        {typeof window !== "undefined" && (
+        {/* {typeof window !== "undefined" && (
           <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
-        )}
+        )} */}
       </BlogLayout>
     </Layout>
   );
@@ -73,6 +73,7 @@ export const query = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY", locale: "en")
         title
+        blogtags
       }
     }
   }

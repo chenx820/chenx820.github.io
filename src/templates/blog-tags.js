@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import { PageHead } from "@components/seo";
+import SEO from "@components/seo";
 import Layout from "@components/Layout/Layout";
 
 import BlogCard from "@src/components/Blog/BlogCard";
@@ -17,7 +17,7 @@ const TagsPage = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <PageHead title={tagHeader + " | Chen Huang"} />
+      <SEO title={tagHeader + " | Chen Huang"} />
 
       <BlogLayout>
         <h1>{tagHeader}</h1>
@@ -47,7 +47,7 @@ export default TagsPage;
 export const pageQuery = graphql`
   query ($tag: String) {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
       filter: { frontmatter: { blogtags: { in: [$tag] } } }
     ) {
       totalCount

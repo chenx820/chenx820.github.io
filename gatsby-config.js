@@ -9,6 +9,7 @@ module.exports = {
     siteLogo: config.siteLogo,
     siteBanner: config.siteBanner,
   },
+  trailingSlash: `always`,
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-json`,

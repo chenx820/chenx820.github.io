@@ -4,16 +4,14 @@ import { Link, graphql, useStaticQuery } from "gatsby";
 import slugify from "@components/slugify";
 
 export const useUniversity = () => {
-  const noteinstitution = useStaticQuery(graphql`
-    query {
-      allMarkdownRemark(limit: 2000) {
-        group(field: frontmatter___institution) {
-          fieldValue
-          totalCount
-        }
-      }
+  const noteinstitution = useStaticQuery(graphql`{
+  allMarkdownRemark(limit: 2000) {
+    group(field: {frontmatter: {institution: SELECT}}) {
+      fieldValue
+      totalCount
     }
-  `);
+  }
+}`);
 
   return noteinstitution;
 };

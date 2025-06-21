@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
+import SEO from "@components/seo";
 
-import { PageHead } from "@components/seo";
 import Layout from "@components/Layout/Layout";
 
 import NoteCard from "@src/components/Notes/NoteCard";
@@ -17,7 +17,7 @@ const UniversitiesPage = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <PageHead title={uniHeader + " | Chen Huang"} />
+      <SEO title={uniHeader + " | Chen Huang"} />
 
       <NoteLayout>
         <h1>{uniHeader}</h1>
@@ -47,7 +47,7 @@ export default UniversitiesPage;
 export const pageQuery = graphql`
   query ($inst: String) {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
       filter: { frontmatter: { institution: { in: [$inst] } } }
     ) {
       totalCount

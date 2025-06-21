@@ -1,19 +1,19 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import SEO from "@components/seo";
 
 import Layout from "@components/Layout/Layout";
-import { PageHead } from "@components/seo";
-
 import NoteCard from "@src/components/Notes/NoteCard";
 import NoteLayout from "@src/components/Notes/NotesLayout";
 
 const NotePage = () => {
   const noteposts = useStaticQuery(
     graphql`
-      query {
+      {
         allMarkdownRemark(
           filter: { fields: { posttype: { eq: "notes" } } }
-          sort: { fields: frontmatter___date, order: DESC }
+          sort: { frontmatter: { date: DESC } }
         ) {
           edges {
             node {
@@ -36,7 +36,7 @@ const NotePage = () => {
   );
   return (
     <Layout>
-      <PageHead title="Notes | Chen Huang" />
+      <SEO title="Notes | Chen Huang" />
 
       <NoteLayout>
         {noteposts.allMarkdownRemark.edges.map(({ node }) => (

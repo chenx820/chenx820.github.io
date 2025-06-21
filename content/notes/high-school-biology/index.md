@@ -14,7 +14,7 @@ This guide consolidates the most critical concepts, diagrams, and problem-solvin
 
 This collection features a series of mind maps I created for my high school biology course, designed to make complex topics easier to visualize and remember.
 
-Below is a preview of the mind maps, which cover key areas of cell biology, genetics, evolution, and ecology. I've also compiled a ["Golden Nuggets"](high-school-biology/pdf/biology-golden-nuggets.pdf) with essential facts and summaries for quick review.
+Below is a preview of the mind maps, which cover key areas of cell biology, genetics, evolution, and ecology.
 
 #### Mind Map Gallery
 

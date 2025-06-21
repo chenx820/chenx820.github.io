@@ -10,9 +10,10 @@ These are my lecture notes from the **Quantum Mechanics II** course, part of the
 
 The notes are organized by chapter, following the structure of the course:
 
-- [**Chapter 1:** Phase in Quantum Mechanics](/notes/quantum-mechanics-ii/pdf/ch1-phase-in-qm.pdf)
-- [**Chapter 2:** Path Integral Formalism of Quantum Mechanics](/notes/quantum-mechanics-ii/pdf/ch2-path-integral-formalism-of-qm.pdf)
-- [**Chapter 3:** The WKB Approximation](/notes/quantum-mechanics-ii/pdf/ch3-the-wkb-approximation.pdf)
-- [**Chapter 4:** Rotation and Vibration of Molecules](/notes/quantum-mechanics-ii/pdf/ch4-rotation-and-vibration-of-molecules.pdf)
-- [**Chapter 5:** Variational Principle and Two-Particle Systems](/notes/quantum-mechanics-ii/pdf/ch5-variational-principle-with-its-application-to-two-particle-systems.pdf)
-- [**Chapter 6:** Introduction to Many-Body Theory](/notes/quantum-mechanics-ii/pdf/ch6-introduction-to-many-body-theory.pdf)
+- [**Chapter 1:** Phase in quantum mechanics](/notes/quantum-mechanics-ii/pdf/ch1-phase-in-qm.pdf)
+- [**Chapter 2:** Path integral formalism of quantum mechanics](/notes/quantum-mechanics-ii/pdf/ch2-path-integral-formalism-of-qm.pdf)
+- [**Chapter 3:** The WKB approximation](/notes/quantum-mechanics-ii/pdf/ch3-the-wkb-approximation.pdf)
+- **Chapter 4:** The density matrix (not available)
+- [**Chapter 5:** Rotation and vibration of molecules](/notes/quantum-mechanics-ii/pdf/ch5-rotation-and-vibration-of-molecules.pdf)
+- [**Chapter 6:** Variational principle and two-particle systems](/notes/quantum-mechanics-ii/pdf/ch6-variational-principle-with-its-application-to-two-particle-systems.pdf)
+- [**Chapter 7:** Introduction to many-body theory](/notes/quantum-mechanics-ii/pdf/ch7-introduction-to-many-body-theory.pdf)

@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Layout from "@components/Layout/Layout";
-import { PageHead } from "@components/seo";
+import SEO from "@components/seo";
 
 import Flex from "@common/Flex";
 import IFrame from "@common/IFrame";
@@ -32,7 +32,7 @@ const Research = ({ data }) => {
 
   return (
     <Layout>
-      <PageHead slug={data.markdownRemark.fields.slug} title={project.title} />
+      <SEO slug={data.markdownRemark.fields.slug} title={project.title} />
       <ResearchWrapper>
         <Flex className="research_title" justify="space-between" align="center">
           <h1>{project.title}</h1>

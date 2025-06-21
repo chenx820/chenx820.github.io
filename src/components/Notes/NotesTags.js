@@ -4,16 +4,14 @@ import { Link, graphql, useStaticQuery } from "gatsby";
 import slugify from "@components/slugify";
 
 export const useTags = () => {
-  const notetags = useStaticQuery(graphql`
-    query {
-      allMarkdownRemark(limit: 2000) {
-        group(field: frontmatter___notetags) {
-          fieldValue
-          totalCount
-        }
-      }
+  const notetags = useStaticQuery(graphql`{
+  allMarkdownRemark(limit: 2000) {
+    group(field: {frontmatter: {notetags: SELECT}}) {
+      fieldValue
+      totalCount
     }
-  `);
+  }
+}`);
 
   return notetags;
 };

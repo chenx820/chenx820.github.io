@@ -1,7 +1,6 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
-import { MapInteractionCSS } from "react-map-interaction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import IFrame from "@common/IFrame";
@@ -49,6 +48,21 @@ const Gallery = () => {
   const [selectedImg, setSelectedImg] = useState(null);
   const [isLightboxOpen, setLightboxOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
+  const [MapInteractionCSS, setMapInteractionCSS] = useState(null);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    if (typeof window !== "undefined") {
+      import("react-map-interaction")
+        .then((module) => {
+          setMapInteractionCSS(() => module.MapInteractionCSS);
+        })
+        .catch((err) => {
+          console.error("Failed to load MapInteractionCSS:", err);
+        });
+    }
+  }, []);
 
   const handleShowAll = () => {
     setShowAll(true);
@@ -65,45 +79,43 @@ const Gallery = () => {
     }
   }
 
-  const photo = useStaticQuery(
-    graphql`
-      query {
-        allPhotosJson(sort: { fields: links___image }) {
-          edges {
-            node {
-              id
-              description
-              title
-              links {
-                image
-              }
-            }
-          }
-        }
-        allFile(
-          filter: {
-            sourceInstanceName: { eq: "images" }
-            name: { regex: "/^photo_/" }
-          }
-          sort: { fields: name }
-        ) {
-          edges {
-            node {
-              name
-              childImageSharp {
-                gatsbyImageData(
-                  layout: CONSTRAINED
-                  quality: 90
-                  width: 1200
-                  placeholder: BLURRED
-                )
-              }
+  const photo = useStaticQuery(graphql`
+    {
+      allPhotosJson(sort: { links: { image: ASC } }) {
+        edges {
+          node {
+            id
+            description
+            title
+            links {
+              image
             }
           }
         }
       }
-    `
-  );
+      allFile(
+        filter: {
+          sourceInstanceName: { eq: "images" }
+          name: { regex: "/^photo_/" }
+        }
+        sort: { name: ASC }
+      ) {
+        edges {
+          node {
+            name
+            childImageSharp {
+              gatsbyImageData(
+                layout: CONSTRAINED
+                quality: 90
+                width: 1200
+                placeholder: BLURRED
+              )
+            }
+          }
+        }
+      }
+    }
+  `);
 
   return (
     <PhotosWrapper id="photo">
@@ -137,7 +149,7 @@ const Gallery = () => {
         )}
       </Grid>
 
-      {isLightboxOpen && (
+      {isLightboxOpen && isClient && MapInteractionCSS && (
         <Lightbox data-testid="lightbox" onClick={closeLightBox}>
           <MapInteractionCSS>
             <GatsbyImage

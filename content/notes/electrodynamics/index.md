@@ -1,6 +1,6 @@
 ---
 title: Electrodynamics
-date: 2019-12-31
+date: 2021-09-08
 author: Chen Huang
 institution: Huazhong University of Science and Technology
 notetags: ["physics", "undergraduate"]

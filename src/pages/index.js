@@ -1,7 +1,8 @@
 import React from "react";
+import { graphql } from "gatsby";
+import SEO from "@components/seo";
 
 import Layout from "@components/Layout/Layout";
-import { PageHead } from "@components/seo";
 
 import Home from "@components/Home/Home";
 import About from "@components/About/About";
@@ -10,7 +11,7 @@ import Contact from "@components/Contact/Contact";
 
 const IndexPage = () => (
   <Layout>
-    <PageHead title="Chen Huang" />
+    <SEO title="Chen Huang" />
 
     <Home />
     <About />

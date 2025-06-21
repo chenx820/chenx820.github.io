@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { graphql } from "gatsby";
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import SEO from "@components/seo";
 
 import Layout from "@components/Layout/Layout";
-import { PageHead } from "@components/seo";
 
 const UnstyledUl = styled.ul`
   list-style: initial;
@@ -24,7 +26,7 @@ const Goodies = () => {
 
   return (
     <Layout>
-      <PageHead title="Chen Huang | All Links" />
+      <SEO title="Chen Huang | All Links" />
 
       <h1>Goodies</h1>
       <p>

@@ -51,7 +51,7 @@ const PatentWrapper = styled.section`
 const PatentCard = styled.div`
   /* because of project links */
   position: relative;
-  
+
   background-color: ${(props) => props.theme.bg};
   border-radius: 10px;
   padding: 30px;

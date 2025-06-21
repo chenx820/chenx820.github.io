@@ -89,23 +89,23 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const edges = res.data.allMarkdownRemark.edges;
 
-    edges.forEach(({ node }) => {
-      if (node.fields.posttype === "research") {
-        createPage({
-          path: node.fields.slug,
-          component: projectTemplate,
-          context: {
-            slug: node.fields.slug,
-          },
-        });
-      } else if (node.fields.posttype === "notes") {
-        const noteTagSet = new Set();
-        if (
-          node.frontmatter.notetags &&
-          Array.isArray(node.frontmatter.notetags)
-        ) {
-          node.frontmatter.notetags.forEach((tag) => noteTagSet.add(tag));
-        }
+  edges.forEach(({ node }) => {
+    if (node.fields.posttype === "research") {
+      createPage({
+        path: node.fields.slug,
+        component: projectTemplate,
+        context: {
+          slug: node.fields.slug,
+        },
+      });
+    } else if (node.fields.posttype === "notes") {
+      const noteTagSet = new Set();
+      if (
+        node.frontmatter.notetags &&
+        Array.isArray(node.frontmatter.notetags)
+      ) {
+        node.frontmatter.notetags.forEach((tag) => noteTagSet.add(tag));
+      }
 
       const tagList = Array.from(noteTagSet);
       tagList.forEach((tag) => {

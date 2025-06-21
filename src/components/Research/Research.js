@@ -17,10 +17,10 @@ const ResearchWrapper = styled.section`
 const Research = () => {
   const research = useStaticQuery(
     graphql`
-      query {
+      {
         allMarkdownRemark(
           filter: { fields: { posttype: { eq: "research" } } }
-          sort: { fields: fields___fileIndex, order: ASC }
+          sort: { fields: { fileIndex: ASC } }
         ) {
           edges {
             node {

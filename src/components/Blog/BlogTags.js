@@ -4,16 +4,14 @@ import { Link, graphql, useStaticQuery } from 'gatsby';
 import slugify from '@components/slugify';
 
 export const useTags = () => {
-  const blogtags = useStaticQuery(graphql`
-    query {
-      allMarkdownRemark(limit: 2000) {
-        group(field: frontmatter___blogtags) {
-          fieldValue
-          totalCount
-        }
-      }
+  const blogtags = useStaticQuery(graphql`{
+  allMarkdownRemark(limit: 2000) {
+    group(field: {frontmatter: {blogtags: SELECT}}) {
+      fieldValue
+      totalCount
     }
-  `);
+  }
+}`);
 
   return blogtags;
 };
