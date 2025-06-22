@@ -17,7 +17,6 @@ const Navbar = () => {
           </Visible>
         </NavContent>
       </NavWrapper>
-      {/* out of NavWrapper so i can display:none the NavWrapper */}
       <Visible xs sm>
         <NavMobile />
       </Visible>
