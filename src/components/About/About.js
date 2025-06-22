@@ -11,7 +11,7 @@ const About = () => {
   const { t } = useTranslation();
   return (
     <AboutWrapper id="about">
-      <PageHeader>About Me</PageHeader>
+      <PageHeader>{t("about.title")}</PageHeader>
       <SkewBg />
       <AboutInfo>
         <div>

@@ -53,11 +53,10 @@ const SwitchWrapper = styled.div`
 
   .layer {
     width: 100%;
-    /* background-color: #ebf7fc; */
     transition-delay: 1s;
     transition: 0.2s ease all;
     z-index: 1;
-    background-color: ${(p) => p.theme.accentColor};
+    background-color: ${(p) => p.theme.bg};
   }
 
   /* Button 1 */
