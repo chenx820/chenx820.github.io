@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 import SEO from "@components/seo";
 import Layout from "@components/Layout/Layout";
@@ -8,6 +9,7 @@ import BlogCard from "@src/components/Blog/BlogCard";
 import BlogLayout from "@src/components/Blog/BlogLayout";
 
 const TagsPage = ({ data, pageContext }) => {
+  const { t } = useTranslation();
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
 
@@ -17,7 +19,7 @@ const TagsPage = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <SEO title={tagHeader + " | Chen Huang"} />
+      <SEO title={tagHeader + " | " + t("global.name")} />
 
       <BlogLayout>
         <h1>{tagHeader}</h1>
@@ -45,10 +47,24 @@ const TagsPage = ({ data, pageContext }) => {
 export default TagsPage;
 
 export const pageQuery = graphql`
-  query ($tag: String) {
+  query ($tag: String, $language: String!) {
+    locales: allLocale(
+      filter: { ns: { in: ["common"] }, language: { eq: $language } }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
     allMarkdownRemark(
       sort: { frontmatter: { date: DESC } }
-      filter: { frontmatter: { blogtags: { in: [$tag] } } }
+      filter: {
+        frontmatter: { blogtags: { in: [$tag] } }
+        fields: { language: { eq: $language } }
+      }
     ) {
       totalCount
       edges {
@@ -62,7 +78,7 @@ export const pageQuery = graphql`
           frontmatter {
             blogtags
             title
-            date(formatString: "MMMM DD, YYYY", locale: "en")
+            date(formatString: "MMMM DD, YYYY", locale: $language)
           }
         }
       }

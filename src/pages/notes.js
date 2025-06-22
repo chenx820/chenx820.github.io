@@ -1,45 +1,23 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import { graphql } from "gatsby";
+import { Trans, useTranslation, useI18next } from "gatsby-plugin-react-i18next";
 import SEO from "@components/seo";
 
 import Layout from "@components/Layout/Layout";
-import NoteCard from "@src/components/Notes/NoteCard";
-import NoteLayout from "@src/components/Notes/NotesLayout";
+import NoteCard from "@components/Notes/NoteCard";
+import NoteLayout from "@components/Notes/NotesLayout";
 
-const NotePage = () => {
-  const noteposts = useStaticQuery(
-    graphql`
-      {
-        allMarkdownRemark(
-          filter: { fields: { posttype: { eq: "notes" } } }
-          sort: { frontmatter: { date: DESC } }
-        ) {
-          edges {
-            node {
-              id
-              excerpt
-              frontmatter {
-                title
-                date(formatString: "MMMM DD, YYYY", locale: "en")
-                notetags
-                institution
-              }
-              fields {
-                slug
-              }
-            }
-          }
-        }
-      }
-    `
-  );
+const NotesPage = ({ data }) => {
+  const { t } = useTranslation();
+  const { language } = useI18next();
+  const { allMarkdownRemark } = data;
+
   return (
     <Layout>
-      <SEO title="Notes | Chen Huang" />
+      <SEO title={"Notes | " + t("global.name")} />
 
       <NoteLayout>
-        {noteposts.allMarkdownRemark.edges.map(({ node }) => (
+        {allMarkdownRemark.edges.map(({ node }) => (
           <NoteCard
             key={node.id}
             slug={node.fields.slug}
@@ -55,4 +33,42 @@ const NotePage = () => {
   );
 };
 
-export default NotePage;
+export default NotesPage;
+
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(
+      filter: { ns: { in: ["common"] }, language: { eq: $language } }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+    allMarkdownRemark(
+      filter: {
+        fields: { posttype: { eq: "notes" }, language: { eq: $language } }
+      }
+      sort: { frontmatter: { date: DESC } }
+    ) {
+      edges {
+        node {
+          id
+          excerpt
+          frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY", locale: $language)
+            notetags
+            institution
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`;

@@ -1,24 +1,58 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link, graphql, useStaticQuery } from 'gatsby';
-import slugify from '@components/slugify';
+import React from "react";
+import styled from "styled-components";
+import { graphql, useStaticQuery } from "gatsby";
+import { Link, useI18next } from "gatsby-plugin-react-i18next";
+import slugify from "@components/slugify";
 
 export const useTags = () => {
-  const blogtags = useStaticQuery(graphql`{
-  allMarkdownRemark(limit: 2000) {
-    group(field: {frontmatter: {blogtags: SELECT}}) {
-      fieldValue
-      totalCount
+  const { language } = useI18next();
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        limit: 2000
+        filter: { fields: { posttype: { eq: "blog" } } }
+      ) {
+        edges {
+          node {
+            fields {
+              language
+            }
+            frontmatter {
+              blogtags
+            }
+          }
+        }
+      }
     }
-  }
-}`);
+  `);
 
-  return blogtags;
+  // Filter by language and collect tags
+  const languagePosts = data.allMarkdownRemark.edges.filter(
+    ({ node }) => node.fields.language === language
+  );
+
+  // Collect all tags from current language posts
+  const tagCounts = {};
+  languagePosts.forEach(({ node }) => {
+    if (node.frontmatter.blogtags) {
+      node.frontmatter.blogtags.forEach((tag) => {
+        tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+      });
+    }
+  });
+
+  // Convert to the expected format
+  const group = Object.entries(tagCounts).map(([fieldValue, totalCount]) => ({
+    fieldValue,
+    totalCount,
+  }));
+
+  return { allMarkdownRemark: { group } };
 };
 
 export const TagBreadcrumb = styled(Link)`
   float: left;
-  border: 1px solid ${p => (p.theme.dark ? p.theme.primaryColor : '#d9e0ff')};
+  border: 1px solid ${(p) => (p.theme.dark ? p.theme.primaryColor : "#d9e0ff")};
   border-radius: 50px;
   padding: 8px 13px;
   line-height: 10px;
@@ -26,17 +60,57 @@ export const TagBreadcrumb = styled(Link)`
   font-size: 12px;
 
   &:hover {
-    background: ${p => (p.theme.dark ? p.theme.primaryColor : '#d9e0ff')};
-    color: ${p => (p.theme.dark ? '#d9e0ff' : '#6D83F2')};
+    background: ${(p) => (p.theme.dark ? p.theme.primaryColor : "#d9e0ff")};
+    color: ${(p) => (p.theme.dark ? "#d9e0ff" : "#6D83F2")};
   }
 `;
 
 const Tags = () => {
-  const blogtags = useTags();
+  const { language } = useI18next();
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        limit: 2000
+        filter: { fields: { posttype: { eq: "blog" } } }
+      ) {
+        edges {
+          node {
+            fields {
+              language
+            }
+            frontmatter {
+              blogtags
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  // Filter by language and collect tags
+  const languagePosts = data.allMarkdownRemark.edges.filter(
+    ({ node }) => node.fields.language === language
+  );
+
+  // Collect all tags from current language posts
+  const tagCounts = {};
+  languagePosts.forEach(({ node }) => {
+    if (node.frontmatter.blogtags) {
+      node.frontmatter.blogtags.forEach((tag) => {
+        tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+      });
+    }
+  });
+
+  // Convert to the expected format
+  const tags = Object.entries(tagCounts).map(([fieldValue, totalCount]) => ({
+    fieldValue,
+    totalCount,
+  }));
 
   return (
-    <section style={{ overflow: 'auto' }}>
-      {blogtags.allMarkdownRemark.group.map(tag => (
+    <section style={{ overflow: "auto" }}>
+      {tags.map((tag) => (
         <TagBreadcrumb
           key={tag.fieldValue}
           to={`/blog/tags/${slugify(tag.fieldValue)}/`}

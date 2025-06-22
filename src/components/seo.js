@@ -2,8 +2,10 @@ import React from "react";
 import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import socialBanner from "@src/static/images/social-banner.jpg";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 function SEO({ title, description, slug, isPost }) {
+  const { t } = useTranslation();
   const { site } = useStaticQuery(graphql`
     {
       site {
@@ -32,10 +34,10 @@ function SEO({ title, description, slug, isPost }) {
   let ogimage = `${defaults.siteUrl}${socialBanner}`;
 
   if (isPost) {
-    title = title + " | Chen Huang";
+    title = title + " | " + t("global.name");
     ogimage = `${defaults.siteUrl}${slug}/social-banner-img.jpg`;
   }
-  
+
   return (
     <Helmet>
       {/* General tags */}

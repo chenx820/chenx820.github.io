@@ -7,6 +7,7 @@ import SplitLayout from "@common/SplitLayout";
 import useRandomBlogPost from "@src/hooks/useRandomBlogPost";
 
 const BlogLayout = ({ children, sharerSection }) => {
+  const { t } = useTranslation();
   const { randomSlug, randomTitle } = useRandomBlogPost();
 
   return (
@@ -14,16 +15,18 @@ const BlogLayout = ({ children, sharerSection }) => {
       content={children}
       aside={
         <>
+          {randomSlug && randomTitle && (
+            <section>
+              <h4>{t("nav.random-post", "Random post")}</h4>
+              <Link style={{ fontSize: "16px" }} to={randomSlug}>
+                {randomTitle}
+              </Link>
+              <br />
+              <br />
+            </section>
+          )}
           <section>
-            <h4>Random post</h4>
-            <Link style={{ fontSize: "16px" }} to={randomSlug}>
-              {randomTitle}
-            </Link>
-            <br />
-            <br />
-          </section>
-          <section>
-            <h4>Tags</h4>
+            <h4>{t("nav.tags", "Tags")}</h4>
             <Tags />
             <br />
           </section>

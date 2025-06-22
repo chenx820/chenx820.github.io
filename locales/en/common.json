@@ -1,0 +1,39 @@
+{
+  "global": {
+    "name": "Chen Huang"
+  },
+  "nav": {
+    "home": "home",
+    "about": "about",
+    "research": "research",
+    "patents": "patents",
+    "blog": "blog",
+    "notes": "notes",
+    "gallery": "gallery",
+    "read-more": "read more",
+    "back-to-top": "back to top",
+    "random-post": "Random post",
+    "random-note": "Random note",
+    "tags": "Tags",
+    "institution": "Institution"
+  },
+  "home": {
+    "title": "Chen Huang",
+    "subtitle": "Exploring the Quantum World"
+  },
+  "about": {
+    "title": "About Me"
+  },
+  "research": {
+    "title": "Research",
+    "read-more": "Read More"
+  },
+  "patents": {
+    "title": "Patents",
+    "see-patent": "See Patent",
+    "inventors": "Inventors"
+  },
+  "footer": {
+    "copyright": "Copyright © 2025 Chen Huang. All rights reserved."
+  }
+}

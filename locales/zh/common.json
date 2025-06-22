@@ -1,0 +1,39 @@
+{
+  "global": {
+    "name": "黄晨"
+  },
+  "nav": {
+    "home": "首页",
+    "about": "关于我",
+    "research": "研究",
+    "patents": "专利",
+    "blog": "博客",
+    "notes": "笔记",
+    "gallery": "作品集",
+    "read-more": "阅读更多",
+    "back-to-top": "返回顶部",
+    "random-post": "随机文章",
+    "random-note": "随机笔记",
+    "tags": "标签",
+    "institution": "机构"
+  },
+  "home": {
+    "title": "黄晨",
+    "subtitle": "探索量子世界"
+  },
+  "about": {
+    "title": "关于我"
+  },
+  "research": {
+    "title": "研究",
+    "read-more": "阅读更多"
+  },
+  "patents": {
+    "title": "专利",
+    "see-patent": "查看专利",
+    "inventors": "发明人"
+  },
+  "footer": {
+    "copyright": "© 2025 Chen Huang."
+  }
+}

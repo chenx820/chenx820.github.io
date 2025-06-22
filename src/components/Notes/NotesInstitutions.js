@@ -1,19 +1,60 @@
 import React from "react";
 import styled from "styled-components";
-import { Link, graphql, useStaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
+import { Link, useI18next } from "gatsby-plugin-react-i18next";
 import slugify from "@components/slugify";
 
 export const useUniversity = () => {
-  const noteinstitution = useStaticQuery(graphql`{
-  allMarkdownRemark(limit: 2000) {
-    group(field: {frontmatter: {institution: SELECT}}) {
-      fieldValue
-      totalCount
+  const { language } = useI18next();
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        limit: 2000
+        filter: { fields: { posttype: { eq: "notes" } } }
+      ) {
+        edges {
+          node {
+            fields {
+              language
+            }
+            frontmatter {
+              institution
+            }
+          }
+        }
+      }
     }
-  }
-}`);
+  `);
 
-  return noteinstitution;
+  // Filter by language and collect institutions
+  const languagePosts = data.allMarkdownRemark.edges.filter(
+    ({ node }) => node.fields.language === language
+  );
+
+  // Collect all institutions from current language posts
+  const institutionCounts = {};
+  languagePosts.forEach(({ node }) => {
+    if (node.frontmatter.institution) {
+      const institutions = Array.isArray(node.frontmatter.institution)
+        ? node.frontmatter.institution
+        : [node.frontmatter.institution];
+
+      institutions.forEach((institution) => {
+        institutionCounts[institution] =
+          (institutionCounts[institution] || 0) + 1;
+      });
+    }
+  });
+
+  // Convert to the expected format
+  const group = Object.entries(institutionCounts).map(
+    ([fieldValue, totalCount]) => ({
+      fieldValue,
+      totalCount,
+    })
+  );
+
+  return { allMarkdownRemark: { group } };
 };
 
 export const TagBreadcrumb = styled(Link)`
@@ -32,11 +73,58 @@ export const TagBreadcrumb = styled(Link)`
 `;
 
 const Institutions = () => {
-  const noteinstitution = useUniversity();
+  const { language } = useI18next();
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        limit: 2000
+        filter: { fields: { posttype: { eq: "notes" } } }
+      ) {
+        edges {
+          node {
+            fields {
+              language
+            }
+            frontmatter {
+              institution
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  // Filter by language and collect institutions
+  const languagePosts = data.allMarkdownRemark.edges.filter(
+    ({ node }) => node.fields.language === language
+  );
+
+  // Collect all institutions from current language posts
+  const institutionCounts = {};
+  languagePosts.forEach(({ node }) => {
+    if (node.frontmatter.institution) {
+      const institutions = Array.isArray(node.frontmatter.institution)
+        ? node.frontmatter.institution
+        : [node.frontmatter.institution];
+
+      institutions.forEach((institution) => {
+        institutionCounts[institution] =
+          (institutionCounts[institution] || 0) + 1;
+      });
+    }
+  });
+
+  // Convert to the expected format
+  const institutions = Object.entries(institutionCounts).map(
+    ([fieldValue, totalCount]) => ({
+      fieldValue,
+      totalCount,
+    })
+  );
 
   return (
     <section style={{ overflow: "auto" }}>
-      {noteinstitution.allMarkdownRemark.group.map((tag) => (
+      {institutions.map((tag) => (
         <TagBreadcrumb
           key={tag.fieldValue}
           to={`/notes/institution/${slugify(tag.fieldValue)}/`}

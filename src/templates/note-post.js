@@ -9,7 +9,7 @@ import SocialShareSection from "@src/components/Notes/SocialShareSection";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NoteDateAndReadTime } from "@src/components/Notes/NoteCard";
-// import { DiscussionEmbed } from "disqus-react";
+import { DiscussionEmbed } from "disqus-react";
 
 import { siteUrl, disqusShortName } from "../../config/website";
 
@@ -55,22 +55,33 @@ const NotePost = ({ data, pageContext }) => {
           className="markdown-content"
           dangerouslySetInnerHTML={{ __html: html }}
         />
-        {/* {typeof window !== "undefined" && (
-          <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
-        )} */}
+        <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
       </NoteLayout>
     </Layout>
   );
 };
 
 export const query = graphql`
-  query NotePostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query NotePostBySlug($slug: String!, $language: String!) {
+    locales: allLocale(
+      filter: { ns: { in: ["common"] }, language: { eq: $language } }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+    markdownRemark(
+      fields: { slug: { eq: $slug }, language: { eq: $language } }
+    ) {
       excerpt
       html
       id
       frontmatter {
-        date(formatString: "MMMM DD, YYYY", locale: "en")
+        date(formatString: "MMMM DD, YYYY", locale: $language)
         title
         institution
       }

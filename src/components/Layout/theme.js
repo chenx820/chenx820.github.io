@@ -38,18 +38,16 @@ export const themelight = {
   primaryColor: "#105286",
   secondaryColor: "#F8F8F8",
   accentColor: "#FDB338",
-  primaryBlack: "#383838",
   primaryText: "#383838",
   ...themeCommon,
 };
 
 export const themedark = {
   dark: true,
-  bg: "#191919",
-  primaryColor: "#FDB338",
-  secondaryColor: "#232323",
-  accentColor: "#105286",
-  primaryBlack: "#F8F8F8",
-  primaryText: "#F8F8F8",
+  bg: "#191919", // black
+  primaryColor: "#FDB338", // orange
+  secondaryColor: "#232323", // dark gray
+  accentColor: "#105286", // blue
+  primaryText: "#F8F8F8", // white
   ...themeCommon,
 };

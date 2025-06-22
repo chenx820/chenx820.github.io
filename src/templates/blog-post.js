@@ -9,7 +9,7 @@ import SocialShareSection from "@components/Blog/SocialShareSection";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BlogDateAndReadTime } from "@components/Blog/BlogCard";
-// import { DiscussionEmbed } from "disqus-react";
+import { DiscussionEmbed } from "disqus-react";
 
 import { siteUrl, disqusShortName } from "../../config/website";
 
@@ -55,23 +55,34 @@ const BlogPost = ({ data, pageContext }) => {
           className="markdown-content"
           dangerouslySetInnerHTML={{ __html: html }}
         />
-        {/* {typeof window !== "undefined" && (
-          <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
-        )} */}
+        <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
       </BlogLayout>
     </Layout>
   );
 };
 
 export const query = graphql`
-  query BlogPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query BlogPostBySlug($slug: String!, $language: String!) {
+    locales: allLocale(
+      filter: { ns: { in: ["common"] }, language: { eq: $language } }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+    markdownRemark(
+      fields: { slug: { eq: $slug }, language: { eq: $language } }
+    ) {
       excerpt
       html
       timeToRead
       id
       frontmatter {
-        date(formatString: "MMMM DD, YYYY", locale: "en")
+        date(formatString: "MMMM DD, YYYY", locale: $language)
         title
         blogtags
       }

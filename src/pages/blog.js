@@ -1,45 +1,23 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import { graphql } from "gatsby";
+import { Trans, useTranslation, useI18next } from "gatsby-plugin-react-i18next";
 import SEO from "@components/seo";
 
 import Layout from "@components/Layout/Layout";
 import BlogCard from "@components/Blog/BlogCard";
 import BlogLayout from "@components/Blog/BlogLayout";
 
-const BlogPage = () => {
-  const blogposts = useStaticQuery(
-    graphql`
-      {
-        allMarkdownRemark(
-          filter: { fields: { posttype: { eq: "blog" } } }
-          sort: { frontmatter: { date: DESC } }
-        ) {
-          edges {
-            node {
-              id
-              excerpt
-              timeToRead
-              frontmatter {
-                title
-                date(formatString: "MMMM DD, YYYY", locale: "en")
-                blogtags
-              }
-              fields {
-                slug
-              }
-            }
-          }
-        }
-      }
-    `
-  );
+const BlogPage = ({ data }) => {
+  const { t } = useTranslation();
+  const { language } = useI18next();
+  const { allMarkdownRemark } = data;
+
   return (
     <Layout>
-      <SEO title="Blog | Chen Huang" />
+      <SEO title={"Blog | " + t("global.name")} />
 
       <BlogLayout>
-        {blogposts.allMarkdownRemark.edges.map(({ node }) => (
+        {allMarkdownRemark.edges.map(({ node }) => (
           <BlogCard
             key={node.id}
             slug={node.fields.slug}
@@ -56,3 +34,41 @@ const BlogPage = () => {
 };
 
 export default BlogPage;
+
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(
+      filter: { ns: { in: ["common"] }, language: { eq: $language } }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+    allMarkdownRemark(
+      filter: {
+        fields: { posttype: { eq: "blog" }, language: { eq: $language } }
+      }
+      sort: { frontmatter: { date: DESC } }
+    ) {
+      edges {
+        node {
+          id
+          excerpt
+          timeToRead
+          frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY", locale: $language)
+            blogtags
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`;

@@ -1,12 +1,11 @@
 import React from "react";
-import { useStaticQuery, graphql, Link } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
+import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import styled from "styled-components";
 
 import PageHeader from "@common/PageHeader";
 import IFrame from "@common/IFrame";
 import Button from "@common/Button";
-
-import Patents from "./Patents";
 
 import ResearchTemplate from "./ResearchTemplate";
 import { ResearchLinks, ResearchPreview } from "./ResearchTemplate.style";
@@ -15,6 +14,7 @@ const ResearchWrapper = styled.section`
   ${(props) => props.theme.spacing.sectionBottom};
 `;
 const Research = () => {
+  const { t } = useTranslation();
   const research = useStaticQuery(
     graphql`
       {
@@ -42,7 +42,7 @@ const Research = () => {
 
   return (
     <ResearchWrapper id="research" style={{ marginBottom: 100 }}>
-      <PageHeader>Research</PageHeader>
+      <PageHeader>{t("research.title")}</PageHeader>
 
       {research.allMarkdownRemark.edges.map(({ node }) => (
         <ResearchTemplate
@@ -63,8 +63,6 @@ const Research = () => {
           }
         />
       ))}
-
-      <Patents />
     </ResearchWrapper>
   );
 };

@@ -42,7 +42,7 @@
     "status": "Issued",
     "inventor": "Jingbo Wang, Chen Huang",
     "links": {
-      "src": "https://patents.google.com/patent/CN117494829/en",
+      "src": "https://patents.google.com/patent/CN117371547/en",
       "file": "/patents/patent-2023114438010.pdf"
     },
     "description": "The present disclosure provides a method, a device, an electronic device, a computer-readable storage medium and a computer program product for determining parameters of an ion trap chip, and relates to the field of quantum computers, especially to the technical field of ion trap chips. The implementation plan is: determine the position of the first ion to be calibrated in the ion trap chip; obtain and determine the initial frequency difference between the two laser beams split by the laser through the beam splitter; determine the equivalent amplitude after the laser irradiates the first ion ;Adjust the frequency difference between the two laser beams and determine the corresponding laser pulse duration; for each combination of frequency difference and laser pulse duration, determine the first probability that the first ion is in an excited state under this combination; based on The first probability determines the phonon frequency as a function of the frequency difference in the combination. Based on formula Determine the laser pulse duration τ_opt , n is an odd number, Ω is the equivalent amplitude, and Δ is the frequency difference."

@@ -55,7 +55,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: "locales",
+        name: "locale",
         path: path.join(__dirname, "locales"),
       },
     },
@@ -104,9 +104,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-react-i18next`,
       options: {
-        localeJsonSourceName: `locales`,
+        localeJsonSourceName: `locale`,
         languages: [`en`, `zh`],
         defaultLanguage: `en`,
+        siteUrl: config.siteUrl,
+        generateDefaultLanguagePage: false,
         redirect: true,
         i18nextOptions: {
           // detection: {
@@ -122,6 +124,10 @@ module.exports = {
           interpolation: {
             escapeValue: false,
           },
+          keySeparator: ".",
+          nsSeparator: ":",
+          ns: ["common"],
+          defaultNS: "common",
         },
       },
     },
