@@ -1,10 +1,12 @@
 ---
 title: 高中语文
 date: 2018-06-05
-author: Chen Huang
+author: 黄晨
 institution: 厦门外国语学校
-notetags: ["chinese", "high school"]
+notetags: ["语文", "高中"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这是我为提高高中语文作文写作而积累的材料合集。这是一个按常见作文主题组织的观点、短语和例子的资料库。
 

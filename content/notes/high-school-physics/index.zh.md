@@ -1,10 +1,12 @@
 ---
 title: 高中物理
 date: 2018-05-31
-author: Chen Huang
+author: 黄晨
 institution: 厦门外国语学校
-notetags: ["physics", "high school"]
+notetags: ["物理", "high school"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这是高中物理的各种笔记和总结合集。材料来自不同来源——有些是习题集的总结，其他是李楠老师优秀课程的笔记。
 

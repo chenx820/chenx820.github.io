@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import SEO from "@components/seo";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 import Layout from "@components/Layout/Layout";
 
@@ -10,9 +11,11 @@ import Research from "@components/Research/Research";
 import Patents from "@components/Patents/Patents";
 import Contact from "@components/Contact/Contact";
 
-const IndexPage = () => (
+const IndexPage = () => {
+  const { t } = useTranslation();
+  return (
   <Layout>
-    <SEO title="Chen Huang" />
+    <SEO title={t("global.name")} />
 
     <Home />
     <About />
@@ -20,7 +23,8 @@ const IndexPage = () => (
     <Patents />
     {/* <Contact /> */}
   </Layout>
-);
+  );
+};
 
 export default IndexPage;
 

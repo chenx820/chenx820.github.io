@@ -1,10 +1,12 @@
 ---
 title: 物质的量子理论
 date: 2024-06-03
-author: Chen Huang
+author: 黄晨
 institution: 帝国理工学院
-notetags: ["physics", "graduate", "condensed matter"]
+notetags: ["物理", "研究生课程", "凝聚态"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这里是我**物质的量子理论**课程的全面笔记。本文档提供了讲座中讨论的关键主题的总结。
 

@@ -1,10 +1,12 @@
 ---
 title: 数字电子学
 date: 2020-05-31
-author: Chen Huang
+author: 黄晨
 institution: 华中科技大学
-notetags: ["engineering", "undergraduate"]
+notetags: ["工程", "本科生课程"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这些笔记是有效学习指南的最终证明：我用它们从零开始学习**数字电子学**，仅用了**三天**时间，期末考试获得了**97/100**分。
 

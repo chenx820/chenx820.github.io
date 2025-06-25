@@ -1,10 +1,12 @@
 ---
 title: 激光技术
 date: 2024-05-14
-author: Chen Huang
+author: 黄晨
 institution: 帝国理工学院
-notetags: ["physics", "graduate"]
+notetags: ["物理", "研究生课程"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这些笔记涵盖了研究生级激光技术课程的两个主要组成部分：**激光器件技术**和**非线性光学**。这两个主题在方法上截然不同。
 

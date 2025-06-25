@@ -35,5 +35,15 @@
   },
   "footer": {
     "copyright": "Copyright © 2025 Chen Huang. All rights reserved."
+  },
+  "blog": {
+    "title": "Blog",
+    "read-more": "Read More"
+  },
+  "notes": {
+    "title": "Notes"
+  },
+  "gallery": {
+    "title": "Gallery"
   }
 }

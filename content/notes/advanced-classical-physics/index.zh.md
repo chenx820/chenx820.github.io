@@ -1,10 +1,12 @@
 ---
 title: 高等经典物理
 date: 2023-12-31
-author: Chen Huang
+author: 黄晨
 institution: 帝国理工学院
-notetags: ["physics", "graduate"]
+notetags: ["物理", "研究生课程"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这些是我研究生级**高等经典物理**课程的个人学习笔记。它们涵盖以下关键主题：
 

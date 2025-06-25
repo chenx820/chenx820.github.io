@@ -1,10 +1,12 @@
 ---
 title: 电动力学
 date: 2021-09-08
-author: Chen Huang
+author: 黄晨
 institution: 华中科技大学
-notetags: ["physics", "undergraduate"]
+notetags: ["物理", "本科生课程"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这些笔记是为准备**电动力学**期末考试而创建的，由康兆峰教授授课。
 

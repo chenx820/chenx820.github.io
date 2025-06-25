@@ -1,10 +1,12 @@
 ---
 title: 物理学家数学方法
 date: 2024-01-10
-author: Chen Huang
+author: 黄晨
 institution: 帝国理工学院
-notetags: ["math", "graduate"]
+notetags: ["数学", "研究生课程"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这是我在帝国理工学院最喜欢的课程之一，由优秀的[费伊·道克教授](https://profiles.imperial.ac.uk/f.dowker)授课。她清晰的教学是帮助我获得96/100最终成绩的重要因素。
 

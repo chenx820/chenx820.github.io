@@ -1,10 +1,12 @@
 ---
 title: 量子力学II
 date: 2020-07-20
-author: Chen Huang
+author: 黄晨
 institution: 北京大学
-notetags: ["physics", "graduate"]
+notetags: ["物理", "研究生课程"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这些是我**量子力学II**课程的讲座笔记，这是2020年北京大学暑期学校的一部分，由钱志新教授授课。
 

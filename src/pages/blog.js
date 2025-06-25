@@ -14,7 +14,7 @@ const BlogPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title={"Blog | " + t("global.name")} />
+      <SEO title={t("blog.title") + " | " + t("global.name")} />
 
       <BlogLayout>
         {allMarkdownRemark.edges.map(({ node }) => (

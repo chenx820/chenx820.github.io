@@ -1,10 +1,12 @@
 ---
 title: 量子光学II
 date: 2024-06-03
-author: Chen Huang
+author: 黄晨
 institution: 帝国理工学院
-notetags: ["physics", "graduate"]
+notetags: ["物理", "研究生课程"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这些是我研究生级**量子光学**课程的笔记。材料基于他们的讲座笔记，涵盖关键主题如：
 

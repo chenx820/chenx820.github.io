@@ -2,7 +2,7 @@
 title: Introduction to Trapped-Ion Quantum Computing
 date: 2023-04-15
 author: 黄晨
-blogtags: ["trapped-ion", "quantum computing"]
+blogtags: ["trapped-ion", "量子计算"]
 ---
 
 ## Basic principles of trapped-ion quantum computing

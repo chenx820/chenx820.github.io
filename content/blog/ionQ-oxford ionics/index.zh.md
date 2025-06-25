@@ -2,7 +2,7 @@
 title: IonQ and Oxford Iconics
 date: 2023-04-15
 author: 黄晨
-blogtags: ["trapped-ion", "quantum computing"]
+blogtags: ["trapped-ion", "量子计算"]
 ---
 
 这两天量子计算领域发生了一件颇为轰动的事情：美国离子阱量子计算公司 IonQ 宣布，计划斥资约 10.8 亿美元收购其在英国的同行 Oxford Ionics。这笔交易不仅是量子计算行业迄今为止规模最大的并购案之一，更可能对整个行业的竞争格局带来深远影响。昨天的组会上老板跟我们讨论了一下，简单分享一些想法。

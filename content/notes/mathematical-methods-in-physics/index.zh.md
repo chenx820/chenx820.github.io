@@ -1,10 +1,12 @@
 ---
 title: 物理中的数学方法
 date: 2019-12-31
-author: Chen Huang
+author: 黄晨
 institution: 华中科技大学
-notetags: ["math", "undergraduate"]
+notetags: ["数学", "本科生课程"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这些是我物理中的数学方法课程的笔记，这门课程分为两个部分，每个部分由不同的教授授课。
 

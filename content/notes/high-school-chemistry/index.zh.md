@@ -1,10 +1,12 @@
 ---
 title: 高中化学
 date: 2017-12-31
-author: Chen Huang
+author: 黄晨
 institution: 厦门外国语学校
 notetags: ["chemistry", "high school"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这里是我的高中化学笔记，分为两个部分以支持深入学习和高效的高考准备。特别感谢我的同学**李坤鹏**，他慷慨地提供了自己的课堂笔记供我参考。
 

@@ -1,10 +1,12 @@
 ---
 title: 量子力学
 date: 2020-05-31
-author: Chen Huang
+author: 黄晨
 institution: 华中科技大学
-notetags: ["physics", "undergraduate"]
+notetags: ["物理", "本科生课程"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这里是本科**量子力学**课程的完整学习体系。这个合集包括我详细的课堂笔记和期末考试准备的浓缩指南。
 

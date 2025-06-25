@@ -1,10 +1,12 @@
 ---
 title: 高中数学
 date: 2017-12-31
-author: Chen Huang
+author: 黄晨
 institution: 厦门外国语学校
-notetags: ["math", "high school"]
+notetags: ["数学", "高中"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这里是我的高中数学笔记，专门为高效和有针对性的**高考**准备而创建。
 

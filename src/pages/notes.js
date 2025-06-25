@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Trans, useTranslation, useI18next } from "gatsby-plugin-react-i18next";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import SEO from "@components/seo";
 
 import Layout from "@components/Layout/Layout";
@@ -9,12 +9,11 @@ import NoteLayout from "@components/Notes/NotesLayout";
 
 const NotesPage = ({ data }) => {
   const { t } = useTranslation();
-  const { language } = useI18next();
   const { allMarkdownRemark } = data;
 
   return (
     <Layout>
-      <SEO title={"Notes | " + t("global.name")} />
+      <SEO title={t("notes.title") + " | " + t("global.name")} />
 
       <NoteLayout>
         {allMarkdownRemark.edges.map(({ node }) => (

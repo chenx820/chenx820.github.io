@@ -1,10 +1,12 @@
 ---
 title: 模拟电子学
 date: 2020-05-31
-author: Chen Huang
+author: 黄晨
 institution: 华中科技大学
-notetags: ["engineering", "undergraduate"]
+notetags: ["工程", "本科生课程"]
 ---
+
+（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
 这些是我**模拟电子学**的笔记，由邓天平教授授课。我们在2020年春季学期在线学习了这门课程，我的笔记基于[华中科技大学慕课](https://www.icourse163.org/course/hust-481015)。
 
