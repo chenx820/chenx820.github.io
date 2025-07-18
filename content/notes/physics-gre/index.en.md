@@ -3,6 +3,7 @@ title: Physics GRE
 date: 2021-10-22
 author: Chen Huang
 institution: Self-Study
+institution_slug: self-study
 notetags: ["physics", "gre"]
 ---
 

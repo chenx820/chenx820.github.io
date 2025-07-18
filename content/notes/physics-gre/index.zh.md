@@ -2,7 +2,8 @@
 title: 物理GRE
 date: 2021-10-22
 author: 黄晨
-institution: 自学
+institution: 家里蹲大学
+institution: self-study
 notetags: ["物理", "GRE"]
 ---
 

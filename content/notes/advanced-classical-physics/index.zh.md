@@ -3,6 +3,7 @@ title: 高等经典物理
 date: 2023-12-31
 author: 黄晨
 institution: 帝国理工学院
+institution_slug: imperial-college-london
 notetags: ["物理", "研究生课程"]
 ---
 

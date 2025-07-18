@@ -3,6 +3,7 @@ title: 量子光学
 date: 2021-12-31
 author: 黄晨
 institution: 华中科技大学
+institution_slug: huazhong-University-of-science-and-technology
 notetags: ["物理", "研究生课程"]
 ---
 

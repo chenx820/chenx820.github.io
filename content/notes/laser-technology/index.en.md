@@ -3,6 +3,7 @@ title: Laser Technology
 date: 2024-05-14
 author: Chen Huang
 institution: Imperial College London
+institution_slug: imperial-college-london
 notetags: ["physics", "graduate"]
 ---
 

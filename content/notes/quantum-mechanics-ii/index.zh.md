@@ -3,6 +3,7 @@ title: 量子力学II
 date: 2020-07-20
 author: 黄晨
 institution: 北京大学
+institution_slug: peking-university
 notetags: ["物理", "研究生课程"]
 ---
 

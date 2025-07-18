@@ -19,6 +19,7 @@ export const useUniversity = () => {
             }
             frontmatter {
               institution
+              institution_slug
             }
           }
         }
@@ -87,6 +88,7 @@ const Institutions = () => {
             }
             frontmatter {
               institution
+              institution_slug
             }
           }
         }
@@ -124,15 +126,30 @@ const Institutions = () => {
 
   return (
     <section style={{ overflow: "auto" }}>
-      {institutions.map((tag) => (
-        <TagBreadcrumb
-          key={tag.fieldValue}
-          to={`/notes/institution/${slugify(tag.fieldValue)}/`}
-          aria-label={`${tag.totalCount} posts tagged with ${tag.fieldValue}`}
-        >
-          {tag.fieldValue}, {tag.totalCount}
-        </TagBreadcrumb>
-      ))}
+      {institutions.map((tag) => {
+        // 查找 institution_slug
+        // 需要先找到对应的 node
+        const node = languagePosts.find(({ node }) =>
+          Array.isArray(node.frontmatter.institution)
+            ? node.frontmatter.institution.includes(tag.fieldValue)
+            : node.frontmatter.institution === tag.fieldValue
+        )?.node;
+
+        const slug =
+          node && node.frontmatter.institution_slug
+            ? node.frontmatter.institution_slug
+            : slugify(tag.fieldValue);
+
+        return (
+          <TagBreadcrumb
+            key={tag.fieldValue}
+            to={`/notes/institution/${slug}/`}
+            aria-label={`${tag.totalCount} posts tagged with ${tag.fieldValue}`}
+          >
+            {tag.fieldValue}, {tag.totalCount}
+          </TagBreadcrumb>
+        );
+      })}
     </section>
   );
 };

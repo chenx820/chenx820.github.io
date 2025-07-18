@@ -3,6 +3,7 @@ title: 激光技术
 date: 2024-05-14
 author: 黄晨
 institution: 帝国理工学院
+institution_slug: imperial-college-london
 notetags: ["物理", "研究生课程"]
 ---
 

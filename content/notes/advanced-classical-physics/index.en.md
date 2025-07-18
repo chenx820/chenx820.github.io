@@ -3,6 +3,7 @@ title: Advanced Classical Physics
 date: 2023-12-31
 author: Chen Huang
 institution: Imperial College London
+institution_slug: imperial-college-london
 notetags: ["physics", "graduate"]
 ---
 
