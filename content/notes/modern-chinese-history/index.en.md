@@ -3,7 +3,7 @@ title: Modern Chinese History
 date: 2019-06-15
 author: Chen Huang
 institution: Huazhong University of Science and Technology
-institution_slug: huazhong-University-of-science-and-technology
+institution_slug: huazhong-university-of-science-and-technology
 notetags: ["general", "undergraduate", "mind map"]
 ---
 

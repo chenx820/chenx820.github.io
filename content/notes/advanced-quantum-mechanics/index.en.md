@@ -3,7 +3,7 @@ title: Advanced Quantum Mechanics
 date: 2020-05-31
 author: Chen Huang
 institution: Huazhong University of Science and Technology
-institution_slug: huazhong-University-of-science-and-technology
+institution_slug: huazhong-university-of-science-and-technology
 notetags: ["physics", "graduate"]
 ---
 

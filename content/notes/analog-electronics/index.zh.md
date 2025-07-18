@@ -3,7 +3,7 @@ title: 模拟电子学
 date: 2020-05-31
 author: 黄晨
 institution: 华中科技大学
-institution_slug: huazhong-University-of-science-and-technology
+institution_slug: huazhong-university-of-science-and-technology
 notetags: ["工程", "本科生课程"]
 ---
 

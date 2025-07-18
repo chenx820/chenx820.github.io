@@ -3,7 +3,7 @@ title: 中国近现代史
 date: 2019-06-15
 author: 黄晨
 institution: 华中科技大学
-institution_slug: huazhong-University-of-science-and-technology
+institution_slug: huazhong-university-of-science-and-technology
 notetags: ["通识", "本科生课程", "思维导图"]
 ---
 

@@ -3,7 +3,7 @@ title: 电动力学
 date: 2021-09-08
 author: 黄晨
 institution: 华中科技大学
-institution_slug: huazhong-University-of-science-and-technology
+institution_slug: huazhong-university-of-science-and-technology
 notetags: ["物理", "本科生课程"]
 ---
 
