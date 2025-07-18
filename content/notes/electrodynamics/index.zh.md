@@ -8,7 +8,7 @@ notetags: ["物理", "本科生课程"]
 
 这是我为期末考试写的**电动力学期末偷分宝典**😁，不仅总结了关键知识点，还补充了重要物理模型的具体分解，包含了考试的所有可能出题点。（我的电动力学期末成绩98😈）
 
-[**下载电动力学复习 (PDF)**](/notes/electrodynamics/pdf/review-electrodynamics.pdf)
+[**下载电动力学期末偷分宝典 (PDF)**](/notes/electrodynamics/pdf/review-electrodynamics.pdf)
 
 ---
 
