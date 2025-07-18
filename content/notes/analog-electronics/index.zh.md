@@ -4,7 +4,7 @@ date: 2020-05-31
 author: 黄晨
 institution: 华中科技大学
 institution_slug: huazhong-university-of-science-and-technology
-notetags: ["工程", "本科生课程"]
+notetags: ["电子技术", "本科生课程"]
 ---
 
 华中科技大学**模拟电子技术**这门课由邓天平教授授课。我在2020年春季学期在线学习了这门课程，当时正是新冠疫情期间居家学习，因此我的笔记框架更多地基于[华中科技大学慕课](https://www.icourse163.org/course/hust-481015)。

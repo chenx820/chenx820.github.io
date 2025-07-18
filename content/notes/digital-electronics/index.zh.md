@@ -4,7 +4,7 @@ date: 2020-05-31
 author: 黄晨
 institution: 华中科技大学
 institution_slug: huazhong-university-of-science-and-technology
-notetags: ["工程", "本科生课程"]
+notetags: ["电子技术", "本科生课程"]
 ---
 
 大三上学期确实是任务繁重的一学期，有了之前学习工科课程的经验（学会基本原理就可解决问题），我决定考前再开始学习这门课————我在考前三天从零开始，边看慕课边做笔记，同时根据课本作业题整理各种模型，最后考试获得了97分。
