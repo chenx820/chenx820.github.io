@@ -9,7 +9,7 @@ notetags: ["物理", "研究生课程", "量子计算"]
 
 （以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
-这里是我的**量子信息**笔记，这是一门由我的导师[金明植教授](https://www.imperial.ac.uk/people/m.kim)讲授的精彩课程。
+这里是我的**量子信息**笔记，这是一门由我的导师Myungshik教授(https://www.imperial.ac.uk/people/m.kim)讲授的精彩课程。
 
 我的笔记综合了他讲座和Nielsen与Chuang基础教材的关键概念。涵盖：
 
