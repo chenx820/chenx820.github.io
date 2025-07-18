@@ -3,6 +3,7 @@ title: High School Math
 date: 2017-12-31
 author: Chen Huang
 institution: Xiamen Foreign Language School
+institution_slug: xiamen-foreign-language-school
 notetags: ["math", "high school"]
 ---
 

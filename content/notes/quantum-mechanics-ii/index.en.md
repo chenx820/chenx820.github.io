@@ -3,6 +3,7 @@ title: Quantum Mechanics II
 date: 2020-07-20
 author: Chen Huang
 institution: Peking University
+institution_slug: peking-university
 notetags: ["physics", "graduate"]
 ---
 
