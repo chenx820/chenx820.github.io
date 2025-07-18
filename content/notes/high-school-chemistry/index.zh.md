@@ -4,12 +4,12 @@ date: 2017-12-31
 author: 黄晨
 institution: 厦门外国语学校
 institution_slug: xiamen-foreign-language-school
-notetags: ["chemistry", "高中"]
+notetags: ["化学", "高中"]
 ---
 
 （以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
 
-这里是我的高中化学笔记，分为两个部分以支持深入学习和高效的高考准备。特别感谢我的同学**李坤鹏**，他慷慨地提供了自己的课堂笔记供我参考。
+这里是我的高中化学笔记，分为两个部分以支持深入学习和高效的高考准备。特别感谢我的同学**李坤鹏**，他提供了自己的课堂笔记供我参考。
 
 - [**综合课程笔记 (PDF)**](/notes/high-school-chemistry/pdf/chemistry.pdf): 涵盖整个课程的详细笔记。
 - [**期末复习指南 (PDF)**](/notes/high-school-chemistry/pdf/chemistry-review.pdf): 关键概念的浓缩总结，便于快速复习。

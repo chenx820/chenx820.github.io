@@ -40,7 +40,13 @@
     "read-more": "阅读更多"
   },
   "notes": {
-    "title": "笔记"
+    "title": "笔记",
+    "institution": "机构",
+    "xiamen-foreign-language-school": "厦门外国语学校",
+    "huazhong-university-of-science-and-technology": "华中科技大学",
+    "peking-university": "北京大学",
+    "imperial-college-london": "帝国理工学院",
+    "self-study": "自学"
   },
   "gallery": {
     "title": "摄影集"
