@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { render, cleanup } from "@testing-library/react";
@@ -49,6 +50,7 @@ test("should have links and preview", () => {
       iframe: "https://whatever-link.com",
     },
   };
+  const { t } = useTranslation();
   let { getByText, getByTitle, debug } = render(
     <ThemeProvider theme={themelight}>
       <ResearchTemplate
@@ -58,7 +60,7 @@ test("should have links and preview", () => {
         links={
           <ResearchLinks>
             <Button as={"a"} to={node.fields.slug}>
-              Read More
+              {t("research.read-more")}
             </Button>
           </ResearchLinks>
         }
