@@ -48,13 +48,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: "blog",
-        path: path.join(__dirname, "content", "blog"),
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: "locale",
         path: path.join(__dirname, "locales"),
       },
@@ -153,12 +146,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        excludes: [
-          `/notes/tags/*`,
-          `/notes/institution/*`,
-          `/blog/tags/*`,
-          `/goodies`,
-        ],
+        excludes: [`/notes/tags/*`, `/notes/institution/*`, `/goodies`],
       },
     },
     `gatsby-plugin-social-banners`,

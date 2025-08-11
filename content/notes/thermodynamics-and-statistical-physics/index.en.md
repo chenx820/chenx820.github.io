@@ -13,7 +13,7 @@ My notes are primarily based on the excellent textbook by **David Tong**. This g
 
 [**Download the full Notes (PDF)**](/notes/thermodynamics-and-statistical-physics/pdf/statistical-physics.pdf)
 
-As part of the course, I also completed a project [modeling the 2D Ising model using the Metropolis algorithm](https://chenx820.github.io/blog/ferromagnetism-in-the-ising-model-using-the-metropolis-algorithm).
+As part of the course, I also completed a project [modeling the 2D Ising model using the Metropolis algorithm](https://www.zhihu.com/question/440714043/answer/1693422235).
 
 ---
 

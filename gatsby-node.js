@@ -56,7 +56,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   // The language part is typically the second to last segment before the file extension
   let language = parts[parts.length - 2];
 
-  // sourceInstanceName defined if its a notes or case-studie or blog
+  // sourceInstanceName defined if its a notes or case-studie
   const sourceInstanceName = fileNode.sourceInstanceName;
 
   // For Chinese posts, try to get the English title to generate consistent slug
@@ -76,7 +76,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const fileIndex = fileNode.name.substr(2, 1);
 
   // create slug nodes
-  // The slug here will be without the language prefix, e.g., `/blog/my-title`
+  // The slug here will be without the language prefix, e.g., `/notes/my-title`
   createNodeField({
     node,
     name: "slug",
@@ -89,11 +89,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     value: language,
   });
 
-  // adds a posttype field to distinguish between notes, blog and research
+  // adds a posttype field to distinguish between notes and research
   createNodeField({
     node,
     name: "posttype",
-    value: sourceInstanceName, // value will be {notes||research||blog}
+    value: sourceInstanceName, // value will be {notes||research}
   });
 
   if (sourceInstanceName === "research") {
@@ -109,9 +109,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
   const projectTemplate = path.resolve("src/templates/project.js");
   const notePostTemplate = path.resolve("src/templates/note-post.js");
-  const blogPostTemplate = path.resolve("src/templates/blog-post.js");
   const noteTagTemplate = path.resolve("src/templates/notes-tags.js");
-  const blogTagTemplate = path.resolve("src/templates/blog-tags.js");
   const noteUniTemplate = path.resolve("src/templates/notes-universities.js");
 
   const res = await graphql(`
@@ -121,7 +119,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           node {
             frontmatter {
               notetags
-              blogtags
               institution
             }
             fields {
@@ -208,33 +205,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       createPage({
         path: pagePath,
         component: notePostTemplate,
-        context: commonContext,
-      });
-    } else if (node.fields.posttype === "blog") {
-      const blogTagSet = new Set();
-      if (
-        node.frontmatter.blogtags &&
-        Array.isArray(node.frontmatter.blogtags)
-      ) {
-        node.frontmatter.blogtags.forEach((tag) => blogTagSet.add(tag));
-      }
-
-      const tagList = Array.from(blogTagSet);
-      tagList.forEach((tag) => {
-        // Blog tag pages are currently not localized by path
-        createPage({
-          path: `/blog/tags/${slugify(tag)}/`,
-          component: blogTagTemplate,
-          context: {
-            tag,
-            language: node.fields.language, // Pass language for consistent context
-          },
-        });
-      });
-
-      createPage({
-        path: pagePath,
-        component: blogPostTemplate,
         context: commonContext,
       });
     }

@@ -15,7 +15,7 @@ notetags: ["物理", "本科生课程"]
 
 [**下载完整笔记 (PDF)**](/notes/thermodynamics-and-statistical-physics/pdf/statistical-physics.pdf)
 
-作为课程的一部分，我还完成了一个项目[使用Metropolis算法建模二维Ising模型](https://chenx820.github.io/blog/ferromagnetism-in-the-ising-model-using-the-metropolis-algorithm)。
+作为课程的一部分，我还完成了一个项目[使用Metropolis算法建模二维Ising模型](https://www.zhihu.com/question/440714043/answer/1693422235)。
 
 ---
 

@@ -62,9 +62,6 @@ const NavbarMobile = () => {
             <Link to="/notes">{t("nav.notes")}</Link>
           </NavItem>
           <NavItem>
-            <Link to="/blog">{t("nav.blog")}</Link>
-          </NavItem>
-          <NavItem>
             <Link to="/gallery">{t("nav.gallery")}</Link>
           </NavItem>
           <NavItem>

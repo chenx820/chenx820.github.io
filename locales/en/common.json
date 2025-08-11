@@ -7,7 +7,6 @@
     "about": "about",
     "research": "research",
     "patents": "patents",
-    "blog": "blog",
     "notes": "notes",
     "gallery": "gallery",
     "back-to-top": "back to top",
@@ -34,10 +33,6 @@
   },
   "footer": {
     "copyright": "Copyright © 2025 Chen Huang. All rights reserved."
-  },
-  "blog": {
-    "title": "Blog",
-    "read-more": "Read More"
   },
   "notes": {
     "title": "Notes",
