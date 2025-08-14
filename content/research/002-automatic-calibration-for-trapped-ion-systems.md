@@ -2,7 +2,7 @@
 title: Automatic calibration for trapped-ion systems
 excerpt: Quantum operations with multiple trapped-ions rely on the collective vibrational modes of the ion chain, known as phonons. Critical parameters such as ion positions, phonon frequencies, and the strength of ion-phonon interactions are closely related to the structure of the ion trap chip, the surrounding environment, and the configuration of the trapping potential. To achieve high-performance trapped-ion quantum computing, precise calibration of system parameters is essential.
 
-iframe: //chenx820.github.io/research/2023-08-31-calibration.pdf
+iframe: //chenx820.github.io/research/baidu_calibration_20230831.pdf
 
 info:
   abstract: The key advantages of trapped-ion quantum computing include long quantum coherence times, high-precision single-qubit and two-qubit operations, and high-fidelity operations between any two qubits within the system. In trapped-ion quantum computing, single-qubit operations typically involve transitions between internal energy levels of the ions, which can be achieved by addressing the target ion with laser pulses. However, multi-qubit operations rely on the collective vibrational modes of the ion chain, known as phonons. Critical parameters such as ion positions, phonon frequencies, and the strength of ion-phonon interactions are closely related to the structure of the ion trap chip, the surrounding environment, and the configuration of the trapping potential. To achieve high-performance trapped-ion quantum computing, precise calibration of system parameters is essential.
