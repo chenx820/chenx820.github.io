@@ -1,5 +1,5 @@
 ---
-title: Optics
+title: Mindmap for CUHK CSE Interview
 date: 2025-08-15
 author: Chen Huang
 institution: CUHK
