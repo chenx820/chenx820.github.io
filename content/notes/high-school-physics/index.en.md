@@ -3,7 +3,7 @@ title: High School Physics
 date: 2018-05-31
 author: Chen Huang
 institution: Xiamen Foreign Language School
-institution_slug: xiamen-foreign-language-school
+institution_slug: xmfls
 notetags: ["physics", "high school"]
 ---
 

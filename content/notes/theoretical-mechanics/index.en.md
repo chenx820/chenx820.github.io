@@ -3,7 +3,7 @@ title: Theoretical Mechanics
 date: 2019-12-31
 author: Chen Huang
 institution: Huazhong University of Science and Technology
-institution_slug: huazhong-university-of-science-and-technology
+institution_slug: hust
 notetags: ["physics", "undergraduate"]
 ---
 

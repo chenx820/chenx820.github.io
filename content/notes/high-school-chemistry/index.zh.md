@@ -3,7 +3,7 @@ title: 高中化学
 date: 2017-12-31
 author: 黄晨
 institution: 厦门外国语学校
-institution_slug: xiamen-foreign-language-school
+institution_slug: xmfls
 notetags: ["化学", "高中"]
 ---
 

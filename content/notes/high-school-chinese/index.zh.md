@@ -3,7 +3,7 @@ title: 高中语文
 date: 2018-06-05
 author: 黄晨
 institution: 厦门外国语学校
-institution_slug: xiamen-foreign-language-school
+institution_slug: xmfls
 notetags: ["语文", "高中"]
 ---
 

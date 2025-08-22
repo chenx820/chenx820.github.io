@@ -3,7 +3,7 @@ title: 理论力学
 date: 2019-12-31
 author: 黄晨
 institution: 华中科技大学
-institution_slug: huazhong-university-of-science-and-technology
+institution_slug: hust
 notetags: ["物理", "本科生课程"]
 ---
 

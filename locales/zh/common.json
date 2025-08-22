@@ -37,10 +37,11 @@
   "notes": {
     "title": "笔记",
     "institution": "机构",
-    "xiamen-foreign-language-school": "厦门外国语学校",
-    "huazhong-university-of-science-and-technology": "华中科技大学",
+    "xmfls": "厦门外国语学校",
+    "hust": "华中科技大学",
     "peking-university": "北京大学",
-    "imperial-college-london": "帝国理工学院",
+    "imperial": "帝国理工学院",
+    "cuhk": "香港中文大学",
     "self-study": "自学"
   },
   "gallery": {

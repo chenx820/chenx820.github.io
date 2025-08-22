@@ -3,7 +3,7 @@ title: 量子光学II
 date: 2024-06-03
 author: 黄晨
 institution: 帝国理工学院
-institution_slug: imperial-college-london
+institution_slug: imperial
 notetags: ["物理", "研究生课程"]
 ---
 

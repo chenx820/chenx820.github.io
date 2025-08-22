@@ -3,7 +3,7 @@ title: High School Chinese
 date: 2018-06-05
 author: Chen Huang
 institution: Xiamen Foreign Language School
-institution_slug: xiamen-foreign-language-school
+institution_slug: xmfls
 notetags: ["chinese", "high school"]
 ---
 

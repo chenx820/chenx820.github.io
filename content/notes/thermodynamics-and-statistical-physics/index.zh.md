@@ -3,7 +3,7 @@ title: 热力学与统计物理
 date: 2021-05-31
 author: 黄晨
 institution: 华中科技大学
-institution_slug: huazhong-university-of-science-and-technology
+institution_slug: hust
 notetags: ["物理", "本科生课程"]
 ---
 
