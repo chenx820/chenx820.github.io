@@ -3,7 +3,7 @@ title: 高中数学
 date: 2017-12-31
 author: 黄晨
 institution: 厦门外国语学校
-institution_slug: xmfls
+institution_slug: xiamen-foreign-language-school
 notetags: ["数学", "高中"]
 ---
 

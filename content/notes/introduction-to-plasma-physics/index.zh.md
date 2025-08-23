@@ -3,7 +3,7 @@ title: 等离子体物理导论
 date: 2021-09-31
 author: 黄晨
 institution: 华中科技大学
-institution_slug: hust
+institution_slug: huazhong-university-of-science-and-technology
 notetags: ["物理", "本科生课程"]
 ---
 
