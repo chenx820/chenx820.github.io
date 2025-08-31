@@ -3,7 +3,7 @@ title: Quantum Information
 date: 2024-05-30
 author: Chen Huang
 institution: Imperial College London
-institution_slug: imperial
+institution_slug: imperial-college-london
 notetags: ["physics", "graduate", "quantum computing"]
 ---
 

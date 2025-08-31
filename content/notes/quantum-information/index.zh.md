@@ -3,7 +3,7 @@ title: 量子信息
 date: 2024-05-30
 author: 黄晨
 institution: 帝国理工学院
-institution_slug: imperial
+institution_slug: imperial-college-london
 notetags: ["物理", "研究生课程", "量子计算"]
 ---
 

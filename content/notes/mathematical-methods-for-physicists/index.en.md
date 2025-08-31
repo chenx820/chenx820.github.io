@@ -3,7 +3,7 @@ title: Mathematical Methods for Physicists
 date: 2024-01-10
 author: Chen Huang
 institution: Imperial College London
-institution_slug: imperial
+institution_slug: imperial-college-london
 notetags: ["math", "graduate"]
 ---
 

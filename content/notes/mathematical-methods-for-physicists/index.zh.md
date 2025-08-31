@@ -3,7 +3,7 @@ title: 物理学家数学方法
 date: 2024-01-10
 author: 黄晨
 institution: 帝国理工学院
-institution_slug: imperial
+institution_slug: imperial-college-london
 notetags: ["数学", "研究生课程"]
 ---
 
