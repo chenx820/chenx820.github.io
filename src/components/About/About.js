@@ -19,21 +19,14 @@ const About = () => {
         </div>
         <p>
           <Trans>
-            Hi, I'm Chen, an MSc student in Physics at{" "}
+            Hi, I'm Chen, an incoming PhD student in Computer Science and
+            Engineering at{" "}
             <a
               className="about__link"
               target="__blank"
-              href="https://www.imperial.ac.uk/a-z-research/quantum-optics-and-laser-science/research/controlled-quantum-dynamics/"
+              href="https://www.innovationadvancedlab.com/home"
             >
-              Imperial College London
-            </a>{" "}
-            and a remote research intern at the{" "}
-            <a
-              className="about__link"
-              target="__blank"
-              href="http://en.baqis.ac.cn/research/groups/?cid=814"
-            >
-              Beijing Academy of Quantum Information Sciences (BAQIS)
+              The Chinese University of Hong Kong (CUHK)
             </a>
             .
             <br />
