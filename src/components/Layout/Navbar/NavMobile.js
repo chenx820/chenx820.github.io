@@ -9,7 +9,7 @@ import {
 } from "./NavMobile.style";
 
 import NavLinks from "./NavLinks";
-import LanguageSwitcher from "@common/LanguageSwitcher";
+import LanguageSwitch from "@common/LanguageSwitch";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeToggleContext from "../ThemeToggleContext";
@@ -65,7 +65,8 @@ const NavbarMobile = () => {
             <Link to="/gallery">{t("nav.gallery")}</Link>
           </NavItem>
           <NavItem>
-            <LanguageSwitcher />
+            {/* <LanguageSwitch /> */}
+            <ToggleSwitch />
           </NavItem>
         </NavItemsBottomNav>
       </MobileMenuWrapper>

@@ -98,7 +98,7 @@ const SwitchWrapper = styled.div`
   }
 `;
 
-const LanguageSwitcher = () => {
+const LanguageSwitch = () => {
   const { language, changeLanguage } = useI18next();
   const isEn = language === "en";
   return (
@@ -118,4 +118,4 @@ const LanguageSwitcher = () => {
   );
 };
 
-export default LanguageSwitcher;
+export default LanguageSwitch;
