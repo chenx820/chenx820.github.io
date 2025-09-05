@@ -66,12 +66,12 @@ const NavbarMobile = () => {
           <NavItem>
             <Link to="/gallery">{t("nav.gallery")}</Link>
           </NavItem>
-          {/* <NavItem>
-            <ToggleSwitch />
-          </NavItem> */}
-          <NavItem>
-            <LanguageSwitch />
+          <NavItem style={{ width: "auto" }}>
+            <DarkModeButton />
           </NavItem>
+          {/* <NavItem>
+            <LanguageSwitch />
+          </NavItem> */}
         </NavItemsBottomNav>
       </MobileMenuWrapper>
     </>
