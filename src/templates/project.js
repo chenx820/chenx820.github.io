@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 import Layout from "@components/Layout/Layout";
 import SEO from "@components/seo";
@@ -13,6 +14,7 @@ import SplitLayout from "@components/common/SplitLayout";
 import { InfoTitle, ResearchWrapper } from "./project.style";
 
 const Research = ({ data }) => {
+  const { t } = useTranslation();
   const baseSlugUrl =
     "https://chenx820.github.io" + data.markdownRemark.fields.slug;
   const project = data.markdownRemark.frontmatter;
@@ -82,7 +84,7 @@ const Research = ({ data }) => {
 };
 
 export const query = graphql`
-  query projectBySlug($slug: String!) {
+  query projectBySlug($slug: String!, $language: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
@@ -96,6 +98,17 @@ export const query = graphql`
           abstract
           links
           collaborators
+        }
+      }
+    }
+    locales: allLocale(
+      filter: { ns: { in: ["common"] }, language: { eq: $language } }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
         }
       }
     }
