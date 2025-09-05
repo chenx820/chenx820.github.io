@@ -65,9 +65,11 @@ const NavbarMobile = () => {
             <Link to="/gallery">{t("nav.gallery")}</Link>
           </NavItem>
           <NavItem>
-            {/* <LanguageSwitch /> */}
             <ToggleSwitch />
           </NavItem>
+          {/* <NavItem>
+            <LanguageSwitch />
+          </NavItem> */}
         </NavItemsBottomNav>
       </MobileMenuWrapper>
     </>
