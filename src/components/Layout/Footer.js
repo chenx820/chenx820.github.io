@@ -6,8 +6,9 @@ import logo from "@src/static/logo_white.svg";
 
 const FooterWrapper = styled.footer`
   width: 100vw;
-  padding: 10px;
+  padding: 20px 10px;
   background: ${(p) => p.theme.secondaryColor};
+  margin-top: auto;
 
   p {
     font-size: 1rem;
