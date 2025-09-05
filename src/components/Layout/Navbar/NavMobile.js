@@ -10,6 +10,7 @@ import {
 
 import NavLinks from "./NavLinks";
 import LanguageSwitch from "@common/LanguageSwitch";
+import ToggleSwitch from "@common/ToggleSwitch";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeToggleContext from "../ThemeToggleContext";
