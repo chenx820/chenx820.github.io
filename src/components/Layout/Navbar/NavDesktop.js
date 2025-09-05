@@ -9,7 +9,6 @@ import { NavItems, NavItem } from "./Navbar.style";
 import NavLinks from "./NavLinks";
 import ToggleSwitch from "@common/ToggleSwitch";
 import LanguageSwitch from "@common/LanguageSwitch";
-import ToggleSwitch from "@common/ToggleSwitch";
 
 const NavDesktop = () => {
   const { t } = useTranslation();

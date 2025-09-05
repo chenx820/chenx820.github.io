@@ -9,6 +9,7 @@ import {
 } from "./NavMobile.style";
 
 import NavLinks from "./NavLinks";
+
 import LanguageSwitch from "@common/LanguageSwitch";
 import ToggleSwitch from "@common/ToggleSwitch";
 
