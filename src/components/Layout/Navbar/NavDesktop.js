@@ -35,12 +35,12 @@ const NavDesktop = () => {
           <NavItem>
             <Link to="/gallery">{t("nav.gallery")}</Link>
           </NavItem>
-          <NavItem>
-            <ToggleSwitch />
-          </NavItem>
           {/* <NavItem>
-            <LanguageSwitch />
+            <ToggleSwitch />
           </NavItem> */}
+          <NavItem>
+            <LanguageSwitch />
+          </NavItem>
         </NavItems>
       </nav>
     </>
