@@ -97,53 +97,127 @@ build_project() {
     print_success "Project built successfully"
 }
 
-# deploy to GitHub Pages
+# setup git lfs for large files
+setup_git_lfs() {
+    print_status "Setting up Git LFS for large files..."
+    
+    if ! command -v git-lfs &> /dev/null; then
+        print_warning "Git LFS is not installed. Installing..."
+        if command -v brew &> /dev/null; then
+            brew install git-lfs
+        else
+            print_error "Please install Git LFS manually: https://git-lfs.github.io/"
+            exit 1
+        fi
+    fi
+    
+    # Initialize Git LFS if not already done
+    if [ ! -f ".gitattributes" ]; then
+        git lfs track "*.pdf" "*.jpg" "*.jpeg" "*.png" "*.gif" "*.mp4" "*.mov"
+        git add .gitattributes
+        git commit -m "Add Git LFS tracking for large files" 2>/dev/null || true
+        print_success "Git LFS tracking configured"
+    fi
+}
+
+# deploy to GitHub Pages with incremental updates
 deploy_to_gh_pages() {
     print_status "Preparing to deploy to GitHub Pages..."
     
     DEPLOY_DIR=.deploy-gh
-    rm -rf $DEPLOY_DIR
-    mkdir $DEPLOY_DIR
+    GH_PAGES_REPO="https://github.com/chenx820/chenx820.github.io.git"
     
-    print_status "Copying build files..."
-    cp -a public/. $DEPLOY_DIR
-    
-    # Remove large files to avoid GitHub Pages size limits
-    print_status "Removing large files (>50MB) to avoid deployment issues..."
-    find $DEPLOY_DIR -type f -size +50M -exec rm {} \;
-    print_success "Large files removed"
-    
-    # Check deployment directory size
-    DEPLOY_SIZE=$(du -sh $DEPLOY_DIR | cut -f1)
-    print_status "Deployment directory size: $DEPLOY_SIZE"
-    
-    if command -v git-lfs &> /dev/null; then
-        print_status "Processing Git LFS files..."
-        git lfs ls-files | cut -d' ' -f3 | while read file; do
-            if [ -f "$file" ]; then
-                mkdir -p "$DEPLOY_DIR/$(dirname "$file")"
-                cp "$file" "$DEPLOY_DIR/$file"
-            fi
-        done
+    # Check if deployment directory exists (for incremental updates)
+    if [ -d "$DEPLOY_DIR" ]; then
+        print_status "Found existing deployment directory, checking for updates..."
+        cd $DEPLOY_DIR
+        
+        # Check if remote exists and is accessible
+        if git remote get-url origin &>/dev/null; then
+            print_status "Fetching latest changes from GitHub Pages..."
+            git fetch origin gh-pages 2>/dev/null || {
+                print_warning "Could not fetch from remote, will do fresh deployment"
+                cd ..
+                rm -rf $DEPLOY_DIR
+            }
+        else
+            print_warning "No valid remote found, will do fresh deployment"
+            cd ..
+            rm -rf $DEPLOY_DIR
+        fi
     fi
     
-    cd $DEPLOY_DIR
+    # Create fresh deployment directory if needed
+    if [ ! -d "$DEPLOY_DIR" ]; then
+        print_status "Creating fresh deployment directory..."
+        rm -rf $DEPLOY_DIR
+        mkdir $DEPLOY_DIR
+        cd $DEPLOY_DIR
+        
+        git init
+        git remote add origin $GH_PAGES_REPO
+        git fetch origin gh-pages 2>/dev/null || true
+        
+        if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
+            git checkout -b gh-pages origin/gh-pages
+            print_success "Checked out existing gh-pages branch"
+        else
+            git checkout -b gh-pages
+            print_success "Created new gh-pages branch"
+        fi
+        
+        touch .nojekyll
+        cd ..
+    else
+        cd $DEPLOY_DIR
+    fi
     
-    git init
-    git checkout -b gh-pages
-    touch .nojekyll
-    git add .
-    git commit -m "Auto deploy - $(date '+%Y-%m-%d %H:%M:%S')"
+    # Copy build files with smart handling
+    print_status "Copying build files with smart handling..."
     
-    print_status "Pushing to GitHub Pages..."
-    git remote remove origin 2>/dev/null || true
-    git remote add origin https://github.com/chenx820/chenx820.github.io.git
-    git push origin gh-pages --force
+    # Get list of files that have changed
+    CHANGED_FILES=$(find ../public -type f -newer .git/COMMIT_EDITMSG 2>/dev/null || find ../public -type f)
+    
+    if [ -n "$CHANGED_FILES" ]; then
+        print_status "Copying changed files..."
+        cp -a ../public/. .
+        
+        # Handle large files with Git LFS
+        print_status "Processing large files with Git LFS..."
+        find . -type f \( -name "*.pdf" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.mp4" -o -name "*.mov" \) -size +10M | while read file; do
+            if [ -f "$file" ]; then
+                print_status "Adding large file to Git LFS: $file"
+                git lfs track "$file" 2>/dev/null || true
+            fi
+        done
+        
+        # Check deployment directory size
+        DEPLOY_SIZE=$(du -sh . | cut -f1)
+        print_status "Deployment directory size: $DEPLOY_SIZE"
+        
+        # Add and commit changes
+        git add .
+        
+        # Check if there are any changes to commit
+        if ! git diff --cached --quiet; then
+            git commit -m "Auto deploy - $(date '+%Y-%m-%d %H:%M:%S')"
+            print_success "Changes committed"
+            
+            # Push changes
+            print_status "Pushing to GitHub Pages..."
+            git push origin gh-pages
+            print_success "Deployment completed!"
+        else
+            print_success "No changes to deploy"
+        fi
+    else
+        print_success "No changes detected, skipping deployment"
+    fi
     
     cd ..
-    rm -rf $DEPLOY_DIR
     
-    print_success "Deployment completed!"
+    # Keep deployment directory for future incremental updates
+    print_status "Keeping deployment directory for future incremental updates"
 }
 
 # restore stashed changes
@@ -155,9 +229,54 @@ restore_stash() {
     fi
 }
 
+# clean deployment directory
+clean_deploy_dir() {
+    if [ -d ".deploy-gh" ]; then
+        print_status "Cleaning deployment directory..."
+        rm -rf .deploy-gh
+        print_success "Deployment directory cleaned"
+    fi
+}
+
+# show usage information
+show_usage() {
+    echo "Usage: $0 [OPTIONS]"
+    echo ""
+    echo "Options:"
+    echo "  --clean     Clean deployment directory and do fresh deployment"
+    echo "  --help      Show this help message"
+    echo "  --setup     Only setup Git LFS (no deployment)"
+    echo ""
+    echo "Default: Incremental deployment (only update changed files)"
+}
+
 # main function
 main() {
-    print_status "Starting deployment process..."
+    # Parse command line arguments
+    case "${1:-}" in
+        --clean)
+            print_status "Starting clean deployment process..."
+            clean_deploy_dir
+            ;;
+        --help)
+            show_usage
+            exit 0
+            ;;
+        --setup)
+            print_status "Setting up Git LFS only..."
+            setup_git_lfs
+            print_success "Git LFS setup completed!"
+            exit 0
+            ;;
+        "")
+            print_status "Starting incremental deployment process..."
+            ;;
+        *)
+            print_error "Unknown option: $1"
+            show_usage
+            exit 1
+            ;;
+    esac
     
     if [ ! -f "package.json" ] || [ ! -f "gatsby-config.js" ]; then
         print_error "Please run this script in the Gatsby project root directory"
@@ -176,6 +295,7 @@ main() {
     
     check_git_status
     sync_remote
+    setup_git_lfs
     build_project
     deploy_to_gh_pages
     restore_stash
