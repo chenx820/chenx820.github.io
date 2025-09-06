@@ -108,6 +108,15 @@ deploy_to_gh_pages() {
     print_status "Copying build files..."
     cp -a public/. $DEPLOY_DIR
     
+    # Remove large files to avoid GitHub Pages size limits
+    print_status "Removing large files (>50MB) to avoid deployment issues..."
+    find $DEPLOY_DIR -type f -size +50M -exec rm {} \;
+    print_success "Large files removed"
+    
+    # Check deployment directory size
+    DEPLOY_SIZE=$(du -sh $DEPLOY_DIR | cut -f1)
+    print_status "Deployment directory size: $DEPLOY_SIZE"
+    
     if command -v git-lfs &> /dev/null; then
         print_status "Processing Git LFS files..."
         git lfs ls-files | cut -d' ' -f3 | while read file; do
