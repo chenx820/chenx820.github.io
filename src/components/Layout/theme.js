@@ -30,6 +30,9 @@ const themeCommon = {
   },
   gradient: "linear-gradient(134deg, #3E7CB1 0%, #105286 50%)",
   gradient2: "linear-gradient(99deg, #3E7CB1 0%, #082B41 130%)",
+  swapIfDark(prop1, prop2) {
+    return `${this.dark ? this[prop1] : this[prop2]};`;
+  },
 };
 
 export const themelight = {

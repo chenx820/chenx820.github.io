@@ -1,16 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+
 import "normalize.css";
 import { ThemeProvider } from "styled-components";
-import { themedark } from "./theme";
+import { themelight, themedark } from "./theme";
+
 import Wrapper from "@common/Wrapper/";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer";
 import GlobalStyle from "@src/styles/GlobalStyle";
-import "@components/fontLib";
-import { setConfiguration } from "react-grid-system";
 
+import "@components/fontLib";
+import useDarkMode from "@src/hooks/useDarkMode";
+import ThemeToggleContext from "./ThemeToggleContext";
+
+import { setConfiguration } from "react-grid-system";
 setConfiguration({ breakpoints: [576, 769, 992, 1200] });
 
 const RootWrapper = styled(Wrapper)`
@@ -29,14 +34,22 @@ const LayoutContainer = styled.div`
 `;
 
 const Layout = ({ children }) => {
+  const [theme, toggleTheme, toggleRef] = useDarkMode();
+
+  let currentTheme = theme === "light" ? themelight : themedark;
+
   return (
-    <ThemeProvider theme={themedark}>
-      <GlobalStyle />
-      <LayoutContainer>
-        <Navbar />
+    <ThemeProvider theme={currentTheme}>
+      <>
+        <GlobalStyle />
+
+        <ThemeToggleContext.Provider value={{ theme, toggleTheme, toggleRef }}>
+          <Navbar />
+        </ThemeToggleContext.Provider>
+
         <RootWrapper>{children}</RootWrapper>
         <Footer />
-      </LayoutContainer>
+      </>
     </ThemeProvider>
   );
 };
