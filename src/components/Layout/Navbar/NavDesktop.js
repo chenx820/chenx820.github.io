@@ -15,7 +15,7 @@ const NavDesktop = () => {
 
   return (
     <>
-      <SLink smooth offset={-100} hashSpy={true} to="home">
+      <SLink smooth offset={0} hashSpy={true} to="home">
         <Link className="logo" to="/">
           <img
             src={logo}
@@ -35,12 +35,12 @@ const NavDesktop = () => {
           <NavItem>
             <Link to="/gallery">{t("nav.gallery")}</Link>
           </NavItem>
-          {/* <NavItem>
-            <ToggleSwitch />
-          </NavItem> */}
           <NavItem>
-            <LanguageSwitch />
+            <ToggleSwitch />
           </NavItem>
+          {/* <NavItem>
+            <LanguageSwitch />
+          </NavItem> */}
         </NavItems>
       </nav>
     </>

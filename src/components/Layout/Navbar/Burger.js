@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const CollapseBurger = styled.div`
   padding: 15px 15px;
@@ -45,7 +45,7 @@ const CollapseBurger = styled.div`
   }
   .hamburger-inner::before,
   .hamburger-inner::after {
-    content: '';
+    content: "";
     display: block;
   }
   .hamburger-inner::before {
@@ -67,11 +67,13 @@ const CollapseBurger = styled.div`
   }
   & .hamburger-inner::after {
     top: -20px;
-    transition: top 0.2s 0.2s cubic-bezier(0.3, 0.6, 0.6, 1),
+    transition:
+      top 0.2s 0.2s cubic-bezier(0.3, 0.6, 0.6, 1),
       opacity 0.1s linear;
   }
   & .hamburger-inner::before {
-    transition: top 0.12s 0.2s cubic-bezier(0.3, 0.6, 0.6, 1),
+    transition:
+      top 0.12s 0.2s cubic-bezier(0.3, 0.6, 0.6, 1),
       transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
   }
 
@@ -83,13 +85,15 @@ const CollapseBurger = styled.div`
   &.is-active .hamburger-inner::after {
     top: 0;
     opacity: 0;
-    transition: top 0.2s cubic-bezier(0.3, 0, 0.6, 0.3),
+    transition:
+      top 0.2s cubic-bezier(0.3, 0, 0.6, 0.3),
       opacity 0.1s 0.22s linear;
   }
   &.is-active .hamburger-inner::before {
     top: 0;
     transform: rotate(90deg);
-    transition: top 0.1s 0.16s cubic-bezier(0.3, 0, 0.6, 0.3),
+    transition:
+      top 0.1s 0.16s cubic-bezier(0.3, 0, 0.6, 0.3),
       transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.35, 1);
   }
 `;
@@ -97,7 +101,7 @@ const CollapseBurger = styled.div`
 const Burger = ({ isActive }) => {
   return (
     <CollapseBurger
-      className={`hamburger--collapse-r ${isActive ? 'is-active' : ''}`}
+      className={`hamburger--collapse-r ${isActive ? "is-active" : ""}`}
     >
       <div className="hamburger-box">
         <div className="hamburger-inner"></div>
