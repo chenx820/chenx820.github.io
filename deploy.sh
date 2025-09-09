@@ -186,6 +186,9 @@ deploy_to_gh_pages() {
         print_status "Incremental deployment detected"
     fi
     
+    # Debug: show the condition result
+    print_status "COMMIT_EDITMSG exists: $([ -f ".git/COMMIT_EDITMSG" ] && echo "YES" || echo "NO")"
+    
     if [ -n "$CHANGED_FILES" ]; then
         print_status "Copying changed files..."
         cp -a ../public/. .
