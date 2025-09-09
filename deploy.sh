@@ -180,8 +180,10 @@ deploy_to_gh_pages() {
     if [ ! -f ".git/COMMIT_EDITMSG" ]; then
         CHANGED_FILES=$(find ../public -type f)
         print_status "Fresh deployment detected, copying all files..."
+        print_status "Found $(echo "$CHANGED_FILES" | wc -l) files to copy"
     else
         CHANGED_FILES=$(find ../public -type f -newer .git/COMMIT_EDITMSG 2>/dev/null || find ../public -type f)
+        print_status "Incremental deployment detected"
     fi
     
     if [ -n "$CHANGED_FILES" ]; then
