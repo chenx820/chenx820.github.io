@@ -122,21 +122,21 @@ setup_git_lfs() {
 
 # deploy to GitHub Pages 
 deploy_to_gh_pages() {
-    print_status "准备部署到GitHub Pages..."
+    print_status "Preparing to deploy to GitHub Pages..."
     
     DEPLOY_DIR=.deploy-gh
     rm -rf $DEPLOY_DIR
     mkdir $DEPLOY_DIR
     
-    print_status "复制构建文件..."
+    print_status "Copying build files..."
     cp -a public/. $DEPLOY_DIR
     
-    # 处理Git LFS文件
+    # handle Git LFS files
     if command -v git-lfs &> /dev/null; then
-        print_status "处理Git LFS文件..."
+        print_status "Processing Git LFS files..."
         cd $DEPLOY_DIR
         git lfs install
-        # 复制.gitattributes文件
+        # copy .gitattributes file
         if [ -f "../.gitattributes" ]; then
             cp ../.gitattributes .
         fi
@@ -151,7 +151,7 @@ deploy_to_gh_pages() {
     git add .
     git commit -m "Auto deploy - $(date '+%Y-%m-%d %H:%M:%S')"
     
-    print_status "推送到GitHub Pages..."
+    print_status "Pushing to GitHub Pages..."
     git remote remove origin 2>/dev/null || true
     git remote add origin https://github.com/chenx820/chenx820.github.io.git
     git push origin gh-pages --force
@@ -159,7 +159,7 @@ deploy_to_gh_pages() {
     cd ..
     rm -rf $DEPLOY_DIR
     
-    print_success "部署完成！"
+    print_success "Deployment completed!"
 }
  
 # restore stashed changes
