@@ -131,14 +131,16 @@ deploy_to_gh_pages() {
     print_status "复制构建文件..."
     cp -a public/. $DEPLOY_DIR
     
+    # 处理Git LFS文件
     if command -v git-lfs &> /dev/null; then
         print_status "处理Git LFS文件..."
-        git lfs ls-files | cut -d' ' -f3 | while read file; do
-            if [ -f "$file" ]; then
-                mkdir -p "$DEPLOY_DIR/$(dirname "$file")"
-                cp "$file" "$DEPLOY_DIR/$file"
-            fi
-        done
+        cd $DEPLOY_DIR
+        git lfs install
+        # 复制.gitattributes文件
+        if [ -f "../.gitattributes" ]; then
+            cp ../.gitattributes .
+        fi
+        cd ..
     fi
     
     cd $DEPLOY_DIR
@@ -159,7 +161,7 @@ deploy_to_gh_pages() {
     
     print_success "部署完成！"
 }
-
+ 
 # restore stashed changes
 restore_stash() {
     if git stash list | grep -q "stash@{0}"; then
