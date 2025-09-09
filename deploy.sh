@@ -120,115 +120,44 @@ setup_git_lfs() {
     fi
 }
 
-# deploy to GitHub Pages with incremental updates
+# deploy to GitHub Pages 
 deploy_to_gh_pages() {
-    print_status "Preparing to deploy to GitHub Pages..."
+    print_status "准备部署到GitHub Pages..."
     
     DEPLOY_DIR=.deploy-gh
-    GH_PAGES_REPO="https://github.com/chenx820/chenx820.github.io.git"
+    rm -rf $DEPLOY_DIR
+    mkdir $DEPLOY_DIR
     
-    # Check if deployment directory exists (for incremental updates)
-    if [ -d "$DEPLOY_DIR" ]; then
-        print_status "Found existing deployment directory, checking for updates..."
-        cd $DEPLOY_DIR
-        
-        # Check if remote exists and is accessible
-        if git remote get-url origin &>/dev/null; then
-            print_status "Fetching latest changes from GitHub Pages..."
-            git fetch origin gh-pages 2>/dev/null || {
-                print_warning "Could not fetch from remote, will do fresh deployment"
-                cd ..
-                rm -rf $DEPLOY_DIR
-            }
-        else
-            print_warning "No valid remote found, will do fresh deployment"
-            cd ..
-            rm -rf $DEPLOY_DIR
-        fi
-    fi
+    print_status "复制构建文件..."
+    cp -a public/. $DEPLOY_DIR
     
-    # Create fresh deployment directory if needed
-    if [ ! -d "$DEPLOY_DIR" ]; then
-        print_status "Creating fresh deployment directory..."
-        rm -rf $DEPLOY_DIR
-        mkdir $DEPLOY_DIR
-        cd $DEPLOY_DIR
-        
-        git init
-        git remote add origin $GH_PAGES_REPO
-        git fetch origin gh-pages 2>/dev/null || true
-        
-        if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
-            git checkout -b gh-pages origin/gh-pages
-            print_success "Checked out existing gh-pages branch"
-        else
-            git checkout -b gh-pages
-            print_success "Created new gh-pages branch"
-        fi
-        
-        touch .nojekyll
-        cd ..
-    else
-        cd $DEPLOY_DIR
-    fi
-    
-    # Copy build files with smart handling
-    print_status "Copying build files with smart handling..."
-    
-    # Get list of files that have changed
-    # For fresh deployment, always copy files
-    if [ ! -f ".git/COMMIT_EDITMSG" ]; then
-        CHANGED_FILES=$(find ../public -type f)
-        print_status "Fresh deployment detected, copying all files..."
-        print_status "Found $(echo "$CHANGED_FILES" | wc -l) files to copy"
-    else
-        CHANGED_FILES=$(find ../public -type f -newer .git/COMMIT_EDITMSG 2>/dev/null || find ../public -type f)
-        print_status "Incremental deployment detected"
-    fi
-    
-    # Debug: show the condition result
-    print_status "COMMIT_EDITMSG exists: $([ -f ".git/COMMIT_EDITMSG" ] && echo "YES" || echo "NO")"
-    
-    if [ -n "$CHANGED_FILES" ]; then
-        print_status "Copying changed files..."
-        cp -a ../public/. .
-        
-        # Handle large files with Git LFS
-        print_status "Processing large files with Git LFS..."
-        find . -type f \( -name "*.pdf" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.mp4" -o -name "*.mov" \) -size +10M | while read file; do
+    if command -v git-lfs &> /dev/null; then
+        print_status "处理Git LFS文件..."
+        git lfs ls-files | cut -d' ' -f3 | while read file; do
             if [ -f "$file" ]; then
-                print_status "Adding large file to Git LFS: $file"
-                git lfs track "$file" 2>/dev/null || true
+                mkdir -p "$DEPLOY_DIR/$(dirname "$file")"
+                cp "$file" "$DEPLOY_DIR/$file"
             fi
         done
-        
-        # Check deployment directory size
-        DEPLOY_SIZE=$(du -sh . | cut -f1)
-        print_status "Deployment directory size: $DEPLOY_SIZE"
-        
-        # Add and commit changes
-        git add .
-        
-        # Check if there are any changes to commit
-        if ! git diff --cached --quiet; then
-            git commit -m "Auto deploy - $(date '+%Y-%m-%d %H:%M:%S')"
-            print_success "Changes committed"
-            
-            # Push changes
-            print_status "Pushing to GitHub Pages..."
-            git push origin gh-pages
-            print_success "Deployment completed!"
-        else
-            print_success "No changes to deploy"
-        fi
-    else
-        print_success "No changes detected, skipping deployment"
     fi
     
-    cd ..
+    cd $DEPLOY_DIR
     
-    # Keep deployment directory for future incremental updates
-    print_status "Keeping deployment directory for future incremental updates"
+    git init
+    git checkout -b gh-pages
+    touch .nojekyll
+    git add .
+    git commit -m "Auto deploy - $(date '+%Y-%m-%d %H:%M:%S')"
+    
+    print_status "推送到GitHub Pages..."
+    git remote remove origin 2>/dev/null || true
+    git remote add origin https://github.com/chenx820/chenx820.github.io.git
+    git push origin gh-pages --force
+    
+    cd ..
+    rm -rf $DEPLOY_DIR
+    
+    print_success "部署完成！"
 }
 
 # restore stashed changes
