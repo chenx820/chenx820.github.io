@@ -176,7 +176,13 @@ deploy_to_gh_pages() {
     print_status "Copying build files with smart handling..."
     
     # Get list of files that have changed
-    CHANGED_FILES=$(find ../public -type f -newer .git/COMMIT_EDITMSG 2>/dev/null || find ../public -type f)
+    # For fresh deployment, always copy files
+    if [ ! -f ".git/COMMIT_EDITMSG" ]; then
+        CHANGED_FILES=$(find ../public -type f)
+        print_status "Fresh deployment detected, copying all files..."
+    else
+        CHANGED_FILES=$(find ../public -type f -newer .git/COMMIT_EDITMSG 2>/dev/null || find ../public -type f)
+    fi
     
     if [ -n "$CHANGED_FILES" ]; then
         print_status "Copying changed files..."
