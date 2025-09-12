@@ -122,44 +122,63 @@ setup_git_lfs() {
 
 # deploy to GitHub Pages 
 deploy_to_gh_pages() {
-    print_status "Preparing to deploy to GitHub Pages..."
-    
-    DEPLOY_DIR=.deploy-gh
-    rm -rf $DEPLOY_DIR
-    mkdir $DEPLOY_DIR
-    
-    print_status "Copying build files..."
-    cp -a public/. $DEPLOY_DIR
-    
-    # handle Git LFS files
-    if command -v git-lfs &> /dev/null; then
-        print_status "Processing Git LFS files..."
-        cd $DEPLOY_DIR
-        git lfs install
-        # copy .gitattributes file
-        if [ -f "../.gitattributes" ]; then
-            cp ../.gitattributes .
+    print_status "Preparing to deploy to GitHub Pages (incremental)..."
+
+    REPO_URL="https://github.com/chenx820/chenx820.github.io.git"
+    BRANCH="gh-pages"
+    DEPLOY_DIR=".deploy-gh"
+
+    # Ensure deploy dir exists and sync with remote branch
+    if [ -d "$DEPLOY_DIR/.git" ]; then
+        print_status "Using existing $DEPLOY_DIR repository..."
+        git -C "$DEPLOY_DIR" remote set-url origin "$REPO_URL" 2>/dev/null || true
+        git -C "$DEPLOY_DIR" fetch origin "$BRANCH" --depth=1 || true
+        if git -C "$DEPLOY_DIR" rev-parse --verify origin/$BRANCH >/dev/null 2>&1; then
+            git -C "$DEPLOY_DIR" checkout -B "$BRANCH" "origin/$BRANCH"
+            git -C "$DEPLOY_DIR" reset --hard "origin/$BRANCH"
+        else
+            git -C "$DEPLOY_DIR" checkout -B "$BRANCH"
         fi
-        cd ..
+    else
+        print_status "Cloning $BRANCH branch shallowly..."
+        rm -rf "$DEPLOY_DIR"
+        mkdir -p "$DEPLOY_DIR"
+        git init "$DEPLOY_DIR"
+        git -C "$DEPLOY_DIR" remote add origin "$REPO_URL"
+        if git ls-remote --exit-code --heads "$REPO_URL" "$BRANCH" >/dev/null 2>&1; then
+            git -C "$DEPLOY_DIR" fetch origin "$BRANCH" --depth=1
+            git -C "$DEPLOY_DIR" checkout -B "$BRANCH" "origin/$BRANCH"
+        else
+            git -C "$DEPLOY_DIR" checkout -B "$BRANCH"
+        fi
     fi
-    
-    cd $DEPLOY_DIR
-    
-    git init
-    git checkout -b gh-pages
-    touch .nojekyll
-    git add .
-    git commit -m "Auto deploy - $(date '+%Y-%m-%d %H:%M:%S')"
-    
-    print_status "Pushing to GitHub Pages..."
-    git remote remove origin 2>/dev/null || true
-    git remote add origin https://github.com/chenx820/chenx820.github.io.git
-    git push origin gh-pages --force
-    
-    cd ..
-    rm -rf $DEPLOY_DIR
-    
-    print_success "Deployment completed!"
+
+    # Do not copy .gitattributes into deploy branch to avoid Git LFS pointers
+    print_status "Syncing files with rsync..."
+    rsync -av --delete --exclude ".git" --exclude ".gitattributes" public/ "$DEPLOY_DIR"/
+
+    # Ensure Pages doesn't run Jekyll
+    touch "$DEPLOY_DIR/.nojekyll"
+
+    # Configure git user locally if not set
+    if ! git -C "$DEPLOY_DIR" config user.name >/dev/null; then
+        git -C "$DEPLOY_DIR" config user.name "deploy-bot"
+    fi
+    if ! git -C "$DEPLOY_DIR" config user.email >/dev/null; then
+        git -C "$DEPLOY_DIR" config user.email "deploy-bot@local"
+    fi
+
+    # Commit only when there are changes
+    git -C "$DEPLOY_DIR" add -A
+    if ! git -C "$DEPLOY_DIR" diff --cached --quiet; then
+        git -C "$DEPLOY_DIR" commit -m "Auto deploy - $(date '+%Y-%m-%d %H:%M:%S')"
+        print_status "Pushing incremental changes to GitHub Pages..."
+        git -C "$DEPLOY_DIR" push origin "$BRANCH" --set-upstream
+    else
+        print_status "No changes to deploy. Skipping push."
+    fi
+
+    print_success "Deployment step finished"
 }
  
 # restore stashed changes
