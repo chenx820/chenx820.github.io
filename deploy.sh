@@ -9,26 +9,23 @@ BLUE='\033[0;34m'
 NC='\033[0m'
 
 # print functions
-print_status() {
-    echo -e "${BLUE}[INFO] $1${NC}"
-}
+print_status() { echo -e "${BLUE}[INFO] $1${NC}"; }
+print_success() { echo -e "${GREEN}[SUCCESS] $1${NC}"; }
+print_warning() { echo -e "${YELLOW}[WARNING] $1${NC}"; }
+print_error() { echo -e "${RED}[ERROR] $1${NC}"; }
 
-print_success() {
-    echo -e "${GREEN}[SUCCESS] $1${NC}"
-}
-
-print_warning() {
-    echo -e "${YELLOW}[WARNING] $1${NC}"
-}
-
-print_error() {
-    echo -e "${RED}[ERROR] $1${NC}"
+# detect default branch
+detect_default_branch() {
+    DEFAULT_BRANCH=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+    if [ -z "$DEFAULT_BRANCH" ]; then
+        DEFAULT_BRANCH="main"
+    fi
+    echo "$DEFAULT_BRANCH"
 }
 
 # check git status
 check_git_status() {
     print_status "Checking Git status..."
-    
     if [ -n "$(git status --porcelain)" ]; then
         print_warning "Found uncommitted changes"
         echo "Please select an action:"
@@ -44,8 +41,12 @@ check_git_status() {
                 print_success "All changes committed"
                 ;;
             2)
-                git stash
-                print_success "Changes stashed"
+                STASH_NAME=$(git stash create "auto-stash-before-deploy")
+                if [ -n "$STASH_NAME" ]; then
+                    git stash store -m "auto-stash-before-deploy" "$STASH_NAME"
+                    export DEPLOY_STASH="stash@{0}"
+                    print_success "Changes stashed"
+                fi
                 ;;
             3)
                 print_warning "Continue deployment, but it is recommended to handle uncommitted changes first"
@@ -62,54 +63,28 @@ check_git_status() {
 
 # sync remote branches
 sync_remote() {
-    print_status "Syncing remote branches..."
+    local branch
+    branch=$(detect_default_branch)
+    print_status "Syncing remote branch '$branch'..."
     git fetch origin
     
-    if [ "$(git rev-list HEAD...origin/main --count)" != "0" ]; then
+    if [ "$(git rev-list HEAD...origin/$branch --count)" != "0" ]; then
         print_warning "Local branch is behind remote branch"
-        git pull origin main
+        git pull --rebase origin "$branch" || {
+            print_error "git pull failed, please resolve conflicts manually"
+            exit 1
+        }
         print_success "Remote changes synced"
     else
         print_success "Local branch is up to date"
     fi
 }
 
-# build project
-build_project() {
-    print_status "Building Gatsby project..."
-    
-    if [ -d "public" ]; then
-        rm -rf public
-    fi
-    
-    if [ ! -d "node_modules" ]; then
-        print_status "Installing dependencies..."
-        npm install
-    fi
-    
-    # Ensure any LFS files in the working copy are real binaries, not pointers
-    if command -v git-lfs &> /dev/null; then
-        print_status "Ensuring LFS files are checked out..."
-        git lfs pull || true
-        git lfs checkout || true
-    fi
-
-    npm run build
-    
-    if [ ! -f "public/index.html" ]; then
-        print_error "Build failed: index.html not found"
-        exit 1
-    fi
-    
-    print_success "Project built successfully"
-}
-
-# setup git lfs for large files
+# setup git lfs
 setup_git_lfs() {
-    print_status "Setting up Git LFS for large files..."
-    
+    print_status "Setting up Git LFS..."
     if ! command -v git-lfs &> /dev/null; then
-        print_warning "Git LFS is not installed. Installing..."
+        print_warning "Git LFS not installed. Installing..."
         if command -v brew &> /dev/null; then
             brew install git-lfs
         else
@@ -118,15 +93,10 @@ setup_git_lfs() {
         fi
     fi
     
-    # Ensure LFS is enabled and files are checked out as binaries (not pointers)
     git lfs install --local || true
-    # Fetch all LFS objects referenced by current refs
-    git lfs fetch --all || true
-    # Replace any pointer files in working tree with real content
+    git lfs pull || true
     git lfs checkout || true
 
-    # If repo hasn't configured LFS patterns before, do not auto-track silently;
-    # but keep old behavior if .gitattributes is missing in a fresh setup.
     if [ ! -f ".gitattributes" ]; then
         git lfs track "*.pdf" "*.jpg" "*.jpeg" "*.png" "*.gif" "*.mp4" "*.mov" 2>/dev/null || true
         git add .gitattributes 2>/dev/null || true
@@ -135,18 +105,31 @@ setup_git_lfs() {
     fi
 }
 
-# deploy to GitHub Pages 
+# build project
+build_project() {
+    print_status "Building Gatsby project..."
+    rm -rf public
+    [ ! -d "node_modules" ] && npm install
+    
+    npm run build
+    
+    if [ ! -f "public/index.html" ]; then
+        print_error "Build failed: index.html not found"
+        exit 1
+    fi
+    print_success "Project built successfully"
+}
+
+# deploy to gh-pages
 deploy_to_gh_pages() {
     print_status "Preparing to deploy to GitHub Pages (incremental)..."
-
     REPO_URL="https://github.com/chenx820/chenx820.github.io.git"
     BRANCH="gh-pages"
     DEPLOY_DIR=".deploy-gh"
 
-    # Ensure deploy dir exists and sync with remote branch
     if [ -d "$DEPLOY_DIR/.git" ]; then
-        print_status "Using existing $DEPLOY_DIR repository..."
-        git -C "$DEPLOY_DIR" remote set-url origin "$REPO_URL" 2>/dev/null || true
+        print_status "Using existing $DEPLOY_DIR..."
+        git -C "$DEPLOY_DIR" remote set-url origin "$REPO_URL" || true
         git -C "$DEPLOY_DIR" fetch origin "$BRANCH" --depth=1 || true
         if git -C "$DEPLOY_DIR" rev-parse --verify origin/$BRANCH >/dev/null 2>&1; then
             git -C "$DEPLOY_DIR" checkout -B "$BRANCH" "origin/$BRANCH"
@@ -168,26 +151,17 @@ deploy_to_gh_pages() {
         fi
     fi
 
-    # Do not copy .gitattributes into deploy branch to avoid Git LFS pointers
     print_status "Syncing files with rsync..."
-    rsync -av --delete --exclude ".git" --exclude ".gitattributes" public/ "$DEPLOY_DIR"/
-
-    # Ensure Pages doesn't run Jekyll
+    rsync -a --delete --exclude ".git" --exclude ".gitattributes" public/ "$DEPLOY_DIR"/
     touch "$DEPLOY_DIR/.nojekyll"
 
-    # Configure git user locally if not set
-    if ! git -C "$DEPLOY_DIR" config user.name >/dev/null; then
-        git -C "$DEPLOY_DIR" config user.name "deploy-bot"
-    fi
-    if ! git -C "$DEPLOY_DIR" config user.email >/dev/null; then
-        git -C "$DEPLOY_DIR" config user.email "deploy-bot@local"
-    fi
+    git -C "$DEPLOY_DIR" config user.name "deploy-bot" || true
+    git -C "$DEPLOY_DIR" config user.email "deploy-bot@local" || true
 
-    # Commit only when there are changes
     git -C "$DEPLOY_DIR" add -A
     if ! git -C "$DEPLOY_DIR" diff --cached --quiet; then
         git -C "$DEPLOY_DIR" commit -m "Auto deploy - $(date '+%Y-%m-%d %H:%M:%S')"
-        print_status "Pushing incremental changes to GitHub Pages..."
+        print_status "Pushing incremental changes..."
         git -C "$DEPLOY_DIR" push origin "$BRANCH" --set-upstream
     else
         print_status "No changes to deploy. Skipping push."
@@ -195,26 +169,22 @@ deploy_to_gh_pages() {
 
     print_success "Deployment step finished"
 }
- 
+
 # restore stashed changes
 restore_stash() {
-    if git stash list | grep -q "stash@{0}"; then
+    if [ -n "$DEPLOY_STASH" ]; then
         print_status "Restoring stashed changes..."
-        git stash pop
+        git stash pop "$DEPLOY_STASH" || true
         print_success "Stashed changes restored"
     fi
 }
 
 # clean deployment directory
 clean_deploy_dir() {
-    if [ -d ".deploy-gh" ]; then
-        print_status "Cleaning deployment directory..."
-        rm -rf .deploy-gh
-        print_success "Deployment directory cleaned"
-    fi
+    [ -d ".deploy-gh" ] && { print_status "Cleaning deployment directory..."; rm -rf .deploy-gh; print_success "Deployment directory cleaned"; }
 }
 
-# show usage information
+# show usage
 show_usage() {
     echo "Usage: $0 [OPTIONS]"
     echo ""
@@ -223,51 +193,22 @@ show_usage() {
     echo "  --help      Show this help message"
     echo "  --setup     Only setup Git LFS (no deployment)"
     echo ""
-    echo "Default: Incremental deployment (only update changed files)"
+    echo "Default: Incremental deployment"
 }
 
-# main function
+# main
 main() {
-    # Parse command line arguments
     case "${1:-}" in
-        --clean)
-            print_status "Starting clean deployment process..."
-            clean_deploy_dir
-            ;;
-        --help)
-            show_usage
-            exit 0
-            ;;
-        --setup)
-            print_status "Setting up Git LFS only..."
-            setup_git_lfs
-            print_success "Git LFS setup completed!"
-            exit 0
-            ;;
-        "")
-            print_status "Starting incremental deployment process..."
-            ;;
-        *)
-            print_error "Unknown option: $1"
-            show_usage
-            exit 1
-            ;;
+        --clean) print_status "Starting clean deployment..."; clean_deploy_dir ;;
+        --help) show_usage; exit 0 ;;
+        --setup) print_status "Setting up Git LFS only..."; setup_git_lfs; print_success "Git LFS setup completed!"; exit 0 ;;
+        "") print_status "Starting incremental deployment..." ;;
+        *) print_error "Unknown option: $1"; show_usage; exit 1 ;;
     esac
     
-    if [ ! -f "package.json" ] || [ ! -f "gatsby-config.js" ]; then
-        print_error "Please run this script in the Gatsby project root directory"
-        exit 1
-    fi
-    
-    if ! command -v git &> /dev/null; then
-        print_error "Git is not installed"
-        exit 1
-    fi
-    
-    if ! command -v npm &> /dev/null; then
-        print_error "npm is not installed"
-        exit 1
-    fi
+    [ ! -f "package.json" ] || [ ! -f "gatsby-config.js" ] && { print_error "Run script in Gatsby project root"; exit 1; }
+    command -v git &>/dev/null || { print_error "Git not installed"; exit 1; }
+    command -v npm &>/dev/null || { print_error "npm not installed"; exit 1; }
     
     check_git_status
     sync_remote
@@ -277,8 +218,8 @@ main() {
     restore_stash
     
     print_success "Deployment completed!"
-    print_success "Website address: https://chenx820.github.io"
-    print_warning "Note: GitHub Pages may take a few minutes to update"
+    print_success "Website: https://chenx820.github.io"
+    print_warning "GitHub Pages may take a few minutes to update"
 }
 
 main "$@"
