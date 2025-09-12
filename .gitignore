@@ -66,6 +66,3 @@ cypress/screenshots/
 *.pem
 .vercel
 .turbo
-
-# Old files
-old-files/
