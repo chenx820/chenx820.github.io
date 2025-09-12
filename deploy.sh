@@ -60,6 +60,28 @@ check_git_status() {
     fi
 }
 
+# setup git lfs
+setup_git_lfs() {
+    print_status "Checking Git LFS setup..."
+    if ! command -v git-lfs &> /dev/null; then
+        print_error "Git LFS is not installed. Please install it: https://git-lfs.github.com/"
+        exit 1
+    fi
+
+    git lfs install --skip-repo >/dev/null 2>&1 || true
+    git lfs install
+
+    if [ ! -f ".gitattributes" ] || ! grep -q "*.pdf" .gitattributes 2>/dev/null; then
+        print_status "Tracking PDF files with Git LFS..."
+        git lfs track "*.pdf"
+        git add .gitattributes
+        git commit -m "Setup Git LFS for PDFs" || true
+        print_success "Git LFS configured for PDFs"
+    else
+        print_success "Git LFS already tracking PDFs"
+    fi
+}
+
 # sync remote branches
 sync_remote() {
     print_status "Syncing remote branches..."
@@ -129,6 +151,10 @@ deploy_to_gh_pages() {
             git -C "$DEPLOY_DIR" checkout -B "$BRANCH"
         fi
     fi
+
+    # 🔥 Only pull LFS files from public/
+    print_status "Pulling real files from Git LFS (public/ only)..."
+    git lfs pull --include="public/**" --exclude=""
 
     # Sync build output
     print_status "Syncing files with rsync..."
@@ -225,6 +251,7 @@ main() {
     fi
     
     check_git_status
+    setup_git_lfs
     sync_remote
     build_project
     deploy_to_gh_pages
