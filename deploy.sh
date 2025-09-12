@@ -87,6 +87,13 @@ build_project() {
         npm install
     fi
     
+    # Ensure any LFS files in the working copy are real binaries, not pointers
+    if command -v git-lfs &> /dev/null; then
+        print_status "Ensuring LFS files are checked out..."
+        git lfs pull || true
+        git lfs checkout || true
+    fi
+
     npm run build
     
     if [ ! -f "public/index.html" ]; then
@@ -111,10 +118,18 @@ setup_git_lfs() {
         fi
     fi
     
-    # Initialize Git LFS if not already done
+    # Ensure LFS is enabled and files are checked out as binaries (not pointers)
+    git lfs install --local || true
+    # Fetch all LFS objects referenced by current refs
+    git lfs fetch --all || true
+    # Replace any pointer files in working tree with real content
+    git lfs checkout || true
+
+    # If repo hasn't configured LFS patterns before, do not auto-track silently;
+    # but keep old behavior if .gitattributes is missing in a fresh setup.
     if [ ! -f ".gitattributes" ]; then
-        git lfs track "*.pdf" "*.jpg" "*.jpeg" "*.png" "*.gif" "*.mp4" "*.mov"
-        git add .gitattributes
+        git lfs track "*.pdf" "*.jpg" "*.jpeg" "*.png" "*.gif" "*.mp4" "*.mov" 2>/dev/null || true
+        git add .gitattributes 2>/dev/null || true
         git commit -m "Add Git LFS tracking for large files" 2>/dev/null || true
         print_success "Git LFS tracking configured"
     fi
