@@ -19,7 +19,7 @@ const NavDesktop = () => {
         <Link className="logo" to="/">
           <img
             src={logo}
-            alt="Chen Huang"
+            alt=""
             style={{ width: "clamp(80px, 8vw, 200px)", height: "auto" }}
           />
         </Link>
