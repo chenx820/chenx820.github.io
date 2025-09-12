@@ -1,5 +1,17 @@
 [
   {
+    "title": "XXX",
+    "date": "2025-09-12",
+    "number": "CN120633876",
+    "status": "Filed",
+    "inventor": "Jingbo Wang, Dong E. Liu, Xi Zhao, Chen Huang, Hongze Xu, Meng-Jun Hu",
+    "links": {
+      "src": "https://patents.google.com/patent/CN120633876/en",
+      "file": "/patents/patent-2025105708931.pdf"
+    },
+    "description": ""
+  },
+  {
     "title": "Quantum computing methods and quantum computing devices based on partition architecture",
     "date": "2025-06-20",
     "number": "CN120181251",
