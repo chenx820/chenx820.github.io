@@ -119,8 +119,8 @@ const Gallery = () => {
         desc="This year's adventures took me through breathtaking landscapes and vibrant cities across many countries."
         preview={
           <HighlightPreview>
-            {/* <IFrame src="https://www.youtube.com/embed/PSpghrPLQXI?rel=0&autoplay=0" /> */}
-            <IFrame src="//player.bilibili.com/player.html?isOutside=true&aid=113735146471931&bvid=BV1ao68YmEDC&cid=27591446473&p=1" />
+            <IFrame src="https://www.youtube.com/embed/PSpghrPLQXI?rel=0&autoplay=0" />
+            {/* <IFrame src="//player.bilibili.com/player.html?isOutside=true&aid=113735146471931&bvid=BV1ao68YmEDC&cid=27591446473&p=1" /> */}
           </HighlightPreview>
         }
       />

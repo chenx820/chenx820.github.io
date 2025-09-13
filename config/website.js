@@ -18,8 +18,8 @@ const website = {
   disqusShortName: "chenx820",
   googleAnalyticsID: "G-6S4PRFFZ9P",
   // Manifest
-  themeColor: "#105286",
-  backgroundColor: "#105286",
+  themeColor: " #799EFF",
+  backgroundColor: " #FFFFFF",
 };
 
 module.exports = website;

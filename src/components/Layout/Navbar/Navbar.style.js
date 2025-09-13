@@ -9,7 +9,18 @@ export const NavWrapper = styled.div`
   height: 60px;
   width: 100vw;
 
-  background-color: ${(props) => props.theme.secondaryColor};
+  background-color: ${(props) =>
+    props.isScrolled
+      ? props.theme.dark
+        ? "rgba(28, 28, 30, 0.8)"
+        : "rgba(255, 255, 255, 0.8)"
+      : props.theme.bgColor};
+
+  backdrop-filter: ${(props) => (props.isScrolled ? "blur(10px)" : "none")};
+  -webkit-backdrop-filter: ${(props) =>
+    props.isScrolled ? "blur(10px)" : "none"};
+
+  transition: all 0.3s ease-in-out;
   box-shadow: ${(props) => props.theme.shadowSmall};
   z-index: 1000;
 

@@ -37,20 +37,20 @@ const themeCommon = {
 
 export const themelight = {
   dark: false,
-  bgColor: "#FFFFFF", // default white
-  primaryColor: "#799EFF",
-  secondaryColor: "#F8F8F8",
-  accentColor: "#FFBC4C",
-  textColor: "#383838",
+  bgColor: " #FFFFFF", // default white
+  primaryColor: " #799EFF",
+  secondaryColor: " #F8F8F8",
+  accentColor: " #FFBC4C",
+  textColor: " #383838",
   ...themeCommon,
 };
 
 export const themedark = {
   dark: true,
-  bgColor: "#1C1C1E",
-  primaryColor: "#FFBC4C", // orange
-  secondaryColor: "#232323", // dark gray
-  accentColor: "#105286", // blue
-  textColor: "#FBFBFB", // white
+  bgColor: " #1C1C1E",
+  primaryColor: " #FFBC4C",
+  secondaryColor: " #232323",
+  accentColor: " #105286",
+  textColor: " #FBFBFB",
   ...themeCommon,
 };
