@@ -15,7 +15,7 @@ export const Card = styled.div`
   flex-direction: column;
   text-align: center;
 
-  background-color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.secondaryColor};
   box-shadow: ${(props) => props.theme.shadowSmall};
   border-radius: 10px;
 

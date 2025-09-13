@@ -12,13 +12,13 @@ const FooterWrapper = styled.footer`
   p {
     font-size: 1rem;
     line-height: 35px;
-    color: ${(p) => p.theme.textColor};
+    color: ${(p) => p.theme.bgColor};
   }
 
   a {
     color: ${(p) => p.theme.primaryColor};
     &:hover {
-      color: ${(p) => p.theme.textColor};
+      color: ${(p) => p.theme.accentColor};
     }
   }
 `;

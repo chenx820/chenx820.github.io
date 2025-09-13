@@ -13,7 +13,7 @@ export const HighlightContent = styled.div`
 
 export const HighlightDetail = styled.div`
   padding: 50px;
-  background-color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.secondaryColor};
   box-shadow: ${(props) => props.theme.shadowSmall};
   border-radius: 10px;
 

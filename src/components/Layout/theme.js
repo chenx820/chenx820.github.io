@@ -39,7 +39,7 @@ export const themelight = {
   dark: false,
   bgColor: " #FFFFFF", // default white
   primaryColor: " #799EFF",
-  secondaryColor: " #F8F8F8",
+  secondaryColor: " #FFFFFF",
   accentColor: " #FFBC4C",
   accentColor2: " #FFDE63",
   accentColor3: " #FEFFC4",
