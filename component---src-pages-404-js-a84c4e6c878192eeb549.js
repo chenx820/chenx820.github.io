@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkchen_huang=self.webpackChunkchen_huang||[]).push([[125],{3331:function(e,n,t){t.r(n);var l=t(6540),a=t(5091),u=t(4018),c=t(4755);n.default=()=>l.createElement(u.A,null,l.createElement(a.A,{title:"404: Not found"}),l.createElement("h1",null,"Opps, seems like you are lost!"),l.createElement("p",null,"Mind going back? or ",l.createElement(c.Link,{to:"/notes"},"read some notes")))}}]);
+//# sourceMappingURL=component---src-pages-404-js-a84c4e6c878192eeb549.js.map
