@@ -5,7 +5,7 @@ import Wrapper from "@common/Wrapper";
 import logo from "@src/static/logo.svg";
 
 const FooterWrapper = styled.footer`
-  width: 100vw;
+  width: 100%;
   padding: 10px;
   background: ${(p) => p.theme.primaryColor};
 

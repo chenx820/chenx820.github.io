@@ -7,7 +7,7 @@ export const NavWrapper = styled.div`
   display: flex;
   align-items: center;
   height: 60px;
-  width: 100vw;
+  width: 100%;
 
   background-color: ${(props) =>
     props.isScrolled

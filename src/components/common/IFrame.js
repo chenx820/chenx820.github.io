@@ -10,7 +10,7 @@ const IframeWrapper = styled.div`
   position: relative;
   overflow: hidden;
   padding-top: 56.25%;
-  background-color: "#FEFFC4";
+  background-color: " #FEFFC4";
   border-radius: 10px;
 
   /* @media ${(props) => props.theme.media.tablet} {
