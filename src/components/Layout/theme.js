@@ -38,7 +38,7 @@ const themeCommon = {
 export const themelight = {
   dark: false,
   bgColor: "#FFFFFF", // default white
-  primaryColor: "#105286",
+  primaryColor: "#799EFF",
   secondaryColor: "#F8F8F8",
   accentColor: "#FDB338",
   textColor: "#383838",
