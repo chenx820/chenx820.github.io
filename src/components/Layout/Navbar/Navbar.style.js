@@ -12,8 +12,8 @@ export const NavWrapper = styled.div`
   background-color: ${(props) =>
     props.isScrolled
       ? props.theme.dark
-        ? "rgba(28, 28, 30, 0.8)"
-        : "rgba(255, 255, 255, 0.8)"
+        ? "rgba(28, 28, 30, 0.6)"
+        : "rgba(255, 255, 255, 0.6)"
       : props.theme.bgColor};
 
   backdrop-filter: ${(props) => (props.isScrolled ? "blur(10px)" : "none")};

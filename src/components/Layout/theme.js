@@ -41,6 +41,8 @@ export const themelight = {
   primaryColor: " #799EFF",
   secondaryColor: " #F8F8F8",
   accentColor: " #FFBC4C",
+  accentColor2: " #FFDE63",
+  accentColor3: " #FEFFC4",
   textColor: " #383838",
   ...themeCommon,
 };
@@ -50,7 +52,7 @@ export const themedark = {
   bgColor: " #1C1C1E",
   primaryColor: " #FFBC4C",
   secondaryColor: " #232323",
-  accentColor: " #105286",
+  accentColor: " #799EFF",
   textColor: " #FBFBFB",
   ...themeCommon,
 };
