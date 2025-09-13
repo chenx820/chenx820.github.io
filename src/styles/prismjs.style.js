@@ -1,8 +1,8 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
 const PrismJsStyles = css`
   blockquote {
-    border-left: 5px solid ${p => p.theme.accentColor};
+    border-left: 5px solid ${(p) => p.theme.accentColor};
     padding: 15px;
     margin: 20px 0;
     border-radius: 3px;
@@ -11,8 +11,8 @@ const PrismJsStyles = css`
   /* inline backtics */
   p > .language-text {
     padding: 2px 5px;
-    background: ${p => p.theme.accentColor} !important;
-    color: ${p => p.theme.primaryText} !important;
+    background: ${(p) => p.theme.accentColor} !important;
+    color: ${(p) => p.theme.textColor} !important;
     word-break: break-word !important;
     white-space: normal !important;
     font-size: 16px !important;
@@ -22,14 +22,14 @@ const PrismJsStyles = css`
     position: relative;
 
     /* actual code */
-    code[class*='language-'] {
+    code[class*="language-"] {
       background-color: transparent;
       font-size: 1em; /* 14px */
       left: 15px;
     }
 
     /* another parent wrapper */
-    pre[class*='language-'] {
+    pre[class*="language-"] {
       /* language-tag */
       &:before {
         background: rgb(97, 218, 251);

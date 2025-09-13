@@ -2,14 +2,14 @@ import { css } from "styled-components";
 
 const scrollBar = css`
   ::-webkit-scrollbar-track {
-    background-color: ${(p) => p.theme.bg};
+    background-color: ${(p) => p.theme.bgColor};
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar {
     width: 10px;
     height: 7px;
-    background-color: ${(p) => p.theme.bg};
+    background-color: ${(p) => p.theme.bgColor};
     cursor: pointer;
   }
 
@@ -19,13 +19,13 @@ const scrollBar = css`
   }
 
   ::-moz-scrollbartrack-vertical {
-    background-color: ${(p) => p.theme.bg};
+    background-color: ${(p) => p.theme.bgColor};
   }
 
   ::-moz-scrollbar {
     width: 10px;
     height: 7px;
-    background-color: ${(p) => p.theme.bg};
+    background-color: ${(p) => p.theme.bgColor};
     cursor: pointer;
   }
 

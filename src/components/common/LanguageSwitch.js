@@ -56,7 +56,7 @@ const SwitchWrapper = styled.div`
     transition-delay: 1s;
     transition: 0.2s ease all;
     z-index: 1;
-    background-color: ${(p) => p.theme.bg};
+    background-color: ${(p) => p.theme.bgColor};
   }
 
   /* Button 1 */

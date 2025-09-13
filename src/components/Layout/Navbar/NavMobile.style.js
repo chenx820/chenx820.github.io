@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const MobileMenuWrapper = styled.nav`
   position: fixed;
@@ -17,18 +17,18 @@ export const MobileMenuWrapper = styled.nav`
 
   a:focus,
   button:focus {
-    outline: 2px solid ${props => props.theme.primaryColor};
+    outline: 2px solid ${(props) => props.theme.primaryColor};
   }
   a:hover,
   button:hover {
-    outline: 2px solid ${props => props.theme.primaryColor};
+    outline: 2px solid ${(props) => props.theme.primaryColor};
   }
 `;
 
 export const FloatingButton = styled.button`
   width: 65px;
   height: 65px;
-  background: ${props => props.theme.primaryColor};
+  background: ${(props) => props.theme.primaryColor};
   border-radius: 50%;
   text-align: center;
   color: white;
@@ -51,15 +51,16 @@ export const NavItemMobile = styled.li`
     word-break: normal;
     padding: 10px;
     font-weight: 300;
-    background: ${props => props.theme.gradient};
+    background: ${(props) => props.theme.gradient};
     color: white;
     border-radius: 5px;
-    box-shadow: 1px 3px 13px 0px rgba(0,0,0,0.1);
-    /* color: ${p =>
-      p.theme.dark ? p.theme.primaryText : p.theme.primaryColor}; */
+    box-shadow: 1px 3px 13px 0px rgba(0, 0, 0, 0.1);
+    /* color: ${(p) =>
+      p.theme.dark ? p.theme.textColor : p.theme.primaryColor}; */
   }
 
-  button:hover, a:hover {
+  button:hover,
+  a:hover {
     cursor: pointer;
     color: white !important;
   }
@@ -78,7 +79,7 @@ export const NavItemsBottomNav = styled.ul`
   opacity: 0;
   pointer-events: none;
   transform: translate(0, -30px);
-  ${p =>
+  ${(p) =>
     p.isOpen &&
     css`
       opacity: 1;

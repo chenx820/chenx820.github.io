@@ -6,20 +6,20 @@ import logo from "@src/static/logo_white.svg";
 
 const FooterWrapper = styled.footer`
   width: 100vw;
-  padding: 10px 0px;
+  padding: 0px 0px;
   background: ${(p) => p.theme.primaryColor};
   margin-top: auto;
 
   p {
     font-size: 1rem;
     line-height: 35px;
-    color: ${(p) => p.theme.primaryText};
+    color: ${(p) => p.theme.textColor};
   }
 
   a {
     color: ${(p) => p.theme.primaryColor};
     &:hover {
-      color: ${(p) => p.theme.primaryText};
+      color: ${(p) => p.theme.textColor};
     }
   }
 `;

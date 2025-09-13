@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 const Grid = styled.div`
   display: grid;
@@ -11,18 +11,18 @@ const Grid = styled.div`
   overflow: hidden;
   position: relative;
 
-  ${p =>
+  ${(p) =>
     !p.showAll &&
     css`
       &:before {
-        content: '';
+        content: "";
         width: 100%;
         height: 300px;
         position: absolute;
         border-radius: 10px;
         bottom: 0;
-        background: ${p =>
-          `linear-gradient(180deg, rgba(0,0,0,0), 40%, ${p.theme.bg})`};
+        background: ${(p) =>
+          `linear-gradient(180deg, rgba(0,0,0,0), 40%, ${p.theme.bgColor})`};
         z-index: 5;
         transition: 0.3s;
       }
@@ -36,7 +36,7 @@ const Grid = styled.div`
     font-weight: bold;
     transform: translateX(-50%);
   }
-  max-height: ${p => (p.showAll ? '100%' : p.collapseHeight)};
+  max-height: ${(p) => (p.showAll ? "100%" : p.collapseHeight)};
 `;
 
 export default Grid;

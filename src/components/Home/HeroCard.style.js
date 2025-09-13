@@ -28,7 +28,7 @@ export const ContentCardWrapper = styled.div`
 
   font-size: 0.8rem;
   font-family: ${(props) => props.theme.fontFamily};
-  color: ${(p) => p.theme.primaryText};
+  color: ${(p) => p.theme.textColor};
   line-height: 170%;
 
   a {

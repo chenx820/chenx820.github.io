@@ -19,8 +19,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     /* overflow hidden for Patent's 100vw width div */
     overflow-x: hidden;
-    background-color: ${(p) => p.theme.bg};
-    color: ${(p) => p.theme.primaryText};
+    background-color: ${(p) => p.theme.bgColor};
+    color: ${(p) => p.theme.textColor};
   }
 
   a {
@@ -28,13 +28,13 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
   a:hover {
-    color: ${(p) => p.theme.primaryText};
+    color: ${(p) => p.theme.textColor};
   }
   
   h1, h2, h3, h4, h5, h6 {
     margin: 10px 0;
     line-height: 140%;
-    color: ${(p) => p.theme.primaryText};
+    color: ${(p) => p.theme.textColor};
   }
   
   p {
@@ -42,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     line-height: 150%;
     font-family: ${(p) => p.theme.secondaryFontFamily};
-    color: ${(p) => p.theme.primaryText};
+    color: ${(p) => p.theme.textColor};
   }
   
   ul {
@@ -58,7 +58,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .active {
-    color: ${(p) => p.theme.primaryText};
+    color: ${(p) => p.theme.textColor};
   }
 
   hr {

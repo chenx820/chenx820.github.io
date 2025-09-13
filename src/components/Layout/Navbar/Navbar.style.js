@@ -55,7 +55,7 @@ export const NavItem = styled.li`
   text-align: center;
 
   a {
-    color: ${(p) => p.theme.primaryText};
+    color: ${(p) => p.theme.textColor};
   }
 
   a:hover {
