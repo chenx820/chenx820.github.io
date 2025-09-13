@@ -6,6 +6,7 @@ import Avatar from "./Avatar";
 
 import { Link, Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import { AboutWrapper, AboutInfo } from "./About.style";
+import News from "./News";
 
 const About = () => {
   const { t } = useTranslation();
@@ -44,6 +45,17 @@ const About = () => {
           </Trans>
         </p>
       </AboutInfo>
+
+      <div className="news__wrapper">
+        <News
+          items={[
+            "2025-10-01 I received the Master's degree in Physics from Imperial College London with distinction! 🎓.",
+            "2025-09-12 My fifth patent was filed.",
+            "2025-08-28 I received the Admission Letter from CUHK CSE! Next stop, Hong Kong! 🇭🇰",
+            "2025-06-18 I completed my Master's thesis defense.",
+          ]}
+        />
+      </div>
     </AboutWrapper>
   );
 };

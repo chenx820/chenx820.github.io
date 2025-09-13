@@ -14,6 +14,14 @@ export const AboutWrapper = styled.section`
       top: 40px;
     }
   }
+  .news__wrapper {
+    position: relative;
+    top: 80px;
+
+    @media ${(props) => props.theme.media.tablet} {
+      top: 40px;
+    }
+  }
 `;
 
 export const AboutInfo = styled.article`

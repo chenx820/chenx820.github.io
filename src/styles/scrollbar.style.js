@@ -19,23 +19,22 @@ const scrollBar = css`
     transition: background-color 0.3s ease;
   }
 
-  /* 滚动时显示滚动条 */
+  /* scrollbar hover effect */
   :hover::-webkit-scrollbar-thumb {
     background-color: ${(p) => p.theme.primaryColor};
   }
 
   :hover::-webkit-scrollbar-track {
     background-color: ${(p) =>
-      p.theme.dark ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"};
+      p.theme.dark ? "rgba(255, 255, 255, 0)" : "rgba(0, 0, 0, 0)"};
   }
 
-  /* 滚动条悬停时的效果 */
+  /* scrollbar hover effect */
   ::-webkit-scrollbar-thumb:hover {
-    background-color: ${(p) =>
-      p.theme.dark ? "rgba(255, 188, 76, 0.8)" : "rgba(121, 158, 255, 0.8)"};
+    background-color: ${(p) => p.theme.primaryColor};
   }
 
-  /* Firefox 滚动条样式 */
+  /* Firefox scrollbar style */
   ::-moz-scrollbartrack-vertical {
     background-color: transparent;
   }
@@ -51,7 +50,7 @@ const scrollBar = css`
     background-color: transparent;
   }
 
-  /* Firefox 滚动条悬停效果 */
+  /* Firefox scrollbar hover effect */
   :hover::-moz-scrollbar-thumb {
     background-color: ${(p) => p.theme.primaryColor};
   }
