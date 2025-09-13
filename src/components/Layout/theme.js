@@ -40,7 +40,7 @@ export const themelight = {
   bgColor: "#FFFFFF", // default white
   primaryColor: "#799EFF",
   secondaryColor: "#F8F8F8",
-  accentColor: "#FDB338",
+  accentColor: "#FFBC4C",
   textColor: "#383838",
   ...themeCommon,
 };
@@ -48,7 +48,7 @@ export const themelight = {
 export const themedark = {
   dark: true,
   bgColor: "#1C1C1E",
-  primaryColor: "#FDB338", // orange
+  primaryColor: "#FFBC4C", // orange
   secondaryColor: "#232323", // dark gray
   accentColor: "#105286", // blue
   textColor: "#FBFBFB", // white

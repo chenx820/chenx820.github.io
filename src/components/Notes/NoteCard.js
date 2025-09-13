@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {Link, Trans, useTranslation} from 'gatsby-plugin-react-i18next';
+import { Link, Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -16,7 +16,7 @@ const PostWrapper = styled.article`
   border-top: 5px solid ${(p) => p.theme.primaryColor};
   border-radius: 10px;
   box-shadow: ${(p) => p.theme.shadowSmall};
-  background-color: ${(p) => p.theme.secondaryColor};
+  background-color: ${(p) => p.theme.bgColor};
 
   &:hover {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);

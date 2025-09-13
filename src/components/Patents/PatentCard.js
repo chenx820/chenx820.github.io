@@ -14,6 +14,8 @@ const PatentCardWrapper = styled.div`
   padding: 30px;
   height: 280px;
 
+  box-shadow: ${(p) => p.theme.shadowSmall};
+
   .patent__links {
     position: absolute;
     bottom: 20px;

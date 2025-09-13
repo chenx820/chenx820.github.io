@@ -2,11 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Wrapper from "@common/Wrapper";
 
-import logo from "@src/static/logo_white.svg";
-
 const FooterWrapper = styled.footer`
   width: 100vw;
-  padding: 0px 0px;
+  padding: 10px;
   background: ${(p) => p.theme.primaryColor};
   margin-top: auto;
 

@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 
 import { useInView } from "react-intersection-observer";
 
-import logo from "@src/static/logo_white.svg";
+import logo from "@src/static/logo.svg";
 
 const IframeWrapper = styled.div`
   position: relative;

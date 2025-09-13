@@ -7,7 +7,7 @@
    version="1.1"
    id="svg2"
    sodipodi:docname="skew_bg.svg"
-   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -21,20 +21,20 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="0.56175091"
-     inkscape:cx="959.5"
-     inkscape:cy="436.13636"
-     inkscape:window-width="1200"
-     inkscape:window-height="1027"
+     inkscape:zoom="0.42321704"
+     inkscape:cx="878.98162"
+     inkscape:cy="550.54494"
+     inkscape:window-width="1512"
+     inkscape:window-height="945"
      inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-y="37"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg2" />
   <path
      d="M0 126L1920 0.5V739.5L0 873L0 126Z"
      fill="url(#paint0_linear)"
      id="path1"
-     style="fill:#105286;fill-opacity:1" />
+     style="fill:#799eff;fill-opacity:1" />
   <defs
      id="defs2">
     <linearGradient
