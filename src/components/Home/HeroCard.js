@@ -43,11 +43,11 @@ export const ColorPalette = withTheme(({ changeText, defaultContent }) => {
   const { t } = useTranslation();
   const colors = [
     {
-      color: "#082b41",
+      color: "${(p) => p.theme.bgColor}",
       message: defaultContent,
     },
     {
-      color: "#105286",
+      color: "${(p) => p.theme.primaryColor}",
       message: t(
         "about.nameMeaning.chen",
         `My given name is <b>Chen</b>, which means "dawn" or
@@ -59,21 +59,21 @@ export const ColorPalette = withTheme(({ changeText, defaultContent }) => {
       ),
     },
     {
-      color: "#F1F2F4",
+      color: "${(p) => p.theme.accentColor}",
       message: t(
         "about.nameMeaning.huang",
         `My surname is <b>Huang</b>, which means "yellow" in Chinese. This name has deep historical and cultural roots. It is often associated with the Yellow Emperor, a legendary figure considered one of the founding ancestors of Chinese civilization.`
       ),
     },
     {
-      color: "#FDB338",
+      color: "${(p) => p.theme.gradientColor}",
       message: t(
         "about.research.imperial",
-        `I am an MSc student in the <b>Controlled Quantum Dynamics Group</b> at Imperial College London. My research focuses on charge noise in semiconductor qubits. By conducting experiments and simulations, I aim to understand the impact of charge noise on qubit performance and develop strategies to mitigate its effects.`
+        `I was an MSc in the <b>Controlled Quantum Dynamics Group</b> at Imperial College London. My research focused on charge noise in semiconductor qubits. By conducting experiments and simulations, I aimed to understand the impact of charge noise on qubit performance and develop strategies to mitigate its effects.`
       ),
     },
     {
-      color: "#171D1D",
+      color: "${(p) => p.theme.textColor}",
       message: t(
         "about.research.baqis",
         `Simutaneously, I am also a remote research intern in the  <b>Quantum Operation System Group</b> at the Beijing Academy of Quantum Information Sciences (BAQIS). My research focuses on quantum compilation with neutral atoms.`
