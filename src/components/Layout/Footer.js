@@ -7,13 +7,13 @@ import logo from "@src/static/logo_white.svg";
 const FooterWrapper = styled.footer`
   width: 100vw;
   padding: 10px 0px;
-  background: ${(p) => p.theme.secondaryColor};
+  background: ${(p) => p.theme.primaryColor};
   margin-top: auto;
 
   p {
     font-size: 1rem;
     line-height: 35px;
-    color: white;
+    color: ${(p) => p.theme.primaryText};
   }
 
   a {
