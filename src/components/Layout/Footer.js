@@ -6,7 +6,6 @@ const FooterWrapper = styled.footer`
   width: 100vw;
   padding: 10px;
   background: ${(p) => p.theme.primaryColor};
-  margin-top: auto;
 
   p {
     font-size: 1rem;
