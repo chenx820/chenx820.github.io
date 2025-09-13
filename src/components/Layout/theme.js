@@ -43,6 +43,7 @@ export const themelight = {
   accentColor: " #FFBC4C",
   accentColor2: " #FFDE63",
   accentColor3: " #FEFFC4",
+  gradientColor: "linear-gradient(134deg, #FFFFFF 0%, #799EFF 100%)",
   textColor: " #383838",
   ...themeCommon,
 };
@@ -53,6 +54,7 @@ export const themedark = {
   primaryColor: " #FFBC4C",
   secondaryColor: " #232323",
   accentColor: " #799EFF",
+  gradientColor: "linear-gradient(134deg, #FFFFFF 0%, #FFBC4C 100%)",
   textColor: " #FBFBFB",
   ...themeCommon,
 };
