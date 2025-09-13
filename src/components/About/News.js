@@ -8,8 +8,7 @@ const NewsContainer = styled.article`
   margin: 20px 0;
   padding: 20px;
   border-radius: 10px;
-  background-color: ${(p) =>
-    p.theme.dark ? p.theme.accentColor : p.theme.secondaryColor};
+  background-color: ${(p) => p.theme.secondaryColor};
   box-shadow: ${(props) => props.theme.shadowSmall};
 `;
 
