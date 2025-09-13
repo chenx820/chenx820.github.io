@@ -13,7 +13,7 @@ export const ResearchContent = styled.div`
 
 export const ResearchDetail = styled.div`
   padding: 50px;
-  background-color: ${(props) => props.theme.secondaryColor};
+  background-color: ${(props) => props.theme.bgColor};
   box-shadow: ${(props) => props.theme.shadowSmall};
   border-radius: 10px;
 

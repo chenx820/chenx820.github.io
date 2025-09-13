@@ -9,7 +9,7 @@ import { ResearchLinks } from "../Research/ResearchTemplate.style";
 const PatentCardWrapper = styled.div`
   position: relative;
 
-  background-color: ${(props) => props.theme.secondaryColor};
+  background-color: ${(props) => props.theme.bgColor};
   border-radius: 10px;
   padding: 30px;
   height: 280px;
