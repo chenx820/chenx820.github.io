@@ -1,6 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import svgRect from "@src/static/home_rect.svg";
+import { useTheme } from "styled-components";
+import svgRectLight from "@src/static/home_rect.svg";
+import svgRectDark from "@src/static/home_rect_dark.svg";
 
 import { HeroCard } from "./HeroCard";
 import { HomeWrapper, Intro } from "./Home.style";
@@ -9,9 +11,14 @@ import IconLink from "@common/IconLink";
 import Button from "@common/Button";
 
 const Home = () => {
+  const theme = useTheme();
   return (
     <HomeWrapper id="home">
-      <img className="svg-rect" src={svgRect} alt=""></img>
+      <img
+        className="svg-rect"
+        src={theme.dark ? svgRectDark : svgRectLight}
+        alt=""
+      ></img>
 
       <Intro>
         <div className="home__text">

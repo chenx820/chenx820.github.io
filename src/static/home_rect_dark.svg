@@ -7,7 +7,7 @@
    version="1.1"
    id="svg2"
    sodipodi:docname="home_rect.svg"
-   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -21,13 +21,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="0.28451375"
-     inkscape:cx="583.45158"
-     inkscape:cy="483.28068"
+     inkscape:zoom="0.90909091"
+     inkscape:cx="363"
+     inkscape:cy="143"
      inkscape:window-width="1200"
-     inkscape:window-height="916"
+     inkscape:window-height="1027"
      inkscape:window-x="204"
-     inkscape:window-y="38"
+     inkscape:window-y="120"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg2" />
   <rect
@@ -39,7 +39,7 @@
      transform="rotate(45 663.973 -454)"
      fill="url(#paint0_linear)"
      id="rect1"
-     style="fill:#819df8;fill-opacity:1" />
+     style="fill:#fdb338;fill-opacity:1" />
   <defs
      id="defs2">
     <linearGradient
