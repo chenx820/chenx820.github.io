@@ -53,7 +53,7 @@ export const useTags = () => {
 
 export const TagBreadcrumb = styled(Link)`
   float: left;
-  border: 1px solid ${(p) => (p.theme.dark ? p.theme.primaryColor : " #d9e0ff")};
+  border: 1px solid ${(p) => (p.theme.dark ? " #FFDE63" : " #d9e0ff")};
   border-radius: 50px;
   padding: 8px 13px;
   line-height: 10px;
@@ -63,13 +63,13 @@ export const TagBreadcrumb = styled(Link)`
   ${(p) =>
     p.$active &&
     `
-    background: ${p.theme.dark ? " #FEFFC4" : " #d9e0ff"};
+    background: ${p.theme.dark ? " #FFDE63" : " #d9e0ff"};
     color: ${p.theme.dark ? " #232323" : " #105286"};
     font-weight: 600;
   `}
 
   &:hover {
-    background: ${(p) => (p.theme.dark ? " #FEFFC4" : " #d9e0ff")};
+    background: ${(p) => (p.theme.dark ? " #FFDE63" : " #d9e0ff")};
     color: ${(p) => (p.theme.dark ? " #232323" : " #105286")};
   }
 `;
