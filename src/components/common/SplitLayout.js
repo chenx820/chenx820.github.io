@@ -18,10 +18,6 @@ const SplitLayoutWrapper = styled.section`
   .layout__content {
     grid-area: post;
   }
-  /* 确保 notes 标签页标题滚动到视图时不会被固定导航遮挡 */
-  .layout__content h1 {
-    scroll-margin-top: 110px;
-  }
   .layout__aside {
     grid-area: side;
   }
@@ -35,12 +31,6 @@ const SplitLayoutWrapper = styled.section`
     grid-template-areas:
       "post post"
       "side side";
-  }
-
-  @media ${(props) => props.theme.media.tablet} {
-    .layout__content h1 {
-      scroll-margin-top: 70px;
-    }
   }
 
   .sticky__aside {

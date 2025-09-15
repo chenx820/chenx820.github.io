@@ -54,6 +54,8 @@ export const themedark = {
   primaryColor: " #FFBC4C",
   secondaryColor: " #232323",
   accentColor: " #799EFF",
+  accentColor2: " #FFDEF0",
+  accentColor3: " #D9E0FF",
   gradientColor: "linear-gradient(134deg, #FFFFFF 0%, #FFBC4C 100%)",
   textColor: " #FBFBFB",
   ...themeCommon,

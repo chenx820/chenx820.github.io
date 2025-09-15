@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { graphql, useStaticQuery } from "gatsby";
 import { Link, useI18next } from "gatsby-plugin-react-i18next";
+import { useLocation } from "@reach/router";
 import slugify from "@components/slugify";
 
 export const useTags = () => {
@@ -52,21 +53,31 @@ export const useTags = () => {
 
 export const TagBreadcrumb = styled(Link)`
   float: left;
-  border: 1px solid ${(p) => (p.theme.dark ? p.theme.primaryColor : "#d9e0ff")};
+  border: 1px solid ${(p) => (p.theme.dark ? p.theme.primaryColor : " #d9e0ff")};
   border-radius: 50px;
   padding: 8px 13px;
   line-height: 10px;
   margin: 5px;
   font-size: 12px;
 
+  ${(p) =>
+    p.$active &&
+    `
+    background: ${p.theme.accentColor3};
+    color: ${p.theme.dark ? p.theme.bgColor : " #105286"};
+    border-color: ${p.theme.accentColor3};
+    font-weight: 600;
+  `}
+
   &:hover {
-    background: ${(p) => (p.theme.dark ? p.theme.primaryColor : "#d9e0ff")};
-    color: ${(p) => (p.theme.dark ? "#d9e0ff" : "#105286")};
+    background: ${(p) => p.theme.accentColor3};
+    color: ${(p) => (p.theme.dark ? p.theme.bgColor : " #105286")};
   }
 `;
 
 const Tags = () => {
   const { language } = useI18next();
+  const location = useLocation();
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
@@ -110,15 +121,25 @@ const Tags = () => {
 
   return (
     <section style={{ overflow: "auto" }}>
-      {tags.map((tag) => (
-        <TagBreadcrumb
-          key={tag.fieldValue}
-          to={`/notes/tags/${slugify(tag.fieldValue)}/`}
-          aria-label={`${tag.totalCount} posts tagged with ${tag.fieldValue}`}
-        >
-          {tag.fieldValue}, {tag.totalCount}
-        </TagBreadcrumb>
-      ))}
+      {tags.map((tag) => {
+        const tagSlug = slugify(tag.fieldValue);
+        const isActive = location?.pathname?.startsWith(
+          `/notes/tags/${tagSlug}/`
+        );
+        const linkTo = isActive ? "/notes/" : `/notes/tags/${tagSlug}/`;
+
+        return (
+          <TagBreadcrumb
+            key={tag.fieldValue}
+            to={linkTo}
+            $active={isActive}
+            aria-selected={isActive}
+            aria-label={`${tag.totalCount} posts tagged with ${tag.fieldValue}`}
+          >
+            {tag.fieldValue}, {tag.totalCount}
+          </TagBreadcrumb>
+        );
+      })}
     </section>
   );
 };
