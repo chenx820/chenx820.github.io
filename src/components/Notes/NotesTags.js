@@ -63,15 +63,15 @@ export const TagBreadcrumb = styled(Link)`
   ${(p) =>
     p.$active &&
     `
-    background: ${p.theme.accentColor3};
+    background: ${p.theme.dark ? " #FFDE63" : " #d9e0ff"};
     color: ${p.theme.dark ? p.theme.bgColor : " #105286"};
-    border-color: ${p.theme.accentColor3};
+    border-color: ${p.theme.dark ? " #FFDE63" : " #d9e0ff"};
     font-weight: 600;
   `}
 
   &:hover {
-    background: ${(p) => p.theme.accentColor3};
-    color: ${(p) => (p.theme.dark ? p.theme.bgColor : " #105286")};
+    background: ${(p) => (p.theme.dark ? p.theme.primaryColor : " #d9e0ff")};
+    color: ${(p) => (p.theme.dark ? " #d9e0ff" : " #105286")};
   }
 `;
 
