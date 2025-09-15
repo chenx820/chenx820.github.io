@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const SplitLayoutWrapper = styled.section`
-  ${p => p.theme.spacing.sectionBottom};
+  ${(p) => p.theme.spacing.sectionBottom};
 
   & article:first-of-type {
     margin-top: 15px;
@@ -13,24 +13,34 @@ const SplitLayoutWrapper = styled.section`
   display: grid;
   grid-template-columns: minmax(750px, 1fr) 1fr;
   grid-column-gap: 30px;
-  grid-template-areas: 'post side';
+  grid-template-areas: "post side";
 
   .layout__content {
     grid-area: post;
+  }
+  /* 确保 notes 标签页标题滚动到视图时不会被固定导航遮挡 */
+  .layout__content h1 {
+    scroll-margin-top: 110px;
   }
   .layout__aside {
     grid-area: side;
   }
 
-  @media ${props => props.theme.media.fablet} {
+  @media ${(props) => props.theme.media.fablet} {
     /* setting g-t-c to 1fr 1fr because in mobile 
     version minmax was breaking the layout */
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 30px;
     grid-template-areas:
-      'post post'
-      'side side';
+      "post post"
+      "side side";
+  }
+
+  @media ${(props) => props.theme.media.tablet} {
+    .layout__content h1 {
+      scroll-margin-top: 70px;
+    }
   }
 
   .sticky__aside {
