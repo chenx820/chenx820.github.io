@@ -47,9 +47,11 @@ const About = () => {
       <div className="news__wrapper">
         <News
           items={[
+            "2026-02-24 Our paper on neutral atomic quantum circuit compilation was accepted by DAC 2026! 🎉",
+            "2026-02-02 I started my research assistantship at CUHK CSE.",
+            "2026-01-26 I received the official PhD offer from CUHK CSE! Next stop, Hong Kong! 🇭🇰",
             "2025-10-01 I received the Master's degree in Physics from Imperial College London with distinction! 🎓",
             "2025-09-12 My fifth patent was filed.",
-            "2025-08-28 I received the Admission Letter from CUHK CSE! Next stop, Hong Kong! 🇭🇰",
             "2025-06-18 I completed my Master's thesis defense and got a high score of 85.15/100 for my research project! ",
           ]}
         />
