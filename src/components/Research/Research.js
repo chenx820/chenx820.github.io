@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { Link, useTranslation } from "gatsby-plugin-react-i18next";
+import { Link, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 import styled from "styled-components";
 
 import PageHeader from "@common/PageHeader";
@@ -15,54 +15,56 @@ const ResearchWrapper = styled.section`
 `;
 const Research = () => {
   const { t } = useTranslation();
-  const research = useStaticQuery(
-    graphql`
-      {
-        allMarkdownRemark(
-          filter: { fields: { posttype: { eq: "research" } } }
-          sort: { fields: { fileIndex: ASC } }
-        ) {
-          edges {
-            node {
-              id
-              frontmatter {
-                excerpt
-                iframe
-                title
-              }
-              fields {
-                slug
-              }
+  const { language } = useI18next();
+  const research = useStaticQuery(graphql`
+    {
+      allMarkdownRemark(
+        filter: { fields: { posttype: { eq: "research" } } }
+        sort: { fields: { fileIndex: ASC } }
+      ) {
+        edges {
+          node {
+            id
+            frontmatter {
+              excerpt
+              iframe
+              title
+            }
+            fields {
+              language
+              slug
             }
           }
         }
       }
-    `
-  );
+    }
+  `);
 
   return (
     <ResearchWrapper id="research" style={{ marginBottom: 100 }}>
       <PageHeader>{t("research.title")}</PageHeader>
 
-      {research.allMarkdownRemark.edges.map(({ node }) => (
-        <ResearchTemplate
-          key={node.id}
-          title={node.frontmatter.title}
-          desc={node.frontmatter.excerpt}
-          links={
-            <ResearchLinks>
-              <Button as={Link} to={node.fields.slug}>
-                Read More
-              </Button>
-            </ResearchLinks>
-          }
-          preview={
-            <ResearchPreview>
-              <IFrame src={node.frontmatter.iframe} />
-            </ResearchPreview>
-          }
-        />
-      ))}
+      {research.allMarkdownRemark.edges
+        .filter(({ node }) => node.fields.language === language)
+        .map(({ node }) => (
+          <ResearchTemplate
+            key={node.id}
+            title={node.frontmatter.title}
+            desc={node.frontmatter.excerpt}
+            links={
+              <ResearchLinks>
+                <Button as={Link} to={node.fields.slug}>
+                  {t("research.read-more")}
+                </Button>
+              </ResearchLinks>
+            }
+            preview={
+              <ResearchPreview>
+                <IFrame src={node.frontmatter.iframe} />
+              </ResearchPreview>
+            }
+          />
+        ))}
     </ResearchWrapper>
   );
 };

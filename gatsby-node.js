@@ -25,11 +25,17 @@ const slugify = require("./src/components/slugify.js"); // Ensure this file exis
 const getEnglishTitle = (filePath, language) => {
   if (language !== "zh") return null;
 
-  // Replace .zh.md with .en.md to get the English file path
-  const englishFilePath = filePath.replace(/\.zh\.md$/, ".en.md");
+  const englishFilePaths = [
+    filePath.replace(/\.zh\.md$/, ".en.md"),
+    filePath.replace(/\.zh\.md$/, ".md"),
+  ];
 
   try {
-    if (fs.existsSync(englishFilePath)) {
+    const englishFilePath = englishFilePaths.find((candidate) =>
+      fs.existsSync(candidate),
+    );
+
+    if (englishFilePath) {
       const content = fs.readFileSync(englishFilePath, "utf8");
       const titleMatch = content.match(/^title:\s*(.+)$/m);
       if (titleMatch) {
@@ -52,9 +58,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
   const fileName = path.basename(node.fileAbsolutePath);
   const parts = fileName.split(".");
-  // Assuming filename format like `index.en.md` or `post-title.es.md`
-  // The language part is typically the second to last segment before the file extension
-  let language = parts[parts.length - 2];
+  const supportedLanguages = ["en", "zh"];
+  const possibleLanguage = parts[parts.length - 2];
+  const language = supportedLanguages.includes(possibleLanguage)
+    ? possibleLanguage
+    : defaultLanguage;
 
   // sourceInstanceName defined if its a notes or case-studie
   const sourceInstanceName = fileNode.sourceInstanceName;
@@ -73,7 +81,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   // extract the name of the file because we need to sort by it's name
   // `001-blahblah` - this assumes a specific naming convention for files like `001-title.en.md`
   // Adjust `substr(2, 1)` if your indexing changes or is not universally applicable.
-  const fileIndex = fileNode.name.substr(2, 1);
+  const fileIndex = fileNode.name.substr(0, 3);
 
   // create slug nodes
   // The slug here will be without the language prefix, e.g., `/notes/my-title`

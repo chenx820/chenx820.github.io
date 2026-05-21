@@ -102,7 +102,7 @@ module.exports = {
         defaultLanguage: `en`,
         siteUrl: config.siteUrl,
         generateDefaultLanguagePage: false,
-        redirect: true,
+        redirect: false,
         i18nextOptions: {
           // detection: {
           //   order: [

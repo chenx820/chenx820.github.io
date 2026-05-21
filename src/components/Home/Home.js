@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTheme } from "styled-components";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import svgRectLight from "@src/static/home_rect.svg";
 import svgRectDark from "@src/static/home_rect_dark.svg";
 
@@ -12,6 +13,7 @@ import Button from "@common/Button";
 
 const Home = () => {
   const theme = useTheme();
+  const { t } = useTranslation();
   return (
     <HomeWrapper id="home">
       <img
@@ -22,9 +24,9 @@ const Home = () => {
 
       <Intro>
         <div className="home__text">
-          <p>Hello, I'm</p>
-          <h1>CHEN HUANG</h1>
-          <p className="adjust">EXPLORING THE QUANTUM WORLD</p>
+          <p>{t("home.greeting")}</p>
+          <h1>{t("home.title")}</h1>
+          <p className="adjust">{t("home.subtitle")}</p>
 
           <div className="home__CTA">
             <Button
@@ -33,7 +35,7 @@ const Home = () => {
               as="a"
               href="/CV_ChenHuang.pdf"
             >
-              Download Resume
+              {t("home.resume")}
             </Button>
 
             <div className="home__social">

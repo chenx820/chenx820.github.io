@@ -21,7 +21,7 @@ const Research = ({ data }) => {
 
   const infoLinks = project.info.links && (
     <div>
-      <InfoTitle>Links & Resources</InfoTitle>
+      <InfoTitle>{t("research.links")}</InfoTitle>
       <ul>
         {project.info.links.map((link, i) => (
           <li key={i}>
@@ -43,11 +43,11 @@ const Research = ({ data }) => {
         <section className="research__info">
           <div>
             <aside>
-              <InfoTitle>Abstract</InfoTitle>
+              <InfoTitle>{t("research.abstract")}</InfoTitle>
               <p>{project.info.abstract}</p>
             </aside>
             <aside>
-              <InfoTitle>Collaborators</InfoTitle>
+              <InfoTitle>{t("research.collaborators")}</InfoTitle>
               <ul>
                 {project.info.collaborators.map((collaborators, i) => (
                   <li key={i}>{collaborators}</li>
@@ -70,7 +70,7 @@ const Research = ({ data }) => {
           }
           aside={
             <div>
-              <h4>Share on</h4>
+              <h4>{t("common.share-on")}</h4>
               <SocialShareSection
                 baseSlugUrl={baseSlugUrl}
                 title={project.title}
@@ -85,7 +85,9 @@ const Research = ({ data }) => {
 
 export const query = graphql`
   query projectBySlug($slug: String!, $language: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(
+      fields: { slug: { eq: $slug }, language: { eq: $language } }
+    ) {
       id
       html
       fields {

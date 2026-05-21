@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 import styled from "styled-components";
 
 import PageHeader from "@common/PageHeader";
@@ -32,8 +32,7 @@ const PatentsWrapper = styled.section`
 
 const Patents = () => {
   const { t } = useTranslation();
-  const { i18n } = useTranslation();
-  const currentLanguage = i18n.language;
+  const { language } = useI18next();
   const patents = useStaticQuery(graphql`
     query {
       allPatentsJson {
@@ -74,9 +73,7 @@ const Patents = () => {
   `);
 
   const patentData =
-    currentLanguage === "zh"
-      ? patents.allPatentsZhJson
-      : patents.allPatentsJson;
+    language === "zh" ? patents.allPatentsZhJson : patents.allPatentsJson;
 
   const settings = {
     dots: true,

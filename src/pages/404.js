@@ -4,15 +4,22 @@ import SEO from "@components/seo";
 
 import Layout from "@components/Layout/Layout";
 import { Link, Trans, useTranslation } from "gatsby-plugin-react-i18next";
-const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <h1>Opps, seems like you are lost!</h1>
-    <p>
-      Mind going back? or <Link to="/notes">read some notes</Link>
-    </p>
-  </Layout>
-);
+const NotFoundPage = () => {
+  const { t } = useTranslation();
+
+  return (
+    <Layout>
+      <SEO title={t("notFound.title")} />
+      <h1>{t("notFound.heading")}</h1>
+      <p>
+        <Trans
+          i18nKey="notFound.body"
+          components={{ notesLink: <Link to="/notes" /> }}
+        />
+      </p>
+    </Layout>
+  );
+};
 
 export default NotFoundPage;
 

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import Wrapper from "@common/Wrapper";
 
 import logo from "@src/static/logo.svg";
@@ -23,15 +24,19 @@ const FooterWrapper = styled.footer`
   }
 `;
 
-const Footer = () => (
-  <FooterWrapper>
-    <Wrapper>
-      <img width="35px" src={logo} alt="" />
-      <p style={{ float: "right" }}>
-        &copy; {new Date().getFullYear()} Chen Huang. All rights reserved.
-      </p>
-    </Wrapper>
-  </FooterWrapper>
-);
+const Footer = () => {
+  const { t } = useTranslation();
+
+  return (
+    <FooterWrapper>
+      <Wrapper>
+        <img width="35px" src={logo} alt="" />
+        <p style={{ float: "right" }}>
+          {t("footer.copyright", { year: new Date().getFullYear() })}
+        </p>
+      </Wrapper>
+    </FooterWrapper>
+  );
+};
 
 export default Footer;

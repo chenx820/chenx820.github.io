@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import IFrame from "@common/IFrame";
@@ -45,6 +46,7 @@ const Card = React.memo(({ nodes, currentImg, openLightbox }) => (
 ));
 
 const Gallery = () => {
+  const { t } = useTranslation();
   const [selectedImg, setSelectedImg] = useState(null);
   const [isLightboxOpen, setLightboxOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
@@ -115,8 +117,8 @@ const Gallery = () => {
   return (
     <PhotosWrapper id="photo">
       <HighlightTemplate
-        title="2024 Journey Highlights"
-        desc="This year's adventures took me through breathtaking landscapes and vibrant cities across many countries."
+        title={t("gallery.highlight-title")}
+        desc={t("gallery.highlight-desc")}
         preview={
           <HighlightPreview>
             <IFrame src="https://www.youtube.com/embed/PSpghrPLQXI?rel=0&autoplay=0" />
@@ -124,7 +126,7 @@ const Gallery = () => {
           </HighlightPreview>
         }
       />
-      <PageHeader>Photography</PageHeader>
+      <PageHeader>{t("gallery.photography")}</PageHeader>
       <Grid collapseHeight="1000px" showAll={showAll}>
         {photo.allPhotosJson.edges.map((nodes, index) => {
           let currentImg = photo.allFile.edges[index];
@@ -140,7 +142,7 @@ const Gallery = () => {
 
         {!showAll && (
           <Button onClick={handleShowAll} className="showall__button">
-            Show all
+            {t("gallery.show-all")}
           </Button>
         )}
       </Grid>

@@ -4,7 +4,7 @@ import SkewBg from "@common/SkewBg";
 import PageHeader from "@common/PageHeader";
 import Avatar from "./Avatar";
 
-import { Link, Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import { AboutWrapper, AboutInfo } from "./About.style";
 import News from "./News";
 
@@ -18,41 +18,32 @@ const About = () => {
         <div>
           <Avatar src="avatar.png" />
         </div>
-        <p>
-          Hi, I'm Chen, an incoming PhD student in Computer Science and
-          Engineering at{" "}
-          <a
-            className="about__link"
-            target="__blank"
-            href="https://www.innovationadvancedlab.com/home"
-          >
-            <strong>The Chinese University of Hong Kong (CUHK)</strong>
-          </a>
-          .
-          <br />
-          <br />
-          I am passionate about advancing quantum computing through both
-          theoretical research and experimental realization. My academic journey
-          has equipped me with a strong foundation in physics and hands-on
-          experience with a variety of quantum systems, including neutral atoms,
-          trapped ions, and semiconductor qubits.
-          <br />
-          <br />I also work with quantum circuits. At BAQIS, my research focuses
-          on developing efficient quantum compilation strategies that help
-          bridge the gap between hardware capabilities and practical, scalable
-          quantum computing.
-        </p>
+        <Trans
+          i18nKey="about.bio"
+          components={{
+            p: <p />,
+            br: <br />,
+            cuhk: (
+              <a
+                className="about__link"
+                target="__blank"
+                href="https://www.innovationadvancedlab.com/home"
+              />
+            ),
+            strong: <strong />,
+          }}
+        />
       </AboutInfo>
 
       <div className="news__wrapper">
         <News
           items={[
-            "2026-02-24 Our paper on neutral atomic quantum circuit compilation was accepted by DAC 2026! 🎉",
-            "2026-02-02 I started my research assistantship at CUHK CSE.",
-            "2026-01-26 I received the official PhD offer from CUHK CSE! Next stop, Hong Kong! 🇭🇰",
-            "2025-10-01 I received the Master's degree in Physics from Imperial College London with distinction! 🎓",
-            "2025-09-12 My fifth patent was filed.",
-            "2025-06-18 I completed my Master's thesis defense and got a high score of 85.15/100 for my research project! ",
+            t("about.news.0"),
+            t("about.news.1"),
+            t("about.news.2"),
+            t("about.news.3"),
+            t("about.news.4"),
+            t("about.news.5"),
           ]}
         />
       </div>

@@ -55,28 +55,28 @@ export const ColorPalette = withTheme(({ changeText, defaultContent }) => {
               morning person who enjoys the calm and peacefulness of the early
               hours. Interestingly, "Chen" is sometimes misheard as "Cheng",
               which means "orange" in Chinese. Because of this playful
-              similarity, my friends affectionately call me "Cheng-Zi".`
+              similarity, my friends affectionately call me "Cheng-Zi".`,
       ),
     },
     {
       color: "${(p) => p.theme.accentColor}",
       message: t(
         "about.nameMeaning.huang",
-        `My surname is <b>Huang</b>, which means "yellow" in Chinese. This name has deep historical and cultural roots. It is often associated with the Yellow Emperor, a legendary figure considered one of the founding ancestors of Chinese civilization.`
+        `My surname is <b>Huang</b>, which means "yellow" in Chinese. This name has deep historical and cultural roots. It is often associated with the Yellow Emperor, a legendary figure considered one of the founding ancestors of Chinese civilization.`,
       ),
     },
     {
       color: "${(p) => p.theme.gradientColor}",
       message: t(
         "about.research.imperial",
-        `I was an MSc in the <b>Controlled Quantum Dynamics Group</b> at Imperial College London. My research focused on charge noise in semiconductor qubits. By conducting experiments and simulations, I aimed to understand the impact of charge noise on qubit performance and develop strategies to mitigate its effects.`
+        `I was an MSc in the <b>Controlled Quantum Dynamics Group</b> at Imperial College London. My research focused on charge noise in semiconductor qubits. By conducting experiments and simulations, I aimed to understand the impact of charge noise on qubit performance and develop strategies to mitigate its effects.`,
       ),
     },
     {
       color: "${(p) => p.theme.textColor}",
       message: t(
         "about.research.baqis",
-        `Simutaneously, I am also a remote research intern in the  <b>Quantum Operation System Group</b> at the Beijing Academy of Quantum Information Sciences (BAQIS). My research focuses on quantum compilation with neutral atoms.`
+        `Simutaneously, I am also a remote research intern in the  <b>Quantum Operation System Group</b> at the Beijing Academy of Quantum Information Sciences (BAQIS). My research focuses on quantum compilation with neutral atoms.`,
       ),
     },
   ];
@@ -95,9 +95,14 @@ export const ColorPalette = withTheme(({ changeText, defaultContent }) => {
 });
 
 export const HeroCard = () => {
-  const defaultContent = `I am passionate about expanding my knowledge through interdisciplinary research and collaboration. If you are interested in discussing research or potential collaborations, feel free to reach out via <a href="mailto:chen.huang23@imperial.ac.uk">email</a> or connect with me on <a href="https://www.linkedin.com/in/chen-huang-820x" target="_blank" >LinkedIn</a>.`;
+  const { t, i18n } = useTranslation();
+  const defaultContent = t("about.heroCard.default");
 
   const [contentText, setContentText] = useState(defaultContent);
+
+  useEffect(() => {
+    setContentText(defaultContent);
+  }, [defaultContent, i18n.language]);
 
   const changeText = (text) => {
     setContentText(text);
