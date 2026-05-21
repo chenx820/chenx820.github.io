@@ -23,7 +23,7 @@ const common = css`
 const Button = styled.button`
   ${common};
   width: ${(props) => (props.width ? props.width : "auto")};
-  height: ${(props) => (props.height ? props.width : "auto")};
+  height: ${(props) => (props.height ? props.height : "auto")};
   font-size: 12px;
   margin: 0px 0;
   padding: 12px 12px;

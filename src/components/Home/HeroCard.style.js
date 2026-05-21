@@ -4,7 +4,8 @@ import { slideDownKeyframe, tooltipKeyframe } from "../css-animations";
 
 export const HeroCardWrapper = styled.div`
   position: relative;
-  width: 40vw;
+  flex: 0 1 520px;
+  max-width: 520px;
   animation: ${slideDownKeyframe} 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s
     forwards;
 
@@ -16,8 +17,9 @@ export const HeroCardWrapper = styled.div`
 `;
 
 export const ContentCardWrapper = styled.div`
-  padding: 30px 35px;
-  border-radius: 10px;
+  padding: 32px 36px;
+  border: 1px solid ${(props) => (props.theme.dark ? "#333333" : "#eef1f8")};
+  border-radius: 8px;
 
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -45,14 +47,15 @@ export const ContentCardWrapper = styled.div`
 
 export const ColorPaletteWrapper = styled.div`
   position: absolute;
-  bottom: -40px;
-  left: -90px;
+  bottom: -28px;
+  left: -48px;
 
   display: flex;
+  gap: 6px;
   justify-content: space-around;
   background-color: ${(props) => props.theme.secondaryColor};
   box-shadow: ${(props) => props.theme.shadowSmall};
-  padding: 8px;
+  padding: 8px 10px;
   border-radius: 5px;
 
   @media ${(props) => props.theme.media.tablet} {
@@ -63,9 +66,10 @@ export const ColorPaletteWrapper = styled.div`
 `;
 
 export const ColorBoxWrapper = styled.div`
-  width: 40px;
-  height: 40px;
-  margin: 3px;
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  border: 1px solid ${(props) => (props.theme.dark ? "#3d3d40" : "#dfe4f2")};
   border-radius: 5px;
   cursor: pointer;
   transition: 0.2s;
@@ -84,10 +88,10 @@ export const ColorBoxWrapper = styled.div`
     pointer-events: none;
     position: absolute;
     text-align: center;
-    content: "Copied";
+    content: "Updated";
     opacity: 0;
     width: 50px;
-    bottom: -130%;
+    bottom: -150%;
     left: 50%;
     padding: 10px;
     border-radius: 10px;

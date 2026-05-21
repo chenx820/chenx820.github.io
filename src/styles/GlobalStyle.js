@@ -10,10 +10,11 @@ const GlobalStyle = createGlobalStyle`
 
   body, html {
     height: 100%;
-    font-size: calc(12px + 0.4vw);
+    font-size: 16px;
     font-family: ${(p) => p.theme.fontFamily};
     -webkit-font-smoothing: antialiased;
     font-display: fallback !important;
+    overflow-x: hidden;
   }
 
   body {

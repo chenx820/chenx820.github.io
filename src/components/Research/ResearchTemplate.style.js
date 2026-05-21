@@ -6,7 +6,7 @@ export const ResearchWrapper = styled.section`
 
 export const ResearchContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr 170px 1fr;
+  grid-template-columns: minmax(0, 1fr) 140px minmax(0, 1fr);
   grid-template-rows: 1fr;
   align-items: center;
 `;
@@ -15,7 +15,7 @@ export const ResearchDetail = styled.div`
   padding: 50px;
   background-color: ${(props) => props.theme.secondaryColor};
   box-shadow: ${(props) => props.theme.shadowSmall};
-  border-radius: 10px;
+  border-radius: 8px;
 
   min-height: 350px;
 
@@ -65,7 +65,7 @@ export const ResearchPreview = styled.div`
   grid-column: 2 / 4;
   grid-row: 1;
   position: relative;
-  right: -20px;
+  right: 0;
 
   @media ${(props) => props.theme.media.fablet} {
     right: 0;
@@ -74,7 +74,7 @@ export const ResearchPreview = styled.div`
   }
 
   iframe {
-    border-radius: 10px;
+    border-radius: 8px;
   }
 `;
 export const Tags = styled.div`

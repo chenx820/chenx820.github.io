@@ -17,37 +17,56 @@ export const ContentCard = ({ contentText }) => {
   );
 };
 
-const ColorBox = ({ color, changeText }) => {
+const ColorBox = ({ color, changeText, label }) => {
   const tooltipRef = useRef();
 
   useEffect(() => {
-    return tooltipRef.current.addEventListener("animationend", () => {
-      tooltipRef.current.classList.remove("tooltip-animate");
-    });
-  });
+    const tooltipEl = tooltipRef.current;
+    const handleAnimationEnd = () => {
+      tooltipEl.classList.remove("tooltip-animate");
+    };
+
+    tooltipEl?.addEventListener("animationend", handleAnimationEnd);
+    return () => {
+      tooltipEl?.removeEventListener("animationend", handleAnimationEnd);
+    };
+  }, []);
   const onClick = () => {
     changeText();
     tooltipRef.current?.classList.add("tooltip-animate");
+  };
+  const onKeyDown = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      onClick();
+    }
   };
 
   return (
     <ColorBoxWrapper
       ref={tooltipRef}
       onClick={onClick}
+      onKeyDown={onKeyDown}
+      aria-label={label}
+      role="button"
+      tabIndex={0}
+      title={label}
       style={{ background: color }}
     />
   );
 };
 
-export const ColorPalette = withTheme(({ changeText, defaultContent }) => {
+export const ColorPalette = withTheme(({ changeText, defaultContent, theme }) => {
   const { t } = useTranslation();
   const colors = [
     {
-      color: "${(p) => p.theme.bgColor}",
+      color: theme.bgColor,
+      label: t("about.heroCard.palette.default", "Intro"),
       message: defaultContent,
     },
     {
-      color: "${(p) => p.theme.primaryColor}",
+      color: theme.primaryColor,
+      label: t("about.heroCard.palette.chen", "Chen"),
       message: t(
         "about.nameMeaning.chen",
         `My given name is <b>Chen</b>, which means "dawn" or
@@ -59,21 +78,24 @@ export const ColorPalette = withTheme(({ changeText, defaultContent }) => {
       ),
     },
     {
-      color: "${(p) => p.theme.accentColor}",
+      color: theme.accentColor,
+      label: t("about.heroCard.palette.huang", "Huang"),
       message: t(
         "about.nameMeaning.huang",
         `My surname is <b>Huang</b>, which means "yellow" in Chinese. This name has deep historical and cultural roots. It is often associated with the Yellow Emperor, a legendary figure considered one of the founding ancestors of Chinese civilization.`,
       ),
     },
     {
-      color: "${(p) => p.theme.gradientColor}",
+      color: theme.gradientColor,
+      label: t("about.heroCard.palette.imperial", "Imperial"),
       message: t(
         "about.research.imperial",
         `I was an MSc in the <b>Controlled Quantum Dynamics Group</b> at Imperial College London. My research focused on charge noise in semiconductor qubits. By conducting experiments and simulations, I aimed to understand the impact of charge noise on qubit performance and develop strategies to mitigate its effects.`,
       ),
     },
     {
-      color: "${(p) => p.theme.textColor}",
+      color: theme.textColor,
+      label: t("about.heroCard.palette.baqis", "BAQIS"),
       message: t(
         "about.research.baqis",
         `Simutaneously, I am also a remote research intern in the  <b>Quantum Operation System Group</b> at the Beijing Academy of Quantum Information Sciences (BAQIS). My research focuses on quantum compilation with neutral atoms.`,
@@ -83,10 +105,11 @@ export const ColorPalette = withTheme(({ changeText, defaultContent }) => {
 
   return (
     <ColorPaletteWrapper>
-      {colors.map(({ color, message }) => (
+      {colors.map(({ color, message, label }) => (
         <ColorBox
           key={color}
           color={color}
+          label={label}
           changeText={() => changeText(message)}
         />
       ))}

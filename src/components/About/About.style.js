@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 export const AboutWrapper = styled.section`
+  position: relative;
   margin-bottom: 200px;
 
-  @media ${(props) => props.theme.media.tablet} {
-    position: relative;
-  }
   .quotes__wrapper {
     position: relative;
     top: 80px;

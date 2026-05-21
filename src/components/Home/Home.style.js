@@ -5,8 +5,9 @@ export const Intro = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 64px;
 
-  height: calc(80vh - 100px);
+  min-height: clamp(520px, calc(80vh - 100px), 680px);
   ${props => props.theme.spacing.sectionBottom};
 
   .home__text {
@@ -30,8 +31,10 @@ export const Intro = styled.section`
 
   h1 {
     margin: -4px 0;
-    font-size: 2.5rem;
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
     font-weight: 900;
+    letter-spacing: 0;
+    line-height: 1.05;
   }
 
   p {
@@ -47,7 +50,8 @@ export const Intro = styled.section`
   .home__social {
     color: ${props => props.theme.primaryColor};
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 28px;
     font-size: 24px;
   }
 
@@ -57,7 +61,7 @@ export const Intro = styled.section`
     /* height and m-b for fixing issue
     which was hiding the "thing i love" header */
     height: fit-content;
-    margin-bottom: 140px;
+    margin-bottom: 110px;
 
     h1 {
       margin: 6px 0;
@@ -67,15 +71,16 @@ export const Intro = styled.section`
 `;
 
 export const HomeWrapper = styled.section`
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   margin-top: 125px;
 
   .svg-rect {
-    width: 40%;
+    width: min(38vw, 520px);
     position: absolute;
-    top: 50px;
+    top: 60px;
     right: 0;
     z-index: -1;
+    opacity: 0.92;
   }
 
   @media ${props => props.theme.media.tablet} {
@@ -83,7 +88,8 @@ export const HomeWrapper = styled.section`
 
     .svg-rect {
       top: 0px;
-      opacity: 0.8;
+      width: 60vw;
+      opacity: 0.28;
     }
   }
 `;
