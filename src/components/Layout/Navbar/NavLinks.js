@@ -21,11 +21,6 @@ const NavItemsSmoothLinks = ({ NavItem }) => {
           {t("nav.research")}
         </SLink>
       </NavItem>
-      <NavItem>
-        <SLink smooth offset={-100} hashSpy to="patents">
-          {t("nav.patents")}
-        </SLink>
-      </NavItem>
       {/* <NavItem>
         <SLink smooth offset={-100} hashSpy to="contact">
           {t('nav.contact')}
@@ -47,9 +42,6 @@ const NavItemsGatsbyLinks = ({ NavItem }) => {
       </NavItem>
       <NavItem>
         <Link to="/#research">{t("nav.research")}</Link>
-      </NavItem>
-      <NavItem>
-        <Link to="/#patents">{t("nav.patents")}</Link>
       </NavItem>
       {/* <NavItem>
         <Link to="/#contact">{t("nav.contact")}</Link>
