@@ -2,7 +2,7 @@
   {
     "kind": "journal",
     "title": "ZAP: Zoned Architecture and Performant Compiler for Field Programmable Atom Array",
-    "authors": "Chen Huang*, Xi Zhao, Hongze Xu, Weifeng Zhuang, Meng-Jun Hu, Dong E. Liu, Jingbo Wang",
+    "authors": "Chen Huang*, Xi Zhao*, Hongze Xu*, Weifeng Zhuang, Meng-Jun Hu, Dong E. Liu, Jingbo Wang",
     "venue": "IEEE Transactions on Quantum Engineering (TQE)",
     "year": "2026",
     "status": "Accepted",
