@@ -103,9 +103,23 @@ const PatentCard = styled.article`
   }
 `;
 
-const Inventors = styled.p`
+const PeopleLine = styled.p`
   color: ${(props) => props.theme.textColor};
+
+  strong {
+    font-weight: 700;
+  }
 `;
+
+const highlightOwnName = (people) => {
+  if (!people) {
+    return null;
+  }
+
+  return people.split(/(Chen Huang)/g).map((part, index) =>
+    part === "Chen Huang" ? <strong key={index}>{part}</strong> : part
+  );
+};
 
 const PaperEntry = ({ paper }) => {
   const title = paper.title || paper.venue;
@@ -120,6 +134,10 @@ const PaperEntry = ({ paper }) => {
           {paper.status && <span>{paper.status}</span>}
         </Metadata>
       </div>
+
+      {paper.authors && (
+        <PeopleLine>{highlightOwnName(paper.authors)}</PeopleLine>
+      )}
 
       {paper.links?.length > 0 && (
         <LinkRow>
@@ -148,9 +166,9 @@ const PatentEntry = ({ patent }) => {
         </Metadata>
       </div>
 
-      <Inventors>
-        {t("patents.inventors")}: {patent.inventor}
-      </Inventors>
+      <PeopleLine>
+        {t("patents.inventors")}: {highlightOwnName(patent.inventor)}
+      </PeopleLine>
 
       <LinkRow>
         <Button as="a" href={patent.links.src} target="__blank">

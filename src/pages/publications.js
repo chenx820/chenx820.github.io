@@ -43,6 +43,7 @@ export const query = graphql`
       nodes {
         kind
         title
+        authors
         venue
         year
         status

@@ -2,6 +2,7 @@
   {
     "kind": "journal",
     "title": "ZAP: Zoned Architecture and Performant Compiler for Field Programmable Atom Array",
+    "authors": "Chen Huang*, Xi Zhao, Hongze Xu, Weifeng Zhuang, Meng-Jun Hu, Dong E. Liu, Jingbo Wang",
     "venue": "IEEE Transactions on Quantum Engineering (TQE)",
     "year": "2026",
     "status": "Accepted",
@@ -15,6 +16,7 @@
   {
     "kind": "conference",
     "title": "Compiler Framework for Directional Transport in Zoned Neutral Atom Systems with AOD Assistance: A Hybrid Remote CZ Approach",
+    "authors": "Lingyi Kong*, Chen Huang*, Zhemin Zhang, Yidong Zhou, Xiangyu Ren, Shaochen Li, Zhiding Liang",
     "venue": "Design Automation Conference (DAC)",
     "year": "2026",
     "status": "Accepted"
