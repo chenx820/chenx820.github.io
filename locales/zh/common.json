@@ -7,6 +7,7 @@
     "about": "关于我",
     "research": "研究",
     "patents": "专利",
+    "publications": "成果",
     "notes": "笔记",
     "gallery": "摄影集",
     "back-to-top": "返回顶部",
@@ -55,6 +56,15 @@
     "title": "专利",
     "see-patent": "查看专利",
     "inventors": "发明人"
+  },
+  "publications": {
+    "title": "学术成果",
+    "intro": "期刊论文、会议论文与专利。",
+    "journal-papers": "期刊论文",
+    "conference-papers": "会议论文",
+    "preprints": "预印本",
+    "patents": "专利",
+    "talks": "报告与演示"
   },
   "footer": {
     "copyright": "© {{year}} 黄晨。保留所有权利。"

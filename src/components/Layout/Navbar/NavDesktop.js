@@ -30,6 +30,9 @@ const NavDesktop = () => {
           <NavLinks NavItem={NavItem} />
 
           <NavItem>
+            <Link to="/publications">{t("nav.publications")}</Link>
+          </NavItem>
+          <NavItem>
             <Link to="/notes">{t("nav.notes")}</Link>
           </NavItem>
           <NavItem>

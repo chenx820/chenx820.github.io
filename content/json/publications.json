@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "journal",
+    "title": "ZAP: Zoned Architecture and Performant Compiler for Field Programmable Atom Array",
+    "venue": "IEEE Transactions on Quantum Engineering (TQE)",
+    "year": "2026",
+    "status": "Accepted",
+    "links": [
+      {
+        "label": "arXiv",
+        "href": "https://arxiv.org/abs/2411.14037"
+      }
+    ]
+  },
+  {
+    "kind": "conference",
+    "title": "Compiler Framework for Directional Transport in Zoned Neutral Atom Systems with AOD Assistance: A Hybrid Remote CZ Approach",
+    "venue": "Design Automation Conference (DAC)",
+    "year": "2026",
+    "status": "Accepted"
+  }
+]

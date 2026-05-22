@@ -7,6 +7,7 @@
     "about": "about",
     "research": "research",
     "patents": "patents",
+    "publications": "publications",
     "notes": "notes",
     "gallery": "gallery",
     "back-to-top": "back to top",
@@ -56,6 +57,15 @@
     "title": "Patents",
     "see-patent": "See Patent",
     "inventors": "Inventors"
+  },
+  "publications": {
+    "title": "Publications",
+    "intro": "Journal papers, conference papers, and patents.",
+    "journal-papers": "Journal Papers",
+    "conference-papers": "Conference Papers",
+    "preprints": "Preprints",
+    "patents": "Patents",
+    "talks": "Talks & Presentations"
   },
   "footer": {
     "copyright": "© {{year}} Chen Huang. All rights reserved."
