@@ -73,7 +73,13 @@ const Metadata = styled.p`
 const LinkRow = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
+`;
+
+const PublicationLinkButton = styled(Button)`
+  padding: 8px 10px;
+  font-size: 11px;
+  line-height: 1;
 `;
 
 const PatentGrid = styled.div`
@@ -126,6 +132,21 @@ const PaperEntry = ({ paper }) => {
 
   return (
     <PaperCard>
+      {paper.links?.length > 0 && (
+        <LinkRow>
+          {paper.links.map(({ href, label }) => (
+            <PublicationLinkButton
+              key={href}
+              as="a"
+              href={href}
+              target="__blank"
+            >
+              {label}
+            </PublicationLinkButton>
+          ))}
+        </LinkRow>
+      )}
+
       <div>
         <h3>{title}</h3>
         <Metadata>
@@ -138,16 +159,6 @@ const PaperEntry = ({ paper }) => {
       {paper.authors && (
         <PeopleLine>{highlightOwnName(paper.authors)}</PeopleLine>
       )}
-
-      {paper.links?.length > 0 && (
-        <LinkRow>
-          {paper.links.map(({ href, label }) => (
-            <Button key={href} as="a" href={href} target="__blank">
-              {label}
-            </Button>
-          ))}
-        </LinkRow>
-      )}
     </PaperCard>
   );
 };
@@ -157,6 +168,21 @@ const PatentEntry = ({ patent }) => {
 
   return (
     <PatentCard>
+      <LinkRow>
+        <PublicationLinkButton as="a" href={patent.links.src} target="__blank">
+          {t("patents.see-patent")}
+        </PublicationLinkButton>
+        {patent.links.file && (
+          <PublicationLinkButton
+            as="a"
+            href={patent.links.file}
+            target="__blank"
+          >
+            PDF
+          </PublicationLinkButton>
+        )}
+      </LinkRow>
+
       <div>
         <h3>{patent.title}</h3>
         <Metadata>
@@ -169,17 +195,6 @@ const PatentEntry = ({ patent }) => {
       <PeopleLine>
         {t("patents.inventors")}: {highlightOwnName(patent.inventor)}
       </PeopleLine>
-
-      <LinkRow>
-        <Button as="a" href={patent.links.src} target="__blank">
-          {t("patents.see-patent")}
-        </Button>
-        {patent.links.file && (
-          <Button as="a" href={patent.links.file} target="__blank">
-            PDF
-          </Button>
-        )}
-      </LinkRow>
     </PatentCard>
   );
 };
