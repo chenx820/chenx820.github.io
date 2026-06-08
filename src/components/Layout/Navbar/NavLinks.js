@@ -1,68 +1,66 @@
 import React from "react";
-import { Link, Trans, useTranslation } from "gatsby-plugin-react-i18next";
-import { Link as SLink } from "react-scroll";
+import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 
-const NavItemsSmoothLinks = ({ NavItem }) => {
-  const { t } = useTranslation();
-  return (
-    <>
-      <NavItem>
-        <SLink smooth offset={-70} hashSpy to="home">
-          {t("nav.home")}
-        </SLink>
-      </NavItem>
-      <NavItem>
-        <SLink smooth offset={-100} hashSpy to="about">
-          {t("nav.about")}
-        </SLink>
-      </NavItem>
-      <NavItem>
-        <SLink smooth offset={-100} hashSpy to="research">
-          {t("nav.research")}
-        </SLink>
-      </NavItem>
-      {/* <NavItem>
-        <SLink smooth offset={-100} hashSpy to="contact">
-          {t('nav.contact')}
-        </SLink>
-      </NavItem> */}
-    </>
-  );
+const sectionOffsets = {
+  home: -70,
+  about: -100,
+  research: -100,
 };
 
-const NavItemsGatsbyLinks = ({ NavItem }) => {
-  const { t } = useTranslation();
+export const scrollToHomeSection = (target) => {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  const element = document.getElementById(target);
+  if (!element) {
+    return false;
+  }
+
+  const top =
+    element.getBoundingClientRect().top +
+    window.pageYOffset +
+    (sectionOffsets[target] || 0);
+
+  window.history.pushState(
+    null,
+    "",
+    target === "home" ? window.location.pathname : `#${target}`
+  );
+  window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+  return true;
+};
+
+const HomeSectionLink = ({ children, target }) => {
+  const to = target === "home" ? "/" : `/#${target}`;
+
+  const handleClick = (event) => {
+    if (scrollToHomeSection(target)) {
+      event.preventDefault();
+    }
+  };
+
   return (
-    <>
-      <NavItem>
-        <Link to="/">{t("nav.home")}</Link>
-      </NavItem>
-      <NavItem>
-        <Link to="/#about">{t("nav.about")}</Link>
-      </NavItem>
-      <NavItem>
-        <Link to="/#research">{t("nav.research")}</Link>
-      </NavItem>
-      {/* <NavItem>
-        <Link to="/#contact">{t("nav.contact")}</Link>
-      </NavItem> */}
-    </>
+    <Link to={to} onClick={handleClick}>
+      {children}
+    </Link>
   );
 };
 
 const NavLinks = React.memo(({ NavItem }) => {
-  let path = null;
-  if (typeof window !== "undefined") {
-    path = window.location.pathname;
-  }
+  const { t } = useTranslation();
 
   return (
     <>
-      {path === "/" ? (
-        <NavItemsSmoothLinks NavItem={NavItem} />
-      ) : (
-        <NavItemsGatsbyLinks NavItem={NavItem} />
-      )}
+      <NavItem>
+        <HomeSectionLink target="home">{t("nav.home")}</HomeSectionLink>
+      </NavItem>
+      <NavItem>
+        <HomeSectionLink target="about">{t("nav.about")}</HomeSectionLink>
+      </NavItem>
+      <NavItem>
+        <HomeSectionLink target="research">{t("nav.research")}</HomeSectionLink>
+      </NavItem>
     </>
   );
 });

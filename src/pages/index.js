@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { graphql } from "gatsby";
 import SEO from "@components/seo";
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import { scrollToHomeSection } from "@components/Layout/Navbar/NavLinks";
 
 import Layout from "@components/Layout/Layout";
 
@@ -12,15 +13,23 @@ import Contact from "@components/Contact/Contact";
 
 const IndexPage = () => {
   const { t } = useTranslation();
-  return (
-  <Layout>
-    <SEO title={t("global.name")} />
 
-    <Home />
-    <About />
-    <Research />
-    {/* <Contact /> */}
-  </Layout>
+  useEffect(() => {
+    const target = window.location.hash.replace("#", "") || "home";
+    window.requestAnimationFrame(() => {
+      scrollToHomeSection(target);
+    });
+  }, []);
+
+  return (
+    <Layout>
+      <SEO title={t("global.name")} />
+
+      <Home />
+      <About />
+      <Research />
+      {/* <Contact /> */}
+    </Layout>
   );
 };
 
