@@ -1,120 +1,47 @@
 import React from "react";
 import styled from "styled-components";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SwitchWrapper = styled.div`
-  input[type="checkbox"] {
-    height: 100%;
-    width: 100%;
-    visibility: visible;
+const GlobeButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: ${(p) => p.theme.textColor};
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${(p) => p.theme.primaryColor};
   }
 
-  .button-cover,
-  .knobs,
-  .layer {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-
-  .button {
-    position: relative;
-    top: 50%;
-    width: 74px;
-    height: 30px;
-    overflow: hidden;
-  }
-
-  .button.r,
-  .button.r .layer {
-    border-radius: 100px;
-  }
-
-  .button.b2 {
-    border-radius: 2px;
-  }
-
-  .checkbox {
-    position: relative;
-    width: 100% !important;
-    height: 100% !important;
-    padding: 0;
-    margin: 0;
-    opacity: 0;
-    cursor: pointer;
-    z-index: 3;
-  }
-
-  .knobs {
-    z-index: 2;
-  }
-
-  .layer {
-    width: 100%;
-    transition-delay: 1s;
-    transition: 0.2s ease all;
-    z-index: 1;
-    background-color: ${(p) => p.theme.bgColor};
-  }
-
-  /* Button 1 */
-  #button-1 .knobs:before {
-    content: "中文";
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    width: 30px;
-    height: 5px;
-    color: #000;
-    font-size: 8px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 0.5;
-    padding: 9px 4px;
-    background-color: ${(p) => p.theme.primaryColor};
-    border-radius: 30px;
-    transition-delay: 1s;
-    transition: 0.2s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
-  }
-
-  #button-1 .checkbox:checked + .knobs:before {
-    content: "EN";
-    left: 32px;
-    color: #000;
-    background-color: ${(p) => p.theme.primaryColor};
-  }
-
-  /* #button-1 .checkbox:checked ~ .layer {
-    
-  } */
-
-  #button-1 .knobs,
-  #button-1 .knobs:before,
-  #button-1 .layer {
-    transition-delay: 1s;
-    transition: 0.2s ease all;
+  .lang-label {
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
   }
 `;
 
 const LanguageSwitch = () => {
   const { language, changeLanguage } = useI18next();
   const isEn = language === "en";
+  const nextLang = isEn ? "zh" : "en";
+
   return (
-    <SwitchWrapper>
-      <div className="button r" id="button-1">
-        <input
-          className="checkbox"
-          aria-label="toggle language"
-          type="checkbox"
-          onChange={() => changeLanguage(isEn ? "zh" : "en")}
-          checked={isEn}
-        />
-        <div className="knobs"></div>
-        <div className="layer"></div>
-      </div>
-    </SwitchWrapper>
+    <GlobeButton
+      type="button"
+      aria-label={isEn ? "Switch to Chinese" : "切换到英文"}
+      title={isEn ? "切换到中文" : "Switch to English"}
+      onClick={() => changeLanguage(nextLang)}
+    >
+      <FontAwesomeIcon icon="globe" />
+      <span className="lang-label">{isEn ? "EN" : "中"}</span>
+    </GlobeButton>
   );
 };
 

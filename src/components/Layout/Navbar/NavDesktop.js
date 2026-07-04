@@ -39,11 +39,11 @@ const NavDesktop = () => {
             <Link to="/gallery">{t("nav.gallery")}</Link>
           </NavItem>
           <NavItem>
+            <LanguageSwitch />
+          </NavItem>
+          <NavItem>
             <ToggleSwitch />
           </NavItem>
-          {/* <NavItem>
-            <LanguageSwitch />
-          </NavItem> */}
         </NavItems>
       </nav>
     </>

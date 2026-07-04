@@ -34,7 +34,8 @@ import {
   faAtom,
   faUniversity,
   faNetworkWired,
-  faFilePdf
+  faFilePdf,
+  faGlobe
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -68,6 +69,7 @@ library.add(
   faAtom,
   faUniversity,
   faNetworkWired,
-  faFilePdf
+  faFilePdf,
+  faGlobe
 );
 config.autoAddCss = false;
