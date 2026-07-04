@@ -1,86 +1,122 @@
 [
   {
-    "title": "London",
-    "description": "Software development company UI design",
-    "links": {
-      "image": "photo_london2.jpeg"
-    }
+    "title": "London Walks",
+    "date": "2024.01 · London",
+    "sortDate": "2024-01-01",
+    "description": "Street scenes, quiet parks, and short walks around London.",
+    "photos": [
+      {
+        "title": "London",
+        "links": {
+          "image": "photo_london2.jpeg"
+        }
+      },
+      {
+        "title": "Regent Street",
+        "links": {
+          "image": "photo_regents.jpeg"
+        }
+      },
+      {
+        "title": "Epping Forest",
+        "links": {
+          "image": "photo_epping-forest.jpeg"
+        }
+      },
+      {
+        "title": "White Cliffs of Dover",
+        "links": {
+          "image": "photo_white-cliff.jpeg"
+        }
+      }
+    ]
   },
   {
-    "title": "Regent Street",
-    "description": "BugVilla, Bug Tracker app",
-    "links": {
-      "image": "photo_regents.jpeg"
-    }
+    "title": "Swiss Lakeside",
+    "date": "2024.02 · Lungern",
+    "sortDate": "2024-02-01",
+    "description": "A small set from the lake and mountain light in Lungern.",
+    "photos": [
+      {
+        "title": "Lungern",
+        "links": {
+          "image": "photo_switzerland.jpeg"
+        }
+      },
+      {
+        "title": "Lungern",
+        "links": {
+          "image": "photo_switzerland2.jpeg"
+        }
+      }
+    ]
   },
   {
-    "title": "Lungern",
-    "description": "BugVilla, Bug Tracker app",
-    "links": {
-      "image": "photo_switzerland.jpeg"
-    }
-  },
-  {
-    "title": "Lungern",
-    "description": "BugVilla, Bug Tracker app",
-    "links": {
-      "image": "photo_switzerland2.jpeg"
-    }
-  },
-  {
-    "title": "Beijing",
-    "description": "Software development company UI design",
-    "links": {
-      "image": "photo_beihai-park.jpeg"
-    }
+    "title": "Beihai Park",
+    "date": "2024.03 · Beijing",
+    "sortDate": "2024-03-01",
+    "description": "An afternoon around Beihai Park.",
+    "photos": [
+      {
+        "title": "Beijing",
+        "links": {
+          "image": "photo_beihai-park.jpeg"
+        }
+      }
+    ]
   },
   {
     "title": "Copenhagen",
-    "description": "Software development company UI design",
-    "links": {
-      "image": "photo_copenhagen.jpeg"
-    }
-  },
-  {
-    "title": "London",
-    "description": "Software development company UI design",
-    "links": {
-      "image": "photo_epping-forest.jpeg"
-    }
-  },
-  {
-    "title": "Morocco",
-    "description": "Software development company UI design",
-    "links": {
-      "image": "photo_morocco.jpeg"
-    }
+    "date": "2024.04 · Copenhagen",
+    "sortDate": "2024-04-01",
+    "description": "A clean northern-city moment from Copenhagen.",
+    "photos": [
+      {
+        "title": "Copenhagen",
+        "links": {
+          "image": "photo_copenhagen.jpeg"
+        }
+      }
+    ]
   },
   {
     "title": "Morocco",
-    "description": "Software development company UI design",
-    "links": {
-      "image": "photo_morocco2.jpeg"
-    }
+    "date": "2024.05 · Morocco",
+    "sortDate": "2024-05-01",
+    "description": "Colors, streets, and textures from Morocco.",
+    "photos": [
+      {
+        "title": "Morocco",
+        "links": {
+          "image": "photo_morocco.jpeg"
+        }
+      },
+      {
+        "title": "Morocco",
+        "links": {
+          "image": "photo_morocco2.jpeg"
+        }
+      }
+    ]
   },
   {
     "title": "Paris",
-    "description": "Software development company UI design",
-    "links": {
-      "image": "photo_paris.jpeg"
-    }
-  },
-  {
-    "title": "Paris",
-    "description": "Software development company UI design",
-    "links": {
-      "image": "photo_paris2.jpeg"
-    }
-  },
-  {
-    "title": "White Cliffs of Dover",
-    "description": "Software development company UI design",
-    "links": {
-      "image": "photo_white-cliff.jpeg"
-    }
+    "date": "2024.06 · Paris",
+    "sortDate": "2024-06-01",
+    "description": "Two fragments from a Paris trip.",
+    "photos": [
+      {
+        "title": "Paris",
+        "links": {
+          "image": "photo_paris.jpeg"
+        }
+      },
+      {
+        "title": "Paris",
+        "links": {
+          "image": "photo_paris2.jpeg"
+        }
+      }
+    ]
   }
 ]

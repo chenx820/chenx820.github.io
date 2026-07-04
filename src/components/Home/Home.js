@@ -47,7 +47,7 @@ const Home = () => {
               <IconLink
                 label="email"
                 icon={["fas", "envelope"]}
-                href="mailto:chen.huang23@imperial.ac.uk"
+                href="mailto:chen.huang678@gmail.com"
               />
               <IconLink
                 label="linkedin"

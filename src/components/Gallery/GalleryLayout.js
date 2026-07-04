@@ -8,20 +8,23 @@ import IFrame from "@common/IFrame";
 
 import PageHeader from "@common/PageHeader";
 import Button from "@common/Button";
-import Grid from "@common/Grid";
 
 import HighlightTemplate from "./HighlightTemplate";
 import { HighlightPreview } from "./HighlightTemplate.style";
 
 import {
   PhotosWrapper,
+  PhotoTimeline,
+  PhotoTheme,
+  PhotoThemeGrid,
+  PhotoThemeHeader,
   PhotoCard,
   PhotoCardFooter,
   Lightbox,
   LightBoxCloseButton,
 } from "./Gallery.style";
 
-const Card = React.memo(({ nodes, currentImg, openLightbox }) => (
+const Card = React.memo(({ photoItem, currentImg, openLightbox }) => (
   <PhotoCard>
     <div
       style={{ width: "100%", height: "100%" }}
@@ -29,7 +32,7 @@ const Card = React.memo(({ nodes, currentImg, openLightbox }) => (
     >
       <GatsbyImage
         image={getImage(currentImg.node.childImageSharp.gatsbyImageData)}
-        alt={nodes.node.title}
+        alt={photoItem.title}
       />
     </div>
 
@@ -40,7 +43,7 @@ const Card = React.memo(({ nodes, currentImg, openLightbox }) => (
       className="ccard__footer"
       onClick={(e) => e.stopPropagation()}
     >
-      <p>{nodes.node.title}</p>
+      <p>{photoItem.title}</p>
     </PhotoCardFooter>
   </PhotoCard>
 ));
@@ -83,14 +86,19 @@ const Gallery = () => {
 
   const photo = useStaticQuery(graphql`
     {
-      allPhotosJson(sort: { links: { image: ASC } }) {
+      allPhotosJson(sort: { sortDate: ASC }) {
         edges {
           node {
             id
+            date
             description
+            sortDate
             title
-            links {
-              image
+            photos {
+              title
+              links {
+                image
+              }
             }
           }
         }
@@ -104,6 +112,7 @@ const Gallery = () => {
       ) {
         edges {
           node {
+            base
             name
             childImageSharp {
               gatsbyImageData(layout: CONSTRAINED, quality: 90, width: 1200)
@@ -113,6 +122,11 @@ const Gallery = () => {
       }
     }
   `);
+
+  const imageByFilename = photo.allFile.edges.reduce((images, image) => {
+    images[image.node.base] = image;
+    return images;
+  }, {});
 
   return (
     <PhotosWrapper id="photo">
@@ -127,25 +141,42 @@ const Gallery = () => {
         }
       />
       <PageHeader>{t("gallery.photography")}</PageHeader>
-      <Grid collapseHeight="1000px" showAll={showAll}>
-        {photo.allPhotosJson.edges.map((nodes, index) => {
-          let currentImg = photo.allFile.edges[index];
-          return (
-            <Card
-              key={nodes.node.id}
-              nodes={nodes}
-              currentImg={currentImg}
-              openLightbox={openLightbox}
-            />
-          );
-        })}
+      <PhotoTimeline collapseHeight="1450px" showAll={showAll}>
+        {photo.allPhotosJson.edges.map(({ node }) => (
+          <PhotoTheme key={node.id}>
+            <PhotoThemeHeader>
+              <p className="photo-theme__date">{node.date}</p>
+              <h3>{node.title}</h3>
+              <p className="photo-theme__description">{node.description}</p>
+            </PhotoThemeHeader>
+
+            <PhotoThemeGrid>
+              {node.photos.map((photoItem) => {
+                const currentImg = imageByFilename[photoItem.links.image];
+
+                if (!currentImg) {
+                  return null;
+                }
+
+                return (
+                  <Card
+                    key={photoItem.links.image}
+                    photoItem={photoItem}
+                    currentImg={currentImg}
+                    openLightbox={openLightbox}
+                  />
+                );
+              })}
+            </PhotoThemeGrid>
+          </PhotoTheme>
+        ))}
 
         {!showAll && (
           <Button onClick={handleShowAll} className="showall__button">
             {t("gallery.show-all")}
           </Button>
         )}
-      </Grid>
+      </PhotoTimeline>
 
       {isLightboxOpen && isClient && MapInteractionCSS && (
         <Lightbox data-testid="lightbox" onClick={closeLightBox}>
@@ -170,7 +201,7 @@ const Gallery = () => {
 };
 
 Card.propTypes = {
-  nodes: PropTypes.object.isRequired,
+  photoItem: PropTypes.object.isRequired,
   currentImg: PropTypes.object.isRequired,
   openLightbox: PropTypes.func.isRequired,
 };

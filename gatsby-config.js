@@ -18,7 +18,7 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          quality: 100,
+          quality: 80,
           formats: ["auto", "webp"],
           placeholder: "blurred",
         },
@@ -87,7 +87,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1200,
-              quality: 100,
+              quality: 80,
               showCaptions: true,
             },
           },
@@ -144,9 +144,24 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [config.googleAnalyticsID],
+        pluginConfig: {
+          respectDNT: true,
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        excludes: [`/notes/tags/*`, `/notes/institution/*`, `/goodies`],
+        excludes: [
+          `/notes/tags/*`,
+          `/notes/institution/*`,
+          `/goodies`,
+          `/naqc-compilation`,
+          `/zh/naqc-compilation`,
+        ],
       },
     },
     `gatsby-plugin-social-banners`,

@@ -10,6 +10,10 @@
       {
         "label": "IEEE Xplore",
         "href": "https://ieeexplore.ieee.org/abstract/document/11535023"
+      },
+      {
+        "label": "PDF",
+        "href": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11535023"
       }
     ]
   },
@@ -20,5 +24,23 @@
     "venue": "Design Automation Conference (DAC)",
     "year": "2026",
     "status": "Accepted"
+  },
+  {
+    "kind": "preprint",
+    "title": "Lazy-Move Compilation for Neutral-Atom Quantum Computers via a Buffer-Relay Fabric",
+    "authors": "Chen Huang, Jingbo Wang, Zhemin Zhang, Ming Zhong, Zhuo Fu, Zhiding Liang, Yuan Sun, Dong E. Liu",
+    "venue": "arXiv:2606.31833 [quant-ph]",
+    "year": "2026",
+    "status": "Preprint",
+    "links": [
+      {
+        "label": "arXiv",
+        "href": "https://arxiv.org/abs/2606.31833"
+      },
+      {
+        "label": "PDF",
+        "href": "https://arxiv.org/pdf/2606.31833"
+      }
+    ]
   }
 ]

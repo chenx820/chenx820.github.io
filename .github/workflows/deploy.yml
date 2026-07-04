@@ -1,0 +1,60 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow the workflow to push the built site to the gh-pages branch
+permissions:
+  contents: write
+
+# Cancel in-progress runs when a new commit is pushed
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+      GATSBY_TELEMETRY_DISABLED: 1
+    steps:
+      - name: Checkout (with Git LFS)
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Cache Gatsby build
+        uses: actions/cache@v4
+        with:
+          path: |
+            .cache
+            public
+          key: ${{ runner.os }}-gatsby-${{ hashFiles('package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-gatsby-${{ hashFiles('package-lock.json') }}-
+            ${{ runner.os }}-gatsby-
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
+          commit_message: "Deploy site from ${{ github.sha }}"

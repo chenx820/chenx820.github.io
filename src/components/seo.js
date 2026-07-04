@@ -38,6 +38,24 @@ function SEO({ title, description, slug, isPost }) {
     ogimage = `${defaults.siteUrl}${slug}/social-banner-img.jpg`;
   }
 
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Chen Huang",
+    url: defaults.siteUrl,
+    image: ogimage,
+    jobTitle: "PhD Student in Computer Science and Engineering",
+    affiliation: {
+      "@type": "CollegeOrUniversity",
+      name: "The Chinese University of Hong Kong",
+    },
+    knowsAbout: ["Quantum Computing", "Computer Science"],
+    sameAs: [
+      "https://github.com/chenx820",
+      "https://linkedin.com/in/chen-huang-820x",
+    ],
+  };
+
   return (
     <Helmet>
       {/* General tags */}
@@ -53,6 +71,17 @@ function SEO({ title, description, slug, isPost }) {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       {ogimage && <meta property="og:image" content={ogimage} />}
+
+      {/* Twitter Card tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      {ogimage && <meta name="twitter:image" content={ogimage} />}
+
+      {/* Structured data */}
+      <script type="application/ld+json">
+        {JSON.stringify(personSchema)}
+      </script>
     </Helmet>
   );
 }

@@ -9,7 +9,6 @@ import Layout from "@components/Layout/Layout";
 import Home from "@components/Home/Home";
 import About from "@components/About/About";
 import Research from "@components/Research/Research";
-import Contact from "@components/Contact/Contact";
 
 const IndexPage = () => {
   const { t } = useTranslation();
@@ -28,7 +27,6 @@ const IndexPage = () => {
       <Home />
       <About />
       <Research />
-      {/* <Contact /> */}
     </Layout>
   );
 };

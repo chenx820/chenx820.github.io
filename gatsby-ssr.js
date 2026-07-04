@@ -13,3 +13,7 @@ require("typeface-karla");
 require("./src/styles/prism-purpleking-dark.css");
 require("prismjs/plugins/line-numbers/prism-line-numbers.css");
 require("katex/dist/katex.min.css");
+
+exports.onRenderBody = ({ setHtmlAttributes }) => {
+  setHtmlAttributes({ lang: "en" });
+};

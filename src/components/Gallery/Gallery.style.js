@@ -7,6 +7,79 @@ export const PhotosWrapper = styled.section`
   ${(props) => props.theme.spacing.sectionBottom};
 `;
 
+export const PhotoTimeline = styled.div`
+  overflow: hidden;
+  position: relative;
+  max-height: ${(p) => (p.showAll ? "100%" : p.collapseHeight)};
+
+  ${(p) =>
+    !p.showAll &&
+    `
+      &:before {
+        content: "";
+        width: 100%;
+        height: 300px;
+        position: absolute;
+        border-radius: 10px;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0), 40%, ${p.theme.bgColor});
+        z-index: 5;
+        transition: 0.3s;
+      }
+    `}
+
+  .showall__button {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    z-index: 6;
+    padding: 15px 40px;
+    font-weight: bold;
+    transform: translateX(-50%);
+  }
+`;
+
+export const PhotoTheme = styled.article`
+  margin: 0 auto 70px;
+  max-width: 1180px;
+`;
+
+export const PhotoThemeHeader = styled.header`
+  margin: 0 5px 22px;
+
+  .photo-theme__date {
+    margin: 0 0 8px;
+    color: ${(props) => props.theme.primaryColor};
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    color: ${(props) => props.theme.textColor};
+    font-size: 1.55rem;
+  }
+
+  .photo-theme__description {
+    margin: 0;
+    max-width: 660px;
+    color: ${(props) => props.theme.textColor};
+    opacity: 0.78;
+    line-height: 1.7;
+  }
+`;
+
+export const PhotoThemeGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: center;
+  align-items: center;
+  gap: 50px 20px;
+  padding: 5px;
+`;
+
 export const PhotoCard = styled(Card)`
   justify-self: center;
 
