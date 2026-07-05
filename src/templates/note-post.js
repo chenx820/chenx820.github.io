@@ -6,6 +6,7 @@ import Layout from "@components/Layout/Layout";
 
 import NoteLayout from "@src/components/Notes/NotesLayout";
 import SocialShareSection from "@src/components/Notes/SocialShareSection";
+import ScrollExtras from "@common/ScrollExtras";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NoteDateAndReadTime } from "@src/components/Notes/NoteCard";
@@ -59,6 +60,8 @@ const NotePost = ({ data, pageContext }) => {
         />
         <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
       </NoteLayout>
+
+      <ScrollExtras />
     </Layout>
   );
 };

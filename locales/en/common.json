@@ -68,7 +68,8 @@
     "talks": "Talks & Presentations"
   },
   "footer": {
-    "copyright": "© {{year}} Chen Huang. All rights reserved."
+    "copyright": "© {{year}} Chen Huang. All rights reserved.",
+    "built-with": "Built with Gatsby"
   },
   "notes": {
     "title": "Notes",
@@ -78,7 +79,9 @@
     "peking-university": "Peking University",
     "imperial": "Imperial College London",
     "cuhk": "Chinese University of Hong Kong",
-    "self-study": "Self-study"
+    "self-study": "Self-study",
+    "search-placeholder": "Search notes...",
+    "no-results": "No notes found."
   },
   "gallery": {
     "title": "Gallery",
@@ -89,7 +92,12 @@
   },
   "common": {
     "share-on": "Share on",
-    "edit-on-github": "Edit post on GitHub"
+    "edit-on-github": "Edit post on GitHub",
+    "show-more": "Show more ({{count}})",
+    "show-less": "Show less",
+    "back-to-top": "Back to top",
+    "copy-bibtex": "BibTeX",
+    "copied": "Copied!"
   },
   "notFound": {
     "title": "404: Not found",

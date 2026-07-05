@@ -36,16 +36,7 @@ const About = () => {
       </AboutInfo>
 
       <div className="news__wrapper">
-        <News
-          items={[
-            t("about.news.0"),
-            t("about.news.1"),
-            t("about.news.2"),
-            t("about.news.3"),
-            t("about.news.4"),
-            t("about.news.5"),
-          ]}
-        />
+        <News items={t("about.news", { returnObjects: true })} />
       </div>
     </AboutWrapper>
   );

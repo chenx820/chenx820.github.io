@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import styled from "styled-components";
 
@@ -46,7 +46,7 @@ const PaperCard = styled.article`
   gap: 14px;
   padding: 28px;
   border: 1px solid ${(props) => (props.theme.dark ? "#333333" : "#eef1f8")};
-  border-radius: 8px;
+  border-radius: 10px;
   background: ${(props) => props.theme.secondaryColor};
   box-shadow: ${(props) => props.theme.shadowSmall};
 
@@ -99,7 +99,7 @@ const PatentCard = styled.article`
   min-height: 260px;
   padding: 28px;
   border: 1px solid ${(props) => (props.theme.dark ? "#333333" : "#eef1f8")};
-  border-radius: 8px;
+  border-radius: 10px;
   background: ${(props) => props.theme.secondaryColor};
   box-shadow: ${(props) => props.theme.shadowSmall};
 
@@ -117,6 +117,73 @@ const PeopleLine = styled.p`
   }
 `;
 
+const buildBibtex = (paper) => {
+  const cleanAuthors = (paper.authors || "")
+    .replace(/\*/g, "")
+    .split(",")
+    .map((a) => a.trim())
+    .filter(Boolean);
+
+  const firstAuthorLastName =
+    cleanAuthors[0]?.split(" ").pop()?.toLowerCase() || "unknown";
+  const firstTitleWord =
+    (paper.title || "")
+      .split(" ")[0]
+      ?.replace(/[^a-zA-Z0-9]/g, "")
+      .toLowerCase() || "paper";
+  const citeKey = `${firstAuthorLastName}${paper.year || ""}${firstTitleWord}`;
+
+  const authorField = cleanAuthors.join(" and ");
+  const isArxiv = /arxiv/i.test(paper.venue || "");
+
+  const lines = [];
+  if (paper.kind === "journal") {
+    lines.push(`@article{${citeKey},`);
+    lines.push(`  journal = {${paper.venue}},`);
+  } else if (paper.kind === "conference") {
+    lines.push(`@inproceedings{${citeKey},`);
+    lines.push(`  booktitle = {${paper.venue}},`);
+  } else {
+    lines.push(`@misc{${citeKey},`);
+    if (isArxiv) {
+      const arxivId = (paper.venue.match(/arXiv:([\d.]+)/i) || [])[1];
+      if (arxivId) {
+        lines.push(`  eprint = {${arxivId}},`);
+        lines.push(`  archivePrefix = {arXiv},`);
+      }
+    } else if (paper.venue) {
+      lines.push(`  howpublished = {${paper.venue}},`);
+    }
+  }
+  lines.splice(1, 0, `  title = {${paper.title}},`, `  author = {${authorField}},`);
+  if (paper.year) lines.push(`  year = {${paper.year}},`);
+  if (paper.status && paper.status !== "Published")
+    lines.push(`  note = {${paper.status}},`);
+  lines.push("}");
+  return lines.join("\n");
+};
+
+const BibtexButton = ({ paper }) => {
+  const { t } = useTranslation();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(buildBibtex(paper));
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1600);
+    } catch (error) {
+      // clipboard unavailable; ignore
+    }
+  };
+
+  return (
+    <PublicationLinkButton as="button" type="button" onClick={handleCopy}>
+      {copied ? t("common.copied") : t("common.copy-bibtex")}
+    </PublicationLinkButton>
+  );
+};
+
 const highlightOwnName = (people) => {
   if (!people) {
     return null;
@@ -129,12 +196,14 @@ const highlightOwnName = (people) => {
 
 const PaperEntry = ({ paper }) => {
   const title = paper.title || paper.venue;
+  const showBibtex =
+    paper.title && ["journal", "conference", "preprint"].includes(paper.kind);
 
   return (
     <PaperCard>
-      {paper.links?.length > 0 && (
+      {(paper.links?.length > 0 || showBibtex) && (
         <LinkRow>
-          {paper.links.map(({ href, label }) => (
+          {paper.links?.map(({ href, label }) => (
             <PublicationLinkButton
               key={href}
               as="a"
@@ -144,6 +213,7 @@ const PaperEntry = ({ paper }) => {
               {label}
             </PublicationLinkButton>
           ))}
+          {showBibtex && <BibtexButton paper={paper} />}
         </LinkRow>
       )}
 

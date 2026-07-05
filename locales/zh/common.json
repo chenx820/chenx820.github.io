@@ -67,7 +67,8 @@
     "talks": "报告与演示"
   },
   "footer": {
-    "copyright": "© {{year}} 黄晨。保留所有权利。"
+    "copyright": "© {{year}} 黄晨。保留所有权利。",
+    "built-with": "基于 Gatsby 构建"
   },
   "notes": {
     "title": "笔记",
@@ -77,7 +78,9 @@
     "peking-university": "北京大学",
     "imperial": "帝国理工学院",
     "cuhk": "香港中文大学",
-    "self-study": "自学"
+    "self-study": "自学",
+    "search-placeholder": "搜索笔记…",
+    "no-results": "没有找到相关笔记。"
   },
   "gallery": {
     "title": "摄影集",
@@ -88,7 +91,12 @@
   },
   "common": {
     "share-on": "分享到",
-    "edit-on-github": "在 GitHub 上编辑文章"
+    "edit-on-github": "在 GitHub 上编辑文章",
+    "show-more": "展开更多（{{count}} 条）",
+    "show-less": "收起",
+    "back-to-top": "返回顶部",
+    "copy-bibtex": "BibTeX",
+    "copied": "已复制！"
   },
   "notFound": {
     "title": "404：页面未找到",

@@ -10,6 +10,7 @@ import IFrame from "@common/IFrame";
 
 import SocialShareSection from "@src/components/Notes/SocialShareSection";
 import SplitLayout from "@components/common/SplitLayout";
+import ScrollExtras from "@common/ScrollExtras";
 
 import { InfoTitle, ResearchWrapper } from "./project.style";
 
@@ -79,6 +80,8 @@ const Research = ({ data }) => {
           }
         />
       </ResearchWrapper>
+
+      <ScrollExtras />
     </Layout>
   );
 };
