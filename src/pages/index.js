@@ -15,9 +15,33 @@ const IndexPage = () => {
 
   useEffect(() => {
     const target = window.location.hash.replace("#", "") || "home";
-    window.requestAnimationFrame(() => {
-      scrollToHomeSection(target);
-    });
+
+    // Images below the fold change the page height after mount, so a single
+    // scroll attempt lands in the wrong place. Retry (instantly) a few times
+    // and again once everything has loaded, until the position settles.
+    let attempts = 0;
+    let timer;
+
+    // "home" is always at the top and its position is stable, so it needs no
+    // retries (and retrying could fight an early manual scroll).
+    const maxAttempts = target === "home" ? 1 : 6;
+
+    const tryScroll = () => {
+      scrollToHomeSection(target, "auto");
+      attempts += 1;
+      if (attempts < maxAttempts) {
+        timer = window.setTimeout(tryScroll, 150);
+      }
+    };
+
+    const raf = window.requestAnimationFrame(tryScroll);
+    window.addEventListener("load", tryScroll);
+
+    return () => {
+      window.cancelAnimationFrame(raf);
+      window.clearTimeout(timer);
+      window.removeEventListener("load", tryScroll);
+    };
   }, []);
 
   return (

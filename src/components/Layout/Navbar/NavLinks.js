@@ -7,7 +7,7 @@ const sectionOffsets = {
   research: -100,
 };
 
-export const scrollToHomeSection = (target) => {
+export const scrollToHomeSection = (target, behavior = "smooth") => {
   if (typeof window === "undefined") {
     return false;
   }
@@ -27,7 +27,7 @@ export const scrollToHomeSection = (target) => {
     "",
     target === "home" ? window.location.pathname : `#${target}`
   );
-  window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+  window.scrollTo({ top: Math.max(top, 0), behavior });
   return true;
 };
 
