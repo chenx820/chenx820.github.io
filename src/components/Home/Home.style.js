@@ -19,6 +19,7 @@ export const Intro = styled.section`
     a.cta {
       display: block;
       margin: 30px 0;
+      text-align: center;
     }
 
     @media ${props => props.theme.media.tablet} {
