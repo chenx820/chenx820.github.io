@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image";
 import IFrame from "@common/IFrame";
 
 import PageHeader from "@common/PageHeader";
@@ -21,15 +21,14 @@ import {
   PhotoCard,
   PhotoCardFooter,
   Lightbox,
+  LightboxCaption,
+  LightboxNavButton,
   LightBoxCloseButton,
 } from "./Gallery.style";
 
-const Card = React.memo(({ photoItem, currentImg, openLightbox }) => (
+const Card = React.memo(({ photoItem, currentImg, onOpen }) => (
   <PhotoCard>
-    <div
-      style={{ width: "100%", height: "100%" }}
-      onClick={() => openLightbox(currentImg)}
-    >
+    <div style={{ width: "100%", height: "100%" }} onClick={onOpen}>
       <GatsbyImage
         image={getImage(currentImg.node.childImageSharp.gatsbyImageData)}
         alt={photoItem.title}
@@ -50,8 +49,7 @@ const Card = React.memo(({ photoItem, currentImg, openLightbox }) => (
 
 const Gallery = () => {
   const { t } = useTranslation();
-  const [selectedImg, setSelectedImg] = useState(null);
-  const [isLightboxOpen, setLightboxOpen] = useState(false);
+  const [lightbox, setLightbox] = useState(null); // { entries, index }
   const [showAll, setShowAll] = useState(false);
   const [MapInteractionCSS, setMapInteractionCSS] = useState(null);
   const [isClient, setIsClient] = useState(false);
@@ -72,15 +70,53 @@ const Gallery = () => {
   const handleShowAll = () => {
     setShowAll(true);
   };
-  const openLightbox = useCallback((img) => {
-    setSelectedImg(img);
-    setLightboxOpen(true);
+
+  const openLightbox = useCallback((entries, index) => {
+    setLightbox({ entries, index });
   }, []);
 
-  function closeLightBox(e) {
+  const closeLightbox = useCallback(() => {
+    setLightbox(null);
+  }, []);
+
+  const showPrev = useCallback(() => {
+    setLightbox(
+      (lb) =>
+        lb && {
+          ...lb,
+          index: (lb.index - 1 + lb.entries.length) % lb.entries.length,
+        }
+    );
+  }, []);
+
+  const showNext = useCallback(() => {
+    setLightbox(
+      (lb) => lb && { ...lb, index: (lb.index + 1) % lb.entries.length }
+    );
+  }, []);
+
+  // Keyboard navigation + scroll lock while the lightbox is open
+  useEffect(() => {
+    if (!lightbox) return undefined;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowLeft") showPrev();
+      else if (e.key === "ArrowRight") showNext();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [lightbox, closeLightbox, showPrev, showNext]);
+
+  function handleBackdropClick(e) {
     if (e.target.tagName !== "IMG") {
-      setSelectedImg(null);
-      setLightboxOpen(false);
+      closeLightbox();
     }
   }
 
@@ -128,6 +164,9 @@ const Gallery = () => {
     return images;
   }, {});
 
+  const current = lightbox && lightbox.entries[lightbox.index];
+  const hasMultiple = lightbox && lightbox.entries.length > 1;
+
   return (
     <PhotosWrapper id="photo">
       <HighlightTemplate
@@ -142,34 +181,35 @@ const Gallery = () => {
       />
       <PageHeader>{t("gallery.photography")}</PageHeader>
       <PhotoTimeline collapseHeight="1450px" showAll={showAll}>
-        {photo.allPhotosJson.edges.map(({ node }) => (
-          <PhotoTheme key={node.id}>
-            <PhotoThemeHeader>
-              <p className="photo-theme__date">{node.date}</p>
-              <h3>{node.title}</h3>
-              <p className="photo-theme__description">{node.description}</p>
-            </PhotoThemeHeader>
+        {photo.allPhotosJson.edges.map(({ node }) => {
+          const entries = node.photos
+            .map((photoItem) => ({
+              photoItem,
+              img: imageByFilename[photoItem.links.image],
+            }))
+            .filter((entry) => entry.img);
 
-            <PhotoThemeGrid>
-              {node.photos.map((photoItem) => {
-                const currentImg = imageByFilename[photoItem.links.image];
+          return (
+            <PhotoTheme key={node.id}>
+              <PhotoThemeHeader>
+                <p className="photo-theme__date">{node.date}</p>
+                <h3>{node.title}</h3>
+                <p className="photo-theme__description">{node.description}</p>
+              </PhotoThemeHeader>
 
-                if (!currentImg) {
-                  return null;
-                }
-
-                return (
+              <PhotoThemeGrid>
+                {entries.map((entry, index) => (
                   <Card
-                    key={photoItem.links.image}
-                    photoItem={photoItem}
-                    currentImg={currentImg}
-                    openLightbox={openLightbox}
+                    key={entry.photoItem.links.image}
+                    photoItem={entry.photoItem}
+                    currentImg={entry.img}
+                    onOpen={() => openLightbox(entries, index)}
                   />
-                );
-              })}
-            </PhotoThemeGrid>
-          </PhotoTheme>
-        ))}
+                ))}
+              </PhotoThemeGrid>
+            </PhotoTheme>
+          );
+        })}
 
         {!showAll && (
           <Button onClick={handleShowAll} className="showall__button">
@@ -178,21 +218,61 @@ const Gallery = () => {
         )}
       </PhotoTimeline>
 
-      {isLightboxOpen && isClient && MapInteractionCSS && (
-        <Lightbox data-testid="lightbox" onClick={closeLightBox}>
-          <MapInteractionCSS>
-            <GatsbyImage
-              className="lightbox__gatsbyimage"
-              image={getImage(selectedImg.node.childImageSharp.gatsbyImageData)}
-            />
+      {lightbox && isClient && MapInteractionCSS && (
+        <Lightbox data-testid="lightbox" onClick={handleBackdropClick}>
+          <MapInteractionCSS key={lightbox.index}>
+            <div className="lightbox__stage">
+              <img
+                className="lightbox__image"
+                src={getSrc(current.img.node.childImageSharp.gatsbyImageData)}
+                alt={current.photoItem.title}
+                draggable="false"
+              />
+            </div>
           </MapInteractionCSS>
 
+          {hasMultiple && (
+            <>
+              <LightboxNavButton
+                className="lightbox__nav--prev"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  showPrev();
+                }}
+                aria-label="Previous photo"
+              >
+                <FontAwesomeIcon icon="chevron-left" />
+              </LightboxNavButton>
+              <LightboxNavButton
+                className="lightbox__nav--next"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  showNext();
+                }}
+                aria-label="Next photo"
+              >
+                <FontAwesomeIcon icon="chevron-right" />
+              </LightboxNavButton>
+            </>
+          )}
+
+          <LightboxCaption onClick={(e) => e.stopPropagation()}>
+            <p className="lightbox__title">{current.photoItem.title}</p>
+            {hasMultiple && (
+              <span className="lightbox__counter">
+                {lightbox.index + 1} / {lightbox.entries.length}
+              </span>
+            )}
+          </LightboxCaption>
+
           <LightBoxCloseButton
-            tabindex="1"
-            onClick={closeLightBox}
+            onClick={(e) => {
+              e.stopPropagation();
+              closeLightbox();
+            }}
             aria-label="Close Lightbox"
           >
-            <FontAwesomeIcon icon="times" size="2x" />
+            <FontAwesomeIcon icon="times" />
           </LightBoxCloseButton>
         </Lightbox>
       )}
@@ -203,7 +283,7 @@ const Gallery = () => {
 Card.propTypes = {
   photoItem: PropTypes.object.isRequired,
   currentImg: PropTypes.object.isRequired,
-  openLightbox: PropTypes.func.isRequired,
+  onOpen: PropTypes.func.isRequired,
 };
 
 export default Gallery;

@@ -1,6 +1,5 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-import { FloatingButton } from "@components/Layout/Navbar/NavMobile.style";
 import { Card, CardFooter } from "@common/Card";
 
 export const PhotosWrapper = styled.section`
@@ -148,17 +147,121 @@ export const PhotoCardFooter = styled(CardFooter)`
 `;
 
 // LIGHTBOX
-export const LightBoxCloseButton = styled(FloatingButton)`
-  width: 50px;
-  height: 50px;
-  border: none;
-  position: fixed;
-  top: 50px;
-  right: 20px;
-  z-index: 5;
+const lightboxFadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
 
-  @media ${(props) => props.theme.media.minMobile} {
-    display: none;
+const lightboxZoomIn = keyframes`
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+`;
+
+const lightboxControl = `
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.26);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.7);
+    outline-offset: 2px;
+  }
+`;
+
+export const LightBoxCloseButton = styled.button`
+  ${lightboxControl}
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  z-index: 5002;
+  width: 44px;
+  height: 44px;
+  font-size: 1.1rem;
+
+  &:hover {
+    transform: rotate(90deg);
+  }
+`;
+
+export const LightboxNavButton = styled.button`
+  ${lightboxControl}
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5002;
+  width: 48px;
+  height: 48px;
+  font-size: 1.15rem;
+
+  &:hover {
+    transform: translateY(-50%) scale(1.08);
+  }
+
+  &.lightbox__nav--prev {
+    left: 22px;
+  }
+
+  &.lightbox__nav--next {
+    right: 22px;
+  }
+
+  @media ${(props) => props.theme.media.tablet} {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+
+    &.lightbox__nav--prev {
+      left: 10px;
+    }
+
+    &.lightbox__nav--next {
+      right: 10px;
+    }
+  }
+`;
+
+export const LightboxCaption = styled.div`
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  z-index: 5002;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: min(640px, calc(100vw - 32px));
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: rgba(18, 20, 26, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+
+  .lightbox__title {
+    margin: 0;
+    color: #fff;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .lightbox__counter {
+    flex-shrink: 0;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
   }
 `;
 
@@ -168,17 +271,34 @@ export const Lightbox = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 5000;
+  background: rgba(8, 9, 12, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: ${lightboxFadeIn} 0.25s ease;
 
-  .lightbox__gatsbyimage {
-    transform-origin: center 0;
-    transform: scale(0.7);
+  .lightbox__stage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 90px 100px;
+    box-sizing: border-box;
 
     @media ${(props) => props.theme.media.tablet} {
-      transform: translateY(35vh) scale(0.9);
+      padding: 56px 14px 110px;
     }
+  }
+
+  .lightbox__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
+    animation: ${lightboxZoomIn} 0.3s ease;
+    user-select: none;
+    -webkit-user-drag: none;
   }
 `;
