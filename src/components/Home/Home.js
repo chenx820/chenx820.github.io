@@ -54,6 +54,11 @@ const Home = () => {
                 icon={["fab", "linkedin"]}
                 href="//linkedin.com/in/chen-huang-820x/"
               />
+              <IconLink
+                label="google scholar"
+                icon={["fab", "google-scholar"]}
+                href="//scholar.google.com/citations?user=3hd6xq4AAAAJ"
+              />
             </div>
           </div>
         </div>

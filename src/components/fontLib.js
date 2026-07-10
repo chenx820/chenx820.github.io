@@ -14,6 +14,7 @@ import {
   faCodepen,
   faReact,
   faNode,
+  faGoogleScholar,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faPaintBrush,
@@ -72,6 +73,7 @@ library.add(
   faUniversity,
   faNetworkWired,
   faFilePdf,
-  faGlobe
+  faGlobe,
+  faGoogleScholar
 );
 config.autoAddCss = false;
