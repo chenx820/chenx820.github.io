@@ -27,6 +27,24 @@
   },
   {
     "kind": "preprint",
+    "title": "Lazy-Move Compilation for Neutral-Atom Quantum Computers via a Buffer-Relay Fabric",
+    "authors": "Chen Huang*, Jingbo Wang*, Zhemin Zhang, Ming Zhong, Zhuo Fu, Zhiding Liang, Yuan Sun, Dong E. Liu",
+    "venue": "arXiv:2606.31833 [quant-ph]",
+    "year": "2026",
+    "status": "Preprint",
+    "links": [
+      {
+        "label": "arXiv",
+        "href": "https://arxiv.org/abs/2606.31833"
+      },
+      {
+        "label": "PDF",
+        "href": "https://arxiv.org/pdf/2606.31833"
+      }
+    ]
+  },
+  {
+    "kind": "preprint",
     "title": "Möbius-Guided Diagonal-Gate Compilation with Native Multiqubit Controlled-Phase Gates on Neutral-Atom Processors",
     "authors": "Hairuo Huang, Yanwu Gu, Chen Huang, Xi Zhao, Meng-Jun Hu, Dong E. Liu, Jingbo Wang",
     "venue": "arXiv:2607.08212 [quant-ph]",
@@ -40,24 +58,6 @@
       {
         "label": "PDF",
         "href": "https://arxiv.org/pdf/2607.08212"
-      }
-    ]
-  },
-  {
-    "kind": "preprint",
-    "title": "Lazy-Move Compilation for Neutral-Atom Quantum Computers via a Buffer-Relay Fabric",
-    "authors": "Chen Huang, Jingbo Wang, Zhemin Zhang, Ming Zhong, Zhuo Fu, Zhiding Liang, Yuan Sun, Dong E. Liu",
-    "venue": "arXiv:2606.31833 [quant-ph]",
-    "year": "2026",
-    "status": "Preprint",
-    "links": [
-      {
-        "label": "arXiv",
-        "href": "https://arxiv.org/abs/2606.31833"
-      },
-      {
-        "label": "PDF",
-        "href": "https://arxiv.org/pdf/2606.31833"
       }
     ]
   }
