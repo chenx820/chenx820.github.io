@@ -118,6 +118,14 @@ const Footer = () => {
             >
               <FontAwesomeIcon icon={["fab", "linkedin"]} />
             </a>
+            <a
+              href="https://scholar.google.com/citations?user=3hd6xq4AAAAJ"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Scholar"
+            >
+              <FontAwesomeIcon icon={["fab", "google-scholar"]} />
+            </a>
           </FooterSocial>
         </FooterInner>
       </Wrapper>

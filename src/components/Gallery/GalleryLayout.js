@@ -30,7 +30,7 @@ const Card = React.memo(({ photoItem, currentImg, onOpen }) => (
   <PhotoCard>
     <div style={{ width: "100%", height: "100%" }} onClick={onOpen}>
       <GatsbyImage
-        image={getImage(currentImg.node.childImageSharp.gatsbyImageData)}
+        image={getImage(currentImg.node.childImageSharp.thumb)}
         alt={photoItem.title}
       />
     </div>
@@ -151,7 +151,17 @@ const Gallery = () => {
             base
             name
             childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED, quality: 90, width: 1200)
+              thumb: gatsbyImageData(
+                layout: CONSTRAINED
+                width: 480
+                quality: 70
+                placeholder: BLURRED
+              )
+              full: gatsbyImageData(
+                layout: CONSTRAINED
+                width: 1600
+                quality: 85
+              )
             }
           }
         }
@@ -224,7 +234,7 @@ const Gallery = () => {
             <div className="lightbox__stage">
               <img
                 className="lightbox__image"
-                src={getSrc(current.img.node.childImageSharp.gatsbyImageData)}
+                src={getSrc(current.img.node.childImageSharp.full)}
                 alt={current.photoItem.title}
                 draggable="false"
               />
