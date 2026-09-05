@@ -23,7 +23,35 @@
     "authors": "Lingyi Kong*, Chen Huang*, Zhemin Zhang, Yidong Zhou, Xiangyu Ren, Shaochen Li, Zhiding Liang",
     "venue": "Design Automation Conference (DAC)",
     "year": "2026",
-    "status": "Accepted"
+    "status": "Accepted",
+    "links": [
+      {
+        "label": "arXiv",
+        "href": "https://arxiv.org/abs/2604.11000"
+      },
+      {
+        "label": "PDF",
+        "href": "https://arxiv.org/pdf/2604.11000"
+      }
+    ]
+  },
+  {
+    "kind": "preprint",
+    "title": "Compiler Framework for 3D Neutral-Atom Quantum Computers",
+    "authors": "Chen Huang, Zhemin Zhang, Zhao Zhang, Xudong Lv, Zhiding Liang",
+    "venue": "arXiv:2608.01316 [quant-ph]",
+    "year": "2026",
+    "status": "Preprint",
+    "links": [
+      {
+        "label": "arXiv",
+        "href": "https://arxiv.org/abs/2608.01316"
+      },
+      {
+        "label": "PDF",
+        "href": "https://arxiv.org/pdf/2608.01316"
+      }
+    ]
   },
   {
     "kind": "preprint",
