@@ -56,7 +56,7 @@ export const NavItemMobile = styled.li`
     border-radius: 5px;
     box-shadow: 1px 3px 13px 0px rgba(0, 0, 0, 0.1);
     /* color: ${(p) =>
-      p.theme.dark ? p.theme.textColor : p.theme.primaryColor}; */
+      p.theme.dark ? p.theme.textColor : p.theme.primaryTextColor}; */
   }
 
   button:hover,

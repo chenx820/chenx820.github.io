@@ -12,7 +12,7 @@ const PieWrapper = styled.div`
   }
 
   p {
-    color: ${props => props.theme.primaryColor};
+    color: ${props => props.theme.primaryTextColor};
     font-weight: 600;
     font-size: 18px;
     top: 50%;

@@ -65,7 +65,7 @@ const notestyles = css`
     h5,
     h6 {
       margin: 2.1em 0 0.5em 0;
-      color: ${(p) => p.theme.primaryColor};
+      color: ${(p) => p.theme.primaryTextColor};
 
       &:hover .gatsby-remark-autolink svg {
         opacity: 1;

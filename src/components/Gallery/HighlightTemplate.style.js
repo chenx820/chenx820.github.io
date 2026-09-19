@@ -73,7 +73,7 @@ export const Tags = styled.div`
   }
 
   margin: 10px;
-  color: ${(props) => props.theme.primaryColor};
+  color: ${(props) => props.theme.primaryTextColor};
   display: flex;
   font-size: 24px;
 

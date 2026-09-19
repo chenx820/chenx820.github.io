@@ -20,7 +20,7 @@ const QuoteWrapper = styled.article`
 
   &,
   p {
-    color: ${(p) => (p.theme.dark ? p.theme.textColor : p.theme.primaryColor)};
+    color: ${(p) => (p.theme.dark ? p.theme.textColor : p.theme.primaryTextColor)};
   }
 
   i {

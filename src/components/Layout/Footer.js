@@ -37,7 +37,7 @@ const FooterBrand = styled.div`
   p {
     margin: 0;
     font-size: 0.9rem;
-    color: ${(p) => p.theme.bgColor};
+    color: ${(p) => p.theme.dark ? p.theme.bgColor : p.theme.onPrimaryColor};
   }
 `;
 
@@ -50,7 +50,7 @@ const FooterNav = styled.nav`
   a {
     font-size: 0.9rem;
     font-weight: 600;
-    color: ${(p) => p.theme.bgColor};
+    color: ${(p) => p.theme.dark ? p.theme.bgColor : p.theme.onPrimaryColor};
     text-decoration: none;
     opacity: 0.9;
 
@@ -68,7 +68,7 @@ const FooterSocial = styled.div`
 
   a {
     font-size: 1.15rem;
-    color: ${(p) => p.theme.bgColor};
+    color: ${(p) => p.theme.dark ? p.theme.bgColor : p.theme.onPrimaryColor};
     opacity: 0.9;
     transition: opacity 0.2s ease, transform 0.2s ease;
 

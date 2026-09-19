@@ -24,8 +24,16 @@ const GlobalStyle = createGlobalStyle`
     color: ${(p) => p.theme.textColor};
   }
 
+  :focus-visible { outline: 2px solid ${(p) => p.theme.primaryTextColor}; outline-offset: 5px; }
+  ::selection { background: #fcbad366; }
+  html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  }
+
   a {
-    color: ${(p) => p.theme.primaryColor};
+    color: ${(p) => p.theme.primaryTextColor};
     text-decoration: none;
   }
   a:hover {

@@ -66,7 +66,7 @@ const Metadata = styled.p`
   span:not(:last-child):after {
     content: "/";
     margin-left: 8px;
-    color: ${(props) => props.theme.primaryColor};
+    color: ${(props) => props.theme.primaryTextColor};
   }
 `;
 
@@ -278,7 +278,6 @@ const Publications = ({ papers, patents }) => {
 
   return (
     <PublicationsWrapper>
-      <PageHeader>{t("publications.title")}</PageHeader>
       <PublicationsIntro>{t("publications.intro")}</PublicationsIntro>
 
       {journalPapers.length > 0 && (

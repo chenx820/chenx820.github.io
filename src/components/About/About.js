@@ -1,6 +1,5 @@
 import React from "react";
 
-import SkewBg from "@common/SkewBg";
 import PageHeader from "@common/PageHeader";
 import Avatar from "./Avatar";
 
@@ -13,7 +12,6 @@ const About = () => {
   return (
     <AboutWrapper id="about">
       <PageHeader>{t("about.title")}</PageHeader>
-      <SkewBg />
       <AboutInfo>
         <div>
           <Avatar src="avatar.png" />
@@ -31,6 +29,22 @@ const About = () => {
               />
             ),
             strong: <strong />,
+            fatqat: (
+              <a
+                className="about__link"
+                href="https://github.com/spaceqat/fatqat"
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            ),
+            openqi: (
+              <a
+                className="about__link"
+                href="https://open-qi.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            ),
           }}
         />
       </AboutInfo>

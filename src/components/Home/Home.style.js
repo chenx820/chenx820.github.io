@@ -1,96 +1,101 @@
-import styled from 'styled-components';
-import { slideDownKeyframe } from '@components/css-animations';
+import styled from "styled-components";
 
 export const Intro = styled.section`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 64px;
-
-  min-height: clamp(520px, calc(80vh - 100px), 680px);
-  ${props => props.theme.spacing.sectionBottom};
-
+  gap: clamp(30px, 6vw, 100px);
+  min-height: 570px;
+  padding: 30px 0 50px;
   .home__text {
-    animation: ${slideDownKeyframe} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s
-      forwards;
-
-    z-index: 1;
-
-    a.cta {
-      display: block;
-      margin: 30px 0;
-      text-align: center;
-    }
-
-    @media ${props => props.theme.media.tablet} {
-      text-align: center;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-    }
+    min-width: 0;
   }
-
-  h1 {
-    margin: -4px 0;
-    font-size: clamp(2.4rem, 5vw, 4.5rem);
-    font-weight: 900;
+  .eyebrow {
+    color: ${({ theme }) => theme.primaryTextColor};
+    font: 14px/1.5 ${({ theme }) => theme.typewriter};
     letter-spacing: 0;
-    line-height: 1.05;
+    margin-bottom: 32px;
   }
-
-  p {
-    font-family: ${props => props.theme.fontFamily};
+  h1 {
+    font-size: clamp(3rem, 5.2vw, 5.5rem);
+    letter-spacing: -0.045em;
+    line-height: 1.05;
+    margin: 10px 0 24px;
+    font-weight: 700;
   }
   .adjust {
-    font-size: 1.06rem;
+    max-width: 480px;
+    font-size: clamp(1.15rem, 1.7vw, 1.6rem);
+    line-height: 1.5;
+    opacity: 0.8;
   }
-
   .home__CTA {
-    width: max-content;
+    margin-top: 34px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  a.cta {
+    font-size: 14px;
+    padding: 15px 20px;
   }
   .home__social {
-    color: ${props => props.theme.primaryColor};
     display: flex;
-    justify-content: flex-start;
-    gap: 28px;
-    font-size: 24px;
+    gap: 20px;
+    font-size: 21px;
   }
-
-  @media ${props => props.theme.media.tablet} {
-    justify-content: space-between;
-    flex-direction: column;
-    /* height and m-b for fixing issue
-    which was hiding the "thing i love" header */
-    height: fit-content;
-    margin-bottom: 110px;
-
+  .home__social a {
+    transition: transform 0.2s;
+  }
+  .home__social a:hover {
+    transform: translateY(-4px);
+  }
+  .quantum-panel {
+    min-width: 0;
+  }
+  @media ${({ theme }) => theme.media.tablet} {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-top: 24px;
+    .eyebrow {
+      margin-bottom: 22px;
+    }
     h1 {
-      margin: 6px 0;
-      line-height: 100%;
+      font-size: clamp(3rem, 12vw, 4.5rem);
     }
   }
 `;
-
 export const HomeWrapper = styled.section`
-  margin-bottom: 80px;
-  margin-top: 125px;
-
-  .svg-rect {
-    width: min(38vw, 520px);
-    position: absolute;
-    top: 60px;
-    right: 0;
-    z-index: -1;
-    opacity: 0.92;
+  position: relative;
+  margin-top: 105px;
+  margin-bottom: 100px;
+  .home-footer {
+    flex-wrap: wrap;
+    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid ${({ theme }) => theme.borderColor};
+    padding: 22px 0;
+    font: 14px ${({ theme }) => theme.typewriter};
+    letter-spacing: 0;
   }
-
-  @media ${props => props.theme.media.tablet} {
-    margin-top: 80px;
-
-    .svg-rect {
-      top: 0px;
-      width: 60vw;
-      opacity: 0.28;
+  .home-footer a {
+    font-size: 14px;
+  }
+  .home-footer a span {
+    display: inline-block;
+    margin-left: 12px;
+    transition: transform 0.2s;
+  }
+  .home-footer a:hover span {
+    transform: translate(3px, 3px);
+  }
+  @media ${({ theme }) => theme.media.tablet} {
+    margin-top: 75px;
+    .home-footer > span {
+      display: none;
     }
   }
 `;

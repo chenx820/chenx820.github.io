@@ -1,37 +1,38 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTheme } from "styled-components";
-import { useTranslation } from "gatsby-plugin-react-i18next";
-import svgRectLight from "@src/static/home_rect.svg";
-import svgRectDark from "@src/static/home_rect_dark.svg";
 
-import { HeroCard } from "./HeroCard";
+import { useTranslation } from "gatsby-plugin-react-i18next";
+
+import ResearchInterests from "./ResearchInterests";
+import TinyCircuit from "./TinyCircuit";
+import QuantumState from "./QuantumState";
+
+import ResearchWordCloud from "./ResearchWordCloud";
 import { HomeWrapper, Intro } from "./Home.style";
 
 import IconLink from "@common/IconLink";
 import Button from "@common/Button";
 
 const Home = () => {
-  const theme = useTheme();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const zh = i18n.language.startsWith("zh");
   return (
     <HomeWrapper id="home">
-      <img
-        className="svg-rect"
-        src={theme.dark ? svgRectDark : svgRectLight}
-        alt=""
-      ></img>
-
       <Intro>
         <div className="home__text">
           <p>{t("home.greeting")}</p>
           <h1>{t("home.title")}</h1>
-          <p className="adjust">{t("home.subtitle")}</p>
+          <p className="adjust">
+            {zh
+              ? "在物理与计算之间，探索量子世界。"
+              : "Exploring the quantum world, from physics to computation."}
+          </p>
+          <ResearchInterests />
 
           <div className="home__CTA">
             <Button
               className="cta"
-              target="__blank"
+              target="_blank"
+              rel="noopener noreferrer"
               as="a"
               href="/CV_ChenHuang.pdf"
             >
@@ -62,8 +63,17 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <HeroCard />
+        <div className="quantum-panel">
+          <QuantumState />
+        </div>
       </Intro>
+      <div className="home-footer">
+        <a href="#research">
+          {zh ? "探索研究" : "Explore research"} <span>↘</span>
+        </a>
+        <TinyCircuit />
+      </div>
+      <ResearchWordCloud />
     </HomeWrapper>
   );
 };
