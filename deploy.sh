@@ -257,7 +257,7 @@ main() {
     deploy_to_gh_pages
     restore_stash
     
-    print_success "Deployment completed!"
+    print_success "Deployment completed! 🎉"
     print_success "Website address: https://chenx820.github.io"
     print_warning "Note: GitHub Pages may take a few minutes to update"
 }
