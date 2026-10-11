@@ -18,7 +18,7 @@ const SkillsWrapper = styled.section`
     }
 
     svg {
-      color: ${(props) => props.theme.primaryColor};
+      color: ${(props) => props.theme.primaryTextColor};
     }
   }
   .skills__word-clouds {

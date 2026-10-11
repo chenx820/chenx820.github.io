@@ -3,7 +3,7 @@ import IconLink from "./IconLink";
 
 const common = css`
   background: ${(props) => props.theme.primaryColor};
-  color: ${(props) => props.theme.secondaryColor};
+  color: ${(props) => props.theme.onPrimaryColor};
   border: none;
   cursor: pointer;
   transition: 0.2s;
@@ -14,7 +14,7 @@ const common = css`
   }
   &:hover {
     background: ${(props) => props.theme.primaryColor};
-    color: ${(props) => props.theme.secondaryColor};
+    color: ${(props) => props.theme.onPrimaryColor};
     transform: scale(1.05);
     transition: 0.2s;
   }

@@ -12,8 +12,8 @@ export const NavWrapper = styled.div`
   background-color: ${(props) =>
     props.isScrolled
       ? props.theme.dark
-        ? "rgba(28, 28, 30, 0.6)"
-        : "rgba(255, 255, 255, 0.6)"
+        ? "rgba(28, 32, 46, 0.88)"
+        : "rgba(250, 252, 254, 0.88)"
       : props.theme.bgColor};
 
   backdrop-filter: ${(props) => (props.isScrolled ? "blur(10px)" : "none")};
@@ -21,7 +21,7 @@ export const NavWrapper = styled.div`
     props.isScrolled ? "blur(10px)" : "none"};
 
   transition: all 0.3s ease-in-out;
-  box-shadow: ${(props) => props.theme.shadowSmall};
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
   z-index: 1000;
 
   .logo {
@@ -66,12 +66,19 @@ export const NavItem = styled.li`
   text-align: center;
 
   a {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 6px;
+    transition:
+      text-decoration-color 0.2s,
+      color 0.2s;
     color: ${(p) => p.theme.textColor};
   }
 
   a:hover {
+    text-decoration-color: currentColor;
     cursor: pointer;
-    color: ${(p) => p.theme.primaryColor};
+    color: ${(p) => p.theme.primaryTextColor};
   }
 
   @media ${(props) => props.theme.media.tablet} {

@@ -9,11 +9,7 @@ const NewsContainer = styled.article`
   position: relative;
   width: 100%;
   margin: 20px 0;
-  padding: 24px;
-  border-radius: 10px;
-  border: 1px solid ${(p) => (p.theme.dark ? "#333333" : "#eef1f8")};
-  background-color: ${(p) => p.theme.secondaryColor};
-  box-shadow: ${(props) => props.theme.shadowSmall};
+  padding: 8px 0;
 `;
 
 const NewsList = styled.ul`
@@ -29,6 +25,15 @@ const NewsItem = styled.li`
   font-size: 14px;
   line-height: 1.6;
   margin-bottom: 10px;
+  padding: 8px 0 8px 12px;
+  border-left: 1px solid ${(p) => p.theme.borderColor};
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+  &:hover {
+    border-color: ${(p) => p.theme.primaryColor};
+    background: ${(p) => p.theme.secondaryColor};
+  }
   color: ${(p) => p.theme.textColor};
 
   &:last-child {
@@ -37,8 +42,9 @@ const NewsItem = styled.li`
 
   .news-time {
     flex: 0 0 92px;
-    color: ${(p) => p.theme.primaryColor};
-    font-weight: 600;
+    color: ${(p) => p.theme.primaryTextColor};
+    font-family: ${(p) => p.theme.typewriter};
+    font-weight: 400;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
   }
@@ -67,7 +73,7 @@ const ToggleButton = styled.button`
   font-size: 13px;
   font-weight: 600;
   font-family: inherit;
-  color: ${(p) => p.theme.primaryColor};
+  color: ${(p) => p.theme.primaryTextColor};
 
   &:hover {
     text-decoration: underline;
@@ -83,7 +89,7 @@ const formatDate = (dateStr, language) => {
     if (language === "zh") {
       return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
         2,
-        "0"
+        "0",
       )}-${String(date.getDate()).padStart(2, "0")}`;
     }
     return date.toLocaleDateString("en-US", {
@@ -162,7 +168,7 @@ News.propTypes = {
         time: PropTypes.string.isRequired,
         content: PropTypes.string.isRequired,
       }),
-    ])
+    ]),
   ),
 };
 

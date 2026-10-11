@@ -27,7 +27,7 @@ const BackToTopButton = styled.button`
   border-radius: 50%;
   cursor: pointer;
   font-size: 16px;
-  color: ${(p) => p.theme.bgColor};
+  color: ${(p) => p.theme.dark ? p.theme.bgColor : p.theme.onPrimaryColor};
   background: ${(p) => p.theme.primaryColor};
   box-shadow: ${(p) => p.theme.shadow};
   z-index: 1500;

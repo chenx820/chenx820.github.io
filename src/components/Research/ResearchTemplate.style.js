@@ -15,7 +15,15 @@ export const ResearchDetail = styled.div`
   padding: 50px;
   background-color: ${(props) => props.theme.secondaryColor};
   box-shadow: ${(props) => props.theme.shadowSmall};
-  border-radius: 8px;
+  border-radius: 12px;
+  border: 1px solid ${(p) => p.theme.borderColor};
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  &:hover {
+    border-color: ${(p) => p.theme.primaryColor};
+    box-shadow: 0 12px 40px #526fb512;
+  }
 
   min-height: 350px;
 
@@ -83,7 +91,7 @@ export const Tags = styled.div`
   }
 
   margin: 10px;
-  color: ${(props) => props.theme.primaryColor};
+  color: ${(props) => props.theme.primaryTextColor};
   display: flex;
   font-size: 24px;
 

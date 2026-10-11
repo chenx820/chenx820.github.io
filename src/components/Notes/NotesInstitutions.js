@@ -60,7 +60,7 @@ export const useUniversity = () => {
 
 export const TagBreadcrumb = styled(Link)`
   float: left;
-  border: 1px solid ${(p) => (p.theme.dark ? p.theme.primaryColor : "#d9e0ff")};
+  border: 1px solid ${(p) => p.theme.primaryColor};
   border-radius: 50px;
   padding: 8px 13px;
   line-height: 110%;
@@ -68,8 +68,8 @@ export const TagBreadcrumb = styled(Link)`
   font-size: 12px;
 
   &:hover {
-    background: ${(p) => (p.theme.dark ? p.theme.primaryColor : "#d9e0ff")};
-    color: ${(p) => (p.theme.dark ? "#d9e0ff" : "#105286")};
+    background: ${(p) => p.theme.primaryColor};
+    color: ${(p) => p.theme.onPrimaryColor};
   }
 `;
 

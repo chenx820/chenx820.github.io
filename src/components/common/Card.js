@@ -45,7 +45,7 @@ export const CardIcon = styled.div`
 
 export const CardTitle = styled.h3`
   font-weight: normal;
-  color: ${(p) => (p.theme.dark ? p.theme.textColor : p.theme.primaryColor)};
+  color: ${(p) => (p.theme.dark ? p.theme.textColor : p.theme.primaryTextColor)};
 `;
 
 export const CardText = styled.p`

@@ -18,7 +18,7 @@ const GlobeButton = styled.button`
   transition: color 0.2s ease;
 
   &:hover {
-    color: ${(p) => p.theme.primaryColor};
+    color: ${(p) => p.theme.primaryTextColor};
   }
 
   .lang-label {

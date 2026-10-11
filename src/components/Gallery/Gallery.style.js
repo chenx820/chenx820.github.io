@@ -48,7 +48,7 @@ export const PhotoThemeHeader = styled.header`
 
   .photo-theme__date {
     margin: 0 0 8px;
-    color: ${(props) => props.theme.primaryColor};
+    color: ${(props) => props.theme.primaryTextColor};
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0;
