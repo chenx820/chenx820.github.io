@@ -19,6 +19,14 @@
   },
   {
     "kind": "conference",
+    "title": "Emulating Rydberg Array Dynamics with SpaceQat",
+    "authors": "Enhyeok Jang, Chen Huang, Xiangyu Ren, Zhemin Zhang, Boxi Li, Zhiding Liang, Won Woo Ro",
+    "venue": "The 11th International Conference On Consumer Electronics (ICCE) Asia (ICCE-ASIA 2026)",
+    "year": "2026",
+    "status": "Accepted"
+  },
+  {
+    "kind": "conference",
     "title": "Compiler Framework for Directional Transport in Zoned Neutral Atom Systems with AOD Assistance: A Hybrid Remote CZ Approach",
     "authors": "Lingyi Kong*, Chen Huang*, Zhemin Zhang, Yidong Zhou, Xiangyu Ren, Shaochen Li, Zhiding Liang",
     "venue": "Design Automation Conference (DAC)",
