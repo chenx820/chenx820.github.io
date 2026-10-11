@@ -86,14 +86,31 @@ setup_git_lfs() {
 sync_remote() {
     print_status "Syncing remote branches..."
     git fetch origin
-    
-    if [ "$(git rev-list HEAD...origin/main --count)" != "0" ]; then
-        print_warning "Local branch is behind remote branch"
-        git pull origin main
-        print_success "Remote changes synced"
-    else
-        print_success "Local branch is up to date"
+
+    local counts ahead behind
+    counts=$(git rev-list --left-right --count HEAD...origin/main)
+    read -r ahead behind <<< "$counts"
+
+    if [ "$behind" -eq 0 ]; then
+        if [ "$ahead" -gt 0 ]; then
+            print_status "Local branch is ahead of origin/main by $ahead commit(s); no remote changes to merge"
+        else
+            print_success "Local branch is up to date"
+        fi
+        return
     fi
+
+    if [ "$ahead" -eq 0 ]; then
+        print_status "Local branch is behind origin/main by $behind commit(s); fast-forwarding..."
+        git merge --ff-only origin/main
+    else
+        print_warning "Branches have diverged ($ahead local, $behind remote commits); merging origin/main..."
+        if ! git merge --no-ff --no-edit origin/main; then
+            print_error "Merge failed. Resolve any conflicts and commit, or run 'git merge --abort' if a merge is in progress, then retry deployment."
+            return 1
+        fi
+    fi
+    print_success "Remote changes synced"
 }
 
 # build project
