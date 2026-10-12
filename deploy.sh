@@ -116,15 +116,18 @@ sync_remote() {
 # build project
 build_project() {
     print_status "Building Gatsby project..."
+
+    print_status "Pulling Git LFS source images and static assets..."
+    git lfs pull --include="content/**,src/**,static/**" --exclude=""
     
     if [ -d "public" ]; then
         rm -rf public
     fi
     
-    if [ ! -d "node_modules" ]; then
-        print_status "Installing dependencies..."
-        npm install
-    fi
+    # A failed install can leave node_modules present but incomplete.
+    # Reinstall from the lockfile before each deployment, including retries.
+    print_status "Installing locked dependencies..."
+    npm ci --no-audit --no-fund
     
     npm run build
     
@@ -168,10 +171,6 @@ deploy_to_gh_pages() {
             git -C "$DEPLOY_DIR" checkout -B "$BRANCH"
         fi
     fi
-
-    # 🔥 Only pull LFS files from public/
-    print_status "Pulling real files from Git LFS (public/ only)..."
-    git lfs pull --include="public/**" --exclude=""
 
     # Sync build output
     print_status "Syncing files with rsync..."
