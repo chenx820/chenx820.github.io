@@ -23,9 +23,6 @@ import {
   faWindowMaximize,
   faHandshake,
   faPaperPlane,
-  faChevronRight,
-  faChevronLeft,
-  faChevronUp,
   faClock,
   faCalendarAlt,
   faBars,
@@ -37,7 +34,7 @@ import {
   faUniversity,
   faNetworkWired,
   faFilePdf,
-  faGlobe
+  faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -57,9 +54,6 @@ library.add(
   faHtml5,
   faCss3,
   faCodepen,
-  faChevronRight,
-  faChevronLeft,
-  faChevronUp,
   faClock,
   faCalendarAlt,
   faReact,
@@ -74,6 +68,6 @@ library.add(
   faNetworkWired,
   faFilePdf,
   faGlobe,
-  faGoogleScholar
+  faGoogleScholar,
 );
 config.autoAddCss = false;

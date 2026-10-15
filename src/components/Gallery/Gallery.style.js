@@ -1,148 +1,426 @@
 import styled, { keyframes } from "styled-components";
 
-import { Card, CardFooter } from "@common/Card";
-
 export const PhotosWrapper = styled.section`
-  ${(props) => props.theme.spacing.sectionBottom};
-`;
-
-export const PhotoTimeline = styled.div`
-  overflow: hidden;
-  position: relative;
-  max-height: ${(p) => (p.showAll ? "100%" : p.collapseHeight)};
-
-  ${(p) =>
-    !p.showAll &&
-    `
-      &:before {
-        content: "";
-        width: 100%;
-        height: 300px;
-        position: absolute;
-        border-radius: 10px;
-        bottom: 0;
-        background: linear-gradient(180deg, rgba(0,0,0,0), 40%, ${p.theme.bgColor});
-        z-index: 5;
-        transition: 0.3s;
-      }
-    `}
-
-  .showall__button {
+  --island-paper: ${(p) => (p.theme.dark ? "#344c43" : "#fbf6df")};
+  --island-ink: ${(p) => (p.theme.dark ? "#e6edce" : "#526b50")};
+  --island-line: ${(p) => (p.theme.dark ? "#637d65" : "#d5dcbc")};
+  --island-leaf: ${(p) => (p.theme.dark ? "#b0d49a" : "#5b916b")};
+  font-family: ${(p) => p.theme.fontFamily};
+  padding-top: 26px;
+  ${(p) => p.theme.spacing.sectionBottom};
+  .sr-only {
     position: absolute;
-    bottom: 50px;
-    left: 50%;
-    z-index: 6;
-    padding: 15px 40px;
-    font-weight: bold;
-    transform: translateX(-50%);
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  button {
+    font-family: inherit;
+  }
+  button:focus-visible,
+  a:focus-visible {
+    outline: 3px solid ${(p) => p.theme.accentColor};
+    outline-offset: 4px;
   }
 `;
 
-export const PhotoTheme = styled.article`
-  margin: 0 auto 70px;
-  max-width: 1180px;
-`;
-
-export const PhotoThemeHeader = styled.header`
-  margin: 0 5px 22px;
-
-  .photo-theme__date {
-    margin: 0 0 8px;
-    color: ${(props) => props.theme.primaryTextColor};
-    font-size: 0.85rem;
+export const GalleryHeader = styled.header`
+  margin-bottom: 28px;
+  h1 {
+    font-size: clamp(1.9rem, 3.3vw, 3.1rem);
     font-weight: 700;
-    letter-spacing: 0;
-    text-transform: uppercase;
-  }
-
-  h3 {
-    margin: 0 0 8px;
-    color: ${(props) => props.theme.textColor};
-    font-size: 1.55rem;
-  }
-
-  .photo-theme__description {
+    color: var(--island-ink);
+    letter-spacing: -0.025em;
+    line-height: 1.2;
     margin: 0;
-    max-width: 660px;
-    color: ${(props) => props.theme.textColor};
-    opacity: 0.78;
-    line-height: 1.7;
   }
 `;
 
-export const PhotoThemeGrid = styled.div`
+export const MapFrame = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  justify-content: center;
-  align-items: center;
-  gap: 50px 20px;
-  padding: 5px;
+  grid-template-columns: ${(p) =>
+    p.$hasAlbum ? "minmax(0, 1fr) minmax(280px, 32%)" : "minmax(0, 1fr)"};
+  border: 6px solid var(--island-paper);
+  border-radius: 30px;
+  overflow: hidden;
+  background: var(--island-paper);
+  box-shadow: 0 6px 0 ${(p) => (p.theme.dark ? "#172e2a" : "#dbe2c8")};
+  @media ${(p) => p.theme.media.tablet} {
+    grid-template-columns: minmax(0, 1fr);
+  }
 `;
 
-export const PhotoCard = styled(Card)`
-  justify-self: center;
-
-  margin: 0;
+export const MapViewport = styled.div`
   position: relative;
-  padding: 0;
-  border-radius: 10px;
+  min-width: 0;
+  height: clamp(420px, 46vw, 620px);
   overflow: hidden;
-  min-width: unset;
-  width: 100%;
-
-  height: auto;
-  max-width: 90%;
-
-  transform: translateY(0px);
-  transition: transform 0.2s ease;
-  &:hover {
-    transition: transform 0.2s ease;
-    transform: translateY(-5px);
-  }
-
-  h4 {
-    font-weight: normal;
-  }
-
-  .gatsby-image-wrapper {
+  background: ${(p) =>
+    p.theme.dark
+      ? "linear-gradient(160deg, #376c70 0%, #28575e 100%)"
+      : "linear-gradient(160deg, #8ad3c4 0%, #75bfc1 100%)"};
+  .map-credit {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+    left: 18px;
+    bottom: 15px;
+    font-size: 0.6rem;
+    color: ${(p) => (p.theme.dark ? "#e2efcf" : "#355b56")};
+    background: ${(p) => (p.theme.dark ? "#28575ed9" : "#a0dccec9")};
+    border-radius: 6px;
+    padding: 3px 6px;
+  }
+  @media ${(p) => p.theme.media.tablet} {
+    height: clamp(280px, 66vw, 400px);
+  }
+`;
+
+export const MapCanvas = styled.svg`
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  user-select: none;
+  cursor: ${(p) => (p.$dragging ? "grabbing" : "grab")};
+  &:focus-visible {
+    outline: 3px solid ${(p) => p.theme.accentColor};
+    outline-offset: -5px;
+  }
+  .ocean-wave {
+    fill: none;
+    stroke: #e8f7df;
+    stroke-width: 2;
+    stroke-linecap: round;
+    opacity: 0.32;
+  }
+  .ocean-dot {
+    fill: #e8f7df;
+    opacity: 0.35;
+  }
+  .map-shallows,
+  .map-beach,
+  .map-land {
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    fill-rule: evenodd;
+  }
+  .map-shallows {
+    fill: none;
+    stroke: ${(p) => (p.theme.dark ? "#69a69d" : "#c1ead6")};
+    stroke-width: 14;
+    opacity: 0.5;
+  }
+  .map-beach {
+    fill: ${(p) => (p.theme.dark ? "#c8c19a" : "#f6e9b9")};
+    stroke: ${(p) => (p.theme.dark ? "#c8c19a" : "#f6e9b9")};
+    stroke-width: 7;
+  }
+  .map-land {
+    fill: url(#gallery-island-grass);
+    stroke: ${(p) => (p.theme.dark ? "#719069" : "#8ebf77")};
+    stroke-width: 1.5;
+    paint-order: stroke fill;
+  }
+  .grass-base {
+    fill: ${(p) => (p.theme.dark ? "#8ca77a" : "#b1d68d")};
+  }
+  .grass-texture {
+    fill: ${(p) => (p.theme.dark ? "#d9e3b3" : "#729c5d")};
+    opacity: 0.16;
+  }
+  .detail-shadow {
+    fill: #3c6b55;
+    opacity: 0.18;
+  }
+  .tree-trunk {
+    fill: #92714f;
+  }
+  .tree-crown {
+    fill: ${(p) => (p.theme.dark ? "#4a7e61" : "#5b9e63")};
+  }
+  .tree-highlight {
+    fill: ${(p) => (p.theme.dark ? "#7ea47d" : "#8abb71")};
+  }
+  .tree-fruit {
+    fill: #f0b861;
+    stroke: #edce8b;
+    stroke-width: 0.6;
+  }
+  .cedar-crown {
+    fill: ${(p) => (p.theme.dark ? "#416d5d" : "#5c9467")};
+  }
+  .cedar-highlight {
+    fill: ${(p) => (p.theme.dark ? "#648c70" : "#83ad76")};
+  }
+  .flower-stem {
+    fill: none;
+    stroke: #5b8c5c;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  .flower-petals {
+    fill: #fff5d5;
+  }
+  .flower-center {
+    fill: #e6b35d;
+  }
+  .shell-body,
+  .shell-foot {
+    fill: #f4dbc7;
+    stroke: #d4b8aa;
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+  }
+  .shell-ribs {
+    fill: none;
+    stroke: #d4b8aa;
+    stroke-width: 1.3;
+    stroke-linecap: round;
+  }
+  .island-fish {
+    fill: ${(p) => (p.theme.dark ? "#9ec7ba" : "#5ca69c")};
+    opacity: 0.6;
+  }
+  .island-fish circle {
+    fill: ${(p) => (p.theme.dark ? "#28575e" : "#c5ead3")};
+  }
+  .map-marker {
+    cursor: pointer;
+    outline: none;
+  }
+  .marker-hit {
+    fill: transparent;
+  }
+  .marker-ground {
+    fill: #365f51;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+  .marker-halo {
+    fill: ${(p) => (p.theme.dark ? "#ffe3b0" : "#fff7df")};
+    opacity: 0;
+  }
+  .marker-dot,
+  .marker-cluster {
+    stroke: #fff7da;
+    stroke-width: 3;
+    stroke-linejoin: round;
+    transition: fill 0.15s;
+  }
+  .marker-dot {
+    fill: #fff4cf;
+  }
+  .marker-cluster {
+    fill: #f0d28d;
+  }
+  .marker-camera {
+    fill: #54846b;
+    pointer-events: none;
+  }
+  .marker-center {
+    fill: #fff8e9;
+    pointer-events: none;
+  }
+  .map-marker.is-active .marker-dot {
+    fill: #f3d287;
+  }
+  .marker-number {
+    fill: #5b704e;
+    font-family: ${(p) => p.theme.fontFamily};
+    font-size: 14px;
+    font-weight: 800;
+    pointer-events: none;
+  }
+  .marker-label {
+    fill: ${(p) => (p.theme.dark ? "#fff7dd" : "#496b4d")};
+    stroke: ${(p) => (p.theme.dark ? "#355d52" : "#fff7df")};
+    paint-order: stroke;
+    stroke-width: 5px;
+    stroke-linejoin: round;
+    font-family: ${(p) => p.theme.fontFamily};
+    font-size: 12px;
+    font-weight: 700;
+    pointer-events: none;
+  }
+  .map-marker:hover .marker-halo,
+  .map-marker:focus-visible .marker-halo,
+  .map-marker.is-active .marker-halo {
+    opacity: 0.4;
+  }
+  .map-marker:focus-visible .marker-halo {
+    stroke: ${(p) => p.theme.textColor};
+    stroke-width: 2;
+    stroke-dasharray: 3 3;
+  }
+`;
+
+export const MapControls = styled.div`
+  position: absolute;
+  right: 16px;
+  bottom: 30px;
+  display: flex;
+  border: 2px solid var(--island-paper);
+  border-radius: 18px;
+  background: var(--island-paper);
+  box-shadow: 0 3px 0 ${(p) => (p.theme.dark ? "#1c3c37" : "#6caa96")};
+  button {
+    min-width: 44px;
+    height: 44px;
+    padding: 0 12px;
+    background: transparent;
+    color: var(--island-ink);
+    border: 0;
+    border-right: 1px solid var(--island-line);
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+  button:last-child {
+    border-right: 0;
+  }
+  button:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+  button:not(:disabled):hover {
+    background: ${(p) => (p.theme.dark ? "#47634e" : "#e5edc9")};
     border-radius: 10px;
   }
-
-  .thumbnail-a {
-    width: 100%;
-    height: 100%;
-  }
-
-  overflow: hidden;
-  height: 300px;
-
-  cursor: pointer;
-
-  &:hover .ccard__footer {
-    bottom: 0;
-    opacity: 1;
-    transition: 0.3s ease-in-out;
+  .map-reset {
+    font-size: 0.7rem;
+    font-weight: 600;
   }
 `;
 
-export const PhotoCardFooter = styled(CardFooter)`
-  position: absolute;
-  bottom: -100px;
-  left: 0;
-  opacity: 0;
-  transition: 0.3s ease-in-out;
-  padding: 10px 15px;
-  background: ${(props) => props.theme.secondaryColor};
+export const CityList = styled.nav`
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  button {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 14px;
+    min-height: 44px;
+    border: 1px solid var(--island-line);
+    border-radius: 100px;
+    background: var(--island-paper);
+    color: var(--island-ink);
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  button:hover,
+  button[aria-pressed="true"] {
+    background: ${(p) => (p.theme.dark ? "#47634e" : "#e5edc9")};
+    border-color: var(--island-leaf);
+  }
+  .city-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--island-leaf);
+  }
+`;
 
-  @media ${(props) => props.theme.media.mobile} {
-    bottom: 0;
-    opacity: 1;
+export const CityAlbum = styled.aside`
+  color: var(--island-ink);
+  background: var(--island-paper);
+  min-width: 0;
+  height: clamp(420px, 46vw, 620px);
+  box-sizing: border-box;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-left: 1px solid var(--island-line);
+  padding: 24px;
+  .album-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .album-country {
+    margin: 0 0 8px;
+    color: var(--island-leaf);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  h2 {
+    font-size: 1.35rem;
+    line-height: 1.35;
+    margin: 0;
+    letter-spacing: -0.03em;
+    scroll-margin-top: 90px;
+  }
+  h2:focus {
+    outline: none;
+  }
+  .album-close {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border: 1px solid var(--island-line);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--island-ink);
+    cursor: pointer;
+    font-size: 1.4rem;
+  }
+  @media ${(p) => p.theme.media.tablet} {
+    height: auto;
+    max-height: 440px;
+    border-left: 0;
+    border-top: 1px solid var(--island-line);
+    padding: 20px;
+  }
+`;
+
+export const AlbumGrid = styled.div`
+  display: grid;
+  gap: 20px;
+  @media ${(p) => p.theme.media.tablet} {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  @media ${(p) => p.theme.media.mobile} {
+    grid-template-columns: minmax(0, 1fr);
+  }
+`;
+
+export const PhotoCard = styled.button`
+  display: block;
+  width: 100%;
+  padding: 7px 7px 12px;
+  border-radius: 14px;
+  box-shadow: 0 3px 0 ${(p) => (p.theme.dark ? "#223b33" : "#dfdfc3")};
+  text-align: left;
+  background: ${(p) => (p.theme.dark ? "#405b4c" : "#fffcef")};
+  color: var(--island-ink);
+  border: 0;
+  cursor: pointer;
+  .gatsby-image-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 10px;
+    transition: opacity 0.2s;
+  }
+  &:hover .gatsby-image-wrapper {
+    opacity: 0.85;
+  }
+  > span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 5px 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
   }
 `;
 
@@ -199,9 +477,11 @@ export const LightboxNavButton = styled.button`
   top: 50%;
   transform: translateY(-50%);
   z-index: 5002;
-  width: 48px;
-  height: 48px;
-  font-size: 1.15rem;
+  min-width: 48px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 22px;
+  font-size: 0.8rem;
 
   &:hover {
     transform: translateY(-50%) scale(1.08);
@@ -216,9 +496,9 @@ export const LightboxNavButton = styled.button`
   }
 
   @media ${(props) => props.theme.media.tablet} {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
+    max-width: 100px;
+    padding: 10px 12px;
+    font-size: 0.75rem;
 
     &.lightbox__nav--prev {
       left: 10px;

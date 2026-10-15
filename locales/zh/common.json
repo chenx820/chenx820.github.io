@@ -73,10 +73,21 @@
   },
   "gallery": {
     "title": "摄影集",
-    "highlight-title": "2024 旅程精选",
-    "highlight-desc": "这一年的旅程带我穿过许多国家的壮阔风景与鲜活城市。",
-    "photography": "摄影",
-    "show-all": "查看全部"
+    "map-label": "照片地点世界地图",
+    "map-keyboard": "使用方向键移动地图，按 + 或 − 缩放。也可以通过下方的城市按钮打开相册。",
+    "zoom-in": "放大地图",
+    "zoom-out": "缩小地图",
+    "reset-map": "回到全图",
+    "city-list": "探索一座城市",
+    "open-city": "打开{{city}}相册",
+    "expand-cluster": "放大查看 {{count}} 座城市：{{cities}}",
+    "close-album": "关闭城市相册",
+    "previous-photo": "上一张照片",
+    "next-photo": "下一张照片",
+    "close-lightbox": "关闭大图浏览",
+    "photo-viewer": "大图浏览",
+    "open-photo": "查看{{title}}",
+    "map-credit": "地图数据：Natural Earth"
   },
   "common": {
     "share-on": "分享到",

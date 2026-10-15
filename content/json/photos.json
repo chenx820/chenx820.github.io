@@ -1,30 +1,62 @@
 [
   {
-    "title": "London Walks",
-    "date": "2024.01 · London",
-    "sortDate": "2024-01-01",
-    "description": "Street scenes, quiet parks, and short walks around London.",
+    "slug": "london",
+    "name": {
+      "en": "London & surroundings",
+      "zh": "伦敦及周边"
+    },
+    "country": {
+      "en": "United Kingdom",
+      "zh": "英国"
+    },
+    "coordinates": [-0.1276, 51.5072],
     "photos": [
       {
-        "title": "London",
+        "title": {
+          "en": "London",
+          "zh": "伦敦"
+        },
         "links": {
           "image": "photo_london2.jpeg"
         }
       },
       {
-        "title": "Regent Street",
+        "title": {
+          "en": "Regent Street",
+          "zh": "摄政街"
+        },
         "links": {
           "image": "photo_regents.jpeg"
         }
       },
       {
-        "title": "Epping Forest",
+        "title": {
+          "en": "Epping Forest",
+          "zh": "埃平森林"
+        },
         "links": {
           "image": "photo_epping-forest.jpeg"
         }
-      },
+      }
+    ]
+  },
+  {
+    "slug": "dover",
+    "name": {
+      "en": "Dover",
+      "zh": "多佛"
+    },
+    "country": {
+      "en": "United Kingdom",
+      "zh": "英国"
+    },
+    "coordinates": [1.3134, 51.1279],
+    "photos": [
       {
-        "title": "White Cliffs of Dover",
+        "title": {
+          "en": "White Cliffs of Dover",
+          "zh": "多佛白崖"
+        },
         "links": {
           "image": "photo_white-cliff.jpeg"
         }
@@ -32,19 +64,31 @@
     ]
   },
   {
-    "title": "Swiss Lakeside",
-    "date": "2024.02 · Lungern",
-    "sortDate": "2024-02-01",
-    "description": "A small set from the lake and mountain light in Lungern.",
+    "slug": "lungern",
+    "name": {
+      "en": "Lungern",
+      "zh": "龙疆"
+    },
+    "country": {
+      "en": "Switzerland",
+      "zh": "瑞士"
+    },
+    "coordinates": [8.1594, 46.7857],
     "photos": [
       {
-        "title": "Lungern",
+        "title": {
+          "en": "Lake Lungern",
+          "zh": "龙疆湖"
+        },
         "links": {
           "image": "photo_switzerland.jpeg"
         }
       },
       {
-        "title": "Lungern",
+        "title": {
+          "en": "Lake Lungern",
+          "zh": "龙疆湖"
+        },
         "links": {
           "image": "photo_switzerland2.jpeg"
         }
@@ -52,13 +96,22 @@
     ]
   },
   {
-    "title": "Beihai Park",
-    "date": "2024.03 · Beijing",
-    "sortDate": "2024-03-01",
-    "description": "An afternoon around Beihai Park.",
+    "slug": "beijing",
+    "name": {
+      "en": "Beijing",
+      "zh": "北京"
+    },
+    "country": {
+      "en": "China",
+      "zh": "中国"
+    },
+    "coordinates": [116.4074, 39.9042],
     "photos": [
       {
-        "title": "Beijing",
+        "title": {
+          "en": "Beihai Park",
+          "zh": "北海公园"
+        },
         "links": {
           "image": "photo_beihai-park.jpeg"
         }
@@ -66,13 +119,22 @@
     ]
   },
   {
-    "title": "Copenhagen",
-    "date": "2024.04 · Copenhagen",
-    "sortDate": "2024-04-01",
-    "description": "A clean northern-city moment from Copenhagen.",
+    "slug": "copenhagen",
+    "name": {
+      "en": "Copenhagen",
+      "zh": "哥本哈根"
+    },
+    "country": {
+      "en": "Denmark",
+      "zh": "丹麦"
+    },
+    "coordinates": [12.5683, 55.6761],
     "photos": [
       {
-        "title": "Copenhagen",
+        "title": {
+          "en": "Copenhagen",
+          "zh": "哥本哈根"
+        },
         "links": {
           "image": "photo_copenhagen.jpeg"
         }
@@ -80,19 +142,45 @@
     ]
   },
   {
-    "title": "Morocco",
-    "date": "2024.05 · Morocco",
-    "sortDate": "2024-05-01",
-    "description": "Colors, streets, and textures from Morocco.",
+    "slug": "tangier",
+    "name": {
+      "en": "Tangier",
+      "zh": "丹吉尔"
+    },
+    "country": {
+      "en": "Morocco",
+      "zh": "摩洛哥"
+    },
+    "coordinates": [-5.8339, 35.7595],
     "photos": [
       {
-        "title": "Morocco",
+        "title": {
+          "en": "Tangier",
+          "zh": "丹吉尔"
+        },
         "links": {
           "image": "photo_morocco.jpeg"
         }
-      },
+      }
+    ]
+  },
+  {
+    "slug": "chefchaouen",
+    "name": {
+      "en": "Chefchaouen",
+      "zh": "舍夫沙万"
+    },
+    "country": {
+      "en": "Morocco",
+      "zh": "摩洛哥"
+    },
+    "coordinates": [-5.2636, 35.1688],
+    "photos": [
       {
-        "title": "Morocco",
+        "title": {
+          "en": "Chefchaouen",
+          "zh": "舍夫沙万"
+        },
         "links": {
           "image": "photo_morocco2.jpeg"
         }
@@ -100,19 +188,31 @@
     ]
   },
   {
-    "title": "Paris",
-    "date": "2024.06 · Paris",
-    "sortDate": "2024-06-01",
-    "description": "Two fragments from a Paris trip.",
+    "slug": "paris",
+    "name": {
+      "en": "Paris",
+      "zh": "巴黎"
+    },
+    "country": {
+      "en": "France",
+      "zh": "法国"
+    },
+    "coordinates": [2.3522, 48.8566],
     "photos": [
       {
-        "title": "Paris",
+        "title": {
+          "en": "Paris",
+          "zh": "巴黎"
+        },
         "links": {
           "image": "photo_paris.jpeg"
         }
       },
       {
-        "title": "Paris",
+        "title": {
+          "en": "Paris",
+          "zh": "巴黎"
+        },
         "links": {
           "image": "photo_paris2.jpeg"
         }

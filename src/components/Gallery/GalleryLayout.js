@@ -1,155 +1,62 @@
-import React, { useState, useCallback, useEffect } from "react";
-import PropTypes from "prop-types";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image";
-import IFrame from "@common/IFrame";
-
-import PageHeader from "@common/PageHeader";
-import Button from "@common/Button";
-
-import HighlightTemplate from "./HighlightTemplate";
-import { HighlightPreview } from "./HighlightTemplate.style";
-
+import cities from "../../../content/json/photos.json";
+import WorldMap from "./WorldMap";
+import { WORLD_VIEW } from "./mapGeometry.mjs";
 import {
   PhotosWrapper,
-  PhotoTimeline,
-  PhotoTheme,
-  PhotoThemeGrid,
-  PhotoThemeHeader,
+  GalleryHeader,
+  MapFrame,
+  CityList,
+  CityAlbum,
+  AlbumGrid,
   PhotoCard,
-  PhotoCardFooter,
   Lightbox,
   LightboxCaption,
   LightboxNavButton,
   LightBoxCloseButton,
 } from "./Gallery.style";
 
-const Card = React.memo(({ photoItem, currentImg, onOpen }) => (
-  <PhotoCard>
-    <div style={{ width: "100%", height: "100%" }} onClick={onOpen}>
-      <GatsbyImage
-        image={getImage(currentImg.node.childImageSharp.thumb)}
-        alt={photoItem.title}
-      />
-    </div>
-
-    <PhotoCardFooter
-      nowrap
-      align="center"
-      justify="space-between"
-      className="ccard__footer"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <p>{photoItem.title}</p>
-    </PhotoCardFooter>
-  </PhotoCard>
-));
-
-const Gallery = () => {
-  const { t } = useTranslation();
-  const [lightbox, setLightbox] = useState(null); // { entries, index }
-  const [showAll, setShowAll] = useState(false);
+export default function Gallery() {
+  const { t, i18n } = useTranslation();
+  const language = i18n.language?.startsWith("zh") ? "zh" : "en";
+  const [selectedCity, setSelectedCity] = useState(null);
+  const [view, setView] = useState(WORLD_VIEW);
+  const [lightbox, setLightbox] = useState(null);
   const [MapInteractionCSS, setMapInteractionCSS] = useState(null);
-  const [isClient, setIsClient] = useState(false);
+  const albumHeading = useRef(null);
+  const galleryRef = useRef(null);
+  const dialogRef = useRef(null);
+  const closeRef = useRef(null);
+  const photoOpener = useRef(null);
 
   useEffect(() => {
-    setIsClient(true);
-    if (typeof window !== "undefined") {
-      import("react-map-interaction")
-        .then((module) => {
-          setMapInteractionCSS(() => module.MapInteractionCSS);
-        })
-        .catch((err) => {
-          console.error("Failed to load MapInteractionCSS:", err);
-        });
-    }
+    import("react-map-interaction")
+      .then((module) => setMapInteractionCSS(() => module.MapInteractionCSS))
+      .catch(() => {
+        /* The full-size image remains usable without pan/zoom. */
+      });
   }, []);
 
-  const handleShowAll = () => {
-    setShowAll(true);
-  };
-
-  const openLightbox = useCallback((entries, index) => {
-    setLightbox({ entries, index });
-  }, []);
-
-  const closeLightbox = useCallback(() => {
-    setLightbox(null);
-  }, []);
-
-  const showPrev = useCallback(() => {
-    setLightbox(
-      (lb) =>
-        lb && {
-          ...lb,
-          index: (lb.index - 1 + lb.entries.length) % lb.entries.length,
-        }
-    );
-  }, []);
-
-  const showNext = useCallback(() => {
-    setLightbox(
-      (lb) => lb && { ...lb, index: (lb.index + 1) % lb.entries.length }
-    );
-  }, []);
-
-  // Keyboard navigation + scroll lock while the lightbox is open
-  useEffect(() => {
-    if (!lightbox) return undefined;
-
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") closeLightbox();
-      else if (e.key === "ArrowLeft") showPrev();
-      else if (e.key === "ArrowRight") showNext();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
-    };
-  }, [lightbox, closeLightbox, showPrev, showNext]);
-
-  function handleBackdropClick(e) {
-    if (e.target.tagName !== "IMG") {
-      closeLightbox();
-    }
-  }
-
-  const photo = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     {
-      allPhotosJson(sort: { sortDate: ASC }) {
-        edges {
-          node {
-            id
-            date
-            description
-            sortDate
-            title
-            photos {
-              title
-              links {
-                image
-              }
-            }
-          }
-        }
-      }
       allFile(
         filter: {
           sourceInstanceName: { eq: "images" }
           name: { regex: "/^photo_/" }
         }
-        sort: { name: ASC }
       ) {
         edges {
           node {
             base
-            name
             childImageSharp {
               thumb: gatsbyImageData(
                 layout: CONSTRAINED
@@ -168,132 +75,233 @@ const Gallery = () => {
       }
     }
   `);
+  const imageByFilename = useMemo(
+    () =>
+      Object.fromEntries(
+        data.allFile.edges.map(({ node }) => [node.base, node.childImageSharp]),
+      ),
+    [data],
+  );
+  const album = cities.find((city) => city.slug === selectedCity);
 
-  const imageByFilename = photo.allFile.edges.reduce((images, image) => {
-    images[image.node.base] = image;
-    return images;
-  }, {});
+  useEffect(() => {
+    if (selectedCity) {
+      albumHeading.current?.focus({ preventScroll: true });
+      albumHeading.current?.scrollIntoView({
+        block: "nearest",
+        behavior: "auto",
+      });
+    }
+  }, [selectedCity]);
 
-  const current = lightbox && lightbox.entries[lightbox.index];
-  const hasMultiple = lightbox && lightbox.entries.length > 1;
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+  const stepPhoto = useCallback((step) => {
+    setLightbox(
+      (current) =>
+        current && {
+          ...current,
+          index:
+            (current.index + step + current.photos.length) %
+            current.photos.length,
+        },
+    );
+  }, []);
+  const isLightboxOpen = Boolean(lightbox);
+  useEffect(() => {
+    if (!isLightboxOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+    function keydown(event) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeLightbox();
+      } else if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        stepPhoto(-1);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        stepPhoto(1);
+      } else if (event.key === "Tab") {
+        const controls = [
+          ...dialogRef.current.querySelectorAll(
+            'button:not([disabled]), [href], [tabindex="0"]',
+          ),
+        ];
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (
+          event.shiftKey &&
+          (document.activeElement === first ||
+            !dialogRef.current.contains(document.activeElement))
+        ) {
+          event.preventDefault();
+          last?.focus();
+        } else if (
+          !event.shiftKey &&
+          (document.activeElement === last ||
+            !dialogRef.current.contains(document.activeElement))
+        ) {
+          event.preventDefault();
+          first?.focus();
+        }
+      }
+    }
+    window.addEventListener("keydown", keydown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", keydown);
+      photoOpener.current?.focus({ preventScroll: true });
+    };
+  }, [isLightboxOpen, closeLightbox, stepPhoto]);
+
+  function closeAlbum() {
+    setSelectedCity(null);
+    galleryRef.current
+      ?.querySelector(`[data-city="${selectedCity}"]`)
+      ?.focus({ preventScroll: true });
+  }
+  const current = lightbox?.photos[lightbox.index];
+  const image = current && (
+    <div className="lightbox__stage">
+      <img
+        className="lightbox__image"
+        src={getSrc(imageByFilename[current.links.image]?.full)}
+        alt={current.title[language]}
+        draggable="false"
+      />
+    </div>
+  );
 
   return (
-    <PhotosWrapper id="photo">
-      <HighlightTemplate
-        title={t("gallery.highlight-title")}
-        desc={t("gallery.highlight-desc")}
-        preview={
-          <HighlightPreview>
-            <IFrame src="https://www.youtube.com/embed/PSpghrPLQXI?rel=0&autoplay=0" />
-            {/* <IFrame src="//player.bilibili.com/player.html?isOutside=true&aid=113735146471931&bvid=BV1ao68YmEDC&cid=27591446473&p=1" /> */}
-          </HighlightPreview>
-        }
-      />
-      <PageHeader>{t("gallery.photography")}</PageHeader>
-      <PhotoTimeline collapseHeight="1450px" showAll={showAll}>
-        {photo.allPhotosJson.edges.map(({ node }) => {
-          const entries = node.photos
-            .map((photoItem) => ({
-              photoItem,
-              img: imageByFilename[photoItem.links.image],
-            }))
-            .filter((entry) => entry.img);
-
-          return (
-            <PhotoTheme key={node.id}>
-              <PhotoThemeHeader>
-                <p className="photo-theme__date">{node.date}</p>
-                <h3>{node.title}</h3>
-                <p className="photo-theme__description">{node.description}</p>
-              </PhotoThemeHeader>
-
-              <PhotoThemeGrid>
-                {entries.map((entry, index) => (
-                  <Card
-                    key={entry.photoItem.links.image}
-                    photoItem={entry.photoItem}
-                    currentImg={entry.img}
-                    onOpen={() => openLightbox(entries, index)}
-                  />
-                ))}
-              </PhotoThemeGrid>
-            </PhotoTheme>
-          );
-        })}
-
-        {!showAll && (
-          <Button onClick={handleShowAll} className="showall__button">
-            {t("gallery.show-all")}
-          </Button>
-        )}
-      </PhotoTimeline>
-
-      {lightbox && isClient && MapInteractionCSS && (
-        <Lightbox data-testid="lightbox" onClick={handleBackdropClick}>
-          <MapInteractionCSS key={lightbox.index}>
-            <div className="lightbox__stage">
-              <img
-                className="lightbox__image"
-                src={getSrc(current.img.node.childImageSharp.full)}
-                alt={current.photoItem.title}
-                draggable="false"
-              />
+    <PhotosWrapper id="photo" ref={galleryRef}>
+      <GalleryHeader>
+        <h1>{t("gallery.title")}</h1>
+      </GalleryHeader>
+      <MapFrame $hasAlbum={Boolean(album)}>
+        <WorldMap
+          cities={cities}
+          language={language}
+          selectedCity={selectedCity}
+          onSelect={(city) => setSelectedCity(city.slug)}
+          view={view}
+          setView={setView}
+        />
+        {album && (
+          <CityAlbum
+            aria-labelledby="city-album-title"
+            data-testid="city-album"
+            onKeyDown={(event) => {
+              if (event.key === "Escape" && !lightbox) closeAlbum();
+            }}
+          >
+            <div className="album-heading">
+              <div>
+                <p className="album-country">{album.country[language]}</p>
+                <h2 id="city-album-title" ref={albumHeading} tabIndex={-1}>
+                  {album.name[language]}
+                </h2>
+              </div>
+              <button
+                type="button"
+                className="album-close"
+                onClick={closeAlbum}
+                aria-label={t("gallery.close-album")}
+              >
+                ×
+              </button>
             </div>
-          </MapInteractionCSS>
-
-          {hasMultiple && (
+            <AlbumGrid>
+              {album.photos.map((photo, index) => (
+                <PhotoCard
+                  key={photo.links.image}
+                  type="button"
+                  aria-label={t("gallery.open-photo", {
+                    title: photo.title[language],
+                  })}
+                  onClick={(event) => {
+                    photoOpener.current = event.currentTarget;
+                    setLightbox({ photos: album.photos, index });
+                  }}
+                >
+                  <GatsbyImage
+                    image={getImage(imageByFilename[photo.links.image]?.thumb)}
+                    alt={photo.title[language]}
+                  />
+                  <span>{photo.title[language]}</span>
+                </PhotoCard>
+              ))}
+            </AlbumGrid>
+          </CityAlbum>
+        )}
+      </MapFrame>
+      <CityList aria-label={t("gallery.city-list")}>
+        {cities.map((city) => (
+          <button
+            type="button"
+            key={city.slug}
+            data-city={city.slug}
+            aria-pressed={selectedCity === city.slug}
+            aria-controls={album ? "city-album-title" : undefined}
+            onClick={() => setSelectedCity(city.slug)}
+          >
+            <span className="city-dot" aria-hidden="true" />
+            {city.name[language]}
+          </button>
+        ))}
+      </CityList>
+      {lightbox && (
+        <Lightbox
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label={t("gallery.photo-viewer")}
+          data-testid="lightbox"
+        >
+          {MapInteractionCSS ? (
+            <MapInteractionCSS
+              key={current.links.image}
+              minScale={1}
+              maxScale={5}
+            >
+              {image}
+            </MapInteractionCSS>
+          ) : (
+            image
+          )}
+          {lightbox.photos.length > 1 && (
             <>
               <LightboxNavButton
                 className="lightbox__nav--prev"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  showPrev();
-                }}
-                aria-label="Previous photo"
+                onClick={() => stepPhoto(-1)}
+                aria-label={t("gallery.previous-photo")}
               >
-                <FontAwesomeIcon icon="chevron-left" />
+                {t("gallery.previous-photo")}
               </LightboxNavButton>
               <LightboxNavButton
                 className="lightbox__nav--next"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  showNext();
-                }}
-                aria-label="Next photo"
+                onClick={() => stepPhoto(1)}
+                aria-label={t("gallery.next-photo")}
               >
-                <FontAwesomeIcon icon="chevron-right" />
+                {t("gallery.next-photo")}
               </LightboxNavButton>
             </>
           )}
-
-          <LightboxCaption onClick={(e) => e.stopPropagation()}>
-            <p className="lightbox__title">{current.photoItem.title}</p>
-            {hasMultiple && (
-              <span className="lightbox__counter">
-                {lightbox.index + 1} / {lightbox.entries.length}
-              </span>
-            )}
+          <LightboxCaption aria-live="polite">
+            <p className="lightbox__title">{current.title[language]}</p>
+            <span className="lightbox__counter">
+              {lightbox.index + 1} / {lightbox.photos.length}
+            </span>
           </LightboxCaption>
-
           <LightBoxCloseButton
-            onClick={(e) => {
-              e.stopPropagation();
-              closeLightbox();
-            }}
-            aria-label="Close Lightbox"
+            ref={closeRef}
+            onClick={closeLightbox}
+            aria-label={t("gallery.close-lightbox")}
           >
-            <FontAwesomeIcon icon="times" />
+            ×
           </LightBoxCloseButton>
         </Lightbox>
       )}
     </PhotosWrapper>
   );
-};
-
-Card.propTypes = {
-  photoItem: PropTypes.object.isRequired,
-  currentImg: PropTypes.object.isRequired,
-  onOpen: PropTypes.func.isRequired,
-};
-
-export default Gallery;
+}

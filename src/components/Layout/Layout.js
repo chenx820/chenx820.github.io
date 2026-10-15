@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
 
 import "normalize.css";
 import { ThemeProvider } from "styled-components";
@@ -36,6 +37,9 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={currentTheme}>
       <>
+        <Helmet>
+          <link rel="stylesheet" href="/fonts/lxgw-wenkai-screen/result.css" />
+        </Helmet>
         <GlobalStyle />
 
         <ThemeToggleContext.Provider value={{ theme, toggleTheme, toggleRef }}>

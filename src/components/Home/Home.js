@@ -68,9 +68,7 @@ const Home = () => {
         </div>
       </Intro>
       <div className="home-footer">
-        <a href="#research">
-          {zh ? "探索研究" : "Explore research"} <span>↘</span>
-        </a>
+        <a href="#research">{zh ? "探索研究" : "Explore research"}</a>
         <TinyCircuit />
       </div>
       <ResearchWordCloud />

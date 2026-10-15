@@ -9,13 +9,14 @@ export const sizes = {
 
 const themeCommon = {
   onPrimaryColor: "#303649",
-  typewriter: '"Courier New", "Courier", "Noto Sans Mono CJK SC", monospace',
+  typewriter:
+    '"Courier New", "Courier", "LXGW WenKai Screen", "Noto Sans Mono CJK SC", monospace',
   shadow: "0px 10px 10px rgba(0, 0, 0, 0.2)",
   shadowSmall: "0px 5px 10px rgba(0, 0, 0, 0.05)",
   fontFamily:
-    '"Montserrat", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif',
+    '"Montserrat", "LXGW WenKai Screen", "PingFang SC", "Microsoft YaHei", sans-serif',
   secondaryFontFamily:
-    '"Karla", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif',
+    '"Karla", "LXGW WenKai Screen", "PingFang SC", "Microsoft YaHei", sans-serif',
   spacing: {
     sectionBottom: "margin-bottom: 100px",
     sectionTop: "margin-top: 100px",

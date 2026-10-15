@@ -74,10 +74,21 @@
     },
     "gallery": {
         "title": "Gallery",
-        "highlight-title": "2024 Journey Highlights",
-        "highlight-desc": "This year's adventures took me through breathtaking landscapes and vibrant cities across many countries.",
-        "photography": "Photography",
-        "show-all": "Show all"
+        "map-label": "World map of photo locations",
+        "map-keyboard": "Use arrow keys to pan and + or − to zoom. City buttons below also open each album.",
+        "zoom-in": "Zoom in",
+        "zoom-out": "Zoom out",
+        "reset-map": "World view",
+        "city-list": "Explore a city",
+        "open-city": "Open {{city}} album",
+        "expand-cluster": "Zoom in to explore {{count}} cities: {{cities}}",
+        "close-album": "Close city album",
+        "previous-photo": "Previous photo",
+        "next-photo": "Next photo",
+        "close-lightbox": "Close photo viewer",
+        "photo-viewer": "Photo viewer",
+        "open-photo": "View {{title}}",
+        "map-credit": "Map data: Natural Earth"
     },
     "common": {
         "share-on": "Share on",

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const ProgressBar = styled.div`
@@ -18,23 +17,28 @@ const BackToTopButton = styled.button`
   position: fixed;
   right: 24px;
   bottom: 28px;
-  width: 44px;
+  min-width: 44px;
+  padding: 0 16px;
   height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: 50%;
+  border-radius: 22px;
   cursor: pointer;
-  font-size: 16px;
-  color: ${(p) => p.theme.dark ? p.theme.bgColor : p.theme.onPrimaryColor};
+  font-family: inherit;
+  font-size: 12px;
+  color: ${(p) => (p.theme.dark ? p.theme.bgColor : p.theme.onPrimaryColor)};
   background: ${(p) => p.theme.primaryColor};
   box-shadow: ${(p) => p.theme.shadow};
   z-index: 1500;
   opacity: ${(p) => (p.$visible ? 1 : 0)};
   visibility: ${(p) => (p.$visible ? "visible" : "hidden")};
   transform: translateY(${(p) => (p.$visible ? 0 : "12px")});
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s;
 
   &:hover {
     filter: brightness(1.08);
@@ -85,7 +89,7 @@ const ScrollExtras = ({ showProgress = true }) => {
         title={t("common.back-to-top", "Back to top")}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
-        <FontAwesomeIcon icon="chevron-up" />
+        {t("common.back-to-top", "Back to top")}
       </BackToTopButton>
     </>
   );

@@ -84,14 +84,6 @@ export const HomeWrapper = styled.section`
   .home-footer a {
     font-size: 14px;
   }
-  .home-footer a span {
-    display: inline-block;
-    margin-left: 12px;
-    transition: transform 0.2s;
-  }
-  .home-footer a:hover span {
-    transform: translate(3px, 3px);
-  }
   @media ${({ theme }) => theme.media.tablet} {
     margin-top: 75px;
     .home-footer > span {
