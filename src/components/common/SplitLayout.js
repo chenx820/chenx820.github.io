@@ -11,11 +11,13 @@ const SplitLayoutWrapper = styled.section`
   }
 
   display: grid;
-  grid-template-columns: minmax(750px, 1fr) 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 28%);
+  padding-top: 40px;
   grid-column-gap: 30px;
   grid-template-areas: "post side";
 
   .layout__content {
+    min-width: 0;
     grid-area: post;
   }
   .layout__aside {

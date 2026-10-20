@@ -9,23 +9,22 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body, html {
-    height: 100%;
+    min-height: 100%;
     font-size: 16px;
     font-family: ${(p) => p.theme.fontFamily};
     -webkit-font-smoothing: antialiased;
-    font-display: fallback !important;
-    overflow-x: hidden;
   }
 
   body {
-    /* overflow hidden for Patent's 100vw width div */
-    overflow-x: hidden;
+    margin: 0;
+    overflow-x: clip;
     background-color: ${(p) => p.theme.bgColor};
     color: ${(p) => p.theme.textColor};
   }
 
   :focus-visible { outline: 2px solid ${(p) => p.theme.primaryTextColor}; outline-offset: 5px; }
   ::selection { background: #fcbad366; }
+  button, input, select, textarea { font-family: inherit; }
   html { scroll-behavior: smooth; scroll-padding-top: 85px; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }

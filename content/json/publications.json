@@ -6,6 +6,7 @@
     "venue": "IEEE Transactions on Quantum Engineering (TQE)",
     "year": "2026",
     "status": "Accepted",
+    "bibtex": "@ARTICLE{huang2026zap,\n  author={Huang, Chen and Zhao, Xi and Xu, Hongze and Zhuang, Wei-feng and Hu, Meng-Jun and Liu, Dong E. and Wang, Jingbo},\n  journal={IEEE Transactions on Quantum Engineering}, \n  title={ZAP: Zoned Architecture and Performant Compiler for Field-Programmable Atom Array}, \n  year={2026},\n  volume={7},\n  number={},\n  pages={3103619-3103619},\n  keywords={Qubit;Program processors;Arrays;Atoms;Circuits;Timing;Computer architecture;Architecture;Crosstalk;Routing;Neutral atoms;quantum compiler;quantum computing},\n  doi={10.1109/TQE.2026.3696707}}",
     "links": [
       {
         "label": "IEEE Xplore",

@@ -47,6 +47,7 @@ export const query = graphql`
         venue
         year
         status
+        bibtex
         links {
           href
           label

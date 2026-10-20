@@ -6,12 +6,12 @@ import Button from "@common/Button";
 import PageHeader from "@common/PageHeader";
 
 const PublicationsWrapper = styled.section`
-  padding-bottom: 40px;
+  padding: 40px 0;
 `;
 
 const PublicationsIntro = styled.p`
   max-width: 680px;
-  margin: -60px auto 72px;
+  margin: 0 auto 48px;
   color: ${(props) => props.theme.textColor};
   text-align: center;
 `;
@@ -118,6 +118,8 @@ const PeopleLine = styled.p`
 `;
 
 const buildBibtex = (paper) => {
+  if (paper.bibtex) return paper.bibtex;
+
   const cleanAuthors = (paper.authors || "")
     .replace(/\*/g, "")
     .split(",")
@@ -155,7 +157,12 @@ const buildBibtex = (paper) => {
       lines.push(`  howpublished = {${paper.venue}},`);
     }
   }
-  lines.splice(1, 0, `  title = {${paper.title}},`, `  author = {${authorField}},`);
+  lines.splice(
+    1,
+    0,
+    `  title = {${paper.title}},`,
+    `  author = {${authorField}},`,
+  );
   if (paper.year) lines.push(`  year = {${paper.year}},`);
   if (paper.status && paper.status !== "Published")
     lines.push(`  note = {${paper.status}},`);
@@ -189,9 +196,11 @@ const highlightOwnName = (people) => {
     return null;
   }
 
-  return people.split(/(Chen Huang)/g).map((part, index) =>
-    part === "Chen Huang" ? <strong key={index}>{part}</strong> : part
-  );
+  return people
+    .split(/(Chen Huang)/g)
+    .map((part, index) =>
+      part === "Chen Huang" ? <strong key={index}>{part}</strong> : part,
+    );
 };
 
 const PaperEntry = ({ paper }) => {
