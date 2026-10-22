@@ -12,4 +12,4 @@ notetags: ["语文", "高中"]
 - [**作文常用表达**](/notes/high-school-chinese/pdf/terminology.pdf)：常用术语与修辞手法。
 - [**文化主题素材**](/notes/high-school-chinese/pdf/culture.pdf)：与文化有关的事例和观点。
 - [**价值观主题素材**](/notes/high-school-chinese/pdf/values.pdf)：关于不同价值观与信念的思考。
-- [**青春主题素材**](/notes/high-school-chinese/pdf/youth.pdf)：关于青年成长的思考。
+- [**青年主题素材**](/notes/high-school-chinese/pdf/youth.pdf)：关于青年成长的思考。
