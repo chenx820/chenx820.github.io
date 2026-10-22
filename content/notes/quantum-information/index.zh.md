@@ -7,22 +7,20 @@ institution_slug: imperial-college-london
 notetags: ["物理", "研究生课程", "量子计算"]
 ---
 
-（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
+这是我的**量子信息**课程笔记。这门课由我的导师 [Myungshik Kim 教授](https://www.imperial.ac.uk/people/m.kim)讲授，内容很有意思。
 
-这里是我的**量子信息**笔记，这是一门由我的导师[Myungshik](https://www.imperial.ac.uk/people/m.kim)教授讲授的精彩课程。
+笔记结合课堂内容与 Nielsen 和 Chuang 的经典教材，主要涵盖：
 
-我的笔记综合了他讲座和Nielsen与Chuang基础教材的关键概念。涵盖：
-
-- 量子力学和量子信息的基本要素
+- 量子力学与量子信息基础
 - 量子算法
-- 物理实现 - 囚禁离子
-- 退相干和量子纠错
-- 纠缠态的性质和应用
+- 量子计算的物理实现：离子阱
+- 退相干与量子纠错
+- 纠缠态的性质与应用
 
-[**下载完整笔记 (PDF)**](/notes/quantum-information/pdf/quantum-information.pdf)
+[**下载完整笔记（PDF）**](/notes/quantum-information/pdf/quantum-information.pdf)
 
 ---
 
-你可以在GitHub上找到我在帝国理工学院的完整笔记合集。如果你觉得它们有用，请考虑给仓库点个星！
+更多帝国理工学院课程笔记收录在我的 GitHub 仓库中。如果对你有帮助，欢迎给仓库点个 Star！
 
-[**在GitHub上查看**](https://github.com/chenx820/imperial-course-notes)
+[**在 GitHub 查看笔记合集**](https://github.com/chenx820/imperial-course-notes)

@@ -7,18 +7,16 @@ institution_slug: huazhong-university-of-science-and-technology
 notetags: ["物理", "本科生课程"]
 ---
 
-（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
+**热力学与统计物理**由王顺教授授课，课程、作业和考试均使用**英语**，学起来颇有挑战。除了每周阅读和分析研究论文，我们还需要完成一篇学期论文。
 
-这是由王顺教授讲授的一门特别具有挑战性的课程，完全用英语进行，包括所有课程作业和考试。课程要求严格，要求我们每周阅读和分析研究论文并撰写学期论文。
+这份笔记主要参考 **David Tong** 的教材，适合希望进一步理解这门课的同学。
 
-我的笔记主要基于**David Tong**的优秀教材。本指南适合希望深入探讨该主题的学生。
+[**下载完整笔记（PDF）**](/notes/thermodynamics-and-statistical-physics/pdf/statistical-physics.pdf)
 
-[**下载完整笔记 (PDF)**](/notes/thermodynamics-and-statistical-physics/pdf/statistical-physics.pdf)
-
-作为课程的一部分，我还完成了一个项目[使用Metropolis算法建模二维Ising模型](https://www.zhihu.com/question/440714043/answer/1693422235)。
+作为课程项目，我还尝试了[用 Metropolis 算法模拟二维 Ising 模型](https://www.zhihu.com/question/440714043/answer/1693422235)。
 
 ---
 
-这只是我的华中科技大学课程笔记合集的一部分。如果你觉得这个资源有帮助，我很感谢你在GitHub仓库上点个星！
+更多华中科技大学课程笔记收录在我的 GitHub 仓库中。如果对你有帮助，欢迎给仓库点个 Star！
 
-[**在GitHub上查看**](https://github.com/chenx820/HUST-course-notes)
+[**在 GitHub 查看笔记合集**](https://github.com/chenx820/HUST-course-notes)

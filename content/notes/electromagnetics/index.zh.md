@@ -7,16 +7,16 @@ institution_slug: huazhong-university-of-science-and-technology
 notetags: ["物理", "本科生课程"]
 ---
 
-华中科技大学**电磁学**复习笔记，内容包括：
+这是我为**电磁学**期末考试整理的复习笔记。课程由 Xue-Wen Chen 教授授课，笔记既梳理了知识框架，也总结了常用的物理模型，主要包括：
 
 - 静电学
 - 静磁学
 - 麦克斯韦方程组
 
-[**下载完整笔记 (PDF)**](/notes/electromagnetics/pdf/review-electromagnetics.pdf)
+[**下载完整笔记（PDF）**](/notes/electromagnetics/pdf/review-electromagnetics.pdf)
 
 ---
 
-我在华中科技大学的完整笔记合集可在GitHub仓库中找到。如果这些笔记对你有帮助，请帮我给仓库点个星！
+更多华中科技大学课程笔记收录在我的 GitHub 仓库中。如果对你有帮助，欢迎给仓库点个 Star！
 
-[**在GitHub上查看**](https://github.com/chenx820/HUST-course-notes)
+[**在 GitHub 查看笔记合集**](https://github.com/chenx820/HUST-course-notes)

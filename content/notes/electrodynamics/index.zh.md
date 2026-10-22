@@ -7,12 +7,12 @@ institution_slug: huazhong-university-of-science-and-technology
 notetags: ["物理", "本科生课程"]
 ---
 
-这是我为期末考试写的**电动力学期末偷分宝典**😁，不仅总结了关键知识点，还补充了重要物理模型的具体分解，包含了考试的所有可能出题点。（我的电动力学期末成绩98😈）
+这是我为**电动力学**期末考试整理的“期末偷分宝典”😁。除了梳理知识点，我还把解题中常用的**物理模型**拆开来分析，方便复习时理解模型、掌握用法。这门课由 Zhao-Feng Kang 教授授课，我的期末成绩是 98 分。
 
-[**下载电动力学期末偷分宝典 (PDF)**](/notes/electrodynamics/pdf/review-electrodynamics.pdf)
+[**下载电动力学期末复习笔记（PDF）**](/notes/electrodynamics/pdf/review-electrodynamics.pdf)
 
 ---
 
-我在华中科技大学的完整笔记合集可在GitHub仓库中找到。如果这些笔记对你有帮助，请帮我给仓库点个星！
+更多华中科技大学课程笔记收录在我的 GitHub 仓库中。如果对你有帮助，欢迎给仓库点个 Star！
 
-[**在GitHub上查看**](https://github.com/chenx820/HUST-course-notes)
+[**在 GitHub 查看笔记合集**](https://github.com/chenx820/HUST-course-notes)

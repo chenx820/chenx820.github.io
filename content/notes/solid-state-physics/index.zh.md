@@ -7,14 +7,12 @@ institution_slug: huazhong-university-of-science-and-technology
 notetags: ["物理", "本科生课程", "凝聚态"]
 ---
 
-（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
+这是袁柳松教授讲授的本科**固体物理**课程的复习笔记。
 
-这些是我本科**固体物理**课程的复习笔记，由袁柳松教授授课。
-
-[**下载复习笔记 (PDF)**](/notes/solid-state-physics/pdf/review-solid-state-physics.pdf)
+[**下载复习笔记（PDF）**](/notes/solid-state-physics/pdf/review-solid-state-physics.pdf)
 
 ---
 
-这只是我的华中科技大学课程笔记合集的一部分。如果你觉得这个资源有帮助，我很感谢你在GitHub仓库上点个星！
+更多华中科技大学课程笔记收录在我的 GitHub 仓库中。如果对你有帮助，欢迎给仓库点个 Star！
 
-[**在GitHub上查看**](https://github.com/chenx820/HUST-course-notes)
+[**在 GitHub 查看笔记合集**](https://github.com/chenx820/HUST-course-notes)

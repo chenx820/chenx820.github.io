@@ -7,18 +7,16 @@ institution_slug: xiamen-foreign-language-school
 notetags: ["物理", "高中"]
 ---
 
-（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
+这里收录了我高中物理的笔记和复习资料。有些是做题时的总结，有些来自李楠老师的课堂。
 
-这是高中物理的各种笔记和总结合集。材料来自不同来源——有些是习题集的总结，其他是李楠老师优秀课程的笔记。
+资料的编排顺序不完全统一，可以按需要查阅相应专题。
 
-虽然顺序可能有些混乱，但我相信这些资源都有助于理解课程的不同部分。
-
-- [总体总结](/notes/high-school-physics/pdf/summary.pdf)
+- [知识点汇总](/notes/high-school-physics/pdf/summary.pdf)
 - [物理模型总结](/notes/high-school-physics/pdf/summary-of-models.pdf)
-- [天体](/notes/high-school-physics/pdf/celestial-bodies.pdf)
+- [天体运动](/notes/high-school-physics/pdf/celestial-bodies.pdf)
 - [物理学史](/notes/high-school-physics/pdf/physics-history.pdf)
 - [物理实验](/notes/high-school-physics/pdf/experiments.pdf)
 - [测量工具](/notes/high-school-physics/pdf/measurement-tools.pdf)
-- [选修3-1](/notes/high-school-physics/pdf/elective-3-1.pdf)
-- [选修3-4](/notes/high-school-physics/pdf/elective-3-4.pdf)
-- [选修3-5](/notes/high-school-physics/pdf/elective-3-5.pdf)
+- [选修 3-1](/notes/high-school-physics/pdf/elective-3-1.pdf)
+- [选修 3-4](/notes/high-school-physics/pdf/elective-3-4.pdf)
+- [选修 3-5](/notes/high-school-physics/pdf/elective-3-5.pdf)

@@ -7,8 +7,6 @@ institution_slug: huazhong-university-of-science-and-technology
 notetags: ["通识", "本科生课程", "思维导图"]
 ---
 
-（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
+这是我为**马克思主义原理**考试整理的思维导图，用来梳理知识点、集中复习。
 
-这个**马克思主义原理**思维导图是专门为考试准备而创建的专注学习工具。
-
-[**下载思维导图 (PDF)**](/notes/marxism-principle/pdf/marxism-pinciple-mindmap.pdf)
+[**下载思维导图（PDF）**](/notes/marxism-principle/pdf/marxism-pinciple-mindmap.pdf)

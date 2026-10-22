@@ -26,6 +26,7 @@
         "title": "About Me",
         "bio": "<p>Hi, I'm Chen, a PhD student in Computer Science and Engineering at <cuhk><strong>The Chinese University of Hong Kong (CUHK)</strong></cuhk>. My research focuses on quantum compilation for neutral-atom systems and hardware-software co-design.<br/><br/>I am interested in advancing quantum computing through both theory and experiment. My training in physics has provided me with a strong theoretical foundation and hands-on experience with neutral atoms, trapped ions, and semiconductor qubits.<br/><br/>I am also a co-founder and chief architect of <openqi>Open-QI</openqi>, where I lead research and development in neutral-atom quantum computing. I contribute to <fatqat>FatQat</fatqat> as well.</p>",
         "news": [
+            "2026-08-01 I started my PhD at CUHK CSE!",
             "2026-05-21 A first-author paper was accepted by IEEE Transactions on Quantum Engineering (TQE)!",
             "2026-02-24 A co-first-author paper was accepted by DAC 2026!",
             "2026-02-02 I started my research assistantship at CUHK CSE.",
@@ -75,7 +76,7 @@
     "gallery": {
         "title": "Gallery",
         "map-label": "World map of photo locations",
-        "map-keyboard": "Use arrow keys to pan and + or − to zoom. City buttons below also open each album.",
+        "map-keyboard": "Use arrow keys to pan and + or - to zoom. City buttons below also open each album.",
         "zoom-in": "Zoom in",
         "zoom-out": "Zoom out",
         "reset-map": "World view",

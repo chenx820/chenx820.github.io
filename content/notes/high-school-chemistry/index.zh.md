@@ -7,22 +7,20 @@ institution_slug: xiamen-foreign-language-school
 notetags: ["化学", "高中"]
 ---
 
-（以下中文内容由Cursor自动翻译，还没仔细检查翻译内容，我会缓慢手动更新的！）
+这是我的高中化学笔记，主体分为完整课程笔记和考前复习提纲两部分，另附物质结构推理题的整理。特别感谢同学**李坤鹏**提供自己的课堂笔记供我参考。
 
-这里是我的高中化学笔记，分为两个部分以支持深入学习和高效的高考准备。特别感谢我的同学**李坤鹏**，他提供了自己的课堂笔记供我参考。
+- [**完整课程笔记（PDF）**](/notes/high-school-chemistry/pdf/chemistry.pdf)：详细梳理高中化学的课程内容。
+- [**考前复习提纲（PDF）**](/notes/high-school-chemistry/pdf/chemistry-review.pdf)：提炼重点知识，方便考前快速回顾。
+- [**物质结构推理（PDF）**](/notes/high-school-chemistry/pdf/reasoning.pdf)：整理物质结构推理题的解题思路。
 
-- [**综合课程笔记 (PDF)**](/notes/high-school-chemistry/pdf/chemistry.pdf): 涵盖整个课程的详细笔记。
-- [**期末复习指南 (PDF)**](/notes/high-school-chemistry/pdf/chemistry-review.pdf): 关键概念的浓缩总结，便于快速复习。
-- [**物质结构推理**](/notes/high-school-chemistry/pdf/reasoning.pdf): 解决物质结构推理题的指南。
+#### 常见元素的化学方程式
 
-#### 关键化学方程式总结
+下面几张图汇总了常见元素的重要化学反应。
 
-以下是常见元素关键化学方程式的可视化总结。
-
-![钠 (Na)](./images/equations-Na.jpeg)
-![铝 (Al)](./images/equations-Al.jpeg)
-![铁 (Fe)](./images/equations-Fe.jpeg)
-![铜 (Cu)](./images/equations-Cu.jpeg)
-![氮 (N)](./images/equations-N.jpeg)
-![硫 (S)](./images/equations-S.jpeg)
-![硅 (Si)](./images/equations-Si.jpeg)
+![钠（Na）](./images/equations-Na.jpeg)
+![铝（Al）](./images/equations-Al.jpeg)
+![铁（Fe）](./images/equations-Fe.jpeg)
+![铜（Cu）](./images/equations-Cu.jpeg)
+![氮（N）](./images/equations-N.jpeg)
+![硫（S）](./images/equations-S.jpeg)
+![硅（Si）](./images/equations-Si.jpeg)
