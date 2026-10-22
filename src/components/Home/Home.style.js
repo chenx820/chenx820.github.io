@@ -51,7 +51,7 @@ export const Intro = styled.section`
   .home__social a:hover {
     transform: translateY(-4px);
   }
-  .quantum-panel {
+  .research-cloud-panel {
     min-width: 0;
   }
   @media ${({ theme }) => theme.media.tablet} {

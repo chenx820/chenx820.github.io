@@ -4,7 +4,6 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 
 import ResearchInterests from "./ResearchInterests";
 import TinyCircuit from "./TinyCircuit";
-import QuantumState from "./QuantumState";
 
 import ResearchWordCloud from "./ResearchWordCloud";
 import { HomeWrapper, Intro } from "./Home.style";
@@ -63,15 +62,14 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="quantum-panel">
-          <QuantumState />
+        <div className="research-cloud-panel">
+          <ResearchWordCloud />
         </div>
       </Intro>
       <div className="home-footer">
         <a href="#research">{zh ? "探索研究" : "Explore research"}</a>
         <TinyCircuit />
       </div>
-      <ResearchWordCloud />
     </HomeWrapper>
   );
 };
