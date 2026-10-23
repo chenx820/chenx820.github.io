@@ -1,12 +1,11 @@
 import React from "react";
 import logo from "@src/static/logo.svg";
 
-import { Link, Trans, useTranslation } from "gatsby-plugin-react-i18next";
-import { Link as SLink } from "react-scroll";
+import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 
 import { NavItems, NavItem } from "./Navbar.style";
 
-import NavLinks from "./NavLinks";
+import NavLinks, { scrollToHomeSection } from "./NavLinks";
 import ToggleSwitch from "@common/ToggleSwitch";
 import LanguageSwitch from "@common/LanguageSwitch";
 
@@ -15,15 +14,20 @@ const NavDesktop = () => {
 
   return (
     <>
-      <SLink smooth offset={0} hashSpy={true} to="home">
-        <Link className="logo" to="/">
-          <img
-            src={logo}
-            alt=""
-            style={{ width: "clamp(80px, 8vw, 200px)", height: "auto" }}
-          />
-        </Link>
-      </SLink>
+      <Link
+        className="logo"
+        to="/"
+        aria-label={t("nav.home")}
+        onClick={(event) => {
+          if (scrollToHomeSection("home")) event.preventDefault();
+        }}
+      >
+        <img
+          src={logo}
+          alt=""
+          style={{ width: "clamp(80px, 8vw, 200px)", height: "auto" }}
+        />
+      </Link>
 
       <nav>
         <NavItems>

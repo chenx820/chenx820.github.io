@@ -10,18 +10,22 @@ export const NavWrapper = styled.div`
   width: 100%;
 
   background-color: ${(props) =>
-    props.isScrolled
-      ? props.theme.dark
-        ? "rgba(28, 32, 46, 0.88)"
-        : "rgba(250, 252, 254, 0.88)"
-      : props.theme.bgColor};
+    props.$overHero
+      ? "rgba(8, 15, 30, 0.94)"
+      : props.isScrolled
+        ? props.theme.dark
+          ? "rgba(28, 32, 46, 0.88)"
+          : "rgba(250, 252, 254, 0.88)"
+        : props.theme.bgColor};
 
   backdrop-filter: ${(props) => (props.isScrolled ? "blur(10px)" : "none")};
   -webkit-backdrop-filter: ${(props) =>
     props.isScrolled ? "blur(10px)" : "none"};
 
   transition: all 0.3s ease-in-out;
-  border-bottom: 1px solid ${(props) => props.theme.borderColor};
+  border-bottom: 1px solid
+    ${(props) =>
+      props.$overHero ? "rgba(143, 175, 210, 0.12)" : props.theme.borderColor};
   z-index: 1000;
 
   .logo {

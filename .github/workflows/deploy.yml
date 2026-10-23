@@ -1,21 +1,22 @@
-name: Build and Deploy
+name: Build
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-# Allow the workflow to push the built site to the gh-pages branch
+# ./deploy.sh owns publishing to gh-pages. CI only validates the build so a
+# source push cannot race with the local deployment for the same branch.
 permissions:
-  contents: write
+  contents: read
 
 # Cancel in-progress runs when a new commit is pushed
 concurrency:
-  group: pages-deploy
+  group: site-build
   cancel-in-progress: true
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
     env:
       CI: true
@@ -48,13 +49,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: gh-pages
-          user_name: github-actions[bot]
-          user_email: github-actions[bot]@users.noreply.github.com
-          commit_message: "Deploy site from ${{ github.sha }}"

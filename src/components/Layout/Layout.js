@@ -29,7 +29,7 @@ const RootWrapper = styled(Wrapper)`
   }
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, darkHero = false }) => {
   const [theme, toggleTheme, toggleRef] = useDarkMode();
 
   let currentTheme = theme === "light" ? themelight : themedark;
@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
         <GlobalStyle />
 
         <ThemeToggleContext.Provider value={{ theme, toggleTheme, toggleRef }}>
-          <Navbar />
+          <Navbar darkHero={darkHero} />
         </ThemeToggleContext.Provider>
 
         <RootWrapper>{children}</RootWrapper>
@@ -55,6 +55,7 @@ const Layout = ({ children }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  darkHero: PropTypes.bool,
 };
 
 export default Layout;

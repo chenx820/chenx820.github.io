@@ -93,6 +93,85 @@ class DeploySyncTest(unittest.TestCase):
         self.assertEqual(local, self.git("-C", "local", "rev-parse", "HEAD"))
         self.assertTrue(self.git("-C", "local", "diff", "--name-only", "--diff-filter=U"))
 
+    def deploy(self, build_exit=0, choice="1\n"):
+        # Exercise the real entrypoint and Git operations; replace expensive
+        # asset/build/publishing boundaries with local markers.
+        for filename in ("package.json", "gatsby-config.js"):
+            if not (self.root / "local" / filename).exists():
+                self.commit("local", filename, "{}")
+        script = FUNCTIONS + '''
+npm() { :; }
+setup_git_lfs() { :; }
+build_project() { return "$BUILD_EXIT"; }
+deploy_to_gh_pages() {
+    test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/main | cut -f1)"
+    touch ../published
+}
+main
+'''
+        return subprocess.run(
+            ["bash", "-c", script], cwd=self.root / "local",
+            env=dict(self.env, BUILD_EXIT=str(build_exit)), input=choice,
+            text=True, capture_output=True,
+        )
+
+    def test_choice_one_commits_and_pushes_source_before_publishing(self):
+        (self.root / "local" / "new-page.txt").write_text("new page")
+        result = self.deploy()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertTrue((self.root / "published").exists())
+        self.assertEqual(self.git("--git-dir=remote.git", "show", "main:new-page.txt"), "new page")
+
+    def test_failed_source_push_prevents_publication(self):
+        hook = self.root / "remote.git" / "hooks" / "pre-receive"
+        hook.write_text("#!/bin/sh\nexit 1\n")
+        hook.chmod(0o755)
+        result = self.deploy()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Source push failed", result.stdout)
+        self.assertFalse((self.root / "published").exists())
+
+    def test_failed_build_does_not_push_source(self):
+        before = self.git("--git-dir=remote.git", "rev-parse", "main")
+        result = self.deploy(build_exit=1)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertEqual(before, self.git("--git-dir=remote.git", "rev-parse", "main"))
+        self.assertFalse((self.root / "published").exists())
+
+    def test_feature_branch_is_not_published_as_main(self):
+        self.git("-C", "local", "checkout", "-b", "feature")
+        result = self.deploy()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertFalse((self.root / "published").exists())
+
+    def test_old_stash_is_not_restored_by_deployment(self):
+        (self.root / "local" / "base.txt").write_text("unrelated old edit")
+        self.git("-C", "local", "stash", "push")
+        old_stash = self.git("-C", "local", "rev-parse", "refs/stash")
+        result = self.deploy()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(old_stash, self.git("-C", "local", "rev-parse", "refs/stash"))
+        self.assertEqual((self.root / "local" / "base.txt").read_text(), "base")
+
+    def test_temporary_stash_restored_after_success_and_build_failure(self):
+        for build_exit in (0, 1):
+            with self.subTest(build_exit=build_exit):
+                draft = self.root / "local" / "draft.txt"
+                draft.write_text("keep my untracked draft")
+                result = self.deploy(build_exit=build_exit, choice="2\n")
+                self.assertEqual(result.returncode, build_exit, result.stderr)
+                self.assertEqual(draft.read_text(), "keep my untracked draft")
+                self.assertEqual(self.git("-C", "local", "stash", "list"), "")
+                draft.unlink()
+
+    def test_cancel_leaves_changes_uncommitted(self):
+        draft = self.root / "local" / "draft.txt"
+        draft.write_text("do not publish")
+        result = self.deploy(choice="3\n")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertFalse((self.root / "published").exists())
+        self.assertIn("?? draft.txt", self.git("-C", "local", "status", "--porcelain"))
+
 
 if __name__ == "__main__":
     unittest.main()

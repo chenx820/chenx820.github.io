@@ -45,7 +45,7 @@ const IndexPage = () => {
   }, []);
 
   return (
-    <Layout>
+    <Layout darkHero>
       <SEO title={t("global.name")} />
 
       <Home />

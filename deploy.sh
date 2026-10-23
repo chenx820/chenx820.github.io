@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# Only restore changes stashed by this invocation.
+DEPLOY_STASH=""
+
 # color definitions
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -32,23 +35,25 @@ check_git_status() {
     if [ -n "$(git status --porcelain)" ]; then
         print_warning "Found uncommitted changes"
         echo "Please select an action:"
-        echo "1) Commit all changes"
-        echo "2) Stash changes"
-        echo "3) Continue deployment (not recommended)"
+        echo "1) Commit all changes, sync main, and publish website"
+        echo "2) Temporarily stash changes and publish the committed version"
+        echo "3) Cancel"
         read -p "Please enter your choice (1-3): " choice
         
         case $choice in
             1)
-                git add .
+                git add -A
                 git commit -m "Auto commit before deployment"
                 print_success "All changes committed"
                 ;;
             2)
-                git stash
+                git stash push --include-untracked -m "Temporary stash for deploy.sh"
+                DEPLOY_STASH=$(git rev-parse refs/stash)
                 print_success "Changes stashed"
                 ;;
             3)
-                print_warning "Continue deployment, but it is recommended to handle uncommitted changes first"
+                print_status "Deployment cancelled"
+                exit 0
                 ;;
             *)
                 print_error "Invalid choice, exiting deployment"
@@ -111,6 +116,20 @@ sync_remote() {
         fi
     fi
     print_success "Remote changes synced"
+}
+
+# Keep source and workflow configuration on GitHub in sync before publishing.
+push_source() {
+    if [ -n "$(git status --porcelain)" ]; then
+        print_error "Files changed during the build. Commit or stash them and rerun ./deploy.sh."
+        return 1
+    fi
+    print_status "Pushing source and workflow configuration to origin/main..."
+    if ! git push origin HEAD:refs/heads/main; then
+        print_error "Source push failed; website publication was not started. Resolve the reported error and rerun ./deploy.sh."
+        return 1
+    fi
+    print_success "Source synced to origin/main"
 }
 
 # build project
@@ -202,11 +221,32 @@ deploy_to_gh_pages() {
  
 # restore stashed changes
 restore_stash() {
-    if git stash list | grep -q "stash@{0}"; then
-        print_status "Restoring stashed changes..."
-        git stash pop
-        print_success "Stashed changes restored"
+    if [ -z "$DEPLOY_STASH" ]; then
+        return
     fi
+    # Preserve the stash if a merge needs attention or another process stashed.
+    if git rev-parse -q --verify MERGE_HEAD >/dev/null ||
+        [ -n "$(git diff --name-only --diff-filter=U)" ] ||
+        [ "$(git rev-parse -q --verify refs/stash)" != "$DEPLOY_STASH" ]; then
+        print_warning "Changes remain in stash $DEPLOY_STASH; restore them after resolving the Git state."
+        return 1
+    fi
+    print_status "Restoring changes stashed by this deployment..."
+    if ! git stash pop --index; then
+        return 1
+    fi
+    DEPLOY_STASH=""
+    print_success "Stashed changes restored"
+}
+
+finish() {
+    local result=$?
+    trap - EXIT
+    if ! restore_stash; then
+        print_warning "Could not restore all stashed changes. The stash has been kept for recovery."
+        result=1
+    fi
+    exit "$result"
 }
 
 # clean deployment directory
@@ -226,7 +266,7 @@ show_usage() {
     echo "  --clean     Clean deployment directory and do fresh deployment"
     echo "  --help      Show this help message"
     echo ""
-    echo "Default: Incremental deployment (only update changed files)"
+    echo "Default: Commit/stash changes, sync main, build, push source, and publish gh-pages"
 }
 
 # main function
@@ -266,14 +306,21 @@ main() {
         exit 1
     fi
     
+    if [ "$(git branch --show-current)" != "main" ]; then
+        print_error "Run ./deploy.sh from the main branch."
+        exit 1
+    fi
+
+    trap finish EXIT
     check_git_status
     setup_git_lfs
     sync_remote
     build_project
+    push_source
     deploy_to_gh_pages
     restore_stash
     
-    print_success "Deployment completed! 🎉"
+    print_success "Source synced and website files pushed! 🎉"
     print_success "Website address: https://chenx820.github.io"
     print_warning "Note: GitHub Pages may take a few minutes to update"
 }

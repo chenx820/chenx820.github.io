@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 
-// Core interests first; smaller terms come from the site's research and notes.
+// The first word anchors the cloud; research interests surround the name.
 const words = [
+  ["Chen Huang", "name"],
   ["quantum computing", "main"],
   ["compilation", "compilation"],
   ["neutral atoms", "atoms"],
@@ -15,13 +16,10 @@ const words = [
   ["quantum control", "medium"],
   ["optical tweezers", "small"],
   ["scheduling", "small", true],
-  ["placement", "small"],
   ["routing", "small", true],
   ["spin qubits", "small"],
-  ["automatic calibration", "small"],
   ["quantum optics", "small"],
   ["zoned architecture", "small"],
-  ["atom arrays", "small"],
 ];
 
 const Cloud = styled.ul`
@@ -33,9 +31,9 @@ const Cloud = styled.ul`
   align-items: center;
   gap: 8px 12px;
   width: 100%;
-  max-width: 820px;
-  margin: 8px auto 0;
-  padding: 14px 0;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0;
   list-style: none;
   font-family: ${({ theme }) => theme.typewriter};
   text-align: center;
@@ -49,6 +47,25 @@ const Cloud = styled.ul`
   &[data-packed="true"] li {
     position: absolute;
   }
+  .name {
+    font-size: clamp(2.5rem, 10cqw, 5.75rem);
+    font-weight: 700;
+    letter-spacing: -0.06em;
+    font-family: ${({ theme }) => theme.fontFamily};
+    color: #eff8ff;
+    text-shadow: 0 0 48px #84bcf226;
+  }
+  h1 {
+    display: inline-block;
+    margin: 0;
+    font: inherit;
+    line-height: 1.1;
+    letter-spacing: inherit;
+    color: inherit;
+  }
+  &[data-packed="false"] .name {
+    flex-basis: 100%;
+  }
   span {
     display: inline-block;
     transition:
@@ -57,38 +74,38 @@ const Cloud = styled.ul`
   }
   li:hover span {
     transform: translateY(-2px);
-    color: ${({ theme }) => theme.primaryTextColor};
+    color: #eff8ff;
   }
   .main {
-    font-size: clamp(1.5rem, 7cqw, 3.4rem);
+    font-size: clamp(1.25rem, 4.8cqw, 2.75rem);
     font-weight: 700;
     letter-spacing: -0.065em;
-    color: ${({ theme }) => theme.primaryTextColor};
+    color: #a9dbf5;
   }
   .compilation {
     font-size: clamp(1.25rem, 4.3cqw, 2.1rem);
-    color: ${({ theme }) => theme.accentColor};
+    color: #c0b5e4;
   }
   .atoms {
     font-size: clamp(1.2rem, 4.1cqw, 2rem);
   }
   .ions {
     font-size: clamp(1.1rem, 3.6cqw, 1.8rem);
-    color: ${({ theme }) => theme.accentColor};
+    color: #c0b5e4;
   }
   .dots {
     font-size: clamp(0.875rem, 3.1cqw, 1.5rem);
-    color: ${({ theme }) => theme.primaryTextColor};
+    color: #afc4d9;
   }
   .atoms {
-    color: ${({ theme }) => (theme.dark ? theme.pastelPink : "#986276")};
+    color: #a2c8ec;
   }
   .medium {
     font-size: clamp(0.875rem, 2.3cqw, 1.05rem);
   }
   .small {
     font-size: 0.8125rem;
-    color: ${({ theme }) => theme.mutedColor};
+    color: #8fa3bc;
   }
 `;
 
@@ -137,13 +154,14 @@ export default function ResearchWordCloud() {
       const width = element.clientWidth;
       const sizes = Array.from(element.children).map((el, index) => {
         const vertical = words[index][2];
+        const word = el.firstElementChild;
         return {
-          w: vertical ? el.offsetHeight : el.offsetWidth,
-          h: vertical ? el.offsetWidth : el.offsetHeight,
+          w: vertical ? word.offsetHeight : word.offsetWidth,
+          h: vertical ? word.offsetWidth : word.offsetHeight,
         };
       });
       // Allow extra height on narrow screens and when the user enlarges text.
-      for (let height = width < 500 ? 330 : 270; height <= 750; height += 60) {
+      for (let height = width < 500 ? 360 : 400; height <= 760; height += 60) {
         const positions = packWords(sizes, width, height);
         if (positions) {
           setLayout({ positions, height });
@@ -197,7 +215,7 @@ export default function ResearchWordCloud() {
                 : undefined
             }
           >
-            <span>{label}</span>
+            {name === "name" ? <h1>{label}</h1> : <span>{label}</span>}
           </li>
         );
       })}
