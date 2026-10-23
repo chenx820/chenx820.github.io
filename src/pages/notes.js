@@ -123,7 +123,7 @@ export const query = graphql`
           excerpt
           frontmatter {
             title
-            date(formatString: "MMMM DD, YYYY", locale: $language)
+            date
             notetags
             institution
           }

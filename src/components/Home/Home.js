@@ -33,7 +33,7 @@ const Home = () => {
               href="//github.com/chenx820"
             />
             <IconLink
-              label="email"
+              label={t("common.email")}
               icon={["fas", "envelope"]}
               href="mailto:chen.huang678@gmail.com"
             />

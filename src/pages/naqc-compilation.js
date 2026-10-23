@@ -7,6 +7,7 @@ import SEO from "@components/seo";
 import Layout from "@components/Layout/Layout";
 import PageHeader from "@common/PageHeader";
 import papers from "../data/naqcCompilationPapers";
+import chineseTags from "../data/naqcTagLabels.zh.json";
 
 /* ----------------------------- labels ----------------------------- */
 
@@ -101,8 +102,8 @@ const ViewButton = styled.button`
       props.$active
         ? props.theme.primaryColor
         : props.theme.dark
-        ? "#444"
-        : "#dfe4f2"};
+          ? "#444"
+          : "#dfe4f2"};
   border-radius: 999px;
   background: ${(props) =>
     props.$active ? props.theme.primaryColor : "transparent"};
@@ -255,7 +256,9 @@ const Paper = ({ paper, labels }) => (
     <TagRow>
       <ArchTag>{labels.arch[paper.arch]}</ArchTag>
       {paper.tags.map((tag) => (
-        <Tag key={tag}>{tag}</Tag>
+        <Tag key={tag}>
+          {paper.lang === "zh" ? chineseTags[tag] || tag : tag}
+        </Tag>
       ))}
     </TagRow>
     <Summary>{paper.lang === "zh" ? paper.zh : paper.en}</Summary>

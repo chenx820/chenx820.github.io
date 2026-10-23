@@ -1,0 +1,17 @@
+{
+  "physics": { "en": "physics", "zh": "物理" },
+  "graduate": { "en": "graduate", "zh": "研究生课程" },
+  "engineering": { "en": "engineering", "zh": "电子技术" },
+  "undergraduate": { "en": "undergraduate", "zh": "本科生课程" },
+  "biology": { "en": "biology", "zh": "生物" },
+  "high-school": { "en": "high school", "zh": "高中" },
+  "mind-map": { "en": "mind map", "zh": "思维导图" },
+  "chemistry": { "en": "chemistry", "zh": "化学" },
+  "chinese": { "en": "chinese", "zh": "语文" },
+  "math": { "en": "math", "zh": "数学" },
+  "general": { "en": "general", "zh": "通识" },
+  "cs": { "en": "CS", "zh": "计算机科学" },
+  "gre": { "en": "GRE", "zh": "GRE" },
+  "quantum-computing": { "en": "quantum computing", "zh": "量子计算" },
+  "condensed-matter": { "en": "condensed matter", "zh": "凝聚态" }
+}

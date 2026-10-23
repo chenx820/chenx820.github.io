@@ -2,10 +2,11 @@ import React from "react";
 import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import socialBanner from "@src/static/images/social-banner.jpg";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation, useI18next } from "gatsby-plugin-react-i18next";
 
 function SEO({ title, description, slug, isPost }) {
   const { t } = useTranslation();
+  const { language, originalPath } = useI18next();
   const { site } = useStaticQuery(graphql`
     {
       site {
@@ -27,10 +28,11 @@ function SEO({ title, description, slug, isPost }) {
     return null;
   }
 
-  title = title || defaults.title;
-  description = description || defaults.description;
+  title = title || t("global.name");
+  description = description || t("global.description");
 
-  let url = `${defaults.siteUrl}${slug || ""}`;
+  const pagePath = originalPath || slug || "/";
+  const url = `${defaults.siteUrl}${language === "en" ? "" : `/${language}`}${pagePath}`;
   let ogimage = `${defaults.siteUrl}${socialBanner}`;
 
   if (isPost) {
@@ -41,13 +43,13 @@ function SEO({ title, description, slug, isPost }) {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Chen Huang",
+    name: t("global.name"),
     url: defaults.siteUrl,
     image: ogimage,
-    jobTitle: "PhD Student in Computer Science and Engineering",
+    jobTitle: t("global.job-title"),
     affiliation: {
       "@type": "CollegeOrUniversity",
-      name: "The Chinese University of Hong Kong",
+      name: t("global.affiliation"),
     },
     knowsAbout: ["Quantum Computing", "Computer Science"],
     sameAs: [
@@ -57,7 +59,7 @@ function SEO({ title, description, slug, isPost }) {
   };
 
   return (
-    <Helmet>
+    <Helmet htmlAttributes={{ lang: language }}>
       {/* General tags */}
       <title>{title}</title>
       <meta name="url" content={url} />
@@ -79,9 +81,7 @@ function SEO({ title, description, slug, isPost }) {
       {ogimage && <meta name="twitter:image" content={ogimage} />}
 
       {/* Structured data */}
-      <script type="application/ld+json">
-        {JSON.stringify(personSchema)}
-      </script>
+      <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
     </Helmet>
   );
 }

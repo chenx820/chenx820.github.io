@@ -14,37 +14,37 @@ const UnstyledUl = styled.ul`
 `;
 
 const Goodies = () => {
+  const { t } = useTranslation();
   const [links, setLinks] = useState();
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     fetch("https://api.github.com/gists/0d7483bb276abfa9f0bc074b954add1c")
       .then((res) => res.json())
       .then((data) => {
         setLinks(JSON.parse(data.files["goodies.json"].content));
-      });
+      })
+      .catch(() => setFailed(true));
   }, []);
 
   return (
     <Layout>
-      <SEO title="Chen Huang | All Links" />
+      <SEO title={t("goodies.title") + " | " + t("global.name")} />
 
-      <h1>Goodies</h1>
-      <p>
-        Collection of all of the project, experiment, source-code links at one
-        place.
-      </p>
+      <h1>{t("goodies.title")}</h1>
+      <p>{t("goodies.intro")}</p>
       <hr />
 
-      {!links && <p>Loading please wait....</p>}
+      {!links && <p>{t(failed ? "goodies.load-error" : "common.loading")}</p>}
       {links &&
         Object.entries(links).map((obj) => {
           return (
-            <>
+            <React.Fragment key={obj[0]}>
               <h2>{obj[0]}</h2>
               <UnstyledUl>
                 {obj[1].map((link) => {
                   return (
-                    <li>
+                    <li key={link[0]}>
                       <a target="__blank" href={link[0]}>
                         {link[1]}
                       </a>
@@ -52,7 +52,7 @@ const Goodies = () => {
                   );
                 })}
               </UnstyledUl>
-            </>
+            </React.Fragment>
           );
         })}
     </Layout>

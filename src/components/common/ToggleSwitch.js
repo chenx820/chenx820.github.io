@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import ThemeToggleContext from "@components/Layout/ThemeToggleContext";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const SwitchWrapper = styled.div`
   input[type="checkbox"] {
@@ -61,7 +62,7 @@ const SwitchWrapper = styled.div`
 
   /* Button 1 */
   #button-1 .knobs:before {
-    content: "DARK";
+    content: attr(data-dark-label);
     position: absolute;
     top: 4px;
     left: 4px;
@@ -80,7 +81,7 @@ const SwitchWrapper = styled.div`
   }
 
   #button-1 .checkbox:checked + .knobs:before {
-    content: "LIGHT";
+    content: attr(data-light-label);
     left: 32px;
     color: #000;
     background-color: ${(p) => p.theme.primaryColor};
@@ -100,18 +101,23 @@ const SwitchWrapper = styled.div`
 
 const ToggleSwitch = () => {
   const { toggleTheme, theme } = useContext(ThemeToggleContext);
+  const { t } = useTranslation();
 
   return (
     <SwitchWrapper>
       <div className="button r" id="button-1">
         <input
           className="checkbox"
-          aria-label="toggle theme"
+          aria-label={t("common.toggle-theme")}
           type="checkbox"
           onChange={toggleTheme}
           checked={theme === "dark" ? true : false}
         />
-        <div className="knobs"></div>
+        <div
+          className="knobs"
+          data-dark-label={t("common.dark")}
+          data-light-label={t("common.light")}
+        ></div>
         <div className="layer"></div>
       </div>
     </SwitchWrapper>

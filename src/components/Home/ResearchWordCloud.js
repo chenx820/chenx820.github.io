@@ -142,7 +142,8 @@ function packWords(sizes, width, height) {
 }
 
 export default function ResearchWordCloud() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const translatedWords = t("home.words", { returnObjects: true });
   const ref = useRef(null);
   const [layout, setLayout] = useState(null);
   useEffect(() => {
@@ -188,16 +189,14 @@ export default function ResearchWordCloud() {
       observer.disconnect();
       cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [i18n.language]);
 
   return (
     <Cloud
       ref={ref}
       data-packed={Boolean(layout)}
       style={layout ? { height: layout.height } : undefined}
-      aria-label={
-        i18n.language.startsWith("zh") ? "研究关键词云" : "Research word cloud"
-      }
+      aria-label={t("home.word-cloud-label")}
     >
       {words.map(([label, name, vertical], index) => {
         const box = layout?.positions[index];
@@ -215,7 +214,11 @@ export default function ResearchWordCloud() {
                 : undefined
             }
           >
-            {name === "name" ? <h1>{label}</h1> : <span>{label}</span>}
+            {name === "name" ? (
+              <h1>{translatedWords[index]}</h1>
+            ) : (
+              <span>{translatedWords[index]}</span>
+            )}
           </li>
         );
       })}

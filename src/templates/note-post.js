@@ -11,23 +11,26 @@ import ScrollExtras from "@common/ScrollExtras";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NoteDateAndReadTime } from "@src/components/Notes/NoteCard";
 import { DiscussionEmbed } from "disqus-react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation, useI18next } from "gatsby-plugin-react-i18next";
 
 import { siteUrl, disqusShortName } from "../../config/website";
 
 const NotePost = ({ data, pageContext }) => {
   const { t } = useTranslation();
+  const { language, originalPath } = useI18next();
   const { title, date, institution } = data.markdownRemark.frontmatter;
   const { html, excerpt, id } = data.markdownRemark;
 
-  const baseSlugUrl = siteUrl + pageContext.slug;
+  const baseSlugUrl =
+    siteUrl + (language === "en" ? "" : `/${language}`) + originalPath;
   const disqusConfig = {
     identifier: id,
     title: title,
     url: baseSlugUrl,
+    language: language === "zh" ? "zh" : "en",
   };
 
-  const githubLink = `https://github.com/chenx820/chenx820.github.io/tree/main/content${pageContext.slug}/index.${pageContext.language}.md`;
+  const githubLink = `https://github.com/chenx820/chenx820.github.io/tree/main/${data.markdownRemark.fields.sourcePath}`;
 
   return (
     <Layout>
@@ -41,7 +44,7 @@ const NotePost = ({ data, pageContext }) => {
             <hr style={{ margin: "25px 0" }} />
             <a
               style={{ fontSize: "16px" }}
-              aria-label="Edit post on github"
+              aria-label={t("common.edit-on-github")}
               rel="noopener norefferer"
               target="__blank"
               href={githubLink}
@@ -85,8 +88,11 @@ export const query = graphql`
       excerpt
       html
       id
+      fields {
+        sourcePath
+      }
       frontmatter {
-        date(formatString: "MMMM DD, YYYY", locale: $language)
+        date
         title
         institution
       }

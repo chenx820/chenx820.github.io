@@ -204,6 +204,7 @@ const highlightOwnName = (people) => {
 };
 
 const PaperEntry = ({ paper }) => {
+  const { t } = useTranslation();
   const title = paper.title || paper.venue;
   const showBibtex =
     paper.title && ["journal", "conference", "preprint"].includes(paper.kind);
@@ -231,7 +232,11 @@ const PaperEntry = ({ paper }) => {
         <Metadata>
           {paper.title && <span>{paper.venue}</span>}
           {paper.year && <span>{paper.year}</span>}
-          {paper.status && <span>{paper.status}</span>}
+          {paper.status && (
+            <span>
+              {t(`publications.status.${paper.status}`, paper.status)}
+            </span>
+          )}
         </Metadata>
       </div>
 

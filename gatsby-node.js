@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const { getNoteTagSlug } = require("./src/components/Notes/noteTag");
 
 // Define your default language here.
 // This should match the defaultLanguage in your gatsby-config.js
@@ -104,6 +105,28 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     value: sourceInstanceName, // value will be {notes||research}
   });
 
+  if (sourceInstanceName === "notes") {
+    createNodeField({
+      node,
+      name: "sourcePath",
+      value: path.relative(__dirname, node.fileAbsolutePath),
+    });
+    createNodeField({
+      node,
+      name: "noteTagSlugs",
+      value: (node.frontmatter.notetags || []).map(getNoteTagSlug),
+    });
+    const institutions = [node.frontmatter.institution].flat().filter(Boolean);
+    createNodeField({
+      node,
+      name: "institutionSlugs",
+      value: institutions.map(
+        (institution) =>
+          node.frontmatter.institution_slug || slugify(institution),
+      ),
+    });
+  }
+
   if (sourceInstanceName === "research") {
     createNodeField({
       node,
@@ -128,6 +151,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             frontmatter {
               notetags
               institution
+              institution_slug
             }
             fields {
               slug
@@ -175,15 +199,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
       const tagList = Array.from(noteTagSet);
       tagList.forEach((tag) => {
-        // Tag pages are currently not localized by path (e.g., /notes/tags/science/ vs /es/notes/tags/ciencia/)
-        // If you need localized tag paths, this logic would need to be expanded
-        // to generate /notes/tags/science/ for EN and /es/notes/tags/ciencia/ for ES.
-        // This usually involves creating language-specific tag slugs and separate tag pages for each language.
+        const tagSlug = getNoteTagSlug(tag);
         createPage({
-          path: `/notes/tags/${slugify(tag)}/`,
+          path: `/notes/tags/${tagSlug}/`,
           component: noteTagTemplate,
           context: {
             tag,
+            tagSlug,
             language: node.fields.language, // Pass language for consistent context
           },
         });
@@ -198,12 +220,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           ? universityField
           : [universityField];
         universityList.forEach((inst) => {
-          // University pages are currently not localized by path
+          // The same institution identifier must survive language routing.
+          const institutionSlug =
+            node.frontmatter.institution_slug || slugify(inst);
           createPage({
-            path: `/notes/institution/${slugify(inst)}/`,
+            path: `/notes/institution/${institutionSlug}/`,
             component: noteUniTemplate,
             context: {
               inst,
+              institutionSlug,
               language: node.fields.language, // Pass language for consistent context
             },
           });

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql, useStaticQuery } from "gatsby";
-import { Link, useI18next } from "gatsby-plugin-react-i18next";
+import { Link, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 import slugify from "@components/slugify";
 
 export const useUniversity = () => {
@@ -29,7 +29,7 @@ export const useUniversity = () => {
 
   // Filter by language and collect institutions
   const languagePosts = data.allMarkdownRemark.edges.filter(
-    ({ node }) => node.fields.language === language
+    ({ node }) => node.fields.language === language,
   );
 
   // Collect all institutions from current language posts
@@ -52,7 +52,7 @@ export const useUniversity = () => {
     ([fieldValue, totalCount]) => ({
       fieldValue,
       totalCount,
-    })
+    }),
   );
 
   return { allMarkdownRemark: { group } };
@@ -75,6 +75,7 @@ export const TagBreadcrumb = styled(Link)`
 
 const Institutions = () => {
   const { language } = useI18next();
+  const { t } = useTranslation();
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
@@ -98,7 +99,7 @@ const Institutions = () => {
 
   // Filter by language and collect institutions
   const languagePosts = data.allMarkdownRemark.edges.filter(
-    ({ node }) => node.fields.language === language
+    ({ node }) => node.fields.language === language,
   );
 
   // Collect all institutions from current language posts
@@ -121,7 +122,7 @@ const Institutions = () => {
     ([fieldValue, totalCount]) => ({
       fieldValue,
       totalCount,
-    })
+    }),
   );
 
   return (
@@ -132,7 +133,7 @@ const Institutions = () => {
         const node = languagePosts.find(({ node }) =>
           Array.isArray(node.frontmatter.institution)
             ? node.frontmatter.institution.includes(tag.fieldValue)
-            : node.frontmatter.institution === tag.fieldValue
+            : node.frontmatter.institution === tag.fieldValue,
         )?.node;
 
         const slug =
@@ -144,7 +145,10 @@ const Institutions = () => {
           <TagBreadcrumb
             key={tag.fieldValue}
             to={`/notes/institution/${slug}/`}
-            aria-label={`${tag.totalCount} posts tagged with ${tag.fieldValue}`}
+            aria-label={t("notes.tagged-posts", {
+              count: tag.totalCount,
+              tag: tag.fieldValue,
+            })}
           >
             {tag.fieldValue}, {tag.totalCount}
           </TagBreadcrumb>

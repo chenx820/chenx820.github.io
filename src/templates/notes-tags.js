@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation, useI18next } from "gatsby-plugin-react-i18next";
+import { getNoteTagLabel } from "@components/Notes/noteTag";
 import SEO from "@components/seo";
 
 import Layout from "@components/Layout/Layout";
@@ -10,12 +11,11 @@ import NoteLayout from "@src/components/Notes/NotesLayout";
 
 const TagsPage = ({ data, pageContext }) => {
   const { t } = useTranslation();
-  const { tag } = pageContext;
+  const { language } = useI18next();
+  const tag = getNoteTagLabel(pageContext.tagSlug, language, pageContext.tag);
   const { edges, totalCount } = data.allMarkdownRemark;
 
-  const tagHeader = `${totalCount} post${
-    totalCount === 1 ? "" : "s"
-  } tagged with "${tag}"`;
+  const tagHeader = t("notes.tagged-posts", { count: totalCount, tag });
 
   return (
     <Layout>
@@ -47,7 +47,7 @@ const TagsPage = ({ data, pageContext }) => {
 export default TagsPage;
 
 export const pageQuery = graphql`
-  query ($tag: String, $language: String!) {
+  query ($tagSlug: String!, $language: String!) {
     locales: allLocale(
       filter: { ns: { in: ["common"] }, language: { eq: $language } }
     ) {
@@ -62,8 +62,11 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       sort: { frontmatter: { date: DESC } }
       filter: {
-        frontmatter: { notetags: { in: [$tag] } }
-        fields: { language: { eq: $language } }
+        fields: {
+          posttype: { eq: "notes" }
+          language: { eq: $language }
+          noteTagSlugs: { in: [$tagSlug] }
+        }
       }
     ) {
       totalCount
@@ -77,7 +80,7 @@ export const pageQuery = graphql`
           frontmatter {
             notetags
             title
-            date(formatString: "MMMM DD, YYYY", locale: $language)
+            date
             institution
           }
         }

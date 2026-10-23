@@ -18,11 +18,12 @@ import Burger from "./Burger";
 
 const DarkModeButton = () => {
   const { toggleTheme, theme } = useContext(ThemeToggleContext);
+  const { t } = useTranslation();
 
   return (
     <>
       <input
-        aria-label="toggle theme"
+        aria-label={t("common.toggle-theme")}
         type="checkbox"
         className="checkbox"
         id="darkmode-input"
@@ -32,7 +33,7 @@ const DarkModeButton = () => {
       <FloatingButton
         as="label"
         role="button"
-        aria-label="Toggle Dark Mode"
+        aria-label={t("common.toggle-theme")}
         htmlFor="darkmode-input"
       >
         <FontAwesomeIcon icon={theme === "light" ? "moon" : "sun"} size="2x" />
@@ -52,7 +53,12 @@ const NavbarMobile = () => {
   return (
     <>
       <MobileMenuWrapper>
-        <FloatingButton onClick={handleMenuState} as="button">
+        <FloatingButton
+          onClick={handleMenuState}
+          as="button"
+          aria-label={t(isMenuOpen ? "nav.close-menu" : "nav.open-menu")}
+          aria-expanded={isMenuOpen}
+        >
           <Burger isActive={isMenuOpen} />
         </FloatingButton>
 

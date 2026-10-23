@@ -3,10 +3,10 @@
     "title": "Neutral atomic quantum circuit compilation method and system, electronic device, storage medium and computer program product",
     "date": "2025-09-12",
     "number": "CN120633876",
-    "status": "Filed",
+    "status": "Published",
     "inventor": "Jingbo Wang, Dong E. Liu, Xi Zhao, Chen Huang, Hongze Xu, Meng-Jun Hu",
     "links": {
-      "src": "https://patents.google.com/patent/CN120633876/en",
+      "src": "https://patents.google.com/patent/CN120633876A/en",
       "file": "/patents/patent-2025105708931.pdf"
     },
     "description": ""
@@ -18,7 +18,7 @@
     "status": "Issued",
     "inventor": "Jingbo Wang, Chen Huang, Xi Zhao, Hongze Xu, Meng-Jun Hu",
     "links": {
-      "src": "https://patents.google.com/patent/CN120181251/en",
+      "src": "https://patents.google.com/patent/CN120181251B/en",
       "file": "/patents/patent-2025101007932.pdf"
     },
     "description": "This application proposes a quantum computing method and device based on a partitioned architecture, which consists of a storage region and an operation region. In response to a quantum computing instruction, the original circuit is first mapped to the storage region to generate a quantum circuit composed of multiple quantum gates. Neutral atoms that are required for the computation of these gates are then moved to the operation region to perform the quantum operations. After the computation, neutral atoms that are no longer needed for subsequent gate operations are moved back to the storage region, while those required for the next quantum gate remain in the operation region. By confining only the qubits involved in active computation to the operation region and isolating idle qubits in the storage region, this partitioned design effectively minimizes the undesired impact of global Rydberg laser beams on qubits not currently engaged in quantum operations."

@@ -1,16 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const SocialShareSection = ({ baseSlugUrl, title }) => {
-  const fbShareLink = `https://facebook.com/sharer/sharer.php?u=${baseSlugUrl}`;
-  const twShareLink = `http://twitter.com/share?text="${title}" - &url=${baseSlugUrl}`;
-  const rdShareLink = `http://www.reddit.com/submit?url=${baseSlugUrl}&title=${title}`;
+  const { t } = useTranslation();
+  const url = encodeURIComponent(baseSlugUrl);
+  const text = encodeURIComponent(title);
+  const fbShareLink = `https://facebook.com/sharer/sharer.php?u=${url}`;
+  const twShareLink = `https://twitter.com/share?text=${text}&url=${url}`;
+  const rdShareLink = `https://www.reddit.com/submit?url=${url}&title=${text}`;
 
   return (
     <div className="note__social-share">
       <a
-        aria-label="share on facebook"
+        aria-label={t("common.share-platform", { platform: "Facebook" })}
         rel="noopener norefferer"
         target="__blank"
         href={fbShareLink}
@@ -18,7 +22,7 @@ const SocialShareSection = ({ baseSlugUrl, title }) => {
         <FontAwesomeIcon style={{ fontSize: 24 }} icon={["fab", "facebook"]} />
       </a>
       <a
-        aria-label="share on twitter"
+        aria-label={t("common.share-platform", { platform: "Twitter" })}
         rel="noopener norefferer"
         target="__blank"
         href={twShareLink}
@@ -26,7 +30,7 @@ const SocialShareSection = ({ baseSlugUrl, title }) => {
         <FontAwesomeIcon style={{ fontSize: 24 }} icon={["fab", "twitter"]} />
       </a>
       <a
-        aria-label="share on reddit"
+        aria-label={t("common.share-platform", { platform: "Reddit" })}
         rel="noopener norefferer"
         target="__blank"
         href={rdShareLink}

@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Link, Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { TagBreadcrumb } from "./NotesTags";
-import slugify from "@components/slugify";
+import { getNoteTagSlug } from "./noteTag";
 
 const PostWrapper = styled.article`
   overflow: auto;
@@ -28,42 +28,55 @@ const PostWrapper = styled.article`
   }
 `;
 
-export const NoteDateAndReadTime = ({ date, institution }) => (
-  <span style={{ fontSize: 13, color: "gray" }}>
-    <span aria-label={`publish date ${date}`}>
-      <FontAwesomeIcon color="gray" icon="calendar-alt" />
-      &nbsp;&nbsp;{date}
+export const NoteDateAndReadTime = ({ date, institution }) => {
+  const { t, i18n } = useTranslation();
+  const formattedDate = new Intl.DateTimeFormat(
+    i18n.language === "zh" ? "zh-CN" : "en-US",
+    {
+      year: "numeric",
+      month: "long",
+      day: i18n.language === "zh" ? "numeric" : "2-digit",
+      timeZone: "UTC",
+    },
+  ).format(new Date(date));
+  return (
+    <span style={{ fontSize: 13, color: "gray" }}>
+      <span aria-label={t("notes.published-on", { date: formattedDate })}>
+        <FontAwesomeIcon color="gray" icon="calendar-alt" />
+        &nbsp;&nbsp;{formattedDate}
+      </span>
+      &nbsp;&nbsp;&nbsp;
+      <span aria-label={`${institution}`}>
+        <FontAwesomeIcon color="gray" icon={["fas", "institution"]} />
+        &nbsp;&nbsp;{institution}
+      </span>
     </span>
-    &nbsp;&nbsp;&nbsp;
-    <span aria-label={`${institution}`}>
-      <FontAwesomeIcon color="gray" icon={["fas", "institution"]} />
-      &nbsp;&nbsp;{institution}
-    </span>
-  </span>
-);
+  );
+};
 
 const NoteCard = ({ date, institution, title, excerpt, slug, notetags }) => {
+  const { t } = useTranslation();
   return (
-    <Link to={slug} aria-label={`${title} - ${institution}`}>
-      <PostWrapper>
+    <PostWrapper>
+      <Link to={slug} aria-label={`${title} - ${institution}`}>
         <NoteDateAndReadTime date={date} institution={institution} />
 
         <h2>{title}</h2>
         <p>{excerpt}</p>
+      </Link>
 
-        <div style={{ marginTop: 20 }}>
-          {notetags.map((tag) => (
-            <TagBreadcrumb
-              key={tag}
-              aria-label={`${tag} tag`}
-              to={`/notes/tags/${slugify(tag)}/`}
-            >
-              {tag}
-            </TagBreadcrumb>
-          ))}
-        </div>
-      </PostWrapper>
-    </Link>
+      <div style={{ marginTop: 20 }}>
+        {notetags.map((tag) => (
+          <TagBreadcrumb
+            key={tag}
+            aria-label={t("notes.tag-label", { tag })}
+            to={`/notes/tags/${getNoteTagSlug(tag)}/`}
+          >
+            {tag}
+          </TagBreadcrumb>
+        ))}
+      </div>
+    </PostWrapper>
   );
 };
 

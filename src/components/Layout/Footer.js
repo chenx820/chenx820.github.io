@@ -107,7 +107,7 @@ const Footer = () => {
             >
               <FontAwesomeIcon icon={["fab", "github"]} />
             </a>
-            <a href="mailto:chen.huang678@gmail.com" aria-label="Email">
+            <a href="mailto:chen.huang678@gmail.com" aria-label={t("common.email")}>
               <FontAwesomeIcon icon={["fas", "envelope"]} />
             </a>
             <a

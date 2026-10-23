@@ -67,14 +67,21 @@ export const Intro = styled.section`
 `;
 
 export const HomeWrapper = styled.section`
+  --hero-fade-height: clamp(88px, 9vw, 144px);
   position: relative;
   isolation: isolate;
   margin-inline: calc(50% - 50vw);
   margin-top: -10px;
-  margin-bottom: 80px;
+  margin-bottom: 32px;
   padding-inline: 10vw;
+  padding-bottom: var(--hero-fade-height);
   color: #c0cee0;
   background:
+    linear-gradient(
+      to top,
+      ${({ theme }) => (theme.dark ? "#182e4b" : "#4976ae")},
+      transparent var(--hero-fade-height)
+    ),
     radial-gradient(ellipse at 35% 42%, #182e4b 0%, transparent 50%),
     radial-gradient(ellipse at 76% 64%, #22253f 0%, transparent 45%), #080f1e;
 
@@ -98,16 +105,41 @@ export const HomeWrapper = styled.section`
     content: "";
     position: absolute;
     bottom: 0;
-    left: 15%;
-    right: 15%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #57758e, transparent);
+    left: 0;
+    right: 0;
+    height: var(--hero-fade-height);
+    background: ${({ theme }) => theme.bgColor};
+    /* Ease into and out of the fade so neither edge reads as a horizontal band. */
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.01) 12%,
+      rgba(0, 0, 0, 0.06) 24%,
+      rgba(0, 0, 0, 0.18) 36%,
+      rgba(0, 0, 0, 0.4) 48%,
+      rgba(0, 0, 0, 0.68) 60%,
+      rgba(0, 0, 0, 0.88) 72%,
+      rgba(0, 0, 0, 0.97) 84%,
+      #000 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.01) 12%,
+      rgba(0, 0, 0, 0.06) 24%,
+      rgba(0, 0, 0, 0.18) 36%,
+      rgba(0, 0, 0, 0.4) 48%,
+      rgba(0, 0, 0, 0.68) 60%,
+      rgba(0, 0, 0, 0.88) 72%,
+      rgba(0, 0, 0, 0.97) 84%,
+      #000 100%
+    );
     pointer-events: none;
   }
 
   @media ${({ theme }) => theme.media.tablet} {
     margin-top: -50px;
-    margin-bottom: 48px;
+    margin-bottom: 24px;
     padding-inline: 5vw;
   }
 `;

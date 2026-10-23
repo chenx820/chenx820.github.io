@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation, useI18next } from "gatsby-plugin-react-i18next";
 
 import Layout from "@components/Layout/Layout";
 import SEO from "@components/seo";
@@ -16,8 +16,11 @@ import { InfoTitle, ResearchWrapper } from "./project.style";
 
 const Research = ({ data }) => {
   const { t } = useTranslation();
+  const { language, originalPath } = useI18next();
   const baseSlugUrl =
-    "https://chenx820.github.io" + data.markdownRemark.fields.slug;
+    "https://chenx820.github.io" +
+    (language === "en" ? "" : `/${language}`) +
+    originalPath;
   const project = data.markdownRemark.frontmatter;
 
   const infoLinks = project.info.links && (

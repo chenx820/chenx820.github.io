@@ -36,7 +36,7 @@ const LanguageSwitch = () => {
     <GlobeButton
       type="button"
       aria-label={isEn ? "Switch to Chinese" : "切换到英文"}
-      title={isEn ? "切换到中文" : "Switch to English"}
+      title={isEn ? "Switch to Chinese" : "切换到英文"}
       onClick={() => changeLanguage(nextLang)}
     >
       <FontAwesomeIcon icon="globe" />

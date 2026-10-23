@@ -12,10 +12,12 @@ const UniversitiesPage = ({ data, pageContext }) => {
   const { t } = useTranslation();
   const { inst } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
+  const institutionName = edges[0]?.node.frontmatter.institution || inst;
 
-  const uniHeader = `${totalCount} post${
-    totalCount === 1 ? "" : "s"
-  } tagged with "${inst}"`;
+  const uniHeader = t("notes.tagged-posts", {
+    count: totalCount,
+    tag: institutionName,
+  });
 
   return (
     <Layout>
@@ -47,7 +49,7 @@ const UniversitiesPage = ({ data, pageContext }) => {
 export default UniversitiesPage;
 
 export const pageQuery = graphql`
-  query ($inst: String, $language: String!) {
+  query ($institutionSlug: String!, $language: String!) {
     locales: allLocale(
       filter: { ns: { in: ["common"] }, language: { eq: $language } }
     ) {
@@ -62,8 +64,11 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       sort: { frontmatter: { date: DESC } }
       filter: {
-        frontmatter: { institution: { in: [$inst] } }
-        fields: { language: { eq: $language } }
+        fields: {
+          posttype: { eq: "notes" }
+          language: { eq: $language }
+          institutionSlugs: { in: [$institutionSlug] }
+        }
       }
     ) {
       totalCount
@@ -77,7 +82,7 @@ export const pageQuery = graphql`
           frontmatter {
             notetags
             title
-            date(formatString: "MMMM DD, YYYY", locale: $language)
+            date
             institution
           }
         }
