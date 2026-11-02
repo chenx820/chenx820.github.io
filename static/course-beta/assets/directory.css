@@ -1,0 +1,45 @@
+/* Quiet reading navigation. Layout changes never replace the lesson DOM. */
+:root{--directory-current-bg:#e1f5f5;--directory-current-text:var(--ink);--directory-overlay:#081b2b80}
+.course-reading-layout{display:grid;grid-template-columns:232px minmax(0,1fr);gap:24px;width:min(100%,1320px);margin-inline:auto;padding-inline:20px;align-items:start;flex:1;min-width:0}
+.course-reading-layout>.lesson-main{width:100%;max-width:var(--max);min-width:0;padding-inline:0}
+.course-directory-sidebar{position:sticky;top:20px;max-height:calc(100dvh - 40px);overflow-y:auto;overscroll-behavior:contain;padding:20px 8px 20px 0;scrollbar-width:thin}
+.course-directory-content{font-family:"SpaceQat Course Sans","PingFang SC","Microsoft YaHei",system-ui,sans-serif;font-size:14px;line-height:1.6}
+#app :is(.directory-back,.directory-chapter-toggle,.directory-lesson,.directory-close,.directory-menu){border:0;border-radius:8px;background:transparent;box-shadow:none;color:var(--ink);font:inherit;cursor:pointer;transform:none;transition:none;touch-action:manipulation}
+#app .directory-back{display:flex;gap:8px;align-items:center;min-height:44px;font-size:13px;color:var(--muted);padding:8px 0}
+.directory-course-name{font-size:14px;font-weight:600;margin:20px 0 12px;color:var(--ink)}
+.directory-chapter{border-bottom:1px solid var(--rule)}
+#app .directory-chapter-toggle{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;padding:10px 4px;text-align:left;font-size:14px;line-height:1.6;font-weight:550}
+.directory-number{font-size:12px;font-weight:400;color:var(--muted);font-variant-numeric:tabular-nums}
+.directory-chapter-toggle svg{width:16px;height:16px;flex-shrink:0;margin-left:auto;color:var(--muted)}
+.directory-chapter-toggle[aria-expanded=true] svg{transform:rotate(180deg)}
+.directory-lessons{padding:0 0 12px 12px;display:grid;gap:3px}
+.directory-lessons[hidden]{display:none}
+#app .directory-lesson{display:flex;align-items:center;gap:9px;min-height:44px;width:100%;padding:10px 8px;font-size:13px;line-height:1.6;text-align:left;color:var(--muted)}
+.directory-lesson-status{display:flex;flex:0 0 24px;width:24px;height:24px;color:#646464}
+.directory-lesson-status svg{width:24px;height:24px}
+#app .directory-lesson[aria-current=page]{background:var(--directory-current-bg);color:var(--directory-current-text);font-weight:600}
+#app :is(.directory-back,.directory-chapter-toggle,.directory-lesson,.directory-close,.directory-menu):focus-visible{outline:2px solid var(--directory-current-text);outline-offset:2px}
+#app .directory-menu{display:none;place-items:center;width:44px;min-height:44px;padding:10px;flex-shrink:0}
+.directory-menu svg{width:24px;height:24px}
+.course-directory-drawer{box-sizing:border-box;width:min(360px,calc(100vw - 32px));height:100dvh;max-height:100dvh;max-width:none;margin:0;padding:20px 20px calc(24px + env(safe-area-inset-bottom));border:0;border-radius:0;background:var(--paper);color:var(--ink);overflow-y:auto;overscroll-behavior:contain;box-shadow:none}
+.course-directory-drawer::backdrop{background:var(--directory-overlay);backdrop-filter:none}
+.directory-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px;font-size:15px}
+.course-directory-content>#directory-title{display:flex;align-items:center;min-height:44px;font-size:15px}
+#app .directory-close{display:grid;place-items:center;width:44px;height:44px}
+html.course-directory-open,html.course-directory-open body{overflow:hidden;overscroll-behavior:none}
+@media(hover:hover){#app :is(.directory-back,.directory-chapter-toggle,.directory-lesson,.directory-close,.directory-menu):hover{background:var(--course-neutral-3)}#app .directory-lesson[aria-current=page]:hover{background:var(--directory-current-bg)}}
+@media(width < 850px){.course-reading-layout{display:block;padding:0}.course-directory-sidebar{display:none}.course-reading-layout>.lesson-main{padding-inline:20px}#app .directory-menu{display:grid}.course-reading-layout .lesson-meta{flex-wrap:wrap}.course-reading-layout .directory-menu{margin-left:auto}}
+/* Opening spring: mass 1, stiffness 484, damping 34.32; sampled over 560ms.
+ * About 2% overshoot keeps the drawer soft without prolonged bouncing.
+ * CSS owns the motion; resize can interrupt it immediately. */
+@media(prefers-reduced-motion:no-preference){
+ .course-directory-drawer[open]{animation:directory-spring-in 560ms linear(0, 0.07679, 0.24271, 0.43062, 0.60369, 0.74544, 0.85189, 0.92589, 0.97335, 1.00092, 1.01467, 1.01957, 1.01934, 1.01656, 1.01287, 1.00925, 1.00614, 1.00374, 1.00201, 1.00086, 1.00017, 0.99979, 0.99963, 0.99960, 0.99964, 0.99971, 0.99979, 0.99985, 1) both}
+ .course-directory-drawer[open]::backdrop{animation:directory-backdrop-in 180ms ease-out both}
+ .course-directory-drawer[open].is-closing{animation:directory-slide-out 200ms ease-in both}
+ .course-directory-drawer[open].is-closing::backdrop{animation:directory-backdrop-out 200ms ease-in both}
+}
+@keyframes directory-spring-in{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+@keyframes directory-slide-out{from{transform:var(--directory-exit-from,translateX(0))}to{transform:translateX(-100%)}}
+@keyframes directory-backdrop-out{from{opacity:var(--directory-backdrop-from,1)}to{opacity:0}}
+@keyframes directory-backdrop-in{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.course-directory-drawer,.course-directory-drawer::backdrop,.course-directory-content *{animation:none;transition:none;scroll-behavior:auto}}

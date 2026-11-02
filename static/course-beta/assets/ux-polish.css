@@ -1,0 +1,123 @@
+/* =========================================================
+   UX polish 2026-11-01
+   1. 课堂卡片不再固定高度、不在卡片内部滚动：内容多时整页变长，
+      底部「上一步 / 继续」吸底，交互按钮不会被藏在卡片下面。
+   2. 答题反馈：对错颜色加深，附文字结论；答错可重选一次。
+   3. 其余：目录、首页、欢迎页、样式统一、结课页。
+   ========================================================= */
+
+/* ---------- 1. 课堂布局：整页滚动 + 吸底操作区 ---------- */
+html{scroll-padding-bottom:120px}
+#app .lesson-main{height:auto;min-height:0;grid-template-rows:auto auto auto;padding-bottom:0}
+#app .lesson-card{overflow:visible;min-height:min(440px,calc(100svh - 300px))}
+#app .lesson-card>.screen{flex:none;overflow:visible;min-height:0;scrollbar-gutter:auto;border-radius:0}
+#app .lesson-main>.bottom{position:sticky;bottom:0;z-index:5;margin-top:0;padding:14px 0 calc(16px + env(safe-area-inset-bottom));
+ background:linear-gradient(to bottom,transparent,var(--paper) 18px)}
+#app .lesson-main>.bottom .hintline{max-height:none;overflow:visible}
+@media(max-width:720px){
+ #app .lesson-card{min-height:0}
+ #app .lesson-main>.bottom{padding:10px 0 calc(12px + env(safe-area-inset-bottom))}
+}
+
+/* ---------- 2. 答题反馈 ---------- */
+/* 提交后的选项是答案展示，不按「不可用」淡化 */
+#app button.opt:disabled:not([aria-busy="true"]){opacity:1;cursor:default}
+#app .opt.right{--button-bg:var(--grass-3);--button-fg:var(--ink);border-color:var(--grass-9);box-shadow:inset 0 0 0 1px var(--grass-9)}
+#app .opt.wrong{--button-bg:var(--red-3);--button-fg:var(--ink);border-color:var(--red-9);box-shadow:inset 0 0 0 1px var(--red-9)}
+#app .opt.right .mark{color:var(--grass-11);font-weight:700}
+#app .opt.wrong .mark{color:var(--red-11);font-weight:700}
+#app .opt.tried{--button-bg:var(--red-2);--button-fg:var(--muted);border-color:var(--red-7);text-decoration:line-through;text-decoration-color:var(--red-8)}
+#app .opt.tried .mark{color:var(--red-11);text-decoration:none}
+#app .opt.tried.wrong{--button-fg:var(--ink);text-decoration:none}
+.answer-verdict{display:flex;align-items:center;gap:8px;margin:16px 0 0;padding:10px 14px;border-radius:12px;font-weight:600;line-height:1.6}
+.answer-verdict svg{flex:0 0 18px;width:18px;height:18px}
+.answer-verdict.is-right{background:var(--grass-3);color:var(--grass-11)}
+.answer-verdict.is-wrong{background:var(--red-3);color:var(--red-11)}
+.answer-verdict.is-retry{background:var(--amber-3);color:var(--amber-12)}
+
+
+/* ---------- 4. 首页 ---------- */
+/* 手机：主按钮固定在屏幕底部，第一屏就能看到；地图路标缩小，避免 04–07 挤在一起 */
+@media(max-width:720px){
+ #app .island-home{padding-bottom:96px}
+ #app .island-home #start{position:fixed;left:16px;right:16px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:20;width:auto;margin:0;box-shadow:0 6px 20px #0b2b2b26}
+}
+@media(max-width:560px){
+ #app .island-pin{width:24px;height:24px;border-radius:8px;font-size:10px;box-shadow:0 2px 0 var(--map-wood-shade)}
+ #app .island-pin[aria-pressed=true]:after{inset:-4px;border-radius:11px}
+}
+/* 结课入口放到首页最上方，作为完成后的主要入口 */
+.island-home .completion-entry p{margin:4px 0 0;color:var(--muted);font-size:14px}
+
+/* ---------- 5. 欢迎页：明确的「开始学习」按钮 ---------- */
+.welcome-dialog .welcome-start{display:block;width:100%;min-height:48px;margin-top:24px}
+.welcome-dialog .welcome-dismiss{display:none}
+
+/* ---------- 6. 按钮图标线宽（原 0.5 过细；只作用于按钮内的图标，不改科学图形） ---------- */
+#app button svg[stroke-width="0.5"],#app button svg [stroke-width="0.5"]{stroke-width:1.6}
+
+/* ---------- 7. 样式统一 ---------- */
+/* KaTeX 的 \mathrm（CNOT、SWAP、CZ 等门名）改用课程无衬线字体，和正文、目录、按钮一致；
+   变量和态矢量仍是数学斜体。 */
+#app .katex .mathrm,.welcome-dialog .katex .mathrm{font-family:"SpaceQat Course Sans","PingFang SC","Microsoft YaHei",system-ui,sans-serif;font-size:.93em}
+/* 滑条：细轨道 + 主题色圆形滑块，替代浏览器默认的粗黑轨道 */
+#app input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;height:44px;cursor:pointer}
+#app input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:var(--course-neutral-5,#dfe2df)}
+#app input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-8px;border-radius:50%;background:var(--action-bg);border:2px solid var(--course-accent-11,#0d7c7c);box-shadow:0 1px 3px #0002}
+#app input[type=range]::-moz-range-track{height:6px;border-radius:3px;background:var(--course-neutral-5,#dfe2df)}
+#app input[type=range]::-moz-range-progress{height:6px;border-radius:3px;background:var(--action-bg)}
+#app input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--action-bg);border:2px solid var(--course-accent-11,#0d7c7c)}
+/* 2.4 概率条：两个结果用同一种颜色，避免误读为不同含义 */
+#app .qb-meter>span,#app .qb-prob:nth-of-type(2) .qb-meter>span{background:var(--result-fill)}
+/* 3.1 单比特概率：50% / 50% 两段同色，不再像「已选中」 */
+#app .joint-marginal>div>span,#app .joint-marginal>div>span:first-child{background:var(--surface-1)}
+#app .joint-marginal>div>span:first-child{border-right:2px solid var(--card)}
+/* 6.1 Grover 预测选项与其他选择题选项样式一致 */
+#app .grover-prediction button{--button-bg:var(--card);--button-fg:var(--ink);border:.5px solid var(--rule);border-radius:14px;padding:14px 16px;min-height:56px;text-align:left;justify-content:flex-start;line-height:1.65;font-weight:400}
+#app .grover-prediction button[aria-pressed=true]{--button-bg:var(--course-accent-3);border-color:var(--course-accent-7)}
+#app .grover-prediction button:disabled:not([aria-busy="true"]){opacity:1}
+#app .grover-prediction button:disabled:not([aria-pressed=true]){--button-fg:var(--muted)}
+
+/* ---------- 9. 结课页 ---------- */
+.completion-copy h1:focus,.completion-copy h1:focus-visible,#app h1[tabindex="-1"]:focus:not(:focus-visible){outline:none}
+.completion-entry{border-color:var(--course-accent-7,var(--rule));background:var(--course-accent-2,var(--card));margin-top:0;margin-bottom:28px}
+.completion-entry strong{font-size:17px}
+
+/* ---------- 10. 评论修改（2026-11-01 16:30） ---------- */
+/* 滑条只保留轨道和圆形滑块：去掉获得焦点时围住整个控件的方框；键盘焦点改为套在滑块上的圆环。 */
+#app input[type=range]:focus,#app input[type=range]:focus-visible{outline:none;box-shadow:none;border-color:transparent}
+#app input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px var(--card),0 0 0 5px var(--course-accent-11)}
+#app input[type=range]:focus-visible::-moz-range-thumb{box-shadow:0 0 0 3px var(--card),0 0 0 5px var(--course-accent-11)}
+/* 多选题：左侧方形勾选框；选中时浅色底 + 深青边框和勾，不再整块填充主按钮色。提交后勾选框让位给对错标记。 */
+#app .opt[aria-pressed]{display:flex;align-items:center;gap:12px;text-align:left}
+#app .opt[aria-pressed]::before{content:"";flex:none;width:20px;height:20px;box-sizing:border-box;border-radius:6px;border:1.5px solid var(--course-neutral-8);background:var(--card)}
+#app button.opt.opt[aria-pressed="true"]{--button-bg:var(--course-accent-3);--button-fg:var(--ink);--button-hover:var(--course-accent-3);--button-active:var(--course-accent-3);border-color:var(--course-accent-11);box-shadow:inset 0 0 0 1px var(--course-accent-11)}
+#app .opt[aria-pressed="true"]::before{border-color:var(--course-accent-11);background:var(--course-accent-11) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 4 4L19 6'/%3E%3C/svg%3E") center/14px no-repeat}
+#app .opt[aria-pressed]:disabled::before{display:none}
+#app button.opt.opt[aria-pressed].right{--button-bg:var(--grass-3);--button-fg:var(--ink);border-color:var(--grass-9);box-shadow:inset 0 0 0 1px var(--grass-9)}
+#app button.opt.opt[aria-pressed].wrong{--button-bg:var(--red-3);--button-fg:var(--ink);border-color:var(--red-9);box-shadow:inset 0 0 0 1px var(--red-9)}
+/* 3.1 联合计数：手机上两组上下排列，柱形更宽更易读。 */
+@media(max-width:560px){#app .joint-comparison{grid-template-columns:1fr;gap:20px}}
+/* 6.2 密码锁：去掉锁图标与灰色小字，说明文字和其他课页一样用正文字号。 */
+#app .grover-caption{margin:0 0 12px;font-size:var(--font-body);font-weight:500;color:var(--ink)}
+#app .grover-detail{font-size:var(--font-body);color:var(--ink);line-height:1.75}
+/* 章节目录的“返回课程地图”：做成完整的次级按钮——圆角描边、图标放进小圆底、正文字号，悬停时浅青底。 */
+#app .course-directory-content .directory-back{width:100%;gap:10px;min-height:44px;margin-bottom:8px;padding:6px 14px 6px 6px;border:1px solid var(--rule);border-radius:12px;--button-bg:var(--card);--button-hover:var(--course-accent-2);--button-active:var(--course-accent-3);background:var(--card);color:var(--ink);font-size:14px;font-weight:500}
+#app .course-directory-content .directory-back svg{flex:none;width:28px;height:28px;padding:6px;box-sizing:border-box;border-radius:50%;background:var(--course-accent-3);color:var(--course-accent-11)}
+@media(hover:hover){#app .course-directory-content .directory-back:hover{background:var(--course-accent-2);border-color:var(--course-accent-7)}}
+#app .course-directory-content .directory-back:active{background:var(--course-accent-3)}
+/* 课堂页（桌面，有左侧目录）：页脚固定在窗口底部，目录只占页眉和页脚之间的高度，展开再多也不会盖住页脚。 */
+@media(width >= 850px){
+ #app:has(.course-reading-layout){padding-bottom:70px}
+ #app:has(.course-reading-layout) .site-footer{position:fixed;left:0;right:0;bottom:0;z-index:30;margin:0;background:var(--paper);border-top:1px solid var(--rule)}
+ #app .course-directory-sidebar{top:96px;max-height:calc(100dvh - 96px - 82px)}
+ #app:has(.course-reading-layout) .lesson-main>.bottom{bottom:70px}
+}
+
+/* ---------- 手机端：线路图缩放到容器宽度，算法对照表首列加宽 ---------- */
+@media (max-width:560px){
+  #app .qc-scroll .qc-svg{max-width:100%;height:auto}
+  #app .algorithm-overview th:first-child{width:27%}
+  #app .algorithm-overview th:nth-child(2){width:23%}
+  #app .algorithm-overview th:last-child{width:50%}
+}

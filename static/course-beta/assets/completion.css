@@ -1,0 +1,71 @@
+/* Journey keeps its island palette; controls inherit the course UI tokens. */
+@font-face{font-family:"SpaceQat Journey Play";src:url("fonts/spaceqat-journey-play.woff2?v=20261101") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+
+/* ---------- 结课页：庆祝标题 → 纪念卡 + 旅程回顾 → 接下来 ---------- */
+.completion-page{padding-top:48px;padding-bottom:72px;max-width:1040px}
+.completion-hero{text-align:center;max-width:620px;margin:0 auto 44px}
+.completion-mark{display:inline-grid;place-items:center;width:72px;height:72px;margin-bottom:18px;border-radius:50%;background:var(--course-accent-3);color:var(--course-accent-11)}
+.completion-mark .achievement-badge{width:40px;height:40px}
+.completion-hero h1{font-size:32px;line-height:1.35;font-weight:600;margin:0 0 14px;letter-spacing:.02em}
+.completion-count{font-size:16px;line-height:1.8;color:var(--muted);margin:0}
+
+.completion-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:40px clamp(32px,5vw,64px);align-items:start}
+.completion-preview{margin:0;min-width:0;position:sticky;top:24px}
+.completion-preview img{display:block;width:100%;height:auto;border-radius:20px;box-shadow:0 18px 40px #263e4914,0 2px 6px #263e4912;background:#fff}
+.completion-preview img[hidden]{display:none}
+.completion-preview-placeholder{display:block;aspect-ratio:3/4;border-radius:20px;background:var(--course-accent-2)}
+.completion-preview img:not([hidden])+.completion-preview-placeholder{display:none}
+.completion-side{display:grid;gap:28px;min-width:0}
+.completion-side h2,.completion-next h2{font-size:18px;font-weight:600;margin:0 0 14px}
+
+/* 旅程回顾：七章各一行，点一下回到该章第一节 */
+.completion-recap ol{list-style:none;padding:0;margin:0;border:1px solid var(--rule);border-radius:16px;background:var(--card);overflow:hidden}
+.completion-recap li+li{border-top:1px solid var(--rule)}
+#app .completion-recap-row{display:flex;align-items:center;gap:14px;width:100%;padding:13px 18px;border:0;border-radius:0;text-align:left;--button-bg:transparent;--button-hover:var(--course-accent-2);--button-active:var(--course-accent-3)}
+.completion-recap-no{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--course-accent-3);color:var(--course-accent-11);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
+.completion-recap-text{display:grid;gap:2px;min-width:0}
+.completion-recap-text strong{font-size:16px;font-weight:500;color:var(--ink)}
+.completion-recap-text span{font-size:14px;line-height:1.6;color:var(--muted)}
+
+/* 保存纪念卡：一行输入 + 按钮 */
+.completion-editor{padding:20px;border-radius:16px;background:var(--course-accent-2)}
+.completion-editor h2{margin-bottom:6px}
+.completion-editor>label{display:block;font-size:14px;color:var(--muted);margin-bottom:12px}
+.completion-save-row{display:flex;gap:10px}
+.completion-editor input[type=text]{flex:1;min-width:0;min-height:48px;border:1px solid var(--rule);border-radius:12px;background:var(--card);color:var(--ink);padding:10px 14px;font:inherit}
+#completion-save{flex:none;min-height:48px;padding-inline:22px}
+#completion-status{font-size:14px;color:var(--muted);line-height:1.7;margin:10px 0 0}
+#completion-status:empty{display:none}
+#completion-retry{margin-top:6px}
+
+/* 接下来：三个去向 */
+.completion-next{margin-top:56px;padding-top:32px;border-top:1px solid var(--rule)}
+.completion-next-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#app .completion-next-item{display:grid;gap:6px;align-content:start;padding:18px 20px;border:1px solid var(--rule);border-radius:16px;background:var(--card);color:var(--ink);text-align:left;text-decoration:none;--button-bg:var(--card);--button-hover:var(--course-accent-2)}
+#app a.completion-next-item:hover{background:var(--course-accent-2)}
+.completion-next-item strong{font-size:16px;font-weight:500}
+.completion-next-item span{font-size:14px;line-height:1.6;color:var(--muted)}
+
+.completion-art{position:fixed;left:-10000px;top:0;width:600px;height:402px;pointer-events:none}
+.completion-art *{animation:none!important;transition:none!important}
+
+/* 首页结课入口 */
+.completion-entry{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px;margin-top:28px;border:1px solid var(--rule);border-radius:16px;background:var(--card)}
+.completion-entry strong{font-weight:500}
+.completion-entry button{flex-shrink:0}
+
+@media(max-width:800px){
+ .completion-page{padding-top:32px}
+ .completion-hero{margin-bottom:32px}
+ .completion-hero h1{font-size:26px}
+ .completion-mark{width:60px;height:60px}
+ .completion-layout{grid-template-columns:minmax(0,1fr);gap:32px}
+ .completion-preview{position:static;max-width:420px;width:100%;justify-self:center}
+ .completion-next-grid{grid-template-columns:minmax(0,1fr)}
+ .completion-entry{align-items:stretch;flex-direction:column;padding:20px}
+}
+@media(max-width:420px){
+ .completion-save-row{flex-direction:column}
+ #completion-save{width:100%}
+}
+.completion-hero h1:focus,.completion-hero h1:focus-visible{outline:none}
