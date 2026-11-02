@@ -1,0 +1,1198 @@
+/*
+ * 蓝色海岛主题调参入口（当前页面加载的主题文件）
+ *
+ * 加载顺序：radix-colors.css → site.css → island-theme.css。
+ * 颜色职责：radix-colors.css 保留官方色板；本文件独立定义课程配色，
+ * 不再覆盖 Radix 的 olive / lime。同一个颜色变量只在一个文件中定义。
+ * site.css 只引用课程颜色；旧主题仅保存在 docs/brand-theme-archive.txt。
+ *
+ * 快速查找（可用编辑器搜索下面的关键词）：
+ * [01 地图配色]    海水、草地、道路、树木、路牌、宝箱、小猫
+ * [02 界面配色]    页面底色、卡片底色、正文、边框、按钮、答题反馈
+ * [03 卡片浮起]    卡片边缘淡阴影的浓度、模糊和偏移
+ * [05 页面框架]    页面宽度、页头、Logo、背景纹理
+ * [06 按钮控件]    主按钮圆角、输入框
+ * [06a 按钮状态参数] 过渡时间、按压比例、禁用透明度、状态颜色
+ * [06b 按钮交互状态] 默认、悬停、按下、聚焦、禁用、加载、选中规则
+ * [07 首页布局]    地图与目录比例、地图大小、纵向章节列表、间距
+ * [08 课堂页面]    课堂宽度、卡片内边距、标题、选项、实验和代码
+ * [09 欢迎与总结]  欢迎弹窗、学习记录、分享卡片
+ * [10 响应式布局]  平板、手机和矮屏幕的覆盖值
+ *
+ * 常用写法：padding 是内部留白，margin 是外部间距，gap 是子项间距。
+ * 四个值的顺序是上、右、下、左；三个值是上、左右、下；两个值是上下、左右。
+ * border-radius 四个值依次是左上、右上、右下、左下。
+ * 数值越大的 px 通常代表更大的尺寸；颜色 #RRGGBBAA 最后两位是透明度，
+ * 00 完全透明，ff 完全不透明，例如 14 约 8%，0a 约 4%。
+ * 保存后刷新网页。如果手机效果没变，请同时检查文件末尾的媒体查询。
+ */
+/* [01 地图配色] 保留岛屿原有的自然配色，独立于界面的蓝色色阶。 */
+:root {
+  --map-ink: #36463b;
+  /* 小猫身体与轮廓 */
+  --map-water: #d3e9df;
+  /* 岛屿外围海水 */
+  --map-water-line: #b6d8d1;
+  /* 海水波纹 */
+  --map-river: #a1d1c4;
+  /* 岛内河流 */
+  --map-river-light: #d3ead8;
+  /* 河流高光及宝石亮面 */
+  --map-land: #bfd897;
+  /* 草地底色 */
+  --map-land-shade: #a8bf83;
+  /* 草地暗部、岛屿厚度与局部阴影 */
+  --map-leaf: #87ac73;
+  /* 树叶暗部 */
+  --map-leaf-light: #a8c88b;
+  /* 树叶亮部 */
+  --map-leaf-pale: #d5e2af;
+  /* 树叶高光及道具底座 */
+  --map-bank: #eee0af;
+  /* 岛屿沙岸 */
+  --map-sand: #ecdaad;
+  /* 道路与道具浅金色 */
+  --map-sand-light: #f5e6bd;
+  /* 道路与木质表面的高光 */
+  --map-wood: #d0af83;
+  /* 路牌和宝箱的木色 */
+  --map-wood-light: #e5c69a;
+  /* 木质亮面 */
+  --map-wood-shade: #b49a74;
+  /* 木质暗面及路标边缘 */
+  --map-wood-dark: #978567;
+  /* 宝箱内部及路标数字 */
+  --map-gold: #e7c783;
+  /* 宝藏金币 */
+  --map-cream: #fff9df;
+  /* 花瓣、路标底色、宝箱光束 */
+  --map-jade: #a1c4aa;
+  /* 宝箱内的宝石 */
+  --map-cat-eye:#a0ecee;
+  /* 小猫眼睛 */
+  --map-travel: #d8b779;
+  /* 已完成的道路与花心 */
+}
+/* [02 界面配色] 课程专用色阶，不改变 Radix 官方色板。用途映射也统一在本文件：
+ * --course-neutral-1 → --paper：整页底色
+ * --course-neutral-2 → --card：卡片底色
+ * --course-neutral-3 / 4 → --surface-2 / 3：次级背景、控件状态
+ * --course-neutral-6 → --rule：边框和分隔线
+ * --course-neutral-11 → --muted：次要文字
+ * --course-neutral-12 → --ink：正文与标题
+ * --course-accent-*：浅青色强调色阶；3 用于选中浅底，7 用于边框，9 / 10 用于图示填充，11 用于强调文字。
+ * --action-bg / hover：浅青按钮与选中控件；--progress-fill：同色系进度和完成标记。
+ * 改色阶会影响所有引用它的组件；只改某一块时，在下方对应选择器里调整。
+ */
+:root {
+  --course-neutral-1:#f5f5f5; /* 页面底色 */
+  --course-neutral-2:#ffffff; /* 卡片底色 */
+  --course-neutral-3:#edf2f3; /* 次级表面 */
+  --course-neutral-4:#e3ebed; /* 较深表面 / 控件状态 */
+  --course-neutral-5:#d9e4e7;
+  --course-neutral-6:#d5dfe1; /* 边框与分隔线 */
+  --course-neutral-7:#bdcdd2;
+  --course-neutral-8:#a1b7c0;
+  --course-neutral-9:#7e99a4;
+  --course-neutral-10:#687f89;
+  --course-neutral-11:#525252; /* 次要文字 */
+  --course-neutral-12:#171717; /* 正文与标题 */
+  --course-neutral-a3:#426b7d10;
+  --course-accent-1:#f4fcfc;
+  --course-accent-2:#ebfafa;
+  --course-accent-3:#ddf7f8;  /* 选中状态浅底 */
+  --course-accent-4:#c8f1f3;
+  --course-accent-5:#b4e9eb;
+  --course-accent-6:#9cdde0;
+  --course-accent-7:#7dcdd1;  /* 选中状态边框 */
+  --course-accent-8:#59b8be;
+  --course-accent-9:#a0ecee; /* 参考图按钮底色，转换至网页 sRGB */
+  --course-accent-10:#8adfe2;
+  --course-accent-11:#276f73;  /* 强调文字 */
+  --course-accent-12:#153d40;
+  --course-accent-a4:#a0ecee40;  /* 主按钮：默认底色、悬停底色、按钮下沿、按钮文字。卡片阴影另见 [03]。 */
+  /* 进度与操作共用主色。地图闪光使用金币色，避免额外引入荧光色。 */
+  --progress-fill:var(--action-bg);
+  --result-fill:var(--course-accent-9); /* 概率、计数和结果条 */
+  --action-bg:var(--course-accent-9);
+  --action-hover:var(--course-accent-10);
+  --action-shadow:var(--course-accent-8);
+  /* [06a 按钮状态参数] 同一套参数覆盖首页、课堂、实验与分享。
+   * 悬停使用相邻色；按下颜色更深。缩放与过渡参数不影响布局占位。
+   * disabled-opacity 只作用于不可用的操作，已提交答案和电路结果保持可读。
+   */
+  --button-primary-active:color-mix(in srgb,var(--action-bg) 82%,var(--ink));
+  --button-soft-hover:var(--surface-3);
+  --button-soft-active:var(--course-neutral-5);
+  --button-border-hover:var(--course-neutral-8);
+  --button-focus:var(--course-accent-11);
+  --button-disabled-opacity:.5;
+  --button-press-scale:.98;
+  --button-state-duration:150ms;
+  --on-action:var(--ink);
+  --on-accent:var(--ink);
+  --logo-bg:var(--card);
+  --overlay:#293e477d;
+  --raised-edge:#426b7d14;  /* 卡片贴边阴影，最后两位 14 调整浓度 */
+  --raised-ambient:#426b7d0a;  /* 卡片外围柔光，最后两位 0a 调整浓度 */
+  --paper-pattern:#a1b7c018;  /* 页面点状纹理颜色，点的大小和间距见 body */
+  
+  /* 地图外框底色与内侧虚线颜色。 */
+  --map-panel:var(--course-accent-2);
+  --map-panel-stitch:var(--course-accent-6);
+  /* 正确 / 错误反馈：标记色、浅背景和文字颜色。 */
+  --success-accent:#598675;
+  --error-accent:#bb655c;
+  --positive-bg:#e9f2ed;
+  --positive-text:var(--ink);
+  --negative-bg:#fbefea;
+  --negative-text:var(--ink);
+  /* [03 卡片浮起] 两层很淡的阴影，供首页、课堂、欢迎和分享卡片共用。
+   * 每层依次为：水平偏移、垂直偏移、模糊半径、颜色。
+   * 第一层 0 1px 2px 贴近边缘；第二层 0 4px 12px 提供浮起感。
+   * 想更淡：降低 rgb 中 / 后面的透明度（当前为 .04 / .06）。
+   * 想更柔：增大 2px / 12px 的模糊半径；想更贴边：减小垂直偏移。
+   * 完全关闭：把本变量的值改为 none。按钮与地图路标的立体下沿独立设置。
+   */
+  --card-raised:
+    0 1px 2px rgb(0 0 0 / 0.04),
+    0 4px 12px rgb(0 0 0 / 0.06);
+    /* 若启用第三层，将上一行分号改为逗号，再添加下面的值：
+     * 0 12px 32px rgb(0 0 0 / 0.08);
+     */
+  /* 基础组件的默认圆角。 */
+  --radius-control:12px;
+  --radius-panel:16px;
+  /* 键盘操作时的焦点轮廓颜色。 */
+  --focus-inner:#ffffff;
+  --focus-outer:#426b7d99;
+}
+/* [02b 用途映射] 与上方的颜色值在同一文件维护。
+ * 页面背景找 --paper，卡片找 --card，正文找 --ink，边框找 --rule。
+ * 别名引用色阶，修改色阶即可更新所有关联组件；需要独立颜色时可直接改别名值。
+ * --brick 仍引用 Radix 的 red 色阶，作为科学图形的辅助色。
+ */
+:root {
+  --ink: var(--course-neutral-12);
+  --ink-2: var(--course-neutral-12);
+  --ink-3: var(--course-neutral-11);
+  --muted: var(--course-neutral-11);
+  --surface-0: var(--course-neutral-1);
+  --surface-1: var(--course-neutral-2);
+  --surface-2: var(--course-neutral-3);
+  --surface-3: var(--course-neutral-4);
+  --paper: var(--surface-0);
+  --paper-2: var(--surface-1);
+  --card: var(--surface-1);
+  --lime: var(--course-accent-9);
+  --lime-deep: var(--course-accent-10);
+  --pine: var(--course-neutral-12);
+  --pine-soft: var(--course-accent-3);
+  --ochre: var(--course-accent-11);
+  --ochre-soft: var(--course-accent-3);
+  --brick: var(--red-11);
+  --rule: var(--course-neutral-6);
+  --soft: var(--course-neutral-4);
+}
+/* 标题与正文使用中性黑灰，主题色留给主要操作、进度和科学图形。 */
+.island-intro h1,.island-heading h2,.level-title,.thread h1 {
+  color:var(--ink)
+}
+/* [05 页面框架] 背景圆点 .7px 为点半径，12px 12px 为重复间距。 */
+body {
+  background-color:var(--paper);
+  background-image:radial-gradient(var(--paper-pattern) .7px,transparent .7px);
+  background-size:12px 12px
+}
+.site-header {
+  background:var(--paper);
+  border-bottom:.5px solid var(--rule);
+  color:var(--ink);
+  backdrop-filter:blur(12px)
+}
+/* 首页、页头和页脚最大宽度 1280px；课堂宽度另见 .lesson-main。 */
+.site-header .shell,.island-home.shell,.site-footer .shell {
+  max-width:1280px;
+  width:100%
+}
+/* 页头高度 80px，Logo 与其他内容的间距 20px。 */
+.header-row {
+  height:80px;
+  gap:20px;
+  justify-content:space-between
+}
+.brand {
+  display:flex;
+  gap:12px;
+  color:var(--ink);
+  text-decoration:none;
+  flex-shrink:0
+}
+.brand img {
+  width:144px;
+  height:auto;
+  object-fit:contain;
+  background:transparent;
+  padding:0
+}
+.step-label {
+  color:var(--muted);
+  font-size:12px;
+  text-align:right
+}
+.site-header .progress {
+  height:3px;
+  background:transparent;
+  border-radius:0
+}
+.site-header .progress span {
+  background:var(--progress-fill)
+}
+[data-theme="dark"] .brand {
+  background:transparent
+}
+[data-theme="dark"] .brand img {
+  background:#fff;
+  border-radius:10px;
+  padding:3px
+}
+.site-footer {
+  background:transparent;
+  border-top:.5px solid var(--rule);
+  color:var(--muted);
+  padding-block:24px
+}
+.site-footer .shell {
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  text-align:left;
+  font-size:12px
+}
+.site-footer a {
+  text-underline-offset:4px
+}
+:focus-visible {
+  outline:2px solid var(--button-focus);
+  outline-offset:4px
+}
+/* [06 按钮控件] 控制形状和尺寸；统一状态规则见文件末尾 [06b]。 */
+.primary,.primary.go,.primary.start {
+  background:var(--action-bg);
+  color:var(--on-action);
+  border:0;
+  border-radius:16px;
+  box-shadow:none;
+  font-weight:calc(550 - var(--weight-offset))
+}
+@media (hover:hover) {
+  .primary:hover:not(:disabled) {
+    background:var(--action-hover)
+  }
+}
+.primary:disabled,.primary.go:disabled {
+  background:var(--surface-3);
+  color:var(--muted);
+  box-shadow:none;
+  opacity:1
+}
+.secondary,.ghost,.chip,.pill,.qb-gates button,.qb-main button,.ent-actions button,.studio-options button {
+  border-radius:12px;
+  border-color:var(--rule)
+}
+.secondary {
+  background:var(--surface-2)
+}
+button:disabled {
+  opacity:.65
+}
+.opt:disabled {
+  opacity:1
+}
+input[type=range] {
+  accent-color:var(--action-bg)
+}
+select,input[type=url],input[type=text],input[type=number] {
+  background:var(--card);
+  color:var(--ink);
+  border:.5px solid var(--rule);
+  border-radius:10px
+}
+/* [07 首页布局] 顶部与底部留白，以及首页标题大小。 */
+.island-home {
+  --home-panel-radius:var(--radius-panel);
+  padding-top:34px;
+  padding-bottom:24px
+}
+.island-intro {
+  margin-bottom:30px
+}
+.island-intro h1 {
+  font-size:36px;
+  line-height:1.35;
+  letter-spacing:0;
+  margin:0 0 12px;
+  font-weight:calc(650 - var(--weight-offset))
+}
+.island-intro p {
+  font-size:16px;
+  color:var(--muted);
+  margin:0
+}
+/* 桌面左右两栏：地图和目录约 1.6 : 1；目录至少 320px；两栏间距 30px。 */
+.island-layout {
+  display:grid;
+  grid-template-columns:minmax(0,1.6fr) minmax(320px,1fr);
+  gap:30px;
+  align-items:start
+}
+/* 地图外框：统一使用卡片圆角；padding 控制插图与边缘的距离；:before 是内侧虚线。 */
+.island-panel,.island-directory .course-map {
+  background:#ffffff;
+  border:0;
+  border-radius:var(--home-panel-radius);
+  box-shadow:var(--card-raised);
+}
+.island-panel {
+  padding:25px 25px 20px;
+  position:relative;
+  min-width:0
+}
+.island-panel:before {
+  content:'';
+  position:absolute;
+  inset:7px;
+  /* border:.5px dashed var(--map-panel-stitch); */
+  border-radius:calc(var(--home-panel-radius) - 7px);
+  pointer-events:none
+}
+.island-heading {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  position:relative
+}
+.island-heading h2 {
+  font-size:24px;
+  line-height:1.3;
+  margin:0
+}
+.island-heading>span {
+  font-size:12px;
+  color:var(--muted);
+  white-space:nowrap
+}
+/* 地图按 600 / 402 比例缩放。左右负 margin 让插图铺得更宽；路径形状在 js/island.js。 */
+.journey-progress.island-map {
+  position:relative;
+  pointer-events:auto;
+  width:auto;
+  max-width:none;
+  margin:6px -12px 0;
+  aspect-ratio:600/402
+}
+.journey-scene.island-scene {
+  height:auto;
+  width:100%;
+  overflow:visible;
+  pointer-events:none
+}
+.island-scene :is(path,line,circle,ellipse,rect,polyline,polygon) {
+  vector-effect:none
+}
+.island-scene .journey-road {
+  stroke:var(--map-sand)
+}
+.island-scene .journey-travelled {
+  stroke:var(--map-travel);
+  stroke-width:18px;
+  stroke-linecap:round
+}
+.island-scene .journey-cat-body,.island-scene .journey-cat-head {
+  fill:var(--map-ink)
+}
+.island-scene .journey-tail,.island-scene .journey-leg,.island-scene .journey-pupils {
+  stroke:var(--map-ink)
+}
+.island-scene .journey-cat-eye {
+  fill:var(--map-cat-eye)
+}
+.island-scene .journey-cat-shadow {
+  display:block;
+  fill:var(--map-land-shade);
+  opacity:.4
+}
+.island-scene .journey-chest-glow {
+  fill:var(--map-cream)
+}
+.island-scene .journey-sparkles {
+  stroke:var(--map-gold)
+}
+/* 地图上的章节路标：34px 宽高；当前章节由 aria-pressed=true 标记。 */
+.island-pin {
+  position:absolute;
+  transform:translate(-50%,-50%);
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  padding:0;
+  border:.5px solid var(--map-wood-shade);
+  border-radius:12px;
+  background:var(--map-cream);
+  box-shadow:0 3px 0 var(--map-wood-shade);
+  color:var(--map-wood-dark);
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer
+}
+@media (hover:hover) {
+  .island-pin:hover {
+    background:var(--map-leaf-pale)
+  }
+}
+.island-pin[aria-pressed=true] {
+  background:var(--action-bg);
+  color:var(--on-action);
+  box-shadow:0 3px 0 var(--action-shadow);
+  border-color:var(--action-bg)
+}
+.island-pin[aria-pressed=true]:after {
+  content:'';
+  position:absolute;
+  inset:-6px;
+  border:.5px dashed var(--action-bg);
+  border-radius:16px;
+  pointer-events:none
+}
+.island-progress {
+  position:relative;
+  font-size:12px;
+  color:var(--muted);
+  padding:3px 5px 0
+}
+.island-progress strong {
+  font-size:24px;
+  color:var(--ink)
+}
+.island-progress-track {
+  width:110px;
+  height:5px;
+  background:var(--rule);
+  border-radius:5px;
+  margin-top:5px;
+  overflow:hidden
+}
+.island-progress-track span {
+  display:block;
+  height:100%;
+  background:var(--progress-fill)
+}
+/* [07a 首页课程目录] 连续白底容器、左侧折叠箭头、缩进课节列表。
+ * 保留原生 details 单章展开，以及地图和学习进度联动。 */
+/* 目录文字与交互采用黑灰色阶；已完成圆标使用成功色。 */
+.island-directory {
+  --ink:#171717;
+  --muted:#737373;
+  --card:#ffffff;
+  --rule:#e5e5e5;
+  --button-soft-hover:#f5f5f5;
+  --button-soft-active:#e5e5e5;
+  --button-border-hover:#a3a3a3;
+  --button-focus:#525252;
+  min-width:0;
+  color:var(--ink);
+}
+.island-home .island-intro h1 { color:var(--ink); }
+.syllabus-heading { display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:16px; }
+.syllabus-heading h2 { margin:0; font-size:24px; line-height:1.3; }
+.syllabus-heading>span { color:var(--muted); font-size:13px; white-space:nowrap; }
+.island-directory .level { margin:0; padding:0; border:0; border-bottom:1px solid var(--rule); border-radius:0; background:transparent; }
+.island-directory .level:first-child { border-top:0; }
+.island-directory .level:last-child { border-bottom:0; }
+.island-directory .level-head {
+  display:grid; grid-template-columns:18px minmax(0,1fr);
+  gap:12px; min-height:72px; padding:18px 20px; border-radius:0;
+  cursor:pointer; transition:background-color var(--button-state-duration) ease;
+}
+.island-directory .level:first-child>.level-head { border-radius:var(--home-panel-radius) var(--home-panel-radius) 0 0; }
+.island-directory .level:last-child:not([open])>.level-head { border-radius:0 0 var(--home-panel-radius) var(--home-panel-radius); }
+.island-directory .level-title { grid-column:2; grid-row:1; font-size:16px; line-height:1.6; font-weight:calc(550 - var(--weight-offset)); color:var(--ink); }
+.island-directory .level-index { display:inline; min-width:0; height:auto; margin-right:10px; background:transparent; color:inherit; font:inherit; border-radius:0; white-space:nowrap; }
+.island-directory .level-toggle { grid-column:1; grid-row:1; width:18px; height:18px; background:transparent; color:var(--ink); }
+.island-directory .level[open] :is(.level-head,.level-index,.level-toggle) { background:transparent; color:var(--ink); }
+@media (hover:hover) { .island-directory .level-head:hover { background:var(--button-soft-hover); } }
+.island-directory .level-head:active { background:var(--button-soft-active); }
+.island-directory .level-head:focus-visible { outline:2px solid var(--button-focus); outline-offset:2px; }
+.island-directory .level-rows { padding:0 16px 18px 42px; background:transparent; }
+.island-directory .map-row { grid-template-columns:24px minmax(0,1fr) auto; min-height:52px; padding:12px 8px; gap:12px; border:0; border-radius:8px; }
+.island-directory .map-no { width:24px; height:24px; background:transparent; border:0; border-radius:0; font-size:14px; color:#646464; }
+.island-directory .map-no svg { width:24px; height:24px; }
+.island-directory .map-row.current .map-no,.island-directory .map-row.done .map-no { background:transparent; color:#646464; }
+.achievement-badge.is-complete { color:#A0ECEE; }
+.achievement-badge.is-complete .achievement-rim { fill:currentColor; }
+.achievement-check { stroke:#fff; stroke-width:2; }
+.achievement-badge.is-stamping { transform-origin:center; animation:achievement-stamp 420ms ease-out both; }
+@keyframes achievement-stamp {
+  0% { transform:scale(1.45) rotate(-12deg); opacity:0; }
+  55% { transform:scale(.88) rotate(2deg); opacity:1; }
+  80% { transform:scale(1.06) rotate(-1deg); }
+  100% { transform:scale(1) rotate(0); opacity:1; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .achievement-badge.is-stamping { animation:none; }
+}
+.island-directory .map-title { color:#646464; font-size:15px; line-height:1.6; font-weight:calc(450 - var(--weight-offset)); }
+.island-directory .map-status { font-size:12px; color:var(--muted); white-space:nowrap; }
+.island-directory .map-row.current .map-status { color:var(--muted); }
+.island-directory .start { width:100%; margin-top:20px; min-width:0; justify-content:center; min-height:48px; padding:12px 16px; }
+@media(max-width:420px) {
+  .island-directory .level-head { padding:16px 12px; gap:8px; }
+  .island-directory .level-index { margin-right:6px; }
+  .island-directory .level-rows { padding:0 8px 14px 20px; }
+  .island-directory .map-row { gap:8px; }
+}
+@media(prefers-reduced-motion:reduce) { .island-directory .level-head { transition:none; } }
+.island-home .home-bottom {
+  margin-top:24px;
+  justify-content:flex-end
+}
+.island-home .home-bottom button {
+  font-size:12px
+}
+/* [08 课堂页面] --max:860px 是普通课堂内容区的最大宽度。
+ * FatQat 分步代码课在 site.css 的 .lesson-main:has(.lab-guided) 另设 1040px。
+ * 科学图形的几何与交互逻辑不在主题文件中修改。
+ */
+.lesson-main {
+  --max:860px;
+  padding-top:24px;
+  padding-bottom:25px
+}
+.lesson-meta {
+  margin-bottom:16px
+}
+.lesson-no {
+  font-weight:calc(600 - var(--weight-offset));
+  letter-spacing:0
+}
+/* 课堂卡片：统一 16px 圆角；padding 30px 控制内容留白；border 为细边框；box-shadow 使用统一淡阴影。 */
+.lesson-card {
+  position:relative;
+  min-width:0;
+  overflow:visible;
+  background:var(--card);
+  border:.5px solid var(--rule);
+  border-radius:var(--radius-panel);
+  box-shadow:var(--card-raised);
+  padding:30px
+}
+/* 课堂长内容在卡片内部滚动；min-width:0 避免长电路把手机页面撑宽。 */
+.lesson-card>.screen {
+  min-width:0;
+  overflow-x:hidden;
+  overflow-y:auto;
+  border-radius:0 0 15px 15px
+}
+/* 课堂标题 24px；line-height 为行高。进度短线的间距和高度在下面 .dots / .dot。 */
+.thread h1 {
+  font-size:24px;
+  line-height:1.5;
+  letter-spacing:0;
+  margin:4px 0 14px;
+  font-weight:calc(600 - var(--weight-offset))
+}
+.dots {
+  gap:6px;
+  margin-bottom:22px
+}
+.dot {
+  height:4px;
+  border-radius:4px;
+  background:var(--surface-3)
+}
+.dot.on {
+  background:var(--progress-fill)
+}
+.q,.task {
+  line-height:1.8
+}
+/* 选择题选项：默认、悬停、已选、正确和错误状态。 */
+.opt {
+  border:.5px solid var(--rule);
+  border-radius:14px;
+  background:var(--card);
+  padding:14px 16px;
+  line-height:1.65
+}
+.opt.selected {
+  background:var(--course-accent-3);
+  border-color:var(--course-accent-7)
+}
+@media (hover:hover) {
+  .opt:hover:not(:disabled) {
+    background:var(--course-accent-3);
+    border-color:var(--course-accent-7)
+  }
+}
+.opt.right {
+  background:var(--positive-bg);
+  border-color:var(--success-accent);
+  color:var(--ink)
+}
+.opt.wrong {
+  background:var(--negative-bg);
+  border-color:var(--error-accent);
+  color:var(--ink)
+}
+.opt.right .mark,.code-copy.is-copied .copy-check {
+  color:var(--ink)
+}
+.opt.wrong .mark {
+  color:var(--ink)
+}
+.opt-note.right {
+  background:var(--positive-bg);
+  color:var(--positive-text)
+}
+.opt-note.wrong {
+  background:var(--negative-bg);
+  color:var(--negative-text)
+}
+.fb,.callout,.feedback {
+  background:var(--surface-2);
+  border-radius:var(--radius-panel);
+  border-color:var(--rule);
+  padding:16px 18px;
+  line-height:1.8
+}
+.fb b {
+  color:var(--ink)
+}
+/* 课堂底部操作区：上方间距、按钮间距和按钮最小高度。 */
+.bottom {
+  gap:14px;
+  padding-top:20px
+}
+.hintline:empty {
+  display:none
+}
+.lesson-actions {
+  margin-left:auto;
+  gap:12px
+}
+.lesson-actions button {
+  min-height:44px;
+  padding-inline:22px
+}
+.map-button {
+  background:var(--surface-2);
+  border-radius:12px;
+  padding:9px
+}
+/* 实验组件外框与内层面板圆角；具体电路和控件布局仍在 site.css 对应组件中。 */
+:is(.studio,.lab,.qb-main,.ent-lab,.bloch-experiment,.mzi,.sim,.exp,.lab-stage-output) {
+  border-color:var(--rule);
+  border-radius:var(--radius-panel)
+}
+:is(.studio-output,.studio-controls,.qb-panel,.qb-readout,.lab-output,.lab-result-wrap,.lab-stage-circuit,.ent-duo>section) {
+  border-radius:var(--radius-panel)
+}
+.studio-label {
+  display:none
+}
+.studio-note,.cap,.lab-run-caption,.studio-output p,.ent-result {
+  line-height:1.75
+}
+.studio-bars,.lab-results,.qb-outcomes {
+  font-variant-numeric:tabular-nums
+}
+.lab-canvas {
+  --circuit-gate:var(--course-accent-4);
+  --circuit-measure:var(--course-neutral-4)
+}
+.qc-gate,.lab-symbol-gate {
+  fill:var(--course-accent-4)
+}
+/* [08a 代码框] 独立于卡片和主按钮：中性底色、4px 小圆角、无投影。
+ * code-surface / ink / border 调整底色、文字、边框；pre 调整留白和行距。
+ * 右侧预留 56px 给复制按钮，避免与第一行代码重叠。
+ */
+:root {
+  --code-surface:#f3f5f6;
+  --code-ink:var(--ink);
+  --code-border:#dce1e4;
+  --code-control-hover:#e5eaed;
+}
+.code-block,.lesson-card .code-block,
+.lesson-card .lab-code-step .lab-code-fragment {
+  position:relative;
+  background:var(--code-surface);
+  color:var(--code-ink);
+  border:.5px solid var(--code-border);
+  border-radius:4px;
+  box-shadow:none;
+}
+.code-block .code-toolbar,.lab-code-container .code-toolbar {
+  position:absolute;
+  top:4px;
+  right:4px;
+  padding:0;
+  background:transparent;
+  border-radius:0;
+  box-shadow:none;
+}
+.lesson-card .code-copy {
+  background:transparent;
+  color:var(--code-ink);
+  border:0;
+  border-radius:4px;
+  box-shadow:none;
+}
+@media (hover:hover) {
+  .lesson-card .code-copy:hover {
+    background:var(--code-control-hover);
+  }
+}
+.lesson-card .code-copy:active {
+  background:var(--code-control-hover);
+}
+.lesson-card .code-copy:focus-visible {
+  outline:2px solid var(--button-focus,var(--action-bg));
+  outline-offset:2px;
+}
+.lesson-card .lab-code-step .lab-code-fragment {
+  padding:16px 56px 16px 16px;
+  transform:none;
+  translate:none;
+}
+.lesson-card .lab-code-fragment:focus-visible {
+  outline:2px solid var(--button-focus,var(--action-bg));
+  outline-offset:2px;
+}
+.code-block pre {
+  padding:16px 56px 16px 16px;
+  line-height:1.75;
+}
+.lab-code-lines,.lab-output {
+  background:var(--surface-2)
+}
+/* 发展史展开条目，以及 Bloch 球的明暗配色。 */
+.history-event {
+  border-radius:12px
+}
+.history-event[open] summary {
+  background:var(--course-accent-3);
+  color:var(--ink)
+}
+.history-node.is-active {
+  background:var(--action-bg)
+}
+.bloch-scene .bs-light {
+  stop-color:var(--card)
+}
+.bloch-scene .bs-mid {
+  stop-color:var(--course-accent-3)
+}
+.bloch-scene .bs-shade {
+  stop-color:var(--course-accent-7)
+}
+/* [09 欢迎弹窗] 底色、圆角和卡片阴影。 */
+.welcome-card {
+  background:var(--card);
+  border:.5px solid var(--rule);
+  border-radius:var(--radius-panel);
+  box-shadow:var(--card-raised)
+}
+.welcome-card {
+  padding:36px
+}
+.welcome-brand {
+  width:108px
+}
+.welcome-card h2 {
+  letter-spacing:0;
+  font-size:24px;
+  line-height:1.5
+}
+.welcome-credit {
+  border-top:.5px dashed var(--rule)
+}
+.welcome-close {
+  background:var(--card);
+  color:var(--ink);
+  border:.5px solid var(--rule);
+  box-shadow:none
+}
+@media (hover:hover) {
+  .welcome-close:hover {
+    background:var(--course-accent-3)
+  }
+}
+.welcome-dismiss {
+  color:var(--course-neutral-1)
+}
+
+/* [10 响应式布局] 视口宽度不超过 1050px：缩小地图与目录的两栏间距。 */
+@media(max-width:1050px) {
+  .island-layout {
+    grid-template-columns:minmax(0,1.25fr) minmax(300px,1fr);
+    gap:22px
+  }
+  .island-panel {
+    padding-inline:18px
+  }
+  .island-heading h2 {
+    font-size:24px
+  }
+  .island-heading {
+    flex-wrap:wrap;
+    gap:6px
+  }
+
+}
+/* 视口宽度不超过 760px：地图与纵向目录上下排列，并覆盖字号、圆角和内边距。 */
+@media(max-width:760px) {
+  .header-row {
+    height:72px;
+    gap:14px
+  }
+  .brand img {
+    width:120px;
+    height:auto
+  }
+  .step-label {
+    font-size:12px
+  }
+  .island-home {
+    padding-top:25px
+  }
+  .island-intro h1 {
+    font-size:28px
+  }
+  .island-intro p {
+    font-size:16px
+  }
+  .island-layout {
+    grid-template-columns:1fr;
+    gap:30px
+  }
+  .island-heading {
+    flex-wrap:nowrap
+  }
+  .island-panel {
+    padding:23px 18px 18px
+  }
+
+  .island-heading h2 {
+    font-size:24px
+  }
+  .island-heading>span {
+    font-size:12px
+  }
+  .island-map.journey-progress {
+    margin-inline:-12px
+  }
+  .island-pin {
+    width:30px;
+    height:30px;
+    border-radius:10px
+  }
+
+  .lesson-main {
+    height:calc(100svh - 76px - env(safe-area-inset-top));
+    min-height:400px;
+    padding-top:15px;
+    padding-bottom:20px
+  }
+  .lesson-card,.lesson-card:has(.mzi) {
+    padding:24px 16px 18px;
+    border-radius:var(--radius-panel)
+  }
+  .lesson-meta {
+    margin-bottom:15px
+  }
+  .thread h1 {
+    margin:2px 0 12px
+  }
+  .dots {
+    margin-bottom:16px
+  }
+  .bottom {
+    padding-top:16px;
+    gap:10px
+  }
+  .lesson-actions button {
+    padding-inline:18px
+  }
+  .site-footer .shell {
+    flex-wrap:wrap;
+    gap:12px
+  }
+  .welcome-card {
+    padding:26px
+  }
+
+}
+/* 窄手机（≤370px）：标题和地图路标进一步缩小。此处会叠加在 760px 规则之上。 */
+@media(max-width:370px) {
+  .island-heading {
+    flex-wrap:wrap
+  }
+  .island-intro h1 {
+    font-size:24px
+  }
+  .island-pin {
+    width:27px;
+    height:27px
+  }
+
+  .lesson-actions button {
+    padding-inline:14px
+  }
+}
+/* 横屏 / 矮窗口：宽度至少 600px 且高度不超过 600px 时，压缩课堂垂直间距。 */
+@media(max-height:600px) and (min-width:600px) {
+  .lesson-main {
+    min-height:340px;
+    padding-top:10px;
+    padding-bottom:12px
+  }
+  .lesson-card {
+    padding:16px 20px
+  }
+  .lesson-meta {
+    margin-bottom:12px
+  }
+  .thread h1 {
+    margin:0 0 8px
+  }
+  .dots {
+    margin-bottom:10px
+  }
+  .bottom {
+    padding-top:12px
+  }
+}
+/* 系统开启减少动态效果时，关闭按钮按下的位移。 */
+@media(prefers-reduced-motion:reduce) {
+  .primary:active:not(:disabled) {
+    translate:none
+  }
+}
+
+/* 按用途区分尺寸：
+ * 主导航（首页继续学习、章节开始、课堂上一步/继续）沿用原尺寸。
+ * 课堂内容区的小控件（加门、状态/参数选择、撤销、重置、实验运行）使用紧凑尺寸。
+ * 答题选项、目录入口、电路图内控件保留各自布局；多行文字和公式自然撑开。
+ */
+#app .screen :is(.chip,.gate,.qb-action,.qb-choices button,.qb-presets button,
+  .studio-options button,.ent-actions button,[data-studio-run],[data-protocol-action],
+  .lab-sampling button,.lab-measure,#lab-compile) {
+  min-height:36px;
+  padding-block:6px;
+  line-height:1.4;
+}
+
+/* [06b 按钮交互状态]
+ * default → hover → active：保持尺寸，150ms 过渡；按下缩至 98%。
+ * focus-visible：仅键盘焦点显示 2px 环，外留 2px 空隙。
+ * disabled：原生 disabled 阻止激活，50% 不透明度和禁止光标；不使用 pointer-events:none，
+ *           这样鼠标仍能显示禁止光标。
+ * loading：由 CourseUI.beginButtonBusy 在真实异步操作期间设置，原内容保留占位。
+ * selected：aria-pressed / .selected / .on 使用强调色填充，与按住不放的 active 区分。
+ * 电路图 .lab-symbol 和代码框 .lab-code-fragment 保留独立的视觉样式。
+ */
+#app :where(button:not(.lab-symbol,.lab-code-fragment),a.primary,a.secondary,a.ghost),
+.welcome-dialog button {
+  --button-bg:var(--card);
+  --button-fg:var(--ink);
+  --button-hover:var(--button-soft-hover);
+  --button-active:var(--button-soft-active);
+  background:var(--button-bg);
+  color:var(--button-fg);
+  cursor:pointer;
+  transition:background-color var(--button-state-duration) ease,
+    color var(--button-state-duration) ease,
+    border-color var(--button-state-duration) ease,
+    opacity var(--button-state-duration) ease,
+    scale var(--button-state-duration) ease;
+}
+#app :is(.secondary,.ghost,.chip,.qb-secondary) {
+  --button-bg:var(--surface-2);
+}
+#app :is(.text-button,.map-row,.code-copy,.map-button) {
+  --button-bg:transparent;
+}
+.welcome-dialog .welcome-close {
+  --button-bg:var(--card);
+}
+#app :is(.primary,.gate,.qb-action:not(.qb-secondary)),
+.welcome-dialog .primary,
+#app button:is([aria-pressed="true"],.selected,.on):not(.lab-symbol,.lab-code-fragment) {
+  --button-bg:var(--action-bg);
+  --button-fg:var(--on-action);
+  --button-hover:var(--action-hover);
+  --button-active:var(--button-primary-active);
+}
+
+/* 答案反馈优先于选中填色；提交后保持文字与标记清晰。 */
+#app .opt.right {
+  --button-bg:var(--positive-bg);
+  --button-fg:var(--ink);
+}
+#app .opt.wrong {
+  --button-bg:var(--negative-bg);
+  --button-fg:var(--ink);
+}
+#app .code-copy {
+  --button-fg:var(--code-ink);
+  --button-hover:var(--code-control-hover);
+  --button-active:var(--code-control-hover);
+}
+#app .code-copy.is-copied {
+  --button-fg:var(--success-accent);
+}
+@media (hover:hover) {
+  #app :is(button:not(.lab-symbol,.lab-code-fragment),a.primary,a.secondary,a.ghost):not(:disabled):not([aria-busy="true"]):hover,
+  .welcome-dialog button:not(:disabled):not([aria-busy="true"]):hover {
+    background:var(--button-hover);
+    border-color:var(--button-border-hover);
+  }
+}
+#app :is(button:not(.lab-symbol,.lab-code-fragment),a.primary,a.secondary,a.ghost):not(:disabled):not([aria-busy="true"]):active,
+.welcome-dialog button:not(:disabled):not([aria-busy="true"]):active {
+  background:var(--button-active);
+  scale:var(--button-press-scale);
+  translate:none;
+}
+#app :is(button,a.primary,a.secondary,a.ghost):focus-visible,
+.welcome-dialog button:focus-visible {
+  outline:2px solid var(--button-focus);
+  outline-offset:2px;
+}
+#app button:not(.lab-symbol,.lab-code-fragment):disabled:not([aria-busy="true"]),
+.welcome-dialog button:disabled:not([aria-busy="true"]) {
+  opacity:var(--button-disabled-opacity);
+  cursor:not-allowed;
+  scale:none;
+  translate:none;
+}
+/* 已提交选项是答案展示，不按“不可用操作”淡化。 */
+#app .opt:disabled {
+  opacity:1;
+  cursor:default;
+}
+#app button[aria-busy="true"],
+.welcome-dialog button[aria-busy="true"] {
+  opacity:1;
+  cursor:wait;
+}
+/* 占位层决定按钮宽高；加载层覆盖在相同区域，不挤动相邻按钮。 */
+.button-busy {
+  position:relative;
+}
+.button-rest {
+  visibility:hidden;
+  display:inline-flex;
+  align-items:center;
+  gap:inherit;
+}
+.button-pending {
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  white-space:nowrap;
+}
+.button-spinner {
+  width:1em;
+  height:1em;
+  flex-shrink:0;
+  animation:button-spin 800ms linear infinite;
+}
+@keyframes button-spin {
+  to {rotate:360deg}
+}
+@media (prefers-reduced-motion:reduce) {
+  :root {
+    --button-press-scale:1;
+  }
+  #app :is(button,a.primary,a.secondary,a.ghost),
+  .welcome-dialog button {
+    transition:none;
+  }
+  #app :is(button,a.primary,a.secondary,a.ghost):active,
+  .welcome-dialog button:active {
+    scale:none;
+  }
+  .button-spinner {
+    animation:none;
+  }
+}
+
+/* Walking is separate from the constant-speed movement along the road. */
+@media (prefers-reduced-motion: no-preference) {
+  .island-scene .journey-runner.is-running .journey-cat {
+    animation:island-cat-stride .24s linear infinite;
+  }
+  .island-scene .journey-runner.is-running .journey-leg-front {
+    animation:island-cat-legs .24s linear infinite alternate;
+  }
+  .island-scene .journey-runner.is-running .journey-leg-back {
+    animation:island-cat-legs .24s linear infinite alternate-reverse;
+  }
+}
+@keyframes island-cat-stride {
+  0%,100% { transform:translateY(0) }
+  50% { transform:translateY(-2px) }
+}
+@keyframes island-cat-legs {
+  from { transform:rotate(-18deg) }
+  to { transform:rotate(18deg) }
+}
+
+/* 章节导览：封面主题与真实学习路线共用一个容器。 */
+.chapter-title-main { --max:960px; padding-block:24px 48px; }
+.chapter-title-meta { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px; color:var(--muted); font-size:var(--font-small); }
+.chapter-title-card { display:grid; grid-template-columns:minmax(0, .8fr) minmax(0, 1.25fr); background:var(--card); border-radius:var(--radius-panel); box-shadow:var(--card-raised); overflow:hidden; }
+/* 官网深色封面：局部颜色角色，目录与课堂继续使用浅色界面。 */
+.chapter-cover-intro { --cover-bg:#050d19; --cover-glow:#163b60; --cover-text:#ffffff; --cover-muted:#bdcdd2; --cover-track:#293e47; display:flex; flex-direction:column; padding:30px; color:var(--cover-text); background:linear-gradient(120deg,var(--cover-bg) 0%,#0b2038 55%,var(--cover-glow) 100%); border-right:.5px solid var(--rule); }
+.chapter-cover-label { margin:0 0 12px; color:var(--cover-muted); font-size:var(--font-small); }
+.chapter-title-card h1 { margin:0; font-size:var(--font-title); line-height:1.5; font-weight:calc(600 - var(--weight-offset)); text-wrap:balance; }
+.chapter-cover-intro h1 { color:var(--cover-text); }
+.chapter-cover-progress { margin-top:auto; padding-top:28px; display:flex; justify-content:space-between; gap:12px; font-size:12px; color:var(--cover-muted); }
+.chapter-cover-meter { appearance:none; display:block; width:100%; height:4px; border:0; border-radius:3px; overflow:hidden; margin-top:12px; background:var(--cover-track); }
+.chapter-cover-meter::-webkit-progress-bar { background:var(--cover-track); }
+.chapter-cover-meter::-webkit-progress-value { background:var(--progress-fill); border-radius:3px; }
+.chapter-cover-meter::-moz-progress-bar { background:var(--progress-fill); border-radius:3px; }
+.chapter-cover-outline { padding:30px; display:flex; flex-direction:column; }
+.chapter-outline-heading h2 { margin:0 0 24px; font-size:var(--font-body); font-weight:calc(550 - var(--weight-offset)); }
+.chapter-lesson-list { list-style:none; padding:0; margin:0; flex:1; }
+.chapter-lesson-list li + li { border-top:.5px solid var(--rule); }
+.chapter-lesson-link { display:flex; width:100%; align-items:center; gap:16px; padding:17px 8px; background:transparent; border:0; border-radius:8px; text-align:left; color:var(--ink); box-shadow:none; }
+.chapter-lesson-index { font-size:var(--font-small); color:var(--muted); font-variant-numeric:tabular-nums; align-self:flex-start; padding-top:3px; }
+.chapter-lesson-copy { display:grid; gap:5px; flex:1; min-width:0; }
+.chapter-lesson-title { font-size:var(--font-body); line-height:1.6; font-weight:calc(450 - var(--weight-offset)); }
+.chapter-lesson-state { font-size:12px; color:var(--muted); font-weight:400; }
+.chapter-lesson-badge { display:flex; flex:none; width:24px; height:24px; color:var(--muted); }
+.chapter-lesson-badge svg { width:100%; height:100%; }
+.chapter-title-actions { display:flex; justify-content:space-between; gap:16px; margin-top:28px; padding-top:24px; border-top:.5px solid var(--rule); }
+@media (hover:hover) and (pointer:fine) {
+ .chapter-lesson-link:hover { background:var(--surface-2); }
+}
+@media(width < 760px) {
+ .chapter-title-card { grid-template-columns:1fr; }
+ .chapter-cover-intro { position:relative; padding:28px; border-right:0; border-bottom:.5px solid var(--rule); }
+ .chapter-cover-outline { padding:28px; }
+}
+@media(width < 480px) {
+ .chapter-title-main { padding-inline:20px; padding-top:24px; }
+ .chapter-title-meta { font-size:var(--font-small); gap:8px; margin-bottom:16px; }
+ .chapter-cover-intro, .chapter-cover-outline { padding:24px; }
+ .chapter-title-actions { gap:12px; flex-wrap:wrap; }
+ .chapter-title-actions button { flex:1; min-width:110px; padding-inline:12px; }
+}

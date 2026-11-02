@@ -1,0 +1,7 @@
+/* 内测版标记，沿用课程浅青色阶 */
+.beta-badge{display:inline-block;margin:4px 0 10px;padding:3px 10px;border-radius:999px;background:var(--course-accent-3);color:var(--course-accent-11);font-size:13px;font-weight:600;letter-spacing:.04em}
+.welcome-card .beta-badge+h2{margin-top:0}
+.beta-notice{margin:20px 0 0;padding:12px 14px;border-radius:12px;background:var(--course-accent-2);color:var(--ink);font-size:14px;line-height:1.75}
+.beta-notice strong{font-weight:600}
+.beta-footer-note{display:block;margin-top:2px;color:var(--muted);font-size:12px}
+.beta-footer-note strong{font-weight:500}

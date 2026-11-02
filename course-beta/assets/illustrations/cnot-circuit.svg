@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" role="img" aria-labelledby="title desc">
+  <title id="title">CNOT 电路：q0 控制 q1</title>
+  <desc id="desc">上方 q0 线路上的实心点表示控制位，下方 q1 线路上的带圈加号表示目标位，两者以竖线相连。电路从左向右读。</desc>
+  <g font-family="sans-serif" fill="#1d211c">
+    <g font-size="24" font-weight="600">
+      <text x="28" y="88" font-family="Times New Roman, serif" font-style="italic">q<tspan baseline-shift="sub" font-size="70%" font-style="normal">0</tspan></text>
+      <text x="28" y="188" font-family="Times New Roman, serif" font-style="italic">q<tspan baseline-shift="sub" font-size="70%" font-style="normal">1</tspan></text>
+    </g>
+    <g stroke="#1d211c" stroke-width="0.5" fill="none">
+      <path d="M82 80H590M82 180H590M310 80V180"/>
+      <circle cx="310" cy="180" r="20" fill="#b0e64c"/>
+      <path d="M310 166V194M296 180H324"/>
+    </g>
+    <circle cx="310" cy="80" r="9"/>
+    <g font-size="16">
+      <text x="345" y="58">控制位：实心点</text>
+      <text x="345" y="224">目标位：带圈加号</text>
+    </g>
+    <g fill="#60655f" font-size="16">
+      <text x="84" y="28">从左向右读</text>
+      <path d="M193 22H242M237 18L242 22L237 26" fill="none" stroke="#60655f" stroke-width="0.5"/>
+    </g>
+  </g>
+<style>path,line,rect,circle,ellipse,polyline {stroke-width:.5px;vector-effect:non-scaling-stroke}</style></svg>
