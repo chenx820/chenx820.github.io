@@ -15,12 +15,15 @@ require("prismjs/plugins/line-numbers/prism-line-numbers.css");
 require("katex/dist/katex.min.css");
 
 const { Helmet } = require("react-helmet");
+const React = require("react");
+const { cloudflareWebAnalyticsToken } = require("./config/website");
 
 exports.onRenderBody = ({
   pathname,
   setHtmlAttributes,
   setBodyAttributes,
   setHeadComponents,
+  setPostBodyComponents,
 }) => {
   const helmet = Helmet.renderStatic();
   setHtmlAttributes({
@@ -36,4 +39,15 @@ exports.onRenderBody = ({
     ...helmet.style.toComponent(),
     ...helmet.noscript.toComponent(),
   ]);
+
+  if (process.env.NODE_ENV === "production" && cloudflareWebAnalyticsToken) {
+    setPostBodyComponents([
+      React.createElement("script", {
+        key: "cloudflare-web-analytics",
+        type: "module",
+        src: "https://static.cloudflareinsights.com/beacon.min.js",
+        "data-cf-beacon": JSON.stringify({ token: cloudflareWebAnalyticsToken }),
+      }),
+    ]);
+  }
 };

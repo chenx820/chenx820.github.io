@@ -17,6 +17,8 @@ const website = {
   ...social,
   disqusShortName: "chenx820",
   googleAnalyticsID: "G-6S4PRFFZ9P",
+  // Public Web Analytics token from Cloudflare's JS snippet (not an API key).
+  cloudflareWebAnalyticsToken: "4d434e7f00884781b0073f2ed14f492e",
   // Manifest
   themeColor: " #799EFF",
   backgroundColor: " #FFFFFF",
